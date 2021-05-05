@@ -6,13 +6,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import sample.createNewObject.CreateEngineer;
 import sample.data.Engineer;
 import sample.data.SaveData;
-import sample.data.components.Engine;
 import sample.data.enums.Rank;
 import sample.openNewScene.OpenNewScene;
 import sample.output.OutputFileStream;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ListOfEngineersController {
@@ -52,31 +50,28 @@ public class ListOfEngineersController {
 
     @FXML
     void initialize() {
-
         OpenNewScene open = new OpenNewScene();
         columnRank.setCellValueFactory(new PropertyValueFactory<>("rank"));
         columnFullName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
-        deleteEngineer.setOnAction(e ->  deleteEngineer());
+        deleteEngineer.setOnAction(e -> deleteEngineer());
         returnHomePage.setOnAction(e -> {
             open.openNewScene("/sample/fxmlFiles/sample.fxml", returnHomePage);
         });
-
         listOfRanks.getItems().addAll(Rank.LIEUTENANT, Rank.ST_LIEUTENANT, Rank.CAPTAIN, Rank.MAJOR);
-        createNewEngineer.setOnAction(e -> {
-           Engineer engineer = CreateEngineer.createNewEngineer(listOfRanks.getValue(), inputEngineerName.getText());
-            SaveData.engineersList.add(engineer);
-           tableView.getItems().add(engineer);
-                    OutputFileStream.serialization(SaveData.engineersList);
-
-                });
-
+        createNewEngineer.setOnAction(e -> addEngineer());
     }
     private void deleteEngineer() {
-
         tableView.getItems().remove(tableView.getSelectionModel().getSelectedItem());
         tableView.refresh();
         SaveData.engineersList.remove(tableView.getSelectionModel().getSelectedItem());
         OutputFileStream.serialization(SaveData.engineersList);
+    }
+    private void addEngineer() {
+        Engineer engineer = CreateEngineer.createNewEngineer(listOfRanks.getValue(), inputEngineerName.getText());
+        SaveData.engineersList.add(engineer);
+        tableView.getItems().add(engineer);
+        OutputFileStream.serialization(SaveData.engineersList);
+
     }
 }
 
