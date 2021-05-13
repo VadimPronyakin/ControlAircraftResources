@@ -11,13 +11,13 @@ public class Engine {
     //Общаая наработка двигателя c начала эксплуатации
     private int totalOperatingTime;
     //Наработка двигателя за летную смену
-    private int operatingTime;
+   // private int operatingTime;
     //Общее кол-во запусков двигателя с начала эксплуатации
     private int totalStartingEngineCount;
     //Кол-во запусков двигателя за летную смену
-    private int startingEngineCount;
+   // private int startingEngineCount;
     //Кол-во запусков до очередного ремонта
-    private int engineStartsBeforeRepair;
+    //private int engineStartsBeforeRepair;
     //Остаток ресурса до 10-ти часовых работ (10+2ч)
     private int resourceReserveBefore_10hours;
     //Остаток ресурса до 25-ти часовых работ (25+5ч)
@@ -32,4 +32,6 @@ public class Engine {
     private int resourceReserveBefore_150hours;
     //Остаток до замены масла (200+30ч или 2 года)
     private int oilChange;
+    //Серийный номер двигателя
+    private String serialNumberEngine;
 }

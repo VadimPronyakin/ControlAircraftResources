@@ -15,6 +15,9 @@ public class HomePageController {
     private URL location;
 
     @FXML
+    private Button limitedResource;
+
+    @FXML
     private Button tableOfAircraft;
 
     @FXML
@@ -28,13 +31,15 @@ public class HomePageController {
         OpenNewScene open = new OpenNewScene();
         tableOfAggregates.setOnAction(event -> {
             open.openNewScene("/sample/fxmlFiles/listOfAggregates.fxml", tableOfAggregates);
-
         });
         tableOfEngineers.setOnAction(e -> {
             open.openNewScene("/sample/fxmlFiles/listOfEngineers.fxml", tableOfEngineers);
         });
         tableOfAircraft.setOnAction(e -> {
             open.openNewScene("/sample/fxmlFiles/listOfAircraft.fxml", tableOfAircraft);
+        });
+        limitedResource.setOnAction(e -> {
+            open.openNewScene("/sample/fxmlFiles/limitedResource.fxml", limitedResource);
         });
     }
 }

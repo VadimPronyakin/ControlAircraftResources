@@ -6,12 +6,13 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum Rank {
-    LIEUTENANT("лейтенант"),
-    ST_LIEUTENANT("старший лейтенант"),
-    CAPTAIN("капитан"),
-    MAJOR("майор");
+    LIEUTENANT("Лейтенант"),
+    ST_LIEUTENANT("Старший лейтенант"),
+    CAPTAIN("Капитан"),
+    MAJOR("Майор");
 
     private final String description;
+
 
     @Override
     public String toString() {

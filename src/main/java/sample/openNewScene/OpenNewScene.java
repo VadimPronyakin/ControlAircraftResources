@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class OpenNewScene {
-    public void openNewScene(String window, Button button) {
+    public <T> T openNewScene(String window, Button button) {
         button.getScene().getWindow().hide();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(window));
@@ -19,8 +19,10 @@ public class OpenNewScene {
             e.printStackTrace();
         }
         Parent root = loader.getRoot();
+
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
-        stage.showAndWait();
+        stage.show();
+        return loader.getController();
     }
 }

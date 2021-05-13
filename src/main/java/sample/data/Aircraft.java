@@ -1,20 +1,20 @@
 package sample.data;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NonNull;
 import sample.data.components.Engine;
 import sample.data.components.Ksa;
 import sample.data.components.Planer;
 import sample.data.components.limitedResource.MainBreak;
 
 
-@Setter
-@Getter
-@Builder
+@Data
 public class Aircraft {
+    @NonNull
     private int aircraftNumber;
+    @NonNull
     private Engineer iak;
+    @NonNull
     private Planer planer;
     private Engine leftEngine;
     private Engine rightEngine;

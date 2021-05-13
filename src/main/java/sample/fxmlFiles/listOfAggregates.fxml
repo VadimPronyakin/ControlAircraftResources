@@ -15,14 +15,14 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: #111d69; -fx-border-style: solid; -fx-border-color: #111d69; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.ListOfAggregatesController">
     <children>
-        <AnchorPane layoutX="-2.0" prefHeight="46.0" prefWidth="809.0" style="-fx-background-color: #111d69;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <AnchorPane layoutX="24.0" prefHeight="134.0" prefWidth="926.0" style="-fx-background-color: #111d69;" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0">
             <effect>
                 <DropShadow />
             </effect>
             <children>
-                <HBox layoutX="-3.0" layoutY="38.0" prefHeight="47.0" prefWidth="950.0" style="-fx-background-color: #f1b00c;" AnchorPane.bottomAnchor="59.0" AnchorPane.topAnchor="38.0">
+                <HBox layoutX="-3.0" layoutY="38.0" prefHeight="47.0" prefWidth="950.0" style="-fx-background-color: #f1b00c;" AnchorPane.bottomAnchor="59.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="38.0">
                     <children>
-                        <Text fill="#111d69" strokeType="OUTSIDE" strokeWidth="0.0" text="СПИСОК САМОЛЕТОВ">
+                        <Text fill="#111d69" strokeType="OUTSIDE" strokeWidth="0.0" text="СПИСОК АГРЕГАТОВ">
                             <font>
                                 <Font name="Times New Roman Bold Italic" size="25.0" />
                             </font>
@@ -39,121 +39,30 @@
                             </HBox.margin>
                         </Button>
                     </children>
+                    <padding>
+                        <Insets left="20.0" />
+                    </padding>
                 </HBox>
                 <ImageView fitHeight="128.0" fitWidth="131.0" layoutX="33.0" preserveRatio="true" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="792.918815612793" AnchorPane.topAnchor="8.0">
                     <image>
-                        <Image url="@../images/mig.png" />
+                        <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/mig.png" />
                     </image>
                 </ImageView>
                 <ImageView fitHeight="148.0" fitWidth="257.0" layoutX="518.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true" rotate="3.2" AnchorPane.topAnchor="-7.0">
                     <image>
-                        <Image url="@../images/arthondar-longing-for-learning-1-155d8787-r503.png" />
+                        <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/arthondar-longing-for-learning-1-155d8787-r503.png" />
                     </image>
                 </ImageView>
             </children>
         </AnchorPane>
         <ButtonBar layoutX="271.0" layoutY="324.0" prefHeight="40.0" prefWidth="200.0" />
-        <TabPane layoutX="2.0" layoutY="135.0" prefHeight="408.0" prefWidth="944.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="44.0">
+        <TabPane layoutX="2.0" layoutY="135.0" prefHeight="408.0" prefWidth="944.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0">
             <tabs>
-                <Tab fx:id="listAllEngines" text="СПИСОК ДВИГАТЕЛЕЙ">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="433.0" prefWidth="935.0" style="-fx-background-color: #DCDCDC;">
-                            <children>
-                                <HBox layoutY="325.0" prefHeight="54.0" prefWidth="944.0" spacing="30.0" style="-fx-background-color: #f1b00c;">
-                                    <children>
-                                        <Button fx:id="createNewEngineer" mnemonicParsing="false" prefHeight="23.0" prefWidth="161.0" style="-fx-background-color: #111d69;" text="Добавить двигатель" textFill="#eeeaea">
-                                            <font>
-                                                <Font name="Times New Roman Bold" size="14.0" />
-                                            </font>
-                                        </Button>
-                                        <Button fx:id="changeEngineer" mnemonicParsing="false" prefHeight="23.0" prefWidth="161.0" style="-fx-background-color: #111d69;" text="Изменить запись" textFill="#f5f3f3">
-                                            <font>
-                                                <Font name="Times New Roman Bold" size="14.0" />
-                                            </font>
-                                        </Button>
-                                        <Button fx:id="deleteEngineer" mnemonicParsing="false" prefHeight="23.0" prefWidth="161.0" style="-fx-background-color: #111d69;" text="Удалить двигатель" textFill="#f5f3f3">
-                                            <font>
-                                                <Font name="Times New Roman Bold" size="14.0" />
-                                            </font>
-                                            <HBox.margin>
-                                                <Insets left="350.0" />
-                                            </HBox.margin>
-                                        </Button>
-                                    </children>
-                                    <padding>
-                                        <Insets left="30.0" top="15.0" />
-                                    </padding>
-                                </HBox>
-                            </children>
-                        </AnchorPane>
-                    </content>
+                <Tab fx:id="listAllEnginesTabButton" text="СПИСОК ДВИГАТЕЛЕЙ">
+                    <fx:include fx:id="listAllEnginesTab" source="Tab/listAllEnginesTab.fxml" />
                 </Tab>
-                <Tab fx:id="listAllKsa" text="СПИСОК КСА">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #DCDCDC;">
-                            <children>
-                                <HBox layoutX="14.0" layoutY="8.0" prefHeight="26.0" prefWidth="317.0" spacing="30.0" />
-                                <HBox layoutY="299.0" prefHeight="54.0" prefWidth="944.0" spacing="30.0" style="-fx-background-color: #f1b00c;" AnchorPane.bottomAnchor="0.0">
-                                    <children>
-                                        <Button fx:id="createNewKsa" mnemonicParsing="false" prefHeight="23.0" prefWidth="161.0" style="-fx-background-color: #111d69;" text="Добавить КСА" textFill="#eeeaea">
-                                            <font>
-                                                <Font name="Times New Roman Bold" size="14.0" />
-                                            </font>
-                                        </Button>
-                                        <Button fx:id="changeKsa" mnemonicParsing="false" prefHeight="23.0" prefWidth="161.0" style="-fx-background-color: #111d69;" text="Изменить запись" textFill="#eeeaea">
-                                            <font>
-                                                <Font name="Times New Roman Bold" size="14.0" />
-                                            </font>
-                                        </Button>
-                                        <Button fx:id="deleteKsa" mnemonicParsing="false" prefHeight="23.0" prefWidth="161.0" style="-fx-background-color: #111d69;" text="Удалить КСА" textFill="#eeeaea">
-                                            <font>
-                                                <Font name="Times New Roman Bold" size="14.0" />
-                                            </font>
-                                            <HBox.margin>
-                                                <Insets left="350.0" />
-                                            </HBox.margin>
-                                        </Button>
-                                    </children>
-                                    <padding>
-                                        <Insets left="30.0" top="15.0" />
-                                    </padding>
-                                </HBox>
-                            </children>
-                        </AnchorPane>
-                    </content>
-                </Tab>
-                <Tab fx:id="listOfLimitedResource" text="ОГРАНИЧЕННЫЙ РЕСУРС">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #DCDCDC;">
-                            <children>
-                                <HBox layoutY="342.0" prefHeight="54.0" prefWidth="944.0" spacing="30.0" style="-fx-background-color: #f1b00c;" AnchorPane.bottomAnchor="0.0">
-                                    <children>
-                                        <Button fx:id="createNewLimitedObject" mnemonicParsing="false" prefHeight="26.0" prefWidth="173.0" style="-fx-background-color: #111d69;" text="Добавить наименование" textFill="#eeeaea">
-                                            <font>
-                                                <Font name="Times New Roman Bold" size="14.0" />
-                                            </font>
-                                        </Button>
-                                        <Button fx:id="changeLimitedObject" mnemonicParsing="false" prefHeight="23.0" prefWidth="161.0" style="-fx-background-color: #111d69;" text="Изменить запись" textFill="#eeeaea">
-                                            <font>
-                                                <Font name="Times New Roman Bold" size="14.0" />
-                                            </font>
-                                        </Button>
-                                        <Button fx:id="deleteLimitedObject" mnemonicParsing="false" prefHeight="26.0" prefWidth="167.0" style="-fx-background-color: #111d69;" text="Удалить наименование" textFill="#eeeaea">
-                                            <font>
-                                                <Font name="Times New Roman Bold" size="14.0" />
-                                            </font>
-                                            <HBox.margin>
-                                                <Insets left="337.0" />
-                                            </HBox.margin>
-                                        </Button>
-                                    </children>
-                                    <padding>
-                                        <Insets left="30.0" top="15.0" />
-                                    </padding>
-                                </HBox>
-                            </children>
-                        </AnchorPane>
-                    </content>
+                <Tab fx:id="listAllKsaTabButton" text="СПИСОК КСА">
+                    <fx:include fx:id="listAllKsaTab" source="Tab/listAllKsaTab.fxml" />
                 </Tab>
             </tabs>
         </TabPane>
