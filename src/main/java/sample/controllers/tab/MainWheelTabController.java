@@ -3,6 +3,7 @@ package sample.controllers.tab;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import org.apache.commons.lang3.StringUtils;
 import sample.data.SaveData;
 import sample.data.components.limitedResource.*;
 import sample.write.WriteFile;
@@ -33,10 +34,20 @@ public class MainWheelTabController {
     @FXML
     private TextField numberMainWheel;
 
+    private MainWheel mainWheel;
+
     @FXML
     void initialize() {
 
         createMainWheel.setOnAction(e -> addMainWheel());
+        changeMainWheel.setOnAction(e -> changeMainWheel());
+    }
+
+    void setMainWheel(String number) {
+        this.mainWheel = returnMainWheel(number);
+        totalMainWheel.setText(String.valueOf(mainWheel.getTotalLandings()));
+        numberMainWheel.setText(mainWheel.getSerialNumber());
+        replacementMainWheel.setText(String.valueOf(mainWheel.getResource_Reserve_Replacement_Wheel()));
     }
 
     private void addMainWheel() {
@@ -46,6 +57,26 @@ public class MainWheelTabController {
                 .serialNumber(numberMainWheel.getText())
                 .build();
         SaveData.mainWheelsList.add(mainWheel);
+        WriteFile.serialization(SaveData.mainWheelsList, MainWheel.class);
+    }
+
+    public MainWheel returnMainWheel(String number) {
+        for (MainWheel e : SaveData.mainWheelsList) {
+            if (e.getSerialNumber().equals(number)) {
+                return e;
+            }
+        }
+        return null;
+    }
+
+    public void changeMainWheel() {
+        if (StringUtils.isNotBlank(numberMainWheel.getCharacters())
+                && StringUtils.isNotBlank(totalMainWheel.getCharacters())
+                && StringUtils.isNotBlank(replacementMainWheel.getCharacters())) {
+            mainWheel.setSerialNumber(numberMainWheel.getText());
+            mainWheel.setTotalLandings(Integer.parseInt(totalMainWheel.getText()));
+            mainWheel.setResource_Reserve_Replacement_Wheel(Integer.parseInt(replacementMainWheel.getText()));
+        }
         WriteFile.serialization(SaveData.mainWheelsList, MainWheel.class);
     }
 }

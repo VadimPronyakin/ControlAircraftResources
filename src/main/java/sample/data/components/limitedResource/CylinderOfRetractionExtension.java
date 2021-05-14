@@ -20,5 +20,7 @@ public class CylinderOfRetractionExtension {
     private int resource_Reserve_Before_Replacement;
     //Серийный номер цилиндра подкоса
     private String serialNumber;
+    //Номер самолета,на котором установлен цилиндр подкоса
+    private int aircraftNumberInstalled;
 
 }

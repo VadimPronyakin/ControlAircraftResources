@@ -1,13 +1,15 @@
 package sample.controllers.tab;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sample.constants.TextConstants;
 import sample.controllers.AddAllAggregatesController;
 import sample.data.Aircraft;
 import sample.data.SaveData;
-import sample.data.components.Engine;
 import sample.data.components.Ksa;
 import sample.data.enums.TypesOfWorks;
 import sample.delete.DeleteObject;
@@ -15,11 +17,11 @@ import sample.openNewScene.OpenNewScene;
 import sample.update.UpdateList;
 import sample.write.WriteFile;
 
+import static sample.openNewScene.OpenNewScene.openNewScene;
+
 
 public class ListAllKsaTabController {
 
-    @FXML
-    AddAllAggregatesController addAllAggregates;
 
     @FXML
     private Button createNewKsa;
@@ -37,7 +39,7 @@ public class ListAllKsaTabController {
     private TableColumn<Ksa, Ksa> columnNumberKsa;
 
     @FXML
-    private TableColumn<Aircraft, Aircraft> columnInstalledKsa;
+    private TableColumn<String, String> columnInstalledKsa;
 
     @FXML
     private ComboBox<TypesOfWorks> listOfWorksKsa;
@@ -48,12 +50,16 @@ public class ListAllKsaTabController {
     @FXML
     void initialize() {
         UpdateList.updateList(SaveData.ksaList, tableKsa, Ksa.class, TextConstants.KSA_TEXT);
-        OpenNewScene open = new OpenNewScene();
-        columnNumberKsa.setCellValueFactory(new PropertyValueFactory<>("serialNumber"));
-        columnInstalledKsa.setCellValueFactory(new PropertyValueFactory<>("aircraftNumber"));
+        columnNumberKsa.setCellValueFactory(new PropertyValueFactory<>("serialNumberKsa"));
+        columnInstalledKsa.setCellValueFactory(new PropertyValueFactory<>("aircraftNumberInstalled"));
         listOfWorksKsa.getItems().addAll(TypesOfWorks.WORKS_AFTER_25_HOURS, TypesOfWorks.OIL_CHANGE_OPERATIONS);
         createNewKsa.setOnAction(e -> {
-            AddAllAggregatesController ctrl = open.openNewScene("/sample/fxmlFiles/addAggregates.fxml", createNewKsa);
+            AddAllAggregatesController ctrl = OpenNewScene.openNewScene("/sample/fxmlFiles/addAggregates.fxml", createNewKsa);
+            ctrl.setCurrentTab(1);
+        });
+        changeKsa.setOnAction(e -> {
+            AddAllAggregatesController ctrl = openNewScene("/sample/fxmlFiles/addAggregates.fxml", changeKsa);
+            ctrl.getKsaTabController().setKsa(tableKsa.getSelectionModel().getSelectedItem().getSerialNumberKsa());
             ctrl.setCurrentTab(1);
         });
         deleteKsa.setOnAction(e -> DeleteObject.delete(SaveData.ksaList, tableKsa, Ksa.class));

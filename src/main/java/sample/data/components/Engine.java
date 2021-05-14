@@ -34,4 +34,7 @@ public class Engine {
     private int oilChange;
     //Серийный номер двигателя
     private String serialNumberEngine;
+    //Номер самолета,на котором установлен двигатель
+    private int aircraftNumberInstalled;
+
 }

@@ -21,5 +21,7 @@ public class Ksa {
     //Остаток до замены масла (200+30ч или 2 года)
     private int oilChange;
     //Серийный номер КСА
-    private String serialNumber;
+    private String serialNumberKsa;
+    //Номер самолета,на котором установлена КСА
+    private int aircraftNumberInstalled;
 }

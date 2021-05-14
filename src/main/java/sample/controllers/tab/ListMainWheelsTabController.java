@@ -14,6 +14,8 @@ import sample.delete.DeleteObject;
 import sample.openNewScene.OpenNewScene;
 import sample.update.UpdateList;
 
+import static sample.openNewScene.OpenNewScene.openNewScene;
+
 
 public class ListMainWheelsTabController {
 
@@ -33,16 +35,21 @@ public class ListMainWheelsTabController {
     private TableColumn<MainWheel, MainWheel> columnMainWheel;
 
     @FXML
-    private TableColumn<Aircraft, Aircraft> columnInstalledMainWheel;
+    private TableColumn<String, String> columnInstalledMainWheel;
 
     @FXML
     void initialize() {
-        OpenNewScene open = new OpenNewScene();
+
         UpdateList.updateList(SaveData.mainWheelsList, tableMainWheels, MainWheel.class, TextConstants.MAIN_BREAK_TEXT);
         columnMainWheel.setCellValueFactory(new PropertyValueFactory<>("serialNumber"));
-        columnInstalledMainWheel.setCellValueFactory(new PropertyValueFactory<>("aircraftNumber"));
+        columnInstalledMainWheel.setCellValueFactory(new PropertyValueFactory<>("aircraftNumberInstalled"));
         createMainWheel.setOnAction(e -> {
-            AddAllAggregatesController ctrl = open.openNewScene("/sample/fxmlFiles/addAggregates.fxml", createMainWheel);
+            AddAllAggregatesController ctrl = OpenNewScene.openNewScene("/sample/fxmlFiles/addAggregates.fxml", createMainWheel);
+            ctrl.setCurrentTab(5);
+        });
+        changeMainWheel.setOnAction(e -> {
+            AddAllAggregatesController ctrl = openNewScene("/sample/fxmlFiles/addAggregates.fxml", changeMainWheel);
+            ctrl.getMainWheelTabController().setMainWheel(tableMainWheels.getSelectionModel().getSelectedItem().getSerialNumber());
             ctrl.setCurrentTab(5);
         });
         deleteMainWheel.setOnAction(e -> DeleteObject.delete(SaveData.mainWheelsList, tableMainWheels, MainWheel.class));

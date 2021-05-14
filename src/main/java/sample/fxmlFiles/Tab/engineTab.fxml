@@ -37,112 +37,155 @@
                         <Font name="Times New Roman Bold" size="14.0" />
                     </font>
                 </Text>
-                <TextField fx:id="totalStartingEngine" layoutX="297.0" layoutY="37.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="297.0" AnchorPane.topAnchor="37.0" />
-                <Text layoutX="-1.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Наработка с начала эксплуатации " AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="9.0">
+                <TextField fx:id="totalStartingEngine" layoutX="297.0" layoutY="37.0" prefHeight="25.0" prefWidth="50.0" AnchorPane.leftAnchor="297.0" AnchorPane.topAnchor="37.0" />
+                <Text layoutX="14.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3. Наработка с начала эксплуатации " AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="75.0">
                     <font>
                         <Font name="Times New Roman Bold" size="14.0" />
                     </font>
                 </Text>
-                <TextField fx:id="totalOperatingEngine" layoutX="297.0" layoutY="4.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="297.0" AnchorPane.topAnchor="4.0" />
-                <Text layoutX="2.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3. Остаток ресурса до 10-ти часовых работ" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="75.0">
+                <TextField fx:id="totalOperatingEngineHours" layoutX="297.0" layoutY="71.0" prefHeight="25.0" prefWidth="50.0" AnchorPane.leftAnchor="297.0" AnchorPane.topAnchor="70.0" />
+                <Text layoutX="2.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4. Остаток ресурса до 10-ти часовых работ" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="108.0">
                     <font>
                         <Font name="Times New Roman Bold" size="14.0" />
                     </font>
                 </Text>
-                <TextField fx:id="before_10hoursEngine" layoutX="292.0" layoutY="74.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="297.0" AnchorPane.topAnchor="70.0" />
-                <Text layoutX="14.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4. Остаток ресурса до 25-ти часовых работ" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="108.0">
+                <TextField fx:id="before_10hoursEngineHours" layoutX="292.0" layoutY="74.0" prefHeight="25.0" prefWidth="50.0" AnchorPane.leftAnchor="297.0" AnchorPane.topAnchor="103.0" />
+                <Text layoutX="14.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5. Остаток ресурса до 25-ти часовых работ" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="142.0">
                     <font>
                         <Font name="Times New Roman Bold" size="14.0" />
                     </font>
                 </Text>
-                <TextField fx:id="before_25hoursEngine" layoutX="303.0" layoutY="103.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="297.0" AnchorPane.topAnchor="103.0" />
-                <Text layoutX="33.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5. Остаток ресурса до 278-го бюллетеня" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="141.0">
+                <TextField fx:id="before_25hoursEngineHours" layoutX="303.0" layoutY="103.0" prefHeight="25.0" prefWidth="50.0" AnchorPane.leftAnchor="297.0" AnchorPane.topAnchor="136.0" />
+                <Text layoutX="33.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6. Остаток ресурса до 278-го бюллетеня" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="174.0">
                     <font>
                         <Font name="Times New Roman Bold" size="14.0" />
                     </font>
                 </Text>
-                <TextField fx:id="before_278bulletinEngine" layoutX="292.0" layoutY="136.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="297.0" AnchorPane.topAnchor="136.0" />
-                <Text layoutX="47.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6. Остаток ресурса до 50-ти часовых работ" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="174.0">
+                <TextField fx:id="before_278bulletinEngineHours" layoutX="292.0" layoutY="136.0" prefHeight="25.0" prefWidth="50.0" AnchorPane.leftAnchor="297.0" AnchorPane.topAnchor="169.0" />
+                <Text layoutX="47.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7. Остаток ресурса до 50-ти часовых работ" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="207.0">
                     <font>
                         <Font name="Times New Roman Bold" size="14.0" />
                     </font>
                 </Text>
-                <TextField fx:id="before_50hoursEngine" layoutX="292.0" layoutY="169.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="297.0" AnchorPane.topAnchor="169.0" />
-                <Text layoutX="60.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7. Остаток ресурса до 100-ти часовых работ" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="207.0">
+                <TextField fx:id="before_50hoursEngineHours" layoutX="292.0" layoutY="169.0" prefHeight="25.0" prefWidth="50.0" AnchorPane.leftAnchor="297.0" AnchorPane.topAnchor="202.0" />
+                <Text layoutX="60.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8. Остаток ресурса до 100-ти часовых работ" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="240.0">
                     <font>
                         <Font name="Times New Roman Bold" size="14.0" />
                     </font>
                 </Text>
-                <TextField fx:id="before_100hoursEngine" layoutX="292.0" layoutY="202.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="297.0" AnchorPane.topAnchor="202.0" />
-                <Text layoutX="56.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8. Остаток ресурса до 150-ти часовых работ" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="240.0">
+                <TextField fx:id="before_100hoursEngineHours" layoutX="292.0" layoutY="202.0" prefHeight="25.0" prefWidth="50.0" AnchorPane.leftAnchor="297.0" AnchorPane.topAnchor="235.0" />
+                <Text layoutX="56.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="9. Остаток ресурса до 150-ти часовых работ" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="273.0">
                     <font>
                         <Font name="Times New Roman Bold" size="14.0" />
                     </font>
                 </Text>
-                <TextField fx:id="before_150hoursEngine" layoutX="292.0" layoutY="235.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="297.0" AnchorPane.topAnchor="235.0" />
-                <Text layoutX="144.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="9. Остаток до замены масла" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="273.0">
+                <TextField fx:id="before_150hoursEngineHours" layoutX="292.0" layoutY="235.0" prefHeight="25.0" prefWidth="50.0" AnchorPane.leftAnchor="297.0" AnchorPane.topAnchor="268.0" />
+                <Text layoutX="144.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10. Остаток до замены масла" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="306.0">
                     <font>
                         <Font name="Times New Roman Bold" size="14.0" />
                     </font>
                 </Text>
-                <TextField fx:id="oilChangeEngine" layoutX="292.0" layoutY="268.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="297.0" AnchorPane.topAnchor="268.0" />
-                <TextField fx:id="numberEngine" layoutX="292.0" layoutY="307.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="297.0" AnchorPane.topAnchor="301.0" />
-                <Text layoutX="424.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1." AnchorPane.leftAnchor="425.0">
-                    <font>
-                        <Font name="Times New Roman Bold" size="14.0" />
-                    </font>
-                </Text>
-                <Text layoutX="424.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2." AnchorPane.leftAnchor="425.0">
-                    <font>
-                        <Font name="Times New Roman Bold" size="14.0" />
-                    </font>
-                </Text>
-                <Text layoutX="424.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3." AnchorPane.leftAnchor="425.0">
-                    <font>
-                        <Font name="Times New Roman Bold" size="14.0" />
-                    </font>
-                </Text>
-                <Text layoutX="425.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4." AnchorPane.leftAnchor="425.0">
-                    <font>
-                        <Font name="Times New Roman Bold" size="14.0" />
-                    </font>
-                </Text>
-                <Text layoutX="428.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5." AnchorPane.leftAnchor="425.0">
-                    <font>
-                        <Font name="Times New Roman Bold" size="14.0" />
-                    </font>
-                </Text>
-                <Text layoutX="431.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6." AnchorPane.leftAnchor="425.0">
-                    <font>
-                        <Font name="Times New Roman Bold" size="14.0" />
-                    </font>
-                </Text>
-                <Text layoutX="425.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7." AnchorPane.leftAnchor="425.0">
-                    <font>
-                        <Font name="Times New Roman Bold" size="14.0" />
-                    </font>
-                </Text>
-                <Text layoutX="435.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8." AnchorPane.leftAnchor="425.0">
-                    <font>
-                        <Font name="Times New Roman Bold" size="14.0" />
-                    </font>
-                </Text>
-                <Text layoutX="425.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="9." AnchorPane.leftAnchor="425.0">
-                    <font>
-                        <Font name="Times New Roman Bold" size="14.0" />
-                    </font>
-                </Text>
-                <Text layoutX="425.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10." AnchorPane.leftAnchor="425.0">
-                    <font>
-                        <Font name="Times New Roman Bold" size="14.0" />
-                    </font>
-                </Text>
+                <TextField fx:id="oilChangeEngineHours" layoutX="292.0" layoutY="268.0" prefHeight="25.0" prefWidth="50.0" AnchorPane.leftAnchor="297.0" AnchorPane.topAnchor="301.0" />
+                <TextField fx:id="numberEngine" layoutX="297.0" layoutY="4.0" prefHeight="25.0" prefWidth="128.0" AnchorPane.leftAnchor="297.0" AnchorPane.topAnchor="4.0" />
+              <Text layoutX="14.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Серийный номер двигателя" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="13.5244140625">
+                  <font>
+                      <Font name="Times New Roman Bold" size="14.0" />
+                  </font>
+              </Text>
+            <Text layoutX="347.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="зап." AnchorPane.leftAnchor="350.0">
+               <font>
+                  <Font name="Times New Roman Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="351.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ч.">
+               <font>
+                  <Font name="Times New Roman Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="351.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ч.">
+               <font>
+                  <Font name="Times New Roman Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="351.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ч.">
+               <font>
+                  <Font name="Times New Roman Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="351.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ч.">
+               <font>
+                  <Font name="Times New Roman Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="351.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ч.">
+               <font>
+                  <Font name="Times New Roman Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="351.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ч.">
+               <font>
+                  <Font name="Times New Roman Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="351.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ч.">
+               <font>
+                  <Font name="Times New Roman Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="351.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ч.">
+               <font>
+                  <Font name="Times New Roman Bold" size="14.0" />
+               </font>
+            </Text>
+            <TextField fx:id="totalOperatingEngineMinutes" layoutX="374.0" layoutY="71.0" prefHeight="25.0" prefWidth="50.0" />
+            <TextField fx:id="before_10hoursEngineMinutes" layoutX="374.0" layoutY="103.0" prefHeight="25.0" prefWidth="50.0" />
+            <TextField fx:id="before_25hoursEngineMinutes" layoutX="374.0" layoutY="137.0" prefHeight="25.0" prefWidth="50.0" />
+            <TextField fx:id="before_278bulletinEngineMinutes" layoutX="374.0" layoutY="170.0" prefHeight="25.0" prefWidth="50.0" />
+            <TextField fx:id="before_50hoursEngineMinutes" layoutX="374.0" layoutY="203.0" prefHeight="25.0" prefWidth="50.0" />
+            <TextField fx:id="before_100hoursEngineMinutes" layoutX="374.0" layoutY="236.0" prefHeight="25.0" prefWidth="50.0" />
+            <TextField fx:id="before_150hoursEngineMinutes" layoutX="374.0" layoutY="269.0" prefHeight="25.0" prefWidth="50.0" />
+            <TextField fx:id="oilChangeEngineMinutes" layoutX="374.0" layoutY="301.0" prefHeight="25.0" prefWidth="50.0" />
+            <Text layoutX="425.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="мин." AnchorPane.leftAnchor="428.0">
+               <font>
+                  <Font name="Times New Roman Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="429.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="мин.">
+               <font>
+                  <Font name="Times New Roman Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="429.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="мин.">
+               <font>
+                  <Font name="Times New Roman Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="429.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="мин.">
+               <font>
+                  <Font name="Times New Roman Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="428.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="мин.">
+               <font>
+                  <Font name="Times New Roman Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="428.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="мин.">
+               <font>
+                  <Font name="Times New Roman Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="429.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="мин.">
+               <font>
+                  <Font name="Times New Roman Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="429.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="мин.">
+               <font>
+                  <Font name="Times New Roman Bold" size="14.0" />
+               </font>
+            </Text>
             </children>
         </AnchorPane>
-        <Text layoutX="14.0" layoutY="320.4755859375" strokeType="OUTSIDE" strokeWidth="0.0" text="10. Серийный номер двигателя" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="308.0">
-            <font>
-                <Font name="Times New Roman Bold" size="14.0" />
-            </font>
-        </Text>
     </children>
 </AnchorPane>

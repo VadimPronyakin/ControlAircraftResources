@@ -28,8 +28,8 @@ public class ListOfLimitedController {
 
     @FXML
     void initialize() {
-        OpenNewScene open = new OpenNewScene();
-        returnHomePage.setOnAction(e -> open.openNewScene("/sample/fxmlFiles/sample.fxml", returnHomePage));
+
+        returnHomePage.setOnAction(e -> OpenNewScene.openNewScene("/sample/fxmlFiles/sample.fxml", returnHomePage));
     }
 }
 

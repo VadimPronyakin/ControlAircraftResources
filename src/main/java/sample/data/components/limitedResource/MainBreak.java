@@ -24,4 +24,6 @@ public class MainBreak {
     private int resource_Reserve_Replacement_ReferenceDisk;
     //Сериынй номер основного тормоза
     private String serialNumber;
+    //Номер самолета, на который установлен тормоз
+    private int aircraftNumberInstalled;
 }

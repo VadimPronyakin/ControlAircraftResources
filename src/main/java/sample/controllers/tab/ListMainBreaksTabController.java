@@ -17,6 +17,8 @@ import sample.openNewScene.OpenNewScene;
 import sample.update.UpdateList;
 import sample.write.WriteFile;
 
+import static sample.openNewScene.OpenNewScene.openNewScene;
+
 
 public class ListMainBreaksTabController {
 
@@ -27,7 +29,7 @@ public class ListMainBreaksTabController {
     private TableColumn<MainBreak, MainBreak> columnMainBreak;
 
     @FXML
-    private TableColumn<Aircraft, Aircraft> columnInstalledMainBreak;
+    private TableColumn<String, String> columnInstalledMainBreak;
 
     @FXML
     private Button createMainBreak;
@@ -46,16 +48,21 @@ public class ListMainBreaksTabController {
 
     @FXML
     void initialize() {
-        OpenNewScene open = new OpenNewScene();
+
         UpdateList.updateList(SaveData.mainBreaksList, tableMainBreaks, MainBreak.class, TextConstants.MAIN_BREAK_TEXT);
         columnMainBreak.setCellValueFactory(new PropertyValueFactory<>("serialNumber"));
-        columnInstalledMainBreak.setCellValueFactory(new PropertyValueFactory<>("aircraftNumber"));
+        columnInstalledMainBreak.setCellValueFactory(new PropertyValueFactory<>("aircraftNumberInstalled"));
         listOfWorksMainBreak.getItems().addAll(TypesOfWorks.REPLACEMENT_ROTATING_DISKS,
                 TypesOfWorks.REPLACEMENT_NON_ROTATING_DISKS,
                 TypesOfWorks.REPLACEMENT_PRESSURE_DISKS,
                 TypesOfWorks.REPLACEMENT_REFERENCE_DISKS);
         createMainBreak.setOnAction(e -> {
-            AddAllAggregatesController ctrl = open.openNewScene("/sample/fxmlFiles/addAggregates.fxml", createMainBreak);
+            AddAllAggregatesController ctrl = OpenNewScene.openNewScene("/sample/fxmlFiles/addAggregates.fxml", createMainBreak);
+            ctrl.setCurrentTab(3);
+        });
+        changeMainBreak.setOnAction(e -> {
+            AddAllAggregatesController ctrl = openNewScene("/sample/fxmlFiles/addAggregates.fxml", changeMainBreak);
+            ctrl.getMainBreakTabController().setMainBreak(tableMainBreaks.getSelectionModel().getSelectedItem().getSerialNumber());
             ctrl.setCurrentTab(3);
         });
         deleteMainBreak.setOnAction(e -> DeleteObject.delete(SaveData.mainBreaksList, tableMainBreaks, MainBreak.class));

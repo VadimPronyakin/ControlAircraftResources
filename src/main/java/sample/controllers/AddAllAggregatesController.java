@@ -4,10 +4,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import sample.openNewScene.OpenNewScene;
+import lombok.Getter;
+import sample.controllers.tab.*;
+import sample.data.components.limitedResource.FrontBreak;
+import sample.data.components.limitedResource.MainBreak;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static sample.openNewScene.OpenNewScene.openNewScene;
 
 public class AddAllAggregatesController {
 
@@ -48,10 +53,38 @@ public class AddAllAggregatesController {
     private Tab cylinderTabButton;
 
     @FXML
+    @Getter
+    private EngineTabController engineTabController;
+
+    @FXML
+    @Getter
+    private KsaTabController ksaTabController;
+
+    @FXML
+    @Getter
+    private FrontBreakTabController frontBreakTabController;
+
+    @FXML
+    @Getter
+    private FrontWheelTabController frontWheelTabController;
+
+    @FXML
+    @Getter
+    private MainBreakTabController mainBreakTabController;
+
+    @FXML
+    @Getter
+    private MainWheelTabController mainWheelTabController;
+
+    @FXML
+    @Getter
+    private CylinderTabController cylinderTabController;
+
+    @FXML
     void initialize() {
-        OpenNewScene open = new OpenNewScene();
-        backToAggregatesList.setOnAction(e -> open.openNewScene("/sample/fxmlFiles/listOfAggregates.fxml", backToAggregatesList));
-        backToLimitedList.setOnAction(e -> open.openNewScene("/sample/fxmlFiles/limitedResource.fxml", backToLimitedList));
+
+        backToAggregatesList.setOnAction(e -> openNewScene("/sample/fxmlFiles/listOfAggregates.fxml", backToAggregatesList));
+        backToLimitedList.setOnAction(e -> openNewScene("/sample/fxmlFiles/limitedResource.fxml", backToLimitedList));
     }
 
     @FXML

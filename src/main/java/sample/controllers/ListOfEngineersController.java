@@ -46,11 +46,11 @@ public class ListOfEngineersController {
     @FXML
     void initialize() {
         UpdateList.updateList(SaveData.engineersList, tableView, Engineer.class, TextConstants.ENGINEER_TEXT);
-        OpenNewScene open = new OpenNewScene();
+
         columnRank.setCellValueFactory(new PropertyValueFactory<>("rank"));
         columnFullName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         deleteEngineer.setOnAction(e -> DeleteObject.delete(SaveData.engineersList, tableView, Engineer.class));
-        returnHomePage.setOnAction(e -> open.openNewScene("/sample/fxmlFiles/sample.fxml", returnHomePage));
+        returnHomePage.setOnAction(e -> OpenNewScene.openNewScene("/sample/fxmlFiles/sample.fxml", returnHomePage));
         listOfRanks.getItems().addAll(Rank.LIEUTENANT, Rank.ST_LIEUTENANT, Rank.CAPTAIN, Rank.MAJOR);
         createNewEngineer.setOnAction(e -> addEngineer());
         changeEngineer.setOnAction(e -> editEngineer());

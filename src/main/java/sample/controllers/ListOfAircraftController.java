@@ -46,8 +46,8 @@ public class ListOfAircraftController {
     @FXML
     void initialize() {
         UpdateList.updateList(SaveData.aircraftList, tableAircraft, Aircraft.class, TextConstants.AIRCRAFT_TEXT);
-        OpenNewScene open = new OpenNewScene();
-        returnHomePage.setOnAction(event -> open.openNewScene("/sample/fxmlFiles/sample.fxml", returnHomePage));
+
+        returnHomePage.setOnAction(event -> OpenNewScene.openNewScene("/sample/fxmlFiles/sample.fxml", returnHomePage));
 
 
     }

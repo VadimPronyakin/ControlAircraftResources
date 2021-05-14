@@ -4,7 +4,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import sample.openNewScene.OpenNewScene;
+
+import static sample.openNewScene.OpenNewScene.openNewScene;
 
 public class HomePageController {
 
@@ -28,19 +29,11 @@ public class HomePageController {
 
     @FXML
     void initialize() {
-        OpenNewScene open = new OpenNewScene();
-        tableOfAggregates.setOnAction(event -> {
-            open.openNewScene("/sample/fxmlFiles/listOfAggregates.fxml", tableOfAggregates);
-        });
-        tableOfEngineers.setOnAction(e -> {
-            open.openNewScene("/sample/fxmlFiles/listOfEngineers.fxml", tableOfEngineers);
-        });
-        tableOfAircraft.setOnAction(e -> {
-            open.openNewScene("/sample/fxmlFiles/listOfAircraft.fxml", tableOfAircraft);
-        });
-        limitedResource.setOnAction(e -> {
-            open.openNewScene("/sample/fxmlFiles/limitedResource.fxml", limitedResource);
-        });
+
+        tableOfAggregates.setOnAction(event -> openNewScene("/sample/fxmlFiles/listOfAggregates.fxml", tableOfAggregates));
+        tableOfEngineers.setOnAction(e -> openNewScene("/sample/fxmlFiles/listOfEngineers.fxml", tableOfEngineers));
+        tableOfAircraft.setOnAction(e -> openNewScene("/sample/fxmlFiles/listOfAircraft.fxml", tableOfAircraft));
+        limitedResource.setOnAction(e -> openNewScene("/sample/fxmlFiles/limitedResource.fxml", limitedResource));
     }
 }
 

@@ -14,9 +14,10 @@ import sample.data.components.Ksa;
 import sample.data.components.limitedResource.CylinderOfRetractionExtension;
 import sample.data.enums.TypesOfWorks;
 import sample.delete.DeleteObject;
-import sample.openNewScene.OpenNewScene;
 import sample.update.UpdateList;
 import sample.write.WriteFile;
+
+import static sample.openNewScene.OpenNewScene.openNewScene;
 
 
 public class ListCylindersTabController {
@@ -28,7 +29,7 @@ public class ListCylindersTabController {
     private TableColumn<CylinderOfRetractionExtension, CylinderOfRetractionExtension> columnNumberCylinder;
 
     @FXML
-    private TableColumn<Aircraft, Aircraft> columnInstalledCylinder;
+    private TableColumn<String, String> columnInstalledCylinder;
 
     @FXML
     private Button createNewCylinder;
@@ -48,16 +49,21 @@ public class ListCylindersTabController {
 
     @FXML
     void initialize() {
-        OpenNewScene open = new OpenNewScene();
+
         UpdateList.updateList(SaveData.cylindersList,
                 tableCylinders,
                 CylinderOfRetractionExtension.class,
                 TextConstants.MAIN_BREAK_TEXT);
         columnNumberCylinder.setCellValueFactory(new PropertyValueFactory<>("serialNumber"));
-        columnInstalledCylinder.setCellValueFactory(new PropertyValueFactory<>("aircraftNumber"));
+        columnInstalledCylinder.setCellValueFactory(new PropertyValueFactory<>("aircraftNumberInstalled"));
         listOfWorksCylinder.getItems().addAll(TypesOfWorks.FIRST_REPAIR_CYLINDER, TypesOfWorks.SECOND_REPAIR_CYLINDER);
         createNewCylinder.setOnAction(e -> {
-            AddAllAggregatesController ctrl = open.openNewScene("/sample/fxmlFiles/addAggregates.fxml", createNewCylinder);
+            AddAllAggregatesController ctrl = openNewScene("/sample/fxmlFiles/addAggregates.fxml", createNewCylinder);
+            ctrl.setCurrentTab(7);
+        });
+        changeCylinder.setOnAction(e -> {
+            AddAllAggregatesController ctrl = openNewScene("/sample/fxmlFiles/addAggregates.fxml", changeCylinder);
+            ctrl.getCylinderTabController().setCylinder(tableCylinders.getSelectionModel().getSelectedItem().getSerialNumber());
             ctrl.setCurrentTab(7);
         });
         deleteCylinder.setOnAction(e -> DeleteObject.delete(SaveData.cylindersList,

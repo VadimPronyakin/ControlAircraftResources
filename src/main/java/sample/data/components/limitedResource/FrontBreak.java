@@ -20,4 +20,6 @@ public class FrontBreak {
     private int resource_Reserve_Before_Replacement;
     //Серийный номер переднего тормоза
     private String serialNumber;
+    //Номер самолета,на котором установлен передний тормоз
+    private int aircraftNumberInstalled;
 }
