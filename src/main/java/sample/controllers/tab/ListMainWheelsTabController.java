@@ -3,6 +3,7 @@ package sample.controllers.tab;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sample.constants.TextConstants;
@@ -46,11 +47,26 @@ public class ListMainWheelsTabController {
         createMainWheel.setOnAction(e -> {
             AddAllAggregatesController ctrl = OpenNewScene.openNewScene("/sample/fxmlFiles/addAggregates.fxml", createMainWheel);
             ctrl.setCurrentTab(5);
+            ctrl.visibleText(createMainWheel);
+            ctrl.getMainWheelTabController().visibleButton(createMainWheel);
         });
         changeMainWheel.setOnAction(e -> {
             AddAllAggregatesController ctrl = openNewScene("/sample/fxmlFiles/addAggregates.fxml", changeMainWheel);
             ctrl.getMainWheelTabController().setMainWheel(tableMainWheels.getSelectionModel().getSelectedItem().getSerialNumber());
             ctrl.setCurrentTab(5);
+            ctrl.visibleText(changeMainWheel);
+            ctrl.getMainWheelTabController().visibleButton(changeMainWheel);
+        });
+        tableMainWheels.setRowFactory(tv -> {
+            TableRow<MainWheel> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2) {
+                    AddAllAggregatesController ctrl = openNewScene("/sample/fxmlFiles/addAggregates.fxml", changeMainWheel);
+                    ctrl.getMainWheelTabController().setMainWheel(tableMainWheels.getSelectionModel().getSelectedItem().getSerialNumber());
+                    ctrl.setCurrentTab(5);
+                }
+            });
+            return row;
         });
         deleteMainWheel.setOnAction(e -> DeleteObject.delete(SaveData.mainWheelsList, tableMainWheels, MainWheel.class));
     }

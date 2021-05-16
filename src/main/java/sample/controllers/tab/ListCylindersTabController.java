@@ -1,15 +1,14 @@
 package sample.controllers.tab;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.shape.Cylinder;
 import sample.constants.TextConstants;
 import sample.controllers.AddAllAggregatesController;
 import sample.data.Aircraft;
 import sample.data.SaveData;
+import sample.data.components.Engine;
 import sample.data.components.Ksa;
 import sample.data.components.limitedResource.CylinderOfRetractionExtension;
 import sample.data.enums.TypesOfWorks;
@@ -60,11 +59,26 @@ public class ListCylindersTabController {
         createNewCylinder.setOnAction(e -> {
             AddAllAggregatesController ctrl = openNewScene("/sample/fxmlFiles/addAggregates.fxml", createNewCylinder);
             ctrl.setCurrentTab(7);
+            ctrl.visibleText(createNewCylinder);
+            ctrl.getCylinderTabController().visibleButton(createNewCylinder);
         });
         changeCylinder.setOnAction(e -> {
             AddAllAggregatesController ctrl = openNewScene("/sample/fxmlFiles/addAggregates.fxml", changeCylinder);
             ctrl.getCylinderTabController().setCylinder(tableCylinders.getSelectionModel().getSelectedItem().getSerialNumber());
             ctrl.setCurrentTab(7);
+            ctrl.visibleText(changeCylinder);
+            ctrl.getCylinderTabController().visibleButton(changeCylinder);
+        });
+        tableCylinders.setRowFactory(tv -> {
+            TableRow<CylinderOfRetractionExtension> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2) {
+                    AddAllAggregatesController ctrl = openNewScene("/sample/fxmlFiles/addAggregates.fxml", changeCylinder);
+                    ctrl.getCylinderTabController().setCylinder(tableCylinders.getSelectionModel().getSelectedItem().getSerialNumber());
+                    ctrl.setCurrentTab(7);
+                }
+            });
+            return row;
         });
         deleteCylinder.setOnAction(e -> DeleteObject.delete(SaveData.cylindersList,
                 tableCylinders,

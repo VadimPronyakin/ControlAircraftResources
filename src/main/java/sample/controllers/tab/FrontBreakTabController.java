@@ -77,5 +77,14 @@ public class FrontBreakTabController {
         }
         WriteFile.serialization(SaveData.frontBreaksList, FrontBreak.class);
     }
+
+    void visibleButton(Button tvAnswerFour) {
+        String currentText =  tvAnswerFour.getText();
+        if(currentText.equals("Добавить запись")){
+            createFrontBreak.setVisible(true);
+        }else if(currentText.equals("Изменить запись")) {
+            changeFrontBreak.setVisible(true);
+        }
+    }
 }
 

@@ -1,10 +1,7 @@
 package sample.controllers.tab;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sample.constants.TextConstants;
 import sample.controllers.AddAllAggregatesController;
@@ -59,11 +56,26 @@ public class ListMainBreaksTabController {
         createMainBreak.setOnAction(e -> {
             AddAllAggregatesController ctrl = OpenNewScene.openNewScene("/sample/fxmlFiles/addAggregates.fxml", createMainBreak);
             ctrl.setCurrentTab(3);
+            ctrl.visibleText(createMainBreak);
+            ctrl.getMainBreakTabController().visibleButton(createMainBreak);
         });
         changeMainBreak.setOnAction(e -> {
             AddAllAggregatesController ctrl = openNewScene("/sample/fxmlFiles/addAggregates.fxml", changeMainBreak);
             ctrl.getMainBreakTabController().setMainBreak(tableMainBreaks.getSelectionModel().getSelectedItem().getSerialNumber());
             ctrl.setCurrentTab(3);
+            ctrl.visibleText(changeMainBreak);
+            ctrl.getMainBreakTabController().visibleButton(changeMainBreak);
+        });
+        tableMainBreaks.setRowFactory(tv -> {
+            TableRow<MainBreak> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2) {
+                    AddAllAggregatesController ctrl = openNewScene("/sample/fxmlFiles/addAggregates.fxml", changeMainBreak);
+                    ctrl.getMainBreakTabController().setMainBreak(tableMainBreaks.getSelectionModel().getSelectedItem().getSerialNumber());
+                    ctrl.setCurrentTab(3);
+                }
+            });
+            return row;
         });
         deleteMainBreak.setOnAction(e -> DeleteObject.delete(SaveData.mainBreaksList, tableMainBreaks, MainBreak.class));
         makeWorkMainBreak.setOnAction(e -> doWorksMainBreak());

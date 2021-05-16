@@ -4,10 +4,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import lombok.Getter;
 import sample.controllers.tab.*;
-import sample.data.components.limitedResource.FrontBreak;
-import sample.data.components.limitedResource.MainBreak;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -53,6 +53,13 @@ public class AddAllAggregatesController {
     private Tab cylinderTabButton;
 
     @FXML
+    private Text addAggregatesText;
+
+    @FXML
+    private Text changeAggregatesText;
+
+
+    @FXML
     @Getter
     private EngineTabController engineTabController;
 
@@ -82,7 +89,6 @@ public class AddAllAggregatesController {
 
     @FXML
     void initialize() {
-
         backToAggregatesList.setOnAction(e -> openNewScene("/sample/fxmlFiles/listOfAggregates.fxml", backToAggregatesList));
         backToLimitedList.setOnAction(e -> openNewScene("/sample/fxmlFiles/limitedResource.fxml", backToLimitedList));
     }
@@ -116,6 +122,16 @@ public class AddAllAggregatesController {
                 tab = ksaTabButton;
         }
         tapAggregates.getSelectionModel().select(tab);
+    }
+
+   public void visibleText(Button tvAnswerFour) {
+        String currentText = tvAnswerFour.getText();
+        if(currentText.equals("Добавить запись")){
+            addAggregatesText.setVisible(true);
+        }
+        else if (currentText.equals("Изменить запись")) {
+            changeAggregatesText.setVisible(true);
+        }
     }
 
 }

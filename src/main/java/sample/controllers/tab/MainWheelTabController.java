@@ -79,5 +79,14 @@ public class MainWheelTabController {
         }
         WriteFile.serialization(SaveData.mainWheelsList, MainWheel.class);
     }
+
+    void visibleButton(Button tvAnswerFour) {
+        String currentText =  tvAnswerFour.getText();
+        if(currentText.equals("Добавить запись")){
+            createMainWheel.setVisible(true);
+        }else if(currentText.equals("Изменить запись")) {
+            changeMainWheel.setVisible(true);
+        }
+    }
 }
 

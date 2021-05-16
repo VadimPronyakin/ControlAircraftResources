@@ -114,5 +114,14 @@ public class KsaTabController {
         }
         WriteFile.serialization(SaveData.ksaList, Ksa.class);
     }
+    void visibleButton(Button tvAnswerFour) {
+        String currentText =  tvAnswerFour.getText();
+        if(currentText.equals("Добавить запись")){
+            createKsa.setVisible(true);
+        }else if(currentText.equals("Изменить запись")) {
+            changeKsa.setVisible(true);
+        }
+    }
+
 }
 

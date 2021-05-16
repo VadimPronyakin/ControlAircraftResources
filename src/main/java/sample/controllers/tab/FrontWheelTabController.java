@@ -70,5 +70,14 @@ public class FrontWheelTabController {
         }
         WriteFile.serialization(SaveData.frontWheelsList, FrontWheel.class);
     }
+
+    void visibleButton(Button tvAnswerFour) {
+        String currentText =  tvAnswerFour.getText();
+        if(currentText.equals("Добавить запись")){
+            createFrontWheel.setVisible(true);
+        }else if(currentText.equals("Изменить запись")) {
+            changeFrontWheel.setVisible(true);
+        }
+    }
 }
 

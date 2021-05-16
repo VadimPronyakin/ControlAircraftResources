@@ -20,7 +20,7 @@
         </TableView>
         <HBox layoutX="-4.0" layoutY="353.0" prefHeight="54.0" prefWidth="942.0" spacing="30.0" style="-fx-background-color: #f1b00c;" AnchorPane.bottomAnchor="1.0">
             <children>
-                <Button fx:id="createNewKsa" mnemonicParsing="false" prefHeight="23.0" prefWidth="148.0" style="-fx-background-color: #111d69;" text="Добавить КСА" textFill="#eeeaea">
+                <Button fx:id="createNewKsa" mnemonicParsing="false" prefHeight="23.0" prefWidth="148.0" style="-fx-background-color: #111d69;" text="Добавить запись" textFill="#eeeaea">
                     <font>
                         <Font name="Times New Roman Bold" size="14.0" />
                     </font>

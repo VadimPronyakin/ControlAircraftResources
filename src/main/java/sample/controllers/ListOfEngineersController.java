@@ -53,7 +53,7 @@ public class ListOfEngineersController {
         returnHomePage.setOnAction(e -> OpenNewScene.openNewScene("/sample/fxmlFiles/sample.fxml", returnHomePage));
         listOfRanks.getItems().addAll(Rank.LIEUTENANT, Rank.ST_LIEUTENANT, Rank.CAPTAIN, Rank.MAJOR);
         createNewEngineer.setOnAction(e -> addEngineer());
-        changeEngineer.setOnAction(e -> editEngineer());
+        changeEngineer.setOnAction(e -> changeEngineer());
     }
     private void addEngineer() {
         Engineer engineer = Engineer.builder()
@@ -64,7 +64,7 @@ public class ListOfEngineersController {
         tableView.getItems().add(engineer);
         WriteFile.serialization(SaveData.engineersList, Engineer.class);
     }
-    private void editEngineer() {
+    private void changeEngineer() {
         if (StringUtils.isNotBlank(inputEngineerName.getCharacters())
             && listOfRanks.getSelectionModel().getSelectedItem() != null) {
         tableView.getSelectionModel().getSelectedItem().setFullName(inputEngineerName.getText());

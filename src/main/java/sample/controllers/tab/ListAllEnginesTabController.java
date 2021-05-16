@@ -56,6 +56,8 @@ public class ListAllEnginesTabController {
         createNewEngine.setOnAction(e -> {
             AddAllAggregatesController ctrl = openNewScene("/sample/fxmlFiles/addAggregates.fxml", createNewEngine);
             ctrl.setCurrentTab(2);
+            ctrl.getEngineTabController().visibleButton(createNewEngine);
+            ctrl.visibleText(createNewEngine);
         });
         deleteEngine.setOnAction(e -> DeleteObject.delete(SaveData.enginesList, tableEngine, Engine.class));
         makeWorksEngine.setOnAction(e -> doWorkEngine());
@@ -63,6 +65,19 @@ public class ListAllEnginesTabController {
             AddAllAggregatesController ctrl = openNewScene("/sample/fxmlFiles/addAggregates.fxml", changeEngine);
             ctrl.getEngineTabController().setEngine(tableEngine.getSelectionModel().getSelectedItem().getSerialNumberEngine());
             ctrl.setCurrentTab(2);
+            ctrl.getEngineTabController().visibleButton(changeEngine);
+            ctrl.visibleText(changeEngine);
+        });
+        tableEngine.setRowFactory(tv -> {
+            TableRow<Engine> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2) {
+                    AddAllAggregatesController ctrl = openNewScene("/sample/fxmlFiles/addAggregates.fxml", changeEngine);
+                    ctrl.getEngineTabController().setEngine(tableEngine.getSelectionModel().getSelectedItem().getSerialNumberEngine());
+                    ctrl.setCurrentTab(2);
+                }
+            });
+            return row;
         });
     }
 
@@ -111,6 +126,8 @@ public class ListAllEnginesTabController {
             tableEngine.setPlaceholder(new Label(TextConstants.WORKS_TEXT));
         }
     }
+
 }
+
 
 

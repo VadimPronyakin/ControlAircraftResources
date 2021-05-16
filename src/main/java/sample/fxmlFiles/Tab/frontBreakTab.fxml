@@ -12,12 +12,12 @@
                 <children>
                     <HBox layoutY="339.0" prefHeight="40.0" prefWidth="944.0" spacing="30.0" style="-fx-background-color: #f1b00c;">
                         <children>
-                            <Button fx:id="createFrontBreak" mnemonicParsing="false" prefHeight="23.0" prefWidth="161.0" style="-fx-background-color: #111d69;" text="Добавить тормоз" textFill="#eeeaea">
+                            <Button fx:id="createFrontBreak" mnemonicParsing="false" prefHeight="23.0" prefWidth="161.0" style="-fx-background-color: #111d69;" text="Добавить запись" textFill="#eeeaea" visible="false">
                                 <font>
                                     <Font name="Times New Roman Bold" size="14.0" />
                                 </font>
                             </Button>
-                            <Button fx:id="changeFrontBreak" mnemonicParsing="false" prefHeight="23.0" prefWidth="161.0" style="-fx-background-color: #111d69;" text="Изменить запись" textFill="#f5f3f3">
+                            <Button fx:id="changeFrontBreak" mnemonicParsing="false" prefHeight="23.0" prefWidth="161.0" style="-fx-background-color: #111d69;" text="Сохранить" textFill="#f5f3f3" visible="false">
                                 <font>
                                     <Font name="Times New Roman Bold" size="14.0" />
                                 </font>

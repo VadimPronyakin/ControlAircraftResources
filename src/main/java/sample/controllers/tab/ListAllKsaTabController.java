@@ -1,14 +1,10 @@
 package sample.controllers.tab;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sample.constants.TextConstants;
 import sample.controllers.AddAllAggregatesController;
-import sample.data.Aircraft;
 import sample.data.SaveData;
 import sample.data.components.Ksa;
 import sample.data.enums.TypesOfWorks;
@@ -56,11 +52,26 @@ public class ListAllKsaTabController {
         createNewKsa.setOnAction(e -> {
             AddAllAggregatesController ctrl = OpenNewScene.openNewScene("/sample/fxmlFiles/addAggregates.fxml", createNewKsa);
             ctrl.setCurrentTab(1);
+            ctrl.getKsaTabController().visibleButton(createNewKsa);
+            ctrl.visibleText(createNewKsa);
         });
         changeKsa.setOnAction(e -> {
             AddAllAggregatesController ctrl = openNewScene("/sample/fxmlFiles/addAggregates.fxml", changeKsa);
             ctrl.getKsaTabController().setKsa(tableKsa.getSelectionModel().getSelectedItem().getSerialNumberKsa());
             ctrl.setCurrentTab(1);
+            ctrl.visibleText(changeKsa);
+            ctrl.getKsaTabController().visibleButton(changeKsa);
+        });
+        tableKsa.setRowFactory(tv -> {
+            TableRow<Ksa> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2) {
+                    AddAllAggregatesController ctrl = openNewScene("/sample/fxmlFiles/addAggregates.fxml", changeKsa);
+                    ctrl.getKsaTabController().setKsa(tableKsa.getSelectionModel().getSelectedItem().getSerialNumberKsa());
+                    ctrl.setCurrentTab(1);
+                }
+            });
+            return row;
         });
         deleteKsa.setOnAction(e -> DeleteObject.delete(SaveData.ksaList, tableKsa, Ksa.class));
         makeWorksKsa.setOnAction(e -> doWorkKsa());
@@ -84,4 +95,5 @@ public class ListAllKsaTabController {
             e.printStackTrace();
         }
     }
+
 }

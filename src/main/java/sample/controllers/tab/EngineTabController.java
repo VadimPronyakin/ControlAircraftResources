@@ -81,6 +81,16 @@ public class EngineTabController {
         changeEngine.setOnAction(e -> changeEngine());
     }
 
+         void visibleButton(Button tvAnswerFour) {
+        String currentText =  tvAnswerFour.getText();
+        if(currentText.equals("Добавить запись")){
+            createEngine.setVisible(true);
+        }else if(currentText.equals("Изменить запись")) {
+            changeEngine.setVisible(true);
+        }
+    }
+
+
     void setEngine(String number) {
         this.engine = returnEngine(number);
         numberEngine.setText(engine.getSerialNumberEngine());

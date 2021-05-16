@@ -1,14 +1,12 @@
 package sample.controllers.tab;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sample.constants.TextConstants;
 import sample.controllers.AddAllAggregatesController;
 import sample.data.SaveData;
+import sample.data.components.Engine;
 import sample.data.components.limitedResource.FrontBreak;
 import sample.data.enums.TypesOfWorks;
 import sample.delete.DeleteObject;
@@ -54,11 +52,26 @@ public class ListFrontBreakTabController {
         createFrontBreak.setOnAction(e -> {
             AddAllAggregatesController ctrl = OpenNewScene.openNewScene("/sample/fxmlFiles/addAggregates.fxml", createFrontBreak);
             ctrl.setCurrentTab(4);
+            ctrl.visibleText(createFrontBreak);
+            ctrl.getFrontBreakTabController().visibleButton(createFrontBreak);
         });
         changeFrontBreak.setOnAction(e -> {
             AddAllAggregatesController ctrl = openNewScene("/sample/fxmlFiles/addAggregates.fxml", changeFrontBreak);
             ctrl.getFrontBreakTabController().setFrontBreak(tableFrontBreaks.getSelectionModel().getSelectedItem().getSerialNumber());
             ctrl.setCurrentTab(4);
+            ctrl.visibleText(changeFrontBreak);
+            ctrl.getFrontBreakTabController().visibleButton(changeFrontBreak);
+        });
+        tableFrontBreaks.setRowFactory(tv -> {
+            TableRow<FrontBreak> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2) {
+                    AddAllAggregatesController ctrl = openNewScene("/sample/fxmlFiles/addAggregates.fxml", changeFrontBreak);
+                    ctrl.getFrontBreakTabController().setFrontBreak(tableFrontBreaks.getSelectionModel().getSelectedItem().getSerialNumber());
+                    ctrl.setCurrentTab(4);
+                }
+            });
+            return row;
         });
         deleteFrontBreak.setOnAction(e -> DeleteObject.delete(SaveData.frontBreaksList, tableFrontBreaks, FrontBreak.class));
         makeWorkFrontBreak.setOnAction(e -> doWorksFrontBreak());

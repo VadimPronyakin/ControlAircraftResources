@@ -105,5 +105,14 @@ public class MainBreakTabController {
         }
         WriteFile.serialization(SaveData.mainBreaksList, MainBreak.class);
     }
+
+    void visibleButton(Button tvAnswerFour) {
+        String currentText =  tvAnswerFour.getText();
+        if(currentText.equals("Добавить запись")){
+            createMainBreak.setVisible(true);
+        }else if(currentText.equals("Изменить запись")) {
+            changeMainBreak.setVisible(true);
+        }
+    }
 }
 
