@@ -24,4 +24,9 @@ public class Ksa {
     private String serialNumberKsa;
     //Номер самолета,на котором установлена КСА
     private int aircraftNumberInstalled;
+
+    @Override
+    public String toString() {
+        return serialNumberKsa;
+    }
 }

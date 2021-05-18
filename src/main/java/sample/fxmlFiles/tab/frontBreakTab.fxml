@@ -29,29 +29,21 @@
                     </HBox>
                     <AnchorPane prefHeight="334.0" prefWidth="940.0" style="-fx-background-color: silver;" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
                         <children>
-                            <Text layoutX="14.0" layoutY="62.4755859375" strokeType="OUTSIDE" strokeWidth="0.0" text="2. Остаток посадок  до 1-го ремонта" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="50.0">
+                            <Text layoutX="14.0" layoutY="62.4755859375" strokeType="OUTSIDE" strokeWidth="0.0" text="3. Остаток посадок  до 1-го ремонта" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="87.0">
                                 <font>
                                     <Font name="Times New Roman Bold" size="14.0" />
                                 </font>
                             </Text>
-                            <TextField fx:id="first_Repair_FrontBreak" layoutX="420.0" layoutY="37.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="43.0" />
-                            <Text layoutX="-1.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Кол-во посадок с начала эксплуатации" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="15.0">
+                            <Text layoutX="-1.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. Кол-во посадок с начала эксплуатации" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="50.0">
                                 <font>
                                     <Font name="Times New Roman Bold" size="14.0" />
                                 </font>
                             </Text>
-                            <TextField fx:id="totalFrontBreak" layoutX="465.0" layoutY="7.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="7.0" />
-                            <Text layoutX="14.0" layoutY="99.4755859375" strokeType="OUTSIDE" strokeWidth="0.0" text="3. Остаток посадок  до назначенного ресурса" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="87.0">
+                            <Text layoutX="14.0" layoutY="99.4755859375" strokeType="OUTSIDE" strokeWidth="0.0" text="4. Остаток посадок  до назначенного ресурса" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="124.0">
                                 <font>
                                     <Font name="Times New Roman Bold" size="14.0" />
                                 </font>
                             </Text>
-                            <Text layoutX="14.0" layoutY="137.4755859375" strokeType="OUTSIDE" strokeWidth="0.0" text="4. Серийный номер " AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="125.0">
-                                <font>
-                                    <Font name="Times New Roman Bold" size="14.0" />
-                                </font>
-                            </Text>
-                            <TextField fx:id="numberFrontBreak" layoutX="321.0" layoutY="120.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="321.0" AnchorPane.topAnchor="120.0" />
                             <Text layoutX="550.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1." AnchorPane.leftAnchor="450.0">
                                 <font>
                                     <Font name="Times New Roman Bold" size="14.0" />
@@ -67,13 +59,21 @@
                                     <Font name="Times New Roman Bold" size="14.0" />
                                 </font>
                             </Text>
-                            <Text layoutX="592.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4." AnchorPane.leftAnchor="450.0">
+                            <Text layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Серийный номер " AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="15.0">
                                 <font>
                                     <Font name="Times New Roman Bold" size="14.0" />
                                 </font>
                             </Text>
                         </children>
                     </AnchorPane>
-                      <TextField fx:id="replacementFrontBreak" layoutX="322.0" layoutY="83.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="322.0" AnchorPane.topAnchor="83.0" />
+                      <TextField fx:id="replacementFrontBreak" layoutX="322.0" layoutY="122.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="322.0" AnchorPane.topAnchor="122.0" />
+                      <TextField fx:id="numberFrontBreak" layoutX="322.0" layoutY="8.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="322.0" AnchorPane.topAnchor="8.0" />
+                      <Text layoutX="453.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4." AnchorPane.leftAnchor="450.0">
+                          <font>
+                              <Font name="Times New Roman Bold" size="14.0" />
+                          </font>
+                      </Text>
+                      <TextField fx:id="first_Repair_FrontBreak" layoutX="322.0" layoutY="84.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="322.0" AnchorPane.topAnchor="84.0" />
+                      <TextField fx:id="totalFrontBreak" layoutX="324.0" layoutY="47.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="322.0" AnchorPane.topAnchor="47.0" />
                 </children>
             </AnchorPane>

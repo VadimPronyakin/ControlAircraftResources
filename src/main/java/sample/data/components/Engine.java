@@ -37,4 +37,8 @@ public class Engine {
     //Номер самолета,на котором установлен двигатель
     private int aircraftNumberInstalled;
 
+    @Override
+    public String toString() {
+        return serialNumberEngine + aircraftNumberInstalled;
+    }
 }

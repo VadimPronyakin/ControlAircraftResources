@@ -8,7 +8,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sample.constants.TextConstants;
 import sample.controllers.AddAllAggregatesController;
-import sample.data.Aircraft;
 import sample.data.SaveData;
 import sample.data.components.limitedResource.*;
 import sample.delete.DeleteObject;

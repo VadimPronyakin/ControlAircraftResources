@@ -16,4 +16,9 @@ public class FrontWheel {
     private int resource_Reserve_Replacement_Wheel;
     //Серийный номер переднего колеса
     private String serialNumber;
+
+    @Override
+    public String toString() {
+        return serialNumber;
+    }
 }

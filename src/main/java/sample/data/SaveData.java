@@ -1,6 +1,5 @@
 package sample.data;
 
-import sample.Main;
 import sample.data.components.Engine;
 import sample.data.components.Ksa;
 import sample.data.components.Planer;

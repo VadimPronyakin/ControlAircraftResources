@@ -1,13 +1,14 @@
 package sample.data;
 
-import lombok.Data;
-import lombok.NonNull;
+import lombok.*;
 import sample.data.components.Engine;
 import sample.data.components.Ksa;
 import sample.data.components.Planer;
 import sample.data.components.limitedResource.*;
 
-
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
 public class Aircraft {
     //Бортовой номер самолета
@@ -17,7 +18,6 @@ public class Aircraft {
     @NonNull
     private Engineer iak;
     //Планер от самолета не открепляется
-    @NonNull
     private Planer planer;
     //Левый двигатель
     private Engine leftEngine;
@@ -47,4 +47,7 @@ public class Aircraft {
     private CylinderOfRetractionExtension rightMainCylinder;
     //Цилиндр подкоса передней стойки шасси
     private CylinderOfRetractionExtension frontCylinder;
+    //ФИО и звание инженера Ак закрепленного за самолетом
+    private String fullNameEngineer;
 }
+

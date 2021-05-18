@@ -84,11 +84,10 @@ public class CylinderTabController {
         WriteFile.serialization(SaveData.cylindersList, CylinderOfRetractionExtension.class);
     }
 
-    void visibleButton(Button tvAnswerFour) {
-        String currentText =  tvAnswerFour.getText();
-        if(currentText.equals("Добавить запись")){
+    void visibleButton(Button text) {
+        if(text.getText().equals("Добавить запись")){
             createCylinder.setVisible(true);
-        }else if(currentText.equals("Изменить запись")) {
+        }else if(text.getText().equals("Изменить запись")) {
             changeCylinder.setVisible(true);
         }
     }

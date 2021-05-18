@@ -53,25 +53,23 @@
         <TabPane fx:id="tapAggregates" layoutX="-1.0" layoutY="150.0" prefHeight="408.0" prefWidth="944.0" tabClosingPolicy="UNAVAILABLE" tabMinWidth="75.0" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0">
             <tabs>
                 <Tab fx:id="ksaTabButton" text="КСА">
-                    <fx:include fx:id="ksaTab" source="Tab/ksaTab.fxml" />
+                    <fx:include fx:id="ksaTab" source="tab/ksaTab.fxml" />
                 </Tab>
-                <Tab fx:id="engineTabButton" text="ДВИГАТЕЛЬ">
-                    <fx:include fx:id="engineTab" source="Tab/engineTab.fxml" />
-                </Tab>
+
                 <Tab fx:id="mainBreakTabButton" text="ОСНОВНОЙ ТОРМОЗ">
-                    <fx:include fx:id="mainBreakTab" source="Tab/mainBreakTab.fxml" />
+                    <fx:include fx:id="mainBreakTab" source="tab/mainBreakTab.fxml" />
                 </Tab>
                 <Tab fx:id="frontBreakTabButton" text="ПЕРЕДНИЙ ТОРМОЗ">
-                    <fx:include fx:id="frontBreakTab" source="Tab/frontBreakTab.fxml" />
+                    <fx:include fx:id="frontBreakTab" source="tab/frontBreakTab.fxml" />
                 </Tab>
                 <Tab fx:id="mainWheelTabButton" text="ОСНОВНОЕ КОЛЕСО">
-                    <fx:include fx:id="mainWheelTab" source="Tab/mainWheelTab.fxml" />
+                    <fx:include fx:id="mainWheelTab" source="tab/mainWheelTab.fxml" />
                 </Tab>
                 <Tab fx:id="frontWheelTabButton" text="ПЕРЕДНЕЕ КОЛЕСО">
-                    <fx:include fx:id="frontWheelTab" source="Tab/frontWheelTab.fxml" />
+                    <fx:include fx:id="frontWheelTab" source="tab/frontWheelTab.fxml" />
                 </Tab>
                 <Tab fx:id="cylinderTabButton" text="ЦИЛИНДР ПОДКОСА">
-                    <fx:include fx:id="cylinderTab" source="Tab/cylinderTab.fxml" />
+                    <fx:include fx:id="cylinderTab" source="tab/cylinderTab.fxml" />
                 </Tab>
             </tabs>
         </TabPane>

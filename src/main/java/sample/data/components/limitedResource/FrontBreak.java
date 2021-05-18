@@ -22,4 +22,9 @@ public class FrontBreak {
     private String serialNumber;
     //Номер самолета,на котором установлен передний тормоз
     private int aircraftNumberInstalled;
+
+    @Override
+    public String toString() {
+        return serialNumber;
+    }
 }

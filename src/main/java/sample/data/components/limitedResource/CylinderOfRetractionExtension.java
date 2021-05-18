@@ -23,4 +23,8 @@ public class CylinderOfRetractionExtension {
     //Номер самолета,на котором установлен цилиндр подкоса
     private int aircraftNumberInstalled;
 
+    @Override
+    public String toString() {
+        return serialNumber;
+    }
 }

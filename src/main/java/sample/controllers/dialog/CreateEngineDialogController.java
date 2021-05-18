@@ -1,21 +1,22 @@
-package sample.controllers.tab;
+package sample.controllers.dialog;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
+import sample.controllers.tab.ListAllEnginesTabController;
 import sample.data.SaveData;
 import sample.data.components.Engine;
 import sample.write.WriteFile;
 
+import static java.lang.Integer.parseInt;
 
-public class EngineTabController {
-
-    @FXML
-    private Button createEngine;
+public class CreateEngineDialogController {
 
     @FXML
-    private Button changeEngine;
+    private TextField numberEngine;
 
     @FXML
     private TextField totalStartingEngine;
@@ -24,73 +25,79 @@ public class EngineTabController {
     private TextField totalOperatingEngineHours;
 
     @FXML
+    private TextField before_278bulletinEngineMinutes;
+
+    @FXML
     private TextField before_10hoursEngineHours;
-
-    @FXML
-    private TextField before_25hoursEngineHours;
-
-    @FXML
-    private TextField before_278bulletinEngineHours;
-
-    @FXML
-    private TextField before_50hoursEngineHours;
-
-    @FXML
-    private TextField before_100hoursEngineHours;
-
-    @FXML
-    private TextField before_150hoursEngineHours;
-
-    @FXML
-    private TextField oilChangeEngineHours;
-
-    @FXML
-    private TextField numberEngine;
 
     @FXML
     private TextField totalOperatingEngineMinutes;
 
     @FXML
+    private TextField before_25hoursEngineHours;
+
+    @FXML
     private TextField before_10hoursEngineMinutes;
+
+    @FXML
+    private TextField before_278bulletinEngineHours;
 
     @FXML
     private TextField before_25hoursEngineMinutes;
 
     @FXML
-    private TextField before_278bulletinEngineMinutes;
+    private TextField before_50hoursEngineHours;
 
     @FXML
     private TextField before_50hoursEngineMinutes;
 
     @FXML
+    private TextField before_100hoursEngineHours;
+
+    @FXML
     private TextField before_100hoursEngineMinutes;
+
+    @FXML
+    private TextField before_150hoursEngineHours;
 
     @FXML
     private TextField before_150hoursEngineMinutes;
 
     @FXML
+    private TextField oilChangeEngineHours;
+
+    @FXML
     private TextField oilChangeEngineMinutes;
 
+    @FXML
+    private Button createEngine;
+
+    @FXML
+    private Button changeEngine;
+
+    @Setter
+    private ListAllEnginesTabController listAllEnginesTabController;
 
     private Engine engine;
 
 
     @FXML
     void initialize() {
-        createEngine.setOnAction(e -> addEngine());
+        createEngine.setOnAction(e -> {
+            addEngine();
+            Stage stage = (Stage) createEngine.getScene().getWindow();
+            stage.close();
+        });
         changeEngine.setOnAction(e -> changeEngine());
     }
 
-         void setButtonVisible(Button text) {
-        if(text.getText().equals("Добавить запись")){
+    public void setButtonVisible(Button text) {
+        if(text.getText().equals("Добавить двигатель")){
             createEngine.setVisible(true);
         }else if(text.getText().equals("Изменить запись")) {
             changeEngine.setVisible(true);
-        } else if (text.getText().equals("+")) {
-            createEngine.setVisible(true);
         }
     }
-
 
     void setEngine(String number) {
         this.engine = returnEngine(number);
@@ -127,27 +134,28 @@ public class EngineTabController {
     @FXML
     private void addEngine() {
         Engine engine = Engine.builder()
-                .totalOperatingTime((Integer.parseInt(totalOperatingEngineHours.getText()) * 60) +
-                        Integer.parseInt(totalOperatingEngineMinutes.getText()))
-                .totalStartingEngineCount(Integer.parseInt(totalStartingEngine.getText()))
-                .resourceReserveBefore_10hours((Integer.parseInt(before_10hoursEngineHours.getText()) * 60) +
-                        Integer.parseInt(before_10hoursEngineMinutes.getText()))
-                .resourceReserveBefore_25hours((Integer.parseInt(before_25hoursEngineHours.getText()) * 60) +
-                        Integer.parseInt(before_25hoursEngineMinutes.getText()))
-                .resourceReserveBefore_50hours((Integer.parseInt(before_50hoursEngineHours.getText()) * 60) +
-                        Integer.parseInt(before_50hoursEngineMinutes.getText()))
-                .resourceReserveBefore_100hours((Integer.parseInt(before_100hoursEngineHours.getText()) * 60) +
-                        Integer.parseInt(before_100hoursEngineMinutes.getText()))
-                .resourceReserveBefore_150hours((Integer.parseInt(before_150hoursEngineHours.getText()) * 60) +
-                        Integer.parseInt(before_150hoursEngineMinutes.getText()))
-                .resourceReserveBefore_278bulletin((Integer.parseInt(before_278bulletinEngineHours.getText()) * 60) +
-                        Integer.parseInt(before_278bulletinEngineMinutes.getText()))
-                .oilChange((Integer.parseInt(oilChangeEngineHours.getText()) * 60) +
-                        Integer.parseInt(oilChangeEngineMinutes.getText()))
+                .totalOperatingTime((parseInt(totalOperatingEngineHours.getText()) * 60) +
+                        parseInt(totalOperatingEngineMinutes.getText()))
+                .totalStartingEngineCount(parseInt(totalStartingEngine.getText()))
+                .resourceReserveBefore_10hours((parseInt(before_10hoursEngineHours.getText()) * 60) +
+                        parseInt(before_10hoursEngineMinutes.getText()))
+                .resourceReserveBefore_25hours((parseInt(before_25hoursEngineHours.getText()) * 60) +
+                        parseInt(before_25hoursEngineMinutes.getText()))
+                .resourceReserveBefore_50hours((parseInt(before_50hoursEngineHours.getText()) * 60) +
+                        parseInt(before_50hoursEngineMinutes.getText()))
+                .resourceReserveBefore_100hours((parseInt(before_100hoursEngineHours.getText()) * 60) +
+                        parseInt(before_100hoursEngineMinutes.getText()))
+                .resourceReserveBefore_150hours((parseInt(before_150hoursEngineHours.getText()) * 60) +
+                        parseInt(before_150hoursEngineMinutes.getText()))
+                .resourceReserveBefore_278bulletin((parseInt(before_278bulletinEngineHours.getText()) * 60) +
+                        parseInt(before_278bulletinEngineMinutes.getText()))
+                .oilChange((parseInt(oilChangeEngineHours.getText()) * 60) +
+                        parseInt(oilChangeEngineMinutes.getText()))
                 .serialNumberEngine(numberEngine.getText())
                 .build();
         SaveData.enginesList.add(engine);
         WriteFile.serialization(SaveData.enginesList, Engine.class);
+        listAllEnginesTabController.updateTableEngines();
     }
     public void changeEngine() {
         if (StringUtils.isNotBlank(before_10hoursEngineHours.getCharacters())
@@ -167,27 +175,28 @@ public class EngineTabController {
                 && StringUtils.isNotBlank(totalOperatingEngineMinutes.getCharacters())
                 && StringUtils.isNotBlank(totalStartingEngine.getCharacters())
                 && StringUtils.isNotBlank(numberEngine.getCharacters())) {
-            engine.setResourceReserveBefore_10hours((Integer.parseInt(before_10hoursEngineHours.getText()) * 60) +
-                    Integer.parseInt(before_10hoursEngineMinutes.getText()));
-            engine.setResourceReserveBefore_25hours((Integer.parseInt(before_25hoursEngineHours.getText()) * 60) +
-                    Integer.parseInt(before_25hoursEngineMinutes.getText()));
-            engine.setResourceReserveBefore_50hours((Integer.parseInt(before_50hoursEngineHours.getText()) * 60) +
-                    Integer.parseInt(before_50hoursEngineMinutes.getText()));
-            engine.setResourceReserveBefore_100hours((Integer.parseInt(before_100hoursEngineHours.getText()) * 60) +
-                    Integer.parseInt(before_100hoursEngineMinutes.getText()));
-            engine.setResourceReserveBefore_150hours((Integer.parseInt(before_150hoursEngineHours.getText()) * 60) +
-                    Integer.parseInt(before_150hoursEngineMinutes.getText()));
-            engine.setResourceReserveBefore_278bulletin((Integer.parseInt(before_278bulletinEngineHours.getText()) * 60) +
-                    Integer.parseInt(before_278bulletinEngineMinutes.getText()));
-            engine.setOilChange((Integer.parseInt(oilChangeEngineHours.getText()) * 60) +
-                    Integer.parseInt(oilChangeEngineMinutes.getText()));
+            engine.setResourceReserveBefore_10hours((parseInt(before_10hoursEngineHours.getText()) * 60) +
+                    parseInt(before_10hoursEngineMinutes.getText()));
+            engine.setResourceReserveBefore_25hours((parseInt(before_25hoursEngineHours.getText()) * 60) +
+                    parseInt(before_25hoursEngineMinutes.getText()));
+            engine.setResourceReserveBefore_50hours((parseInt(before_50hoursEngineHours.getText()) * 60) +
+                    parseInt(before_50hoursEngineMinutes.getText()));
+            engine.setResourceReserveBefore_100hours((parseInt(before_100hoursEngineHours.getText()) * 60) +
+                    parseInt(before_100hoursEngineMinutes.getText()));
+            engine.setResourceReserveBefore_150hours((parseInt(before_150hoursEngineHours.getText()) * 60) +
+                    parseInt(before_150hoursEngineMinutes.getText()));
+            engine.setResourceReserveBefore_278bulletin((parseInt(before_278bulletinEngineHours.getText()) * 60) +
+                    parseInt(before_278bulletinEngineMinutes.getText()));
+            engine.setOilChange((parseInt(oilChangeEngineHours.getText()) * 60) +
+                    parseInt(oilChangeEngineMinutes.getText()));
             engine.setSerialNumberEngine(numberEngine.getText());
-            engine.setTotalOperatingTime((Integer.parseInt(totalOperatingEngineHours.getText()) * 60) +
-                    Integer.parseInt(totalOperatingEngineMinutes.getText()));
-            engine.setTotalStartingEngineCount(Integer.parseInt(totalStartingEngine.getText()));
+            engine.setTotalOperatingTime((parseInt(totalOperatingEngineHours.getText()) * 60) +
+                    parseInt(totalOperatingEngineMinutes.getText()));
+            engine.setTotalStartingEngineCount(parseInt(totalStartingEngine.getText()));
 
         }
         WriteFile.serialization(SaveData.enginesList, Engine.class);
     }
+
 }
 

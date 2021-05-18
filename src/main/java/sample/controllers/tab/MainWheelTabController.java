@@ -34,6 +34,9 @@ public class MainWheelTabController {
     @FXML
     private TextField numberMainWheel;
 
+    @FXML
+    private Button addMainWheelOnAircraft;
+
     private MainWheel mainWheel;
 
     @FXML
@@ -41,6 +44,7 @@ public class MainWheelTabController {
 
         createMainWheel.setOnAction(e -> addMainWheel());
         changeMainWheel.setOnAction(e -> changeMainWheel());
+        addMainWheelOnAircraft.setOnAction(e -> addMainWheel());
     }
 
     void setMainWheel(String number) {
@@ -80,12 +84,13 @@ public class MainWheelTabController {
         WriteFile.serialization(SaveData.mainWheelsList, MainWheel.class);
     }
 
-    void visibleButton(Button tvAnswerFour) {
-        String currentText =  tvAnswerFour.getText();
-        if(currentText.equals("Добавить запись")){
+    public void visibleButton(Button text) {
+        if(text.getText().equals("Добавить запись")){
             createMainWheel.setVisible(true);
-        }else if(currentText.equals("Изменить запись")) {
+        }else if(text.getText().equals("Изменить запись")) {
             changeMainWheel.setVisible(true);
+        } else if (text.getText().equals("+")) {
+            addMainWheelOnAircraft.setVisible(true);
         }
     }
 }

@@ -16,7 +16,7 @@ public class Engineer {
 
     @Override
     public String toString() {
-        return rank.getDescription() + fullName;
+        return rank.getDescription() + " " + fullName;
     }
 
     @Override

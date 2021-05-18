@@ -59,10 +59,10 @@
         <TabPane layoutX="2.0" layoutY="135.0" prefHeight="408.0" prefWidth="944.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0">
             <tabs>
                 <Tab fx:id="listAllEnginesTabButton" text="СПИСОК ДВИГАТЕЛЕЙ">
-                    <fx:include fx:id="listAllEnginesTab" source="Tab/listAllEnginesTab.fxml" />
+                    <fx:include fx:id="listAllEnginesTab" source="tab/listAllEnginesTab.fxml" />
                 </Tab>
                 <Tab fx:id="listAllKsaTabButton" text="СПИСОК КСА">
-                    <fx:include fx:id="listAllKsaTab" source="Tab/listAllKsaTab.fxml" />
+                    <fx:include fx:id="listAllKsaTab" source="tab/listAllKsaTab.fxml" />
                 </Tab>
             </tabs>
         </TabPane>

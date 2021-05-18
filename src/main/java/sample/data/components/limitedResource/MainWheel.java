@@ -16,4 +16,9 @@ public class MainWheel {
     private int resource_Reserve_Replacement_Wheel;
     //Серийный номер основного колеса
     private String serialNumber;
+
+    @Override
+    public String toString() {
+        return serialNumber;
+    }
 }

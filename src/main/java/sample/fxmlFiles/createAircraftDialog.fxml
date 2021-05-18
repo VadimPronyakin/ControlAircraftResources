@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="817.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.dialog.CreateAircraftDialogController">
+   <children>
+      <Label layoutX="20.0" layoutY="29.0" text="Бортовой номер" AnchorPane.topAnchor="29.0" />
+      <Label layoutX="20.0" layoutY="66.0" text="Инженер АК" AnchorPane.topAnchor="66.0" />
+      <Label layoutX="395.0" layoutY="33.0" text="Левый двигатель" AnchorPane.rightAnchor="328.0" AnchorPane.topAnchor="33.0" />
+      <Label layoutX="397.0" layoutY="66.0" text="Правый двигатель" AnchorPane.rightAnchor="318.0" AnchorPane.topAnchor="66.0" />
+      <Label layoutX="428.0" layoutY="101.0" text="КСА" AnchorPane.rightAnchor="366.0" AnchorPane.topAnchor="101.0" />
+      <Label layoutX="-567.0" layoutY="204.0" text="Правое колесо основ стойка" />
+      <Label layoutX="20.0" layoutY="138.0" text="Левое колесо основной стойки" AnchorPane.leftAnchor="20.0" />
+      <Label layoutX="20.0" layoutY="241.0" text="Правый тормоз основной стойки" AnchorPane.leftAnchor="20.0" />
+      <Label layoutX="41.0" layoutY="188.0" text="Левое колесо передней стойки" AnchorPane.leftAnchor="20.0" />
+      <Label layoutX="38.0" layoutY="289.0" text="Левый тормозом передней стойки" AnchorPane.leftAnchor="20.0" />
+      <Label layoutX="20.0" layoutY="341.0" text="Цилиндр подкоса левой  стойки" AnchorPane.leftAnchor="20.0" />
+      <TextField fx:id="sideNumber" layoutX="124.0" layoutY="28.0" prefHeight="25.0" prefWidth="150.0" AnchorPane.topAnchor="28.0" />
+      <ChoiceBox fx:id="listOfEngineers" layoutX="124.0" layoutY="62.0" maxHeight="25.0" prefHeight="25.0" prefWidth="150.0" AnchorPane.topAnchor="62.0" />
+      <ChoiceBox fx:id="leftEngineList" layoutX="470.0" layoutY="28.0" prefHeight="15.0" prefWidth="150.0" AnchorPane.rightAnchor="155.0" />
+      <ChoiceBox fx:id="rightEngineList" layoutX="470.0" layoutY="61.0" prefHeight="15.0" prefWidth="150.0" AnchorPane.rightAnchor="155.0" />
+      <ChoiceBox fx:id="mainLeftWheelList" layoutX="6.0" layoutY="162.0" prefHeight="25.0" prefWidth="192.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="605.0" />
+      <ChoiceBox fx:id="mainLeftCylinderList" layoutX="14.0" layoutY="424.0" prefHeight="25.0" prefWidth="192.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="360.0" />
+      <ChoiceBox fx:id="frontLeftWheelList" layoutX="10.0" layoutY="226.0" prefHeight="25.0" prefWidth="192.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="210.0" />
+      <ChoiceBox fx:id="mainRightBreakList" layoutX="10.0" layoutY="279.0" prefHeight="25.0" prefWidth="192.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="260.0" />
+      <ChoiceBox fx:id="frontLeftBreakList" layoutX="10.0" layoutY="322.0" prefHeight="25.0" prefWidth="192.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="310.0" />
+      <ChoiceBox fx:id="ksaList" layoutX="470.0" layoutY="96.0" prefHeight="15.0" prefWidth="150.0" AnchorPane.rightAnchor="155.0" AnchorPane.topAnchor="96.0" />
+      <Line endX="408.0" layoutX="409.0" layoutY="131.0" startX="-407.0" AnchorPane.rightAnchor="-1.0" />
+      <Button fx:id="addMainLeftWheelList" layoutX="220.0" layoutY="162.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Добавить основ. колесо" AnchorPane.leftAnchor="220.0" />
+      <Button fx:id="addFrontLeftWheelList" layoutX="221.0" layoutY="209.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Добавить перед. колесо" AnchorPane.leftAnchor="220.0" />
+      <Button fx:id="addMainRightBreakList" layoutX="354.0" layoutY="260.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Добавить основ. тормоз" AnchorPane.leftAnchor="220.0" />
+      <Button fx:id="addFrontLeftBreakList" layoutX="354.0" layoutY="310.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Добавить перед. тормоз" AnchorPane.leftAnchor="220.0" />
+      <Button fx:id="addMainLeftCylinderList" layoutX="354.0" layoutY="360.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Добавить цилиндр" AnchorPane.leftAnchor="220.0" />
+      <Label layoutX="439.0" layoutY="138.0" text="Правое колесо основной стойки" AnchorPane.rightAnchor="197.0" AnchorPane.topAnchor="138.0" />
+      <Label layoutX="521.0" layoutY="240.0" text="Левый тормоз осмновной стойки" AnchorPane.rightAnchor="192.0" />
+      <Label layoutX="523.0" layoutY="188.0" text="Правое колесо передней стойки" AnchorPane.rightAnchor="197.0" />
+      <Label layoutX="522.0" layoutY="289.0" text="Правый тормоз передней стойки" AnchorPane.leftAnchor="439.0" />
+      <Label layoutX="475.0" layoutY="340.0" text="Цилиндр подкоса правой стойки" AnchorPane.leftAnchor="439.0" />
+      <ChoiceBox fx:id="mainRightWheelList" layoutX="439.0" layoutY="160.0" prefHeight="25.0" prefWidth="192.0" AnchorPane.rightAnchor="186.0" AnchorPane.topAnchor="160.0" />
+      <ChoiceBox fx:id="mainRightCylinderList" layoutX="429.0" layoutY="360.0" prefHeight="25.0" prefWidth="192.0" AnchorPane.leftAnchor="439.0" AnchorPane.topAnchor="360.0" />
+      <ChoiceBox fx:id="frontRightWheelList" layoutX="429.0" layoutY="209.0" prefHeight="25.0" prefWidth="192.0" AnchorPane.rightAnchor="186.0" />
+      <ChoiceBox fx:id="mainLeftBreakList" layoutX="428.0" layoutY="260.0" prefHeight="25.0" prefWidth="192.0" AnchorPane.leftAnchor="439.0" />
+      <ChoiceBox fx:id="frontRightBreakList" layoutX="428.0" layoutY="310.0" prefHeight="25.0" prefWidth="192.0" AnchorPane.leftAnchor="439.0" />
+      <Button fx:id="addMainRightWheelList" layoutX="686.0" layoutY="160.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Добавить основ. колесо" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="160.0" />
+      <Button fx:id="addFrontRightWheelList" layoutX="772.0" layoutY="209.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Добавить перед. колесо" AnchorPane.rightAnchor="20.0" />
+      <Button fx:id="addMainLeftBreakList" layoutX="772.0" layoutY="260.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Добавить основ. тормоз" AnchorPane.rightAnchor="20.0" />
+      <Button fx:id="addFrontRightBreakList" layoutX="772.0" layoutY="310.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Добавить перед. тормоз" AnchorPane.rightAnchor="20.0" />
+      <Button fx:id="addMainRightCylinderList" layoutX="638.0" layoutY="360.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Добавить цилиндр" AnchorPane.rightAnchor="20.0" />
+      <Button fx:id="createAircraft" layoutX="30.0" layoutY="440.0" mnemonicParsing="false" prefWidth="159.0" text="Добавить самолет" />
+      <Button fx:id="aircraftInformation" layoutX="236.0" layoutY="440.0" mnemonicParsing="false" prefWidth="159.0" text="Сведения о самолете" />
+      <ChoiceBox fx:id="frontCylinderList" layoutX="432.0" layoutY="398.0" prefHeight="25.0" prefWidth="192.0" AnchorPane.leftAnchor="439.0" AnchorPane.topAnchor="410.0" />
+      <Button fx:id="addFrontCylinderList" layoutX="638.0" layoutY="410.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Добавить цилиндр" AnchorPane.rightAnchor="20.0" />
+      <Label layoutX="475.0" layoutY="391.0" text="Цилиндр подкоса передней стойки" AnchorPane.leftAnchor="439.0" />
+      <Button fx:id="addLeftEngine" layoutX="670.0" layoutY="29.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Добавить двигатель" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="29.0" />
+      <Button fx:id="addRightEngine" layoutX="670.0" layoutY="61.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Добавить двигатель" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="61.0" />
+      <Button fx:id="addKsa" layoutX="670.0" layoutY="96.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Добавить КСА" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="96.0" />
+      <Text layoutX="115.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" AnchorPane.topAnchor="30.177734375">
+         <font>
+            <Font name="Times New Roman Bold" size="20.0" />
+         </font>
+      </Text>
+      <Label layoutX="20.0" layoutY="101.0" text="Планер" AnchorPane.topAnchor="101.0" />
+      <Text layoutX="115.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" AnchorPane.topAnchor="63.177734375">
+         <font>
+            <Font name="Times New Roman Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="115.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" AnchorPane.topAnchor="98.177734375">
+         <font>
+            <Font name="Times New Roman Bold" size="20.0" />
+         </font>
+      </Text>
+      <ChoiceBox fx:id="listOfPlaners" layoutX="124.0" layoutY="97.0" maxHeight="25.0" prefHeight="25.0" prefWidth="150.0" />
+      <Button fx:id="createPlaner" layoutX="280.0" layoutY="97.0" mnemonicParsing="false" text="Добавить планер" />
+   </children>
+</AnchorPane>

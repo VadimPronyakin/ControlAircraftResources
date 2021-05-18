@@ -63,19 +63,19 @@
                  AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0">
             <tabs>
                 <Tab fx:id="listMainBreakTabButton" text="СПИСОК ОСНОВНЫХ ТОРМОЗОВ">
-                    <fx:include fx:id="listMainBreaksTab" source="Tab/listMainBreaksTab.fxml" />
+                    <fx:include fx:id="listMainBreaksTab" source="tab/listMainBreaksTab.fxml" />
                 </Tab>
                 <Tab fx:id="listFrontBreakTabButton" text="СПИСОК ПЕРЕДНИХ ТОРМОЗОВ">
-                    <fx:include fx:id="listFrontBreaksTab" source="Tab/listFrontBreaksTab.fxml" />
+                    <fx:include fx:id="listFrontBreaksTab" source="tab/listFrontBreaksTab.fxml" />
                 </Tab>
                 <Tab fx:id="listMainWheelsTabButton" text="СПИСОК ОСНОВНЫХ КОЛЕС">
-                    <fx:include fx:id="listMainWheelsTab" source="Tab/listMainWheelsTab.fxml" />
+                    <fx:include fx:id="listMainWheelsTab" source="tab/listMainWheelsTab.fxml" />
                 </Tab>
                 <Tab fx:id="listFrontWheelsTabButton" text="СПИСОК ПЕРЕДНИХ КОЛЕС">
-                    <fx:include fx:id="listFrontWheelsTab" source="Tab/listFrontWheelsTab.fxml" />
+                    <fx:include fx:id="listFrontWheelsTab" source="tab/listFrontWheelsTab.fxml" />
                 </Tab>
                 <Tab fx:id="listCylindersTabButton" text="СПИСОК ЦИЛИНДРОВ ПОДКОСА">
-                    <fx:include fx:id="listCylindersTab" source="Tab/listCylindersTab.fxml" />
+                    <fx:include fx:id="listCylindersTab" source="tab/listCylindersTab.fxml" />
                 </Tab>
             </tabs>
         </TabPane>

@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #DCDCDC;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.tab.CylinderTabController">
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="939.0" style="-fx-background-color: #DCDCDC;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.tab.CylinderTabController">
     <children>
         <HBox layoutY="339.0" prefHeight="40.0" prefWidth="944.0" spacing="30.0" style="-fx-background-color: #f1b00c;">
             <children>
@@ -29,57 +29,57 @@
         </HBox>
         <AnchorPane prefHeight="334.0" prefWidth="940.0" style="-fx-background-color: silver;" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
             <children>
-                <Text layoutX="14.0" layoutY="62.4755859375" strokeType="OUTSIDE" strokeWidth="0.0" text="2. Остаток посадок  до 1-го ремонта" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="50.0">
+                <Text layoutX="14.0" layoutY="62.4755859375" strokeType="OUTSIDE" strokeWidth="0.0" text="3. Остаток посадок  до 1-го ремонта" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="86.0">
                     <font>
                         <Font name="Times New Roman Bold" size="14.0" />
                     </font>
                 </Text>
-                <TextField fx:id="first_Repair_Cylinder" layoutX="420.0" layoutY="37.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="43.0" />
-                <Text layoutX="-1.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Кол-во посадок с начала эксплуатации" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="15.0">
+                <TextField fx:id="first_Repair_Cylinder" layoutX="420.0" layoutY="37.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="82.0" />
+                <Text layoutX="-1.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. Кол-во посадок с начала эксплуатации" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="51.0">
                     <font>
                         <Font name="Times New Roman Bold" size="14.0" />
                     </font>
                 </Text>
-                <TextField fx:id="totalCylinder" layoutX="465.0" layoutY="7.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="7.0" />
-                <Text layoutX="14.0" layoutY="101.4755859375" strokeType="OUTSIDE" strokeWidth="0.0" text="3. Остаток посадок до 2-го ремонта " AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="89.0">
+                <TextField fx:id="totalCylinder" layoutX="465.0" layoutY="7.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="46.0" />
+                <Text layoutX="14.0" layoutY="101.4755859375" strokeType="OUTSIDE" strokeWidth="0.0" text="4. Остаток посадок до 2-го ремонта " AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="125.0">
                     <font>
                         <Font name="Times New Roman Bold" size="14.0" />
                     </font>
                 </Text>
-                <TextField fx:id="second_Repair_Cylinder" layoutX="448.0" layoutY="81.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="81.0" />
-                <Text layoutX="14.0" layoutY="137.4755859375" strokeType="OUTSIDE" strokeWidth="0.0" text="4. Остаток посадок  до назначенного ресурса" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="125.0">
+                <TextField fx:id="second_Repair_Cylinder" layoutX="448.0" layoutY="81.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="120.0" />
+                <Text layoutX="14.0" layoutY="137.4755859375" strokeType="OUTSIDE" strokeWidth="0.0" text="5. Остаток посадок  до назначенного ресурса" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="161.0">
                     <font>
                         <Font name="Times New Roman Bold" size="14.0" />
                     </font>
                 </Text>
-                <TextField fx:id="replacementCylinder" layoutX="320.0" layoutY="120.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="120.0" />
-                <Text layoutX="14.0" layoutY="174.4755859375" strokeType="OUTSIDE" strokeWidth="0.0" text="5. Серийный номер " AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="162.0">
+                <TextField fx:id="replacementCylinder" layoutX="320.0" layoutY="120.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="159.0" />
+                <Text layoutX="14.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Серийный номер " AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="15.0">
                     <font>
                         <Font name="Times New Roman Bold" size="14.0" />
                     </font>
                 </Text>
-                <TextField fx:id="numberCylinder" layoutX="292.0" layoutY="136.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="155.0" />
-                <Text layoutX="550.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1." AnchorPane.leftAnchor="450.0">
+                <TextField fx:id="numberCylinder" layoutX="320.0" layoutY="10.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="10.0" />
+                <Text layoutX="450.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1." AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="15.0">
                     <font>
                         <Font name="Times New Roman Bold" size="14.0" />
                     </font>
                 </Text>
-                <Text layoutX="550.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2." AnchorPane.leftAnchor="450.0">
+                <Text layoutX="450.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2." AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="49.5244140625">
                     <font>
                         <Font name="Times New Roman Bold" size="14.0" />
                     </font>
                 </Text>
-                <Text layoutX="577.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3." AnchorPane.leftAnchor="450.0">
+                <Text layoutX="450.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3." AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="85.5244140625">
                     <font>
                         <Font name="Times New Roman Bold" size="14.0" />
                     </font>
                 </Text>
-                <Text layoutX="592.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4." AnchorPane.leftAnchor="450.0">
+                <Text layoutX="450.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4." AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="123.5244140625">
                     <font>
                         <Font name="Times New Roman Bold" size="14.0" />
                     </font>
                 </Text>
-                <Text layoutX="550.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5." AnchorPane.leftAnchor="450.0">
+                <Text layoutX="450.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5." AnchorPane.leftAnchor="450.0">
                     <font>
                         <Font name="Times New Roman Bold" size="14.0" />
                     </font>
