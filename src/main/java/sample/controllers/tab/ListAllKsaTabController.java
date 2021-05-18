@@ -10,21 +10,15 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.Main;
 import sample.constants.TextConstants;
-import sample.controllers.AddAllAggregatesController;
-import sample.controllers.dialog.CreateCylinderDialogController;
 import sample.controllers.dialog.CreateKsaDialogController;
 import sample.data.SaveData;
 import sample.data.components.Ksa;
-import sample.data.components.limitedResource.CylinderOfRetractionExtension;
 import sample.data.enums.TypesOfWorks;
 import sample.delete.DeleteObject;
-import sample.openNewScene.OpenNewScene;
 import sample.update.UpdateList;
 import sample.write.WriteFile;
 
 import java.io.IOException;
-
-import static sample.openNewScene.OpenNewScene.openNewScene;
 
 
 public class ListAllKsaTabController {
@@ -62,12 +56,12 @@ public class ListAllKsaTabController {
         listOfWorksKsa.getItems().addAll(TypesOfWorks.WORKS_AFTER_25_HOURS, TypesOfWorks.OIL_CHANGE_OPERATIONS);
         createNewKsa.setOnAction(e -> {
            CreateKsaDialogController controller = showKsaDialog();
-           controller.visibleButton(createNewKsa);
+           controller.setButtonVisible(createNewKsa.getText());
         });
         changeKsa.setOnAction(e -> {
             CreateKsaDialogController controller = showKsaDialog();
             controller.setKsa(tableKsa.getSelectionModel().getSelectedItem());
-            controller.visibleButton(changeKsa);
+            controller.setButtonVisible(changeKsa.getText());
         });
         tableKsa.setRowFactory(tv -> {
             TableRow<Ksa> row = new TableRow<>();
@@ -75,6 +69,7 @@ public class ListAllKsaTabController {
                 if (event.getClickCount() == 2) {
                     CreateKsaDialogController controller = showKsaDialog();
                     controller.setKsa(tableKsa.getSelectionModel().getSelectedItem());
+                    controller.setButtonVisible("Двойное нажатие");
                 }
             });
             return row;

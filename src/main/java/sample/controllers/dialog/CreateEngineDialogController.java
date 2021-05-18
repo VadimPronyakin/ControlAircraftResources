@@ -99,11 +99,16 @@ public class CreateEngineDialogController {
         });
     }
 
-    public void setButtonVisible(Button text) {
-        if (text.getText().equals("Добавить двигатель")) {
+    public void setButtonVisible(String string) {
+        if (string.equals("Добавить двигатель")) {
             createEngine.setVisible(true);
-        } else if (text.getText().equals("Изменить запись")) {
+            changeEngine.setVisible(false);
+        } else if (string.equals("Изменить запись")) {
             changeEngine.setVisible(true);
+            createEngine.setVisible(false);
+        } else if (string.equals("Двойное нажатие")) {
+            createEngine.setVisible(false);
+            changeEngine.setVisible(false);
         }
     }
 
@@ -129,15 +134,6 @@ public class CreateEngineDialogController {
         totalOperatingEngineMinutes.setText(String.valueOf(engine.getTotalOperatingTime() % 60));
 
     }
-
-//    public Engine returnEngine(String number) {
-//        for (Engine e : SaveData.enginesList) {
-//            if (e.getSerialNumberEngine().equals(number)) {
-//                return e;
-//            }
-//        }
-//        return null;
-//    }
 
     @FXML
     private void addEngine() {

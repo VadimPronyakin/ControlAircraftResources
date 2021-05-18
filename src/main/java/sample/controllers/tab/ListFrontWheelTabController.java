@@ -13,20 +13,13 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.Main;
 import sample.constants.TextConstants;
-import sample.controllers.AddAllAggregatesController;
-import sample.controllers.dialog.CreateFrontBreakDialogController;
 import sample.controllers.dialog.CreateFrontWheelDialogController;
-import sample.data.Aircraft;
 import sample.data.SaveData;
 import sample.data.components.limitedResource.*;
 import sample.delete.DeleteObject;
-import sample.openNewScene.OpenNewScene;
 import sample.update.UpdateList;
 
-import javax.security.auth.kerberos.KerberosTicket;
 import java.io.IOException;
-
-import static sample.openNewScene.OpenNewScene.openNewScene;
 
 
 public class ListFrontWheelTabController {
@@ -56,12 +49,12 @@ public class ListFrontWheelTabController {
         columnInstalledFrontWheel.setCellValueFactory(new PropertyValueFactory<>("aircraftNumberInstalled"));
         createFrontWheel.setOnAction(e -> {
            CreateFrontWheelDialogController controller = showFrontWheelDialog();
-           controller.visibleButton(createFrontWheel);
+           controller.setButtonVisible(createFrontWheel.getText());
         });
         changeFrontWheel.setOnAction(e -> {
            CreateFrontWheelDialogController controller = showFrontWheelDialog();
            controller.setFrontWheel(tableFrontWheels.getSelectionModel().getSelectedItem());
-           controller.visibleButton(changeFrontWheel);
+           controller.setButtonVisible(changeFrontWheel.getText());
         });
         tableFrontWheels.setRowFactory(tv -> {
             TableRow<FrontWheel> row = new TableRow<>();
@@ -69,6 +62,7 @@ public class ListFrontWheelTabController {
                 if (event.getClickCount() == 2) {
                     CreateFrontWheelDialogController controller = showFrontWheelDialog();
                     controller.setFrontWheel(tableFrontWheels.getSelectionModel().getSelectedItem());
+                    controller.setButtonVisible("Двойное нажатие");
                 }
             });
             return row;

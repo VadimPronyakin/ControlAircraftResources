@@ -114,11 +114,16 @@ public class CreateMainBreakDialogController {
 
     }
 
-   public void visibleButton(Button text) {
-        if(text.getText().equals("Добавить тормоз")){
+   public void setButtonVisible(String string) {
+        if(string.equals("Добавить тормоз")){
             createMainBreak.setVisible(true);
-        }else if(text.getText().equals("Изменить запись")) {
+            changeMainBreak.setVisible(false);
+        } else if(string.equals("Изменить запись")) {
             changeMainBreak.setVisible(true);
+            createMainBreak.setVisible(false);
+        } else if (string.equals("Двойное нажатие")) {
+            createMainBreak.setVisible(false);
+            changeMainBreak.setVisible(false);
         }
     }
 }

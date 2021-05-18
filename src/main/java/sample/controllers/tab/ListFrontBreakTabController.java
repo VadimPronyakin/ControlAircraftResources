@@ -10,22 +10,15 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.Main;
 import sample.constants.TextConstants;
-import sample.controllers.AddAllAggregatesController;
 import sample.controllers.dialog.CreateFrontBreakDialogController;
-import sample.controllers.dialog.CreateKsaDialogController;
 import sample.data.SaveData;
-import sample.data.components.Engine;
-import sample.data.components.Ksa;
 import sample.data.components.limitedResource.FrontBreak;
 import sample.data.enums.TypesOfWorks;
 import sample.delete.DeleteObject;
-import sample.openNewScene.OpenNewScene;
 import sample.update.UpdateList;
 import sample.write.WriteFile;
 
 import java.io.IOException;
-
-import static sample.openNewScene.OpenNewScene.openNewScene;
 
 
 public class ListFrontBreakTabController {
@@ -62,12 +55,12 @@ public class ListFrontBreakTabController {
         listOfWorksFrontBreak.getItems().addAll(TypesOfWorks.FIRST_REPAIR_FRONT_BREAK);
         createFrontBreak.setOnAction(e -> {
             CreateFrontBreakDialogController controller = showFrontBreakDialog();
-            controller.visibleButton(createFrontBreak);
+            controller.setButtonVisible(createFrontBreak.getText());
         });
         changeFrontBreak.setOnAction(e -> {
            CreateFrontBreakDialogController controller = showFrontBreakDialog();
            controller.setFrontBreak(tableFrontBreaks.getSelectionModel().getSelectedItem());
-           controller.visibleButton(changeFrontBreak);
+           controller.setButtonVisible(changeFrontBreak.getText());
         });
         tableFrontBreaks.setRowFactory(tv -> {
             TableRow<FrontBreak> row = new TableRow<>();
@@ -75,6 +68,7 @@ public class ListFrontBreakTabController {
                 if (event.getClickCount() == 2) {
                     CreateFrontBreakDialogController controller = showFrontBreakDialog();
                     controller.setFrontBreak(tableFrontBreaks.getSelectionModel().getSelectedItem());
+                    controller.setButtonVisible("Двойное нажатие");
                 }
             });
             return row;

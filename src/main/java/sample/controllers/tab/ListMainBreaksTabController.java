@@ -10,21 +10,15 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.Main;
 import sample.constants.TextConstants;
-import sample.controllers.AddAllAggregatesController;
-import sample.controllers.dialog.CreateFrontWheelDialogController;
 import sample.controllers.dialog.CreateMainBreakDialogController;
-import sample.data.Aircraft;
 import sample.data.SaveData;
 import sample.data.components.limitedResource.*;
 import sample.data.enums.TypesOfWorks;
 import sample.delete.DeleteObject;
-import sample.openNewScene.OpenNewScene;
 import sample.update.UpdateList;
 import sample.write.WriteFile;
 
 import java.io.IOException;
-
-import static sample.openNewScene.OpenNewScene.openNewScene;
 
 
 public class ListMainBreaksTabController {
@@ -65,12 +59,12 @@ public class ListMainBreaksTabController {
                 TypesOfWorks.REPLACEMENT_REFERENCE_DISKS);
         createMainBreak.setOnAction(e -> {
            CreateMainBreakDialogController controller = showMainBreakDialog();
-           controller.visibleButton(createMainBreak);
+           controller.setButtonVisible(createMainBreak.getText());
         });
         changeMainBreak.setOnAction(e -> {
           CreateMainBreakDialogController controller = showMainBreakDialog();
           controller.setMainBreak(tableMainBreaks.getSelectionModel().getSelectedItem());
-          controller.visibleButton(changeMainBreak);
+          controller.setButtonVisible(changeMainBreak.getText());
         });
         tableMainBreaks.setRowFactory(tv -> {
             TableRow<MainBreak> row = new TableRow<>();
@@ -78,6 +72,7 @@ public class ListMainBreaksTabController {
                 if (event.getClickCount() == 2) {
                     CreateMainBreakDialogController controller = showMainBreakDialog();
                     controller.setMainBreak(tableMainBreaks.getSelectionModel().getSelectedItem());
+                    controller.setButtonVisible("Двойное нажатие");
                 }
             });
             return row;

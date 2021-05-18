@@ -137,13 +137,16 @@ public class CreateKsaDialogController {
         listAllKsaTabController.updateTableKsa();
 
     }
-    public void visibleButton(Button tvAnswerFour) {
-        String currentText =  tvAnswerFour.getText();
-        if(currentText.equals("Добавить КСА")){
+    public void setButtonVisible(String string) {
+        if(string.equals("Добавить КСА")){
             createKsa.setVisible(true);
-        }else if(currentText.equals("Изменить запись")) {
+            changeKsa.setVisible(false);
+        }else if(string.equals("Изменить запись")) {
             changeKsa.setVisible(true);
-        }
+            createKsa.setVisible(false);
+        } else if (string.equals("Двойное нажатие")){
+            createKsa.setVisible(false);
+            changeKsa.setVisible(false);        }
     }
 }
 

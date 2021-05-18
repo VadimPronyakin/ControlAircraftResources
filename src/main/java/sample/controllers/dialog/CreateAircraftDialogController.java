@@ -1,18 +1,20 @@
 package sample.controllers.dialog;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
-import lombok.Getter;
 import lombok.Setter;
-import sample.constants.TextConstants;
-import sample.controllers.AddAllAggregatesController;
+import sample.Main;
 import sample.controllers.ListOfAircraftController;
-import sample.controllers.tab.FrontWheelTabController;
 import sample.data.Aircraft;
 import sample.data.Engineer;
 import sample.data.SaveData;
@@ -21,10 +23,7 @@ import sample.data.components.Ksa;
 import sample.data.components.Planer;
 import sample.data.components.limitedResource.*;
 import sample.openNewScene.OpenNewScene;
-import sample.update.UpdateList;
 import sample.write.WriteFile;
-
-import static sample.openNewScene.OpenNewScene.openNewScene;
 
 public class CreateAircraftDialogController {
     @FXML
@@ -161,11 +160,20 @@ public class CreateAircraftDialogController {
             Stage stage = (Stage) createAircraft.getScene().getWindow();
             stage.close();
         });
-
-        addMainLeftWheelList.setOnAction(e -> {
-            AddAllAggregatesController ctrl = OpenNewScene.openNewScene("/sample/fxmlFiles/tab/mainWheelTab.fxml", addMainLeftWheelList);
-            ctrl.getMainWheelTabController().visibleButton(addMainLeftWheelList);
-        });
+        addKsa.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createKsaDialog.fxml"));
+        addLeftEngine.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createEngineDialog.fxml"));
+        addRightEngine.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createEngineDialog.fxml"));
+        addFrontCylinderList.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createCylinderDialog.fxml"));
+        addMainLeftCylinderList.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createCylinderDialog.fxml"));
+        addMainRightCylinderList.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createCylinderDialog.fxml"));
+        addFrontLeftBreakList.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createFrontBreakDialog.fxml"));
+        addFrontRightBreakList.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createFrontBreakDialog.fxml"));
+        addMainLeftBreakList.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createMainBreakDialog.fxml"));
+        addMainRightBreakList.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createMainBreakDialog.fxml"));
+        addFrontLeftWheelList.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createFrontWheelDialog.fxml"));
+        addFrontRightWheelList.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createFrontWheelDialog.fxml"));
+        addMainLeftWheelList.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createMainWheelDialog.fxml"));
+        addMainRightWheelList.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createMainWheelDialog.fxml"));
     }
 
     private void addAircraft() {
@@ -192,5 +200,18 @@ public class CreateAircraftDialogController {
         SaveData.aircraftList.add(aircraft);
         WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
         listOfAircraftController.updateTableAircraft();
+    }
+    public void showDialog(String url) {
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource(url));
+            Pane page = loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.initModality(Modality.APPLICATION_MODAL);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+            dialogStage.show();
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
     }
 }

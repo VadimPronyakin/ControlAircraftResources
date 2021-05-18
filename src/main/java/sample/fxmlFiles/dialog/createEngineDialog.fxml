@@ -155,7 +155,7 @@
             <Font name="Times New Roman Bold" size="15.0" />
          </font>
       </Text>
-      <Button fx:id="createEngine" layoutX="51.0" layoutY="373.0" mnemonicParsing="false" text="Добавить двигатель" visible="false">
+      <Button fx:id="createEngine" layoutX="51.0" layoutY="373.0" mnemonicParsing="false" text="Добавить двигатель">
          <font>
             <Font name="Times New Roman Bold" size="17.0" />
          </font>

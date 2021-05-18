@@ -63,7 +63,7 @@ public class ListAllEnginesTabController {
                 TypesOfWorks.OIL_CHANGE_OPERATIONS);
         createNewEngine.setOnAction(e -> {
            CreateEngineDialogController controller = showEngineDialog();
-           controller.setButtonVisible(createNewEngine);
+           controller.setButtonVisible(createNewEngine.getText());
 
         });
         deleteEngine.setOnAction(e -> DeleteObject.delete(SaveData.enginesList, tableEngine, Engine.class));
@@ -71,7 +71,7 @@ public class ListAllEnginesTabController {
         changeEngine.setOnAction(e -> {
             CreateEngineDialogController controller = showEngineDialog();
             controller.setEngine(tableEngine.getSelectionModel().getSelectedItem());
-            controller.setButtonVisible(changeEngine);
+            controller.setButtonVisible(changeEngine.getText());
         });
         tableEngine.setRowFactory(tv -> {
             TableRow<Engine> row = new TableRow<>();
@@ -79,6 +79,7 @@ public class ListAllEnginesTabController {
                 if (event.getClickCount() == 2) {
                     CreateEngineDialogController controller = showEngineDialog();
                     controller.setEngine(tableEngine.getSelectionModel().getSelectedItem());
+                    controller.setButtonVisible("Двойное нажатие");
                 }
             });
             return row;

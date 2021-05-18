@@ -94,13 +94,18 @@ public class CreateFrontBreakDialogController {
 
     }
 
-   public void visibleButton(Button tvAnswerFour) {
-        String currentText = tvAnswerFour.getText();
-        if (currentText.equals("Добавить тормоз")) {
+   public void setButtonVisible(String string) {
+        if (string.equals("Добавить тормоз")) {
             createFrontBreak.setVisible(true);
-        } else if (currentText.equals("Изменить запись")) {
+            changeFrontBreak.setVisible(false);
+        } else if (string.equals("Изменить запись")) {
             changeFrontBreak.setVisible(true);
-        }
+            createFrontBreak.setVisible(false);
+        } else if (string.equals("Двойное нажатие")) {
+            createFrontBreak.setVisible(false);
+            changeFrontBreak.setVisible(false);
+       }
+
     }
 }
 

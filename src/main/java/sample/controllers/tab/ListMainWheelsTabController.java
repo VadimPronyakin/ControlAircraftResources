@@ -13,19 +13,13 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.Main;
 import sample.constants.TextConstants;
-import sample.controllers.AddAllAggregatesController;
-import sample.controllers.dialog.CreateMainBreakDialogController;
 import sample.controllers.dialog.CreateMainWheelDialogController;
 import sample.data.SaveData;
 import sample.data.components.limitedResource.*;
 import sample.delete.DeleteObject;
-import sample.openNewScene.OpenNewScene;
 import sample.update.UpdateList;
 
-import javax.security.auth.kerberos.KerberosTicket;
 import java.io.IOException;
-
-import static sample.openNewScene.OpenNewScene.openNewScene;
 
 
 public class ListMainWheelsTabController {
@@ -55,12 +49,12 @@ public class ListMainWheelsTabController {
         columnInstalledMainWheel.setCellValueFactory(new PropertyValueFactory<>("aircraftNumberInstalled"));
         createMainWheel.setOnAction(e -> {
            CreateMainWheelDialogController controller = showMainWheelDialog();
-           controller.visibleButton(createMainWheel);
+           controller.setButtonVisible(createMainWheel.getText());
         });
         changeMainWheel.setOnAction(e -> {
            CreateMainWheelDialogController controller = showMainWheelDialog();
            controller.setMainWheel(tableMainWheels.getSelectionModel().getSelectedItem());
-           controller.visibleButton(changeMainWheel);
+           controller.setButtonVisible(changeMainWheel.getText());
         });
         tableMainWheels.setRowFactory(tv -> {
             TableRow<MainWheel> row = new TableRow<>();
@@ -68,6 +62,7 @@ public class ListMainWheelsTabController {
                 if (event.getClickCount() == 2) {
                     CreateMainWheelDialogController controller = showMainWheelDialog();
                     controller.setMainWheel(tableMainWheels.getSelectionModel().getSelectedItem());
+                    controller.setButtonVisible("Двойное нажатие");
                 }
             });
             return row;

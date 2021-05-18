@@ -100,11 +100,16 @@ public class CreateCylinderDialogController {
 
     }
 
-    public void visibleButton(Button text) {
-        if(text.getText().equals("Добавить цилиндр")){
+    public void setButtonVisible(String string) {
+        if(string.equals("Добавить цилиндр")){
             createCylinder.setVisible(true);
-        }else if(text.getText().equals("Изменить запись")) {
+            changeCylinder.setVisible(false);
+        } else if(string.equals("Изменить запись")) {
             changeCylinder.setVisible(true);
+            createCylinder.setVisible(false);
+        } else if (string.equals("Двойное нажатие")) {
+            createCylinder.setVisible(false);
+            changeCylinder.setVisible(false);
         }
     }
 }

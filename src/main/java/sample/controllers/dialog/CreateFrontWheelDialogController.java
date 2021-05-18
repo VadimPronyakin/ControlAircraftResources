@@ -88,12 +88,16 @@ public class CreateFrontWheelDialogController {
 
     }
 
-   public void visibleButton(Button tvAnswerFour) {
-        String currentText = tvAnswerFour.getText();
-        if (currentText.equals("Добавить колесо")) {
+   public void setButtonVisible(String string) {
+        if (string.equals("Добавить колесо")) {
             createFrontWheel.setVisible(true);
-        } else if (currentText.equals("Изменить запись")) {
+            changeFrontWheel.setVisible(false);
+        } else if (string.equals("Изменить запись")) {
             changeFrontWheel.setVisible(true);
+            createFrontWheel.setVisible(false);
+        } else if (string.equals("Двойное нажатие")) {
+            createFrontWheel.setVisible(false);
+            changeFrontWheel.setVisible(false);
         }
     }
 }

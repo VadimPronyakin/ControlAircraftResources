@@ -38,7 +38,7 @@
       <TextField fx:id="first_Repair_Cylinder" layoutX="344.0" layoutY="152.0" AnchorPane.topAnchor="152.0" />
       <TextField fx:id="second_Repair_Cylinder" layoutX="344.0" layoutY="212.0" AnchorPane.topAnchor="212.0" />
       <TextField fx:id="replacementCylinder" layoutX="344.0" layoutY="273.0" AnchorPane.leftAnchor="344.0" AnchorPane.topAnchor="273.0" />
-      <Button fx:id="createCylinder" layoutX="51.0" layoutY="373.0" mnemonicParsing="false" text="Добавить цилиндр" visible="false">
+      <Button fx:id="createCylinder" layoutX="51.0" layoutY="373.0" mnemonicParsing="false" text="Добавить цилиндр">
          <font>
             <Font name="Times New Roman Bold" size="17.0" />
          </font>

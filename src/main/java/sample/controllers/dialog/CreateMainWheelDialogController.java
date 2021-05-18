@@ -88,11 +88,16 @@ public class CreateMainWheelDialogController {
 
     }
 
-    public void visibleButton(Button text) {
-        if (text.getText().equals("Добавить колесо")) {
+    public void setButtonVisible(String string) {
+        if (string.equals("Добавить колесо")) {
             createMainWheel.setVisible(true);
-        } else if (text.getText().equals("Изменить запись")) {
+            changeMainWheel.setVisible(false);
+        } else if (string.equals("Изменить запись")) {
             changeMainWheel.setVisible(true);
+            createMainWheel.setVisible(false);
+        } else if (string.equals("Двойное нажатие")) {
+            createMainWheel.setVisible(false);
+            changeMainWheel.setVisible(false);
         }
     }
 }

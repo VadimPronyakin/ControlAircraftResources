@@ -98,7 +98,7 @@
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <Button fx:id="createKsa" layoutX="51.0" layoutY="373.0" mnemonicParsing="false" text="Добавить КСА" visible="false">
+      <Button fx:id="createKsa" layoutX="51.0" layoutY="373.0" mnemonicParsing="false" text="Добавить КСА">
          <font>
             <Font name="Times New Roman Bold" size="17.0" />
          </font>

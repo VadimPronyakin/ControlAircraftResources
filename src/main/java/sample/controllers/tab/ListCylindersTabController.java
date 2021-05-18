@@ -6,17 +6,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
-import javafx.scene.shape.Cylinder;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.Main;
 import sample.constants.TextConstants;
-import sample.controllers.AddAllAggregatesController;
 import sample.controllers.dialog.CreateCylinderDialogController;
-import sample.controllers.dialog.CreateEngineDialogController;
-import sample.data.Aircraft;
 import sample.data.SaveData;
-import sample.data.components.Engine;
 import sample.data.components.Ksa;
 import sample.data.components.limitedResource.CylinderOfRetractionExtension;
 import sample.data.enums.TypesOfWorks;
@@ -25,8 +20,6 @@ import sample.update.UpdateList;
 import sample.write.WriteFile;
 
 import java.io.IOException;
-
-import static sample.openNewScene.OpenNewScene.openNewScene;
 
 
 public class ListCylindersTabController {
@@ -64,12 +57,12 @@ public class ListCylindersTabController {
         listOfWorksCylinder.getItems().addAll(TypesOfWorks.FIRST_REPAIR_CYLINDER, TypesOfWorks.SECOND_REPAIR_CYLINDER);
         createNewCylinder.setOnAction(e -> {
             CreateCylinderDialogController controller = showCylinderDialog();
-            controller.visibleButton(createNewCylinder);
+            controller.setButtonVisible(createNewCylinder.getText());
         });
         changeCylinder.setOnAction(e -> {
             CreateCylinderDialogController controller = showCylinderDialog();
             controller.setCylinder(tableCylinders.getSelectionModel().getSelectedItem());
-            controller.visibleButton(changeCylinder);
+            controller.setButtonVisible(changeCylinder.getText());
         });
         tableCylinders.setRowFactory(tv -> {
             TableRow<CylinderOfRetractionExtension> row = new TableRow<>();
@@ -77,6 +70,7 @@ public class ListCylindersTabController {
                 if (event.getClickCount() == 2) {
                     CreateCylinderDialogController controller = showCylinderDialog();
                     controller.setCylinder(tableCylinders.getSelectionModel().getSelectedItem());
+                    controller.setButtonVisible("Двойное нажатие");
                 }
             });
             return row;
