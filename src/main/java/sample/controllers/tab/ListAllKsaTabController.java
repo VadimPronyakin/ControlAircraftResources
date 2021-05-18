@@ -1,17 +1,28 @@
 package sample.controllers.tab;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import sample.Main;
 import sample.constants.TextConstants;
 import sample.controllers.AddAllAggregatesController;
+import sample.controllers.dialog.CreateCylinderDialogController;
+import sample.controllers.dialog.CreateKsaDialogController;
 import sample.data.SaveData;
 import sample.data.components.Ksa;
+import sample.data.components.limitedResource.CylinderOfRetractionExtension;
 import sample.data.enums.TypesOfWorks;
 import sample.delete.DeleteObject;
 import sample.openNewScene.OpenNewScene;
 import sample.update.UpdateList;
 import sample.write.WriteFile;
+
+import java.io.IOException;
 
 import static sample.openNewScene.OpenNewScene.openNewScene;
 
@@ -45,30 +56,25 @@ public class ListAllKsaTabController {
 
     @FXML
     void initialize() {
-        UpdateList.updateList(SaveData.ksaList, tableKsa, Ksa.class, TextConstants.KSA_TEXT);
+        updateTableKsa();
         columnNumberKsa.setCellValueFactory(new PropertyValueFactory<>("serialNumberKsa"));
         columnInstalledKsa.setCellValueFactory(new PropertyValueFactory<>("aircraftNumberInstalled"));
         listOfWorksKsa.getItems().addAll(TypesOfWorks.WORKS_AFTER_25_HOURS, TypesOfWorks.OIL_CHANGE_OPERATIONS);
         createNewKsa.setOnAction(e -> {
-            AddAllAggregatesController ctrl = OpenNewScene.openNewScene("/sample/fxmlFiles/addAggregates.fxml", createNewKsa);
-            ctrl.setCurrentTab(1);
-            ctrl.getKsaTabController().visibleButton(createNewKsa);
-            ctrl.visibleText(createNewKsa);
+           CreateKsaDialogController controller = showKsaDialog();
+           controller.visibleButton(createNewKsa);
         });
         changeKsa.setOnAction(e -> {
-            AddAllAggregatesController ctrl = openNewScene("/sample/fxmlFiles/addAggregates.fxml", changeKsa);
-            ctrl.getKsaTabController().setKsa(tableKsa.getSelectionModel().getSelectedItem().getSerialNumberKsa());
-            ctrl.setCurrentTab(1);
-            ctrl.visibleText(changeKsa);
-            ctrl.getKsaTabController().visibleButton(changeKsa);
+            CreateKsaDialogController controller = showKsaDialog();
+            controller.setKsa(tableKsa.getSelectionModel().getSelectedItem());
+            controller.visibleButton(changeKsa);
         });
         tableKsa.setRowFactory(tv -> {
             TableRow<Ksa> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2) {
-                    AddAllAggregatesController ctrl = openNewScene("/sample/fxmlFiles/addAggregates.fxml", changeKsa);
-                    ctrl.getKsaTabController().setKsa(tableKsa.getSelectionModel().getSelectedItem().getSerialNumberKsa());
-                    ctrl.setCurrentTab(1);
+                    CreateKsaDialogController controller = showKsaDialog();
+                    controller.setKsa(tableKsa.getSelectionModel().getSelectedItem());
                 }
             });
             return row;
@@ -95,5 +101,27 @@ public class ListAllKsaTabController {
             e.printStackTrace();
         }
     }
-
+    public CreateKsaDialogController showKsaDialog() {
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/sample/fxmlFiles/dialog/createKsaDialog.fxml"));
+            Pane page = loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.initModality(Modality.APPLICATION_MODAL);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+            CreateKsaDialogController controller = loader.getController();
+            controller.setListAllKsaTabController(this);
+            dialogStage.show();
+            return controller;
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
+    return null;
+    }
+    public void updateTableKsa() {
+        UpdateList.updateList(SaveData.ksaList,
+                tableKsa,
+                Ksa.class,
+                TextConstants.KSA_TEXT);
+    }
 }

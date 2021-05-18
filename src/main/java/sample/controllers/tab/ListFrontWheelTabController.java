@@ -1,19 +1,30 @@
 package sample.controllers.tab;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import sample.Main;
 import sample.constants.TextConstants;
 import sample.controllers.AddAllAggregatesController;
+import sample.controllers.dialog.CreateFrontBreakDialogController;
+import sample.controllers.dialog.CreateFrontWheelDialogController;
 import sample.data.Aircraft;
 import sample.data.SaveData;
 import sample.data.components.limitedResource.*;
 import sample.delete.DeleteObject;
 import sample.openNewScene.OpenNewScene;
 import sample.update.UpdateList;
+
+import javax.security.auth.kerberos.KerberosTicket;
+import java.io.IOException;
 
 import static sample.openNewScene.OpenNewScene.openNewScene;
 
@@ -40,35 +51,52 @@ public class ListFrontWheelTabController {
 
     @FXML
     void initialize() {
-
-        UpdateList.updateList(SaveData.frontWheelsList, tableFrontWheels, FrontWheel.class, TextConstants.MAIN_BREAK_TEXT);
+        updateTableFrontWheels();
         columnFrontWheel.setCellValueFactory(new PropertyValueFactory<>("serialNumber"));
         columnInstalledFrontWheel.setCellValueFactory(new PropertyValueFactory<>("aircraftNumberInstalled"));
         createFrontWheel.setOnAction(e -> {
-           AddAllAggregatesController ctrl = OpenNewScene.openNewScene("/sample/fxmlFiles/addAggregates.fxml", createFrontWheel);
-           ctrl.setCurrentTab(6);
-           ctrl.visibleText(createFrontWheel);
-           ctrl.getFrontWheelTabController().visibleButton(createFrontWheel);
+           CreateFrontWheelDialogController controller = showFrontWheelDialog();
+           controller.visibleButton(createFrontWheel);
         });
         changeFrontWheel.setOnAction(e -> {
-            AddAllAggregatesController ctrl = openNewScene("/sample/fxmlFiles/addAggregates.fxml", changeFrontWheel);
-            ctrl.getFrontWheelTabController().setFrontWheel(tableFrontWheels.getSelectionModel().getSelectedItem().getSerialNumber());
-            ctrl.setCurrentTab(6);
-            ctrl.visibleText(changeFrontWheel);
-            ctrl.getFrontWheelTabController().visibleButton(changeFrontWheel);
+           CreateFrontWheelDialogController controller = showFrontWheelDialog();
+           controller.setFrontWheel(tableFrontWheels.getSelectionModel().getSelectedItem());
+           controller.visibleButton(changeFrontWheel);
         });
         tableFrontWheels.setRowFactory(tv -> {
             TableRow<FrontWheel> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2) {
-                    AddAllAggregatesController ctrl = openNewScene("/sample/fxmlFiles/addAggregates.fxml", changeFrontWheel);
-                    ctrl.getFrontWheelTabController().setFrontWheel(tableFrontWheels.getSelectionModel().getSelectedItem().getSerialNumber());
-                    ctrl.setCurrentTab(6);
+                    CreateFrontWheelDialogController controller = showFrontWheelDialog();
+                    controller.setFrontWheel(tableFrontWheels.getSelectionModel().getSelectedItem());
                 }
             });
             return row;
         });
         deleteFrontWheel.setOnAction(e -> DeleteObject.delete(SaveData.frontWheelsList, tableFrontWheels, FrontWheel.class));
+    }
+    public CreateFrontWheelDialogController showFrontWheelDialog() {
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/sample/fxmlFiles/dialog/createFrontWheelDialog.fxml"));
+            Pane page = loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.initModality(Modality.APPLICATION_MODAL);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+            CreateFrontWheelDialogController controller = loader.getController();
+            controller.setListFrontWheelTabController(this);
+            dialogStage.show();
+            return controller;
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
+        return null;
+    }
+    public void updateTableFrontWheels() {
+        UpdateList.updateList(SaveData.frontWheelsList,
+                tableFrontWheels,
+                FrontWheel.class,
+                TextConstants.FRONT_WHEEL_TEXT);
     }
 }
 

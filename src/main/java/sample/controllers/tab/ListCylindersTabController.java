@@ -1,11 +1,19 @@
 package sample.controllers.tab;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Cylinder;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import sample.Main;
 import sample.constants.TextConstants;
 import sample.controllers.AddAllAggregatesController;
+import sample.controllers.dialog.CreateCylinderDialogController;
+import sample.controllers.dialog.CreateEngineDialogController;
 import sample.data.Aircraft;
 import sample.data.SaveData;
 import sample.data.components.Engine;
@@ -15,6 +23,8 @@ import sample.data.enums.TypesOfWorks;
 import sample.delete.DeleteObject;
 import sample.update.UpdateList;
 import sample.write.WriteFile;
+
+import java.io.IOException;
 
 import static sample.openNewScene.OpenNewScene.openNewScene;
 
@@ -48,34 +58,25 @@ public class ListCylindersTabController {
 
     @FXML
     void initialize() {
-
-        UpdateList.updateList(SaveData.cylindersList,
-                tableCylinders,
-                CylinderOfRetractionExtension.class,
-                TextConstants.MAIN_BREAK_TEXT);
+        updateTableCylinders();
         columnNumberCylinder.setCellValueFactory(new PropertyValueFactory<>("serialNumber"));
         columnInstalledCylinder.setCellValueFactory(new PropertyValueFactory<>("aircraftNumberInstalled"));
         listOfWorksCylinder.getItems().addAll(TypesOfWorks.FIRST_REPAIR_CYLINDER, TypesOfWorks.SECOND_REPAIR_CYLINDER);
         createNewCylinder.setOnAction(e -> {
-            AddAllAggregatesController ctrl = openNewScene("/sample/fxmlFiles/addAggregates.fxml", createNewCylinder);
-            ctrl.setCurrentTab(7);
-            ctrl.visibleText(createNewCylinder);
-            ctrl.getCylinderTabController().visibleButton(createNewCylinder);
+            CreateCylinderDialogController controller = showCylinderDialog();
+            controller.visibleButton(createNewCylinder);
         });
         changeCylinder.setOnAction(e -> {
-            AddAllAggregatesController ctrl = openNewScene("/sample/fxmlFiles/addAggregates.fxml", changeCylinder);
-            ctrl.getCylinderTabController().setCylinder(tableCylinders.getSelectionModel().getSelectedItem().getSerialNumber());
-            ctrl.setCurrentTab(7);
-            ctrl.visibleText(changeCylinder);
-            ctrl.getCylinderTabController().visibleButton(changeCylinder);
+            CreateCylinderDialogController controller = showCylinderDialog();
+            controller.setCylinder(tableCylinders.getSelectionModel().getSelectedItem());
+            controller.visibleButton(changeCylinder);
         });
         tableCylinders.setRowFactory(tv -> {
             TableRow<CylinderOfRetractionExtension> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2) {
-                    AddAllAggregatesController ctrl = openNewScene("/sample/fxmlFiles/addAggregates.fxml", changeCylinder);
-                    ctrl.getCylinderTabController().setCylinder(tableCylinders.getSelectionModel().getSelectedItem().getSerialNumber());
-                    ctrl.setCurrentTab(7);
+                    CreateCylinderDialogController controller = showCylinderDialog();
+                    controller.setCylinder(tableCylinders.getSelectionModel().getSelectedItem());
                 }
             });
             return row;
@@ -104,6 +105,29 @@ public class ListCylindersTabController {
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
+    }
+    public CreateCylinderDialogController showCylinderDialog() {
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/sample/fxmlFiles/dialog/createCylinderDialog.fxml"));
+            Pane page = loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.initModality(Modality.APPLICATION_MODAL);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+            CreateCylinderDialogController controller = loader.getController();
+            controller.setListCylindersTabController(this);
+            dialogStage.show();
+            return controller;
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
+   return null;
+    }
+    public void updateTableCylinders() {
+        UpdateList.updateList(SaveData.cylindersList,
+                tableCylinders,
+                CylinderOfRetractionExtension.class,
+                TextConstants.CYLINDER_TEXT);
     }
 }
 

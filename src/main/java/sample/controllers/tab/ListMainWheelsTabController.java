@@ -1,18 +1,29 @@
 package sample.controllers.tab;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import sample.Main;
 import sample.constants.TextConstants;
 import sample.controllers.AddAllAggregatesController;
+import sample.controllers.dialog.CreateMainBreakDialogController;
+import sample.controllers.dialog.CreateMainWheelDialogController;
 import sample.data.SaveData;
 import sample.data.components.limitedResource.*;
 import sample.delete.DeleteObject;
 import sample.openNewScene.OpenNewScene;
 import sample.update.UpdateList;
+
+import javax.security.auth.kerberos.KerberosTicket;
+import java.io.IOException;
 
 import static sample.openNewScene.OpenNewScene.openNewScene;
 
@@ -39,35 +50,52 @@ public class ListMainWheelsTabController {
 
     @FXML
     void initialize() {
-
-        UpdateList.updateList(SaveData.mainWheelsList, tableMainWheels, MainWheel.class, TextConstants.MAIN_BREAK_TEXT);
+        updateTableMainWheels();
         columnMainWheel.setCellValueFactory(new PropertyValueFactory<>("serialNumber"));
         columnInstalledMainWheel.setCellValueFactory(new PropertyValueFactory<>("aircraftNumberInstalled"));
         createMainWheel.setOnAction(e -> {
-            AddAllAggregatesController ctrl = OpenNewScene.openNewScene("/sample/fxmlFiles/addAggregates.fxml", createMainWheel);
-            ctrl.setCurrentTab(5);
-            ctrl.visibleText(createMainWheel);
-            ctrl.getMainWheelTabController().visibleButton(createMainWheel);
+           CreateMainWheelDialogController controller = showMainWheelDialog();
+           controller.visibleButton(createMainWheel);
         });
         changeMainWheel.setOnAction(e -> {
-            AddAllAggregatesController ctrl = openNewScene("/sample/fxmlFiles/addAggregates.fxml", changeMainWheel);
-            ctrl.getMainWheelTabController().setMainWheel(tableMainWheels.getSelectionModel().getSelectedItem().getSerialNumber());
-            ctrl.setCurrentTab(5);
-            ctrl.visibleText(changeMainWheel);
-            ctrl.getMainWheelTabController().visibleButton(changeMainWheel);
+           CreateMainWheelDialogController controller = showMainWheelDialog();
+           controller.setMainWheel(tableMainWheels.getSelectionModel().getSelectedItem());
+           controller.visibleButton(changeMainWheel);
         });
         tableMainWheels.setRowFactory(tv -> {
             TableRow<MainWheel> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2) {
-                    AddAllAggregatesController ctrl = openNewScene("/sample/fxmlFiles/addAggregates.fxml", changeMainWheel);
-                    ctrl.getMainWheelTabController().setMainWheel(tableMainWheels.getSelectionModel().getSelectedItem().getSerialNumber());
-                    ctrl.setCurrentTab(5);
+                    CreateMainWheelDialogController controller = showMainWheelDialog();
+                    controller.setMainWheel(tableMainWheels.getSelectionModel().getSelectedItem());
                 }
             });
             return row;
         });
         deleteMainWheel.setOnAction(e -> DeleteObject.delete(SaveData.mainWheelsList, tableMainWheels, MainWheel.class));
+    }
+    public CreateMainWheelDialogController showMainWheelDialog() {
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/sample/fxmlFiles/dialog/createMainWheelDialog.fxml"));
+            Pane page = loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.initModality(Modality.APPLICATION_MODAL);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+            CreateMainWheelDialogController controller = loader.getController();
+            controller.setListMainWheelsTabController(this);
+            dialogStage.show();
+            return controller;
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
+            return null;
+    }
+    public void updateTableMainWheels() {
+        UpdateList.updateList(SaveData.mainWheelsList,
+                tableMainWheels,
+                MainWheel.class,
+                TextConstants.MAIN_WHEEL_TEXT);
     }
 }
 

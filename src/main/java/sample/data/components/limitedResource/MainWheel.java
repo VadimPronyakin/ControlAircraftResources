@@ -16,6 +16,7 @@ public class MainWheel {
     private int resource_Reserve_Replacement_Wheel;
     //Серийный номер основного колеса
     private String serialNumber;
+    private String aircraftNumberInstalled;
 
     @Override
     public String toString() {

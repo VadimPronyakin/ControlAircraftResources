@@ -11,6 +11,9 @@ import sample.data.SaveData;
 import sample.data.components.Engine;
 import sample.write.WriteFile;
 
+
+
+
 import static java.lang.Integer.parseInt;
 
 public class CreateEngineDialogController {
@@ -83,24 +86,29 @@ public class CreateEngineDialogController {
 
     @FXML
     void initialize() {
+
         createEngine.setOnAction(e -> {
             addEngine();
             Stage stage = (Stage) createEngine.getScene().getWindow();
             stage.close();
         });
-        changeEngine.setOnAction(e -> changeEngine());
+        changeEngine.setOnAction(e -> {
+            changeEngine();
+            Stage stage = (Stage) changeEngine.getScene().getWindow();
+            stage.close();
+        });
     }
 
     public void setButtonVisible(Button text) {
-        if(text.getText().equals("Добавить двигатель")){
+        if (text.getText().equals("Добавить двигатель")) {
             createEngine.setVisible(true);
-        }else if(text.getText().equals("Изменить запись")) {
+        } else if (text.getText().equals("Изменить запись")) {
             changeEngine.setVisible(true);
         }
     }
 
-    void setEngine(String number) {
-        this.engine = returnEngine(number);
+    public void setEngine(Engine engine) {
+        this.engine = engine;
         numberEngine.setText(engine.getSerialNumberEngine());
         totalStartingEngine.setText(String.valueOf(engine.getTotalStartingEngineCount()));
         oilChangeEngineHours.setText(String.valueOf(engine.getOilChange() / 60));
@@ -122,14 +130,14 @@ public class CreateEngineDialogController {
 
     }
 
-    public Engine returnEngine(String number) {
-        for (Engine e : SaveData.enginesList) {
-            if (e.getSerialNumberEngine().equals(number)) {
-                return e;
-            }
-        }
-        return null;
-    }
+//    public Engine returnEngine(String number) {
+//        for (Engine e : SaveData.enginesList) {
+//            if (e.getSerialNumberEngine().equals(number)) {
+//                return e;
+//            }
+//        }
+//        return null;
+//    }
 
     @FXML
     private void addEngine() {
@@ -157,6 +165,7 @@ public class CreateEngineDialogController {
         WriteFile.serialization(SaveData.enginesList, Engine.class);
         listAllEnginesTabController.updateTableEngines();
     }
+
     public void changeEngine() {
         if (StringUtils.isNotBlank(before_10hoursEngineHours.getCharacters())
                 && StringUtils.isNotBlank(before_10hoursEngineMinutes.getCharacters())
@@ -196,7 +205,7 @@ public class CreateEngineDialogController {
 
         }
         WriteFile.serialization(SaveData.enginesList, Engine.class);
+        listAllEnginesTabController.updateTableEngines();
     }
-
 }
 

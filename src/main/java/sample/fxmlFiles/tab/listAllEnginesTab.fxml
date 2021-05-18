@@ -14,7 +14,7 @@
     <children>
         <HBox layoutY="325.0" prefHeight="54.0" prefWidth="944.0" spacing="30.0" style="-fx-background-color: #f1b00c;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <children>
-                <Button fx:id="createNewEngine" mnemonicParsing="false" prefHeight="26.0" prefWidth="147.0" style="-fx-background-color: #111d69;" text="Добавить двигатель" textFill="#eeeaea">
+                <Button fx:id="createNewEngine" mnemonicParsing="false" prefHeight="26.0" prefWidth="152.0" style="-fx-background-color: #111d69;" text="Добавить двигатель" textFill="#eeeaea">
                     <font>
                         <Font name="Times New Roman Bold" size="14.0" />
                     </font>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="430.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.dialog.CreateCylinderDialogController">
+   <children>
+      <Text layoutX="73.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1.Серийный номер цилиндра подкоса" AnchorPane.leftAnchor="51.0" AnchorPane.topAnchor="38.0">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="51.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2.Кол-во посадок с начала эксплуатации">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="51.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3.Остаток посадок до 1-го ремонта">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="51.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4.Остаток посадок до 2-го ремонта">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="51.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5.Остаток посадок до назначенного ресурса">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <TextField fx:id="numberCylinder" layoutX="344.0" layoutY="33.0" />
+      <TextField fx:id="totalCylinder" layoutX="344.0" layoutY="92.0" AnchorPane.topAnchor="92.0" />
+      <TextField fx:id="first_Repair_Cylinder" layoutX="344.0" layoutY="152.0" AnchorPane.topAnchor="152.0" />
+      <TextField fx:id="second_Repair_Cylinder" layoutX="344.0" layoutY="212.0" AnchorPane.topAnchor="212.0" />
+      <TextField fx:id="replacementCylinder" layoutX="344.0" layoutY="273.0" AnchorPane.leftAnchor="344.0" AnchorPane.topAnchor="273.0" />
+      <Button fx:id="createCylinder" layoutX="51.0" layoutY="373.0" mnemonicParsing="false" text="Добавить цилиндр" visible="false">
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+      </Button>
+      <Button fx:id="changeCylinder" layoutX="393.0" layoutY="373.0" mnemonicParsing="false" text="Сохранить" visible="false">
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+      </Button>
+      <Text layoutX="500.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1.">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="500.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2.">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="500.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3.">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="500.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4.">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="500.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5." wrappingWidth="10.5">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

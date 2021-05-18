@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="430.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.dialog.CreateEngineDialogController">
    <children>
-      <Text layoutX="51.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1.Серийный номер двигателя" wrappingWidth="195.13671875" AnchorPane.leftAnchor="51.0" AnchorPane.topAnchor="31.0">
+      <Text layoutX="51.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1.Серийный номер двигателя" wrappingWidth="195.13671875" AnchorPane.topAnchor="29.5244140625">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
@@ -157,12 +157,12 @@
       </Text>
       <Button fx:id="createEngine" layoutX="51.0" layoutY="373.0" mnemonicParsing="false" text="Добавить двигатель" visible="false">
          <font>
-            <Font name="Times New Roman Bold" size="14.0" />
+            <Font name="Times New Roman Bold" size="17.0" />
          </font>
       </Button>
       <Button fx:id="changeEngine" layoutX="399.0" layoutY="373.0" mnemonicParsing="false" text="Сохранить" visible="false">
          <font>
-            <Font name="Times New Roman Bold" size="14.0" />
+            <Font name="Times New Roman Bold" size="17.0" />
          </font>
       </Button>
    </children>
