@@ -41,12 +41,17 @@
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <Button fx:id="createFrontWheel" layoutX="51.0" layoutY="373.0" mnemonicParsing="false" text="Добавить колесо">
+      <Button fx:id="createFrontWheel" layoutX="51.0" layoutY="373.0" mnemonicParsing="false" text="Добавить колесо" visible="false">
          <font>
             <Font name="Times New Roman Bold" size="17.0" />
          </font>
       </Button>
       <Button fx:id="changeFrontWheel" layoutX="375.0" layoutY="373.0" mnemonicParsing="false" text="Сохранить" visible="false">
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+      </Button>
+      <Button fx:id="createFrontWheelForAircraft" layoutX="599.0" layoutY="373.0" mnemonicParsing="false" text="Добавить колесо">
          <font>
             <Font name="Times New Roman Bold" size="17.0" />
          </font>

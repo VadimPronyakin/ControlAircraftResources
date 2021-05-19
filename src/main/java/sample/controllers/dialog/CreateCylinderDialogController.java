@@ -36,6 +36,9 @@ public class CreateCylinderDialogController {
     @FXML
     private Button changeCylinder;
 
+    @FXML
+    private Button createCylinderForAircraft;
+
     @Setter
     private ListCylindersTabController listCylindersTabController;
 
@@ -43,8 +46,14 @@ public class CreateCylinderDialogController {
 
     @FXML
     void initialize() {
+        createCylinderForAircraft.setOnAction(e -> {
+            addCylinder();
+            Stage stage = (Stage) createCylinderForAircraft.getScene().getWindow();
+            stage.close();
+        });
         createCylinder.setOnAction(e -> {
             addCylinder();
+            listCylindersTabController.updateTableCylinders();
             Stage stage = (Stage) createCylinder.getScene().getWindow();
             stage.close();
         });
@@ -73,16 +82,8 @@ public class CreateCylinderDialogController {
                 .build();
         SaveData.cylindersList.add(cylinder);
         WriteFile.serialization(SaveData.cylindersList, CylinderOfRetractionExtension.class);
-        listCylindersTabController.updateTableCylinders();
+
     }
-//    public CylinderOfRetractionExtension returnCylinder(String number) {
-//        for (CylinderOfRetractionExtension e : SaveData.cylindersList) {
-//            if (e.getSerialNumber().equals(number)) {
-//                return e;
-//            }
-//        }
-//        return null;
-//    }
     public void changeCylinder() {
         if (StringUtils.isNotBlank(first_Repair_Cylinder.getCharacters())
                 && StringUtils.isNotBlank(second_Repair_Cylinder.getCharacters())
@@ -104,12 +105,15 @@ public class CreateCylinderDialogController {
         if(string.equals("Добавить цилиндр")){
             createCylinder.setVisible(true);
             changeCylinder.setVisible(false);
+            createCylinderForAircraft.setVisible(false);
         } else if(string.equals("Изменить запись")) {
             changeCylinder.setVisible(true);
             createCylinder.setVisible(false);
+            createCylinderForAircraft.setVisible(false);
         } else if (string.equals("Двойное нажатие")) {
             createCylinder.setVisible(false);
             changeCylinder.setVisible(false);
+            createCylinderForAircraft.setVisible(false);
         }
     }
 }

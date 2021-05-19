@@ -15,6 +15,7 @@ import sample.constants.TextConstants;
 import sample.controllers.dialog.CreateAircraftDialogController;
 import sample.data.Aircraft;
 import sample.data.SaveData;
+import sample.delete.DeleteObject;
 import sample.update.UpdateList;
 
 import java.io.IOException;
@@ -60,6 +61,7 @@ public class ListOfAircraftController {
         columnEngineerAk.setCellValueFactory(new PropertyValueFactory<>("fullNameEngineer"));
         returnHomePage.setOnAction(event -> openNewScene("/sample/fxmlFiles/sample.fxml", returnHomePage));
         createNewAircraft.setOnAction(e -> showAircraftDialog());
+        deleteAircraft.setOnAction(e -> DeleteObject.delete(SaveData.aircraftList, tableAircraft, Aircraft.class));
     }
 
     public void showAircraftDialog() {

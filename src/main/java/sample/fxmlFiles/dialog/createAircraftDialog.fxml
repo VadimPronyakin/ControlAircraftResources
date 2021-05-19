@@ -4,80 +4,214 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="817.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.dialog.CreateAircraftDialogController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="850.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.dialog.CreateAircraftDialogController">
    <children>
-      <Label layoutX="20.0" layoutY="29.0" text="Бортовой номер" AnchorPane.topAnchor="29.0" />
-      <Label layoutX="20.0" layoutY="66.0" text="Инженер АК" AnchorPane.topAnchor="66.0" />
-      <Label layoutX="395.0" layoutY="33.0" text="Левый двигатель" AnchorPane.rightAnchor="328.0" AnchorPane.topAnchor="33.0" />
-      <Label layoutX="397.0" layoutY="66.0" text="Правый двигатель" AnchorPane.rightAnchor="318.0" AnchorPane.topAnchor="66.0" />
-      <Label layoutX="428.0" layoutY="101.0" text="КСА" AnchorPane.rightAnchor="366.0" AnchorPane.topAnchor="101.0" />
+      <Label layoutX="20.0" layoutY="14.0" text="Бортовой номер" AnchorPane.topAnchor="14.0" />
+      <Label layoutX="20.0" layoutY="59.0" text="Инженер АК" AnchorPane.topAnchor="59.0" />
+      <Label layoutX="408.0" layoutY="14.0" text="Левый двигатель" AnchorPane.rightAnchor="348.0" AnchorPane.topAnchor="14.0" />
+      <Label layoutX="404.0" layoutY="59.0" text="Правый двигатель" AnchorPane.rightAnchor="344.0" AnchorPane.topAnchor="59.0" />
+      <Label layoutX="444.0" layoutY="100.0" text="КСА" AnchorPane.rightAnchor="383.0" AnchorPane.topAnchor="100.0" />
       <Label layoutX="-567.0" layoutY="204.0" text="Правое колесо основ стойка" />
       <Label layoutX="20.0" layoutY="138.0" text="Левое колесо основной стойки" AnchorPane.leftAnchor="20.0" />
       <Label layoutX="20.0" layoutY="241.0" text="Правый тормоз основной стойки" AnchorPane.leftAnchor="20.0" />
       <Label layoutX="41.0" layoutY="188.0" text="Левое колесо передней стойки" AnchorPane.leftAnchor="20.0" />
       <Label layoutX="38.0" layoutY="289.0" text="Левый тормозом передней стойки" AnchorPane.leftAnchor="20.0" />
       <Label layoutX="20.0" layoutY="341.0" text="Цилиндр подкоса левой  стойки" AnchorPane.leftAnchor="20.0" />
-      <TextField fx:id="sideNumber" layoutX="124.0" layoutY="28.0" prefHeight="25.0" prefWidth="150.0" AnchorPane.topAnchor="28.0" />
-      <ChoiceBox fx:id="listOfEngineers" layoutX="124.0" layoutY="62.0" maxHeight="25.0" prefHeight="25.0" prefWidth="150.0" AnchorPane.topAnchor="62.0" />
-      <ChoiceBox fx:id="leftEngineList" layoutX="470.0" layoutY="28.0" prefHeight="15.0" prefWidth="150.0" AnchorPane.rightAnchor="155.0" />
-      <ChoiceBox fx:id="rightEngineList" layoutX="470.0" layoutY="61.0" prefHeight="15.0" prefWidth="150.0" AnchorPane.rightAnchor="155.0" />
-      <ChoiceBox fx:id="mainLeftWheelList" layoutX="6.0" layoutY="162.0" prefHeight="25.0" prefWidth="192.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="605.0" />
+      <TextField fx:id="sideNumber" layoutX="124.0" layoutY="10.0" prefHeight="25.0" prefWidth="230.0" AnchorPane.topAnchor="10.0" />
+      <ChoiceBox fx:id="listOfEngineers" layoutX="124.0" layoutY="54.0" maxHeight="25.0" prefHeight="25.0" prefWidth="230.0" AnchorPane.topAnchor="54.0" />
+      <ChoiceBox fx:id="leftEngineList" layoutX="515.0" layoutY="10.0" prefHeight="15.0" prefWidth="150.0" AnchorPane.rightAnchor="185.0" />
+      <ChoiceBox fx:id="rightEngineList" layoutX="515.0" layoutY="55.0" prefHeight="15.0" prefWidth="150.0" AnchorPane.rightAnchor="185.0" />
+      <ChoiceBox fx:id="mainLeftWheelList" layoutX="6.0" layoutY="162.0" prefHeight="25.0" prefWidth="192.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="638.0" />
       <ChoiceBox fx:id="mainLeftCylinderList" layoutX="14.0" layoutY="424.0" prefHeight="25.0" prefWidth="192.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="360.0" />
       <ChoiceBox fx:id="frontLeftWheelList" layoutX="10.0" layoutY="226.0" prefHeight="25.0" prefWidth="192.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="210.0" />
       <ChoiceBox fx:id="mainRightBreakList" layoutX="10.0" layoutY="279.0" prefHeight="25.0" prefWidth="192.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="260.0" />
       <ChoiceBox fx:id="frontLeftBreakList" layoutX="10.0" layoutY="322.0" prefHeight="25.0" prefWidth="192.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="310.0" />
-      <ChoiceBox fx:id="ksaList" layoutX="470.0" layoutY="96.0" prefHeight="15.0" prefWidth="150.0" AnchorPane.rightAnchor="155.0" AnchorPane.topAnchor="96.0" />
-      <Line endX="408.0" layoutX="409.0" layoutY="131.0" startX="-407.0" AnchorPane.rightAnchor="-1.0" />
-      <Button fx:id="addMainLeftWheelList" layoutX="220.0" layoutY="162.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Добавить основ. колесо" AnchorPane.leftAnchor="220.0" />
-      <Button fx:id="addFrontLeftWheelList" layoutX="221.0" layoutY="209.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Добавить перед. колесо" AnchorPane.leftAnchor="220.0" />
-      <Button fx:id="addMainRightBreakList" layoutX="354.0" layoutY="260.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Добавить основ. тормоз" AnchorPane.leftAnchor="220.0" />
-      <Button fx:id="addFrontLeftBreakList" layoutX="354.0" layoutY="310.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Добавить перед. тормоз" AnchorPane.leftAnchor="220.0" />
-      <Button fx:id="addMainLeftCylinderList" layoutX="354.0" layoutY="360.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Добавить цилиндр" AnchorPane.leftAnchor="220.0" />
-      <Label layoutX="439.0" layoutY="138.0" text="Правое колесо основной стойки" AnchorPane.rightAnchor="197.0" AnchorPane.topAnchor="138.0" />
-      <Label layoutX="521.0" layoutY="240.0" text="Левый тормоз осмновной стойки" AnchorPane.rightAnchor="192.0" />
-      <Label layoutX="523.0" layoutY="188.0" text="Правое колесо передней стойки" AnchorPane.rightAnchor="197.0" />
-      <Label layoutX="522.0" layoutY="289.0" text="Правый тормоз передней стойки" AnchorPane.leftAnchor="439.0" />
-      <Label layoutX="475.0" layoutY="340.0" text="Цилиндр подкоса правой стойки" AnchorPane.leftAnchor="439.0" />
-      <ChoiceBox fx:id="mainRightWheelList" layoutX="439.0" layoutY="160.0" prefHeight="25.0" prefWidth="192.0" AnchorPane.rightAnchor="186.0" AnchorPane.topAnchor="160.0" />
-      <ChoiceBox fx:id="mainRightCylinderList" layoutX="429.0" layoutY="360.0" prefHeight="25.0" prefWidth="192.0" AnchorPane.leftAnchor="439.0" AnchorPane.topAnchor="360.0" />
-      <ChoiceBox fx:id="frontRightWheelList" layoutX="429.0" layoutY="209.0" prefHeight="25.0" prefWidth="192.0" AnchorPane.rightAnchor="186.0" />
-      <ChoiceBox fx:id="mainLeftBreakList" layoutX="428.0" layoutY="260.0" prefHeight="25.0" prefWidth="192.0" AnchorPane.leftAnchor="439.0" />
-      <ChoiceBox fx:id="frontRightBreakList" layoutX="428.0" layoutY="310.0" prefHeight="25.0" prefWidth="192.0" AnchorPane.leftAnchor="439.0" />
-      <Button fx:id="addMainRightWheelList" layoutX="686.0" layoutY="160.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Добавить основ. колесо" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="160.0" />
-      <Button fx:id="addFrontRightWheelList" layoutX="772.0" layoutY="209.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Добавить перед. колесо" AnchorPane.rightAnchor="20.0" />
-      <Button fx:id="addMainLeftBreakList" layoutX="772.0" layoutY="260.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Добавить основ. тормоз" AnchorPane.rightAnchor="20.0" />
-      <Button fx:id="addFrontRightBreakList" layoutX="772.0" layoutY="310.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Добавить перед. тормоз" AnchorPane.rightAnchor="20.0" />
-      <Button fx:id="addMainRightCylinderList" layoutX="638.0" layoutY="360.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Добавить цилиндр" AnchorPane.rightAnchor="20.0" />
-      <Button fx:id="createAircraft" layoutX="30.0" layoutY="440.0" mnemonicParsing="false" prefWidth="159.0" text="Добавить самолет" />
-      <Button fx:id="aircraftInformation" layoutX="236.0" layoutY="440.0" mnemonicParsing="false" prefWidth="159.0" text="Сведения о самолете" />
-      <ChoiceBox fx:id="frontCylinderList" layoutX="432.0" layoutY="398.0" prefHeight="25.0" prefWidth="192.0" AnchorPane.leftAnchor="439.0" AnchorPane.topAnchor="410.0" />
-      <Button fx:id="addFrontCylinderList" layoutX="638.0" layoutY="410.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Добавить цилиндр" AnchorPane.rightAnchor="20.0" />
-      <Label layoutX="475.0" layoutY="391.0" text="Цилиндр подкоса передней стойки" AnchorPane.leftAnchor="439.0" />
-      <Button fx:id="addLeftEngine" layoutX="670.0" layoutY="29.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Добавить двигатель" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="29.0" />
-      <Button fx:id="addRightEngine" layoutX="670.0" layoutY="61.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Добавить двигатель" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="61.0" />
-      <Button fx:id="addKsa" layoutX="670.0" layoutY="96.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Добавить КСА" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="96.0" />
-      <Text layoutX="115.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" AnchorPane.topAnchor="30.177734375">
+      <ChoiceBox fx:id="ksaList" layoutX="515.0" layoutY="97.0" prefHeight="15.0" prefWidth="150.0" AnchorPane.rightAnchor="185.0" AnchorPane.topAnchor="97.0" />
+      <Button fx:id="addMainLeftWheelList" layoutX="220.0" layoutY="162.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Добавить колесо" AnchorPane.leftAnchor="220.0" />
+      <Button fx:id="addFrontLeftWheelList" layoutX="221.0" layoutY="209.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Добавить колесо" AnchorPane.leftAnchor="220.0" />
+      <Button fx:id="addMainRightBreakList" layoutX="354.0" layoutY="260.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Добавить тормоз" AnchorPane.leftAnchor="220.0" />
+      <Button fx:id="addFrontLeftBreakList" layoutX="354.0" layoutY="310.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Добавить тормоз" AnchorPane.leftAnchor="220.0" />
+      <Button fx:id="addMainLeftCylinderList" layoutX="354.0" layoutY="360.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Добавить цилиндр" AnchorPane.leftAnchor="220.0" />
+      <Label layoutX="455.0" layoutY="138.0" text="Правое колесо основной стойки" AnchorPane.leftAnchor="455.0" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="138.0" />
+      <Label layoutX="454.0" layoutY="241.0" text="Левый тормоз осмновной стойки" AnchorPane.leftAnchor="454.0" AnchorPane.rightAnchor="210.0" />
+      <Label layoutX="456.0" layoutY="188.0" text="Правое колесо передней стойки" AnchorPane.leftAnchor="456.0" AnchorPane.rightAnchor="219.0" />
+      <Label layoutX="455.0" layoutY="289.0" text="Правый тормоз передней стойки" AnchorPane.leftAnchor="455.0" />
+      <Label layoutX="456.0" layoutY="341.0" text="Цилиндр подкоса правой стойки" AnchorPane.leftAnchor="456.0" />
+      <ChoiceBox fx:id="mainRightWheelList" layoutX="453.0" layoutY="162.0" prefHeight="25.0" prefWidth="202.0" AnchorPane.leftAnchor="453.0" AnchorPane.rightAnchor="195.0" AnchorPane.topAnchor="162.0" />
+      <ChoiceBox fx:id="mainRightCylinderList" layoutX="452.0" layoutY="360.0" prefHeight="25.0" prefWidth="202.0" AnchorPane.leftAnchor="453.0" />
+      <ChoiceBox fx:id="frontRightWheelList" layoutX="453.0" layoutY="209.0" prefHeight="25.0" prefWidth="202.0" AnchorPane.leftAnchor="453.0" AnchorPane.rightAnchor="195.0" />
+      <ChoiceBox fx:id="mainLeftBreakList" layoutX="452.0" layoutY="260.0" prefHeight="25.0" prefWidth="202.0" AnchorPane.leftAnchor="453.0" />
+      <ChoiceBox fx:id="frontRightBreakList" layoutX="452.0" layoutY="310.0" prefHeight="25.0" prefWidth="202.0" AnchorPane.leftAnchor="453.0" />
+      <Button fx:id="addMainRightWheelList" layoutX="664.0" layoutY="162.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Добавить колесо" AnchorPane.topAnchor="162.0" />
+      <Button fx:id="addFrontRightWheelList" layoutX="664.0" layoutY="209.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Добавить колесо" />
+      <Button fx:id="addMainLeftBreakList" layoutX="664.0" layoutY="260.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Добавить тормоз" />
+      <Button fx:id="addFrontRightBreakList" layoutX="664.0" layoutY="310.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Добавить тормоз" />
+      <Button fx:id="addMainRightCylinderList" layoutX="664.0" layoutY="360.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Добавить цилиндр" />
+      <Button fx:id="createAircraft" layoutX="111.0" layoutY="423.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #3fc707;" text="Добавить самолет">
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font></Button>
+      <ChoiceBox fx:id="frontCylinderList" layoutX="452.0" layoutY="410.0" prefHeight="25.0" prefWidth="202.0" AnchorPane.leftAnchor="453.0" />
+      <Button fx:id="addFrontCylinderList" layoutX="664.0" layoutY="410.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Добавить цилиндр" />
+      <Label layoutX="455.0" layoutY="391.0" text="Цилиндр подкоса передней стойки" AnchorPane.leftAnchor="455.0" />
+      <Button fx:id="addLeftEngine" layoutX="673.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Добавить двигатель" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="10.0" />
+      <Button fx:id="addRightEngine" layoutX="673.0" layoutY="54.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Добавить двигатель" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="54.0" />
+      <Button fx:id="addKsa" layoutX="670.0" layoutY="96.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Добавить КСА" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="96.0" />
+      <Text layoutX="360.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" AnchorPane.topAnchor="11.177734375">
          <font>
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Text>
       <Label layoutX="20.0" layoutY="101.0" text="Планер" AnchorPane.topAnchor="101.0" />
-      <Text layoutX="115.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" AnchorPane.topAnchor="63.177734375">
-         <font>
-            <Font name="Times New Roman Bold" size="20.0" />
-         </font>
-      </Text>
-      <Text layoutX="115.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" AnchorPane.topAnchor="98.177734375">
+      <Text layoutX="360.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" AnchorPane.topAnchor="55.177734375">
          <font>
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Text>
       <ChoiceBox fx:id="listOfPlaners" layoutX="124.0" layoutY="97.0" maxHeight="25.0" prefHeight="25.0" prefWidth="150.0" />
-      <Button fx:id="createPlaner" layoutX="280.0" layoutY="97.0" mnemonicParsing="false" text="Добавить планер" />
+      <Button fx:id="createPlaner" layoutX="280.0" layoutY="97.0" mnemonicParsing="false" text="Добавить " />
+      <Button fx:id="updateMainLeftCylinderList" layoutX="360.0" layoutY="357.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="10.0" style="-fx-background-color: white;">
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/iconfinder_Refresh_49254.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="updateFrontLeftBreakList" layoutX="360.0" layoutY="307.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="10.0" style="-fx-background-color: white;">
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/iconfinder_Refresh_49254.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="updateMainRightBreakList" layoutX="360.0" layoutY="257.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="10.0" style="-fx-background-color: white;">
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/iconfinder_Refresh_49254.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="updateFrontLeftWheelList" layoutX="360.0" layoutY="206.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="10.0" style="-fx-background-color: white;">
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/iconfinder_Refresh_49254.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="updateFrontCylinderList" layoutX="807.0" layoutY="407.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="10.0" style="-fx-background-color: white;">
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/iconfinder_Refresh_49254.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="updateMainRightCylinderList" layoutX="807.0" layoutY="357.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="10.0" style="-fx-background-color: white;">
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/iconfinder_Refresh_49254.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="updateFrontRightBreakList" layoutX="807.0" layoutY="307.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="10.0" style="-fx-background-color: white;">
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/iconfinder_Refresh_49254.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="updateMainLeftBreakList" layoutX="807.0" layoutY="257.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="10.0" style="-fx-background-color: white;">
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/iconfinder_Refresh_49254.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="updateFrontRightWheelList" layoutX="807.0" layoutY="206.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="10.0" style="-fx-background-color: white;">
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/iconfinder_Refresh_49254.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="updateMainRightWheelList" layoutX="807.0" layoutY="159.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="10.0" style="-fx-background-color: white;">
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/iconfinder_Refresh_49254.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="updateKsaList" layoutX="807.0" layoutY="93.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="10.0" style="-fx-background-color: white;">
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/iconfinder_Refresh_49254.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="updateRightEngineList" layoutX="807.0" layoutY="51.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="10.0" style="-fx-background-color: white;">
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/iconfinder_Refresh_49254.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="updateLeftEngineList" layoutX="807.0" layoutY="7.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="10.0" style="-fx-background-color: white;">
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/iconfinder_Refresh_49254.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="updateListOfPlaners" layoutX="360.0" layoutY="94.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="10.0" style="-fx-background-color: white;">
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/iconfinder_Refresh_49254.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="updateMainLeftWheelList" layoutX="360.0" layoutY="159.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="10.0" style="-fx-background-color: white;">
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/iconfinder_Refresh_49254.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Line endX="446.0" layoutX="404.0" layoutY="132.0" startX="-404.0" />
    </children>
 </AnchorPane>

@@ -85,12 +85,17 @@
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <Button fx:id="createMainBreak" layoutX="51.0" layoutY="373.0" mnemonicParsing="false" text="Добавить тормоз">
+      <Button fx:id="createMainBreak" layoutX="51.0" layoutY="373.0" mnemonicParsing="false" text="Добавить тормоз" visible="false">
          <font>
             <Font name="Times New Roman Bold" size="17.0" />
          </font>
       </Button>
-      <Button fx:id="changeMainBreak" layoutX="533.0" layoutY="373.0" mnemonicParsing="false" text="Сохранить" visible="false">
+      <Button fx:id="changeMainBreak" layoutX="328.0" layoutY="373.0" mnemonicParsing="false" text="Сохранить" visible="false">
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+      </Button>
+      <Button fx:id="createMainBreakForAircraft" layoutX="571.0" layoutY="373.0" mnemonicParsing="false" text="Добавить тормоз">
          <font>
             <Font name="Times New Roman Bold" size="17.0" />
          </font>

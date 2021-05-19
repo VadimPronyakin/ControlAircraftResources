@@ -31,6 +31,9 @@ public class CreateFrontBreakDialogController {
     @FXML
     private Button changeFrontBreak;
 
+    @FXML
+    private Button createFrontBreakForAircraft;
+
     @Setter
     private ListFrontBreakTabController listFrontBreakTabController;
 
@@ -38,8 +41,14 @@ public class CreateFrontBreakDialogController {
 
     @FXML
     void initialize() {
+       createFrontBreakForAircraft.setOnAction(e -> {
+           addFrontBreak();
+           Stage stage = (Stage) createFrontBreakForAircraft.getScene().getWindow();
+           stage.close();
+       });
         createFrontBreak.setOnAction(e -> {
             addFrontBreak();
+            listFrontBreakTabController.updateTableFrontBreak();
             Stage stage = (Stage) createFrontBreak.getScene().getWindow();
             stage.close();
         });
@@ -67,7 +76,7 @@ public class CreateFrontBreakDialogController {
                 .build();
         SaveData.frontBreaksList.add(frontBreak);
         WriteFile.serialization(SaveData.frontBreaksList, FrontBreak.class);
-        listFrontBreakTabController.updateTableFrontBreak();
+
     }
 
 //    public FrontBreak returnFrontBreak(String number) {
@@ -98,12 +107,15 @@ public class CreateFrontBreakDialogController {
         if (string.equals("Добавить тормоз")) {
             createFrontBreak.setVisible(true);
             changeFrontBreak.setVisible(false);
+            createFrontBreakForAircraft.setVisible(false);
         } else if (string.equals("Изменить запись")) {
             changeFrontBreak.setVisible(true);
             createFrontBreak.setVisible(false);
+            createFrontBreakForAircraft.setVisible(false);
         } else if (string.equals("Двойное нажатие")) {
             createFrontBreak.setVisible(false);
             changeFrontBreak.setVisible(false);
+            createFrontBreakForAircraft.setVisible(false);
        }
 
     }

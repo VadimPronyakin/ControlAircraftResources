@@ -29,6 +29,9 @@ public class CreateMainWheelDialogController {
     @FXML
     private Button changeMainWheel;
 
+    @FXML
+    private Button createMainWheelForAircraft;
+
     @Setter
     private ListMainWheelsTabController listMainWheelsTabController;
 
@@ -36,8 +39,14 @@ public class CreateMainWheelDialogController {
 
     @FXML
     void initialize() {
+        createMainWheelForAircraft.setOnAction(e -> {
+            addMainWheel();
+            Stage stage = (Stage) createMainWheelForAircraft.getScene().getWindow();
+            stage.close();
+        });
         createMainWheel.setOnAction(e -> {
             addMainWheel();
+            listMainWheelsTabController.updateTableMainWheels();
             Stage stage = (Stage) createMainWheel.getScene().getWindow();
             stage.close();
         });
@@ -63,17 +72,17 @@ public class CreateMainWheelDialogController {
                 .build();
         SaveData.mainWheelsList.add(mainWheel);
         WriteFile.serialization(SaveData.mainWheelsList, MainWheel.class);
-        listMainWheelsTabController.updateTableMainWheels();
+
     }
 
-    public MainWheel returnMainWheel(String number) {
-        for (MainWheel e : SaveData.mainWheelsList) {
-            if (e.getSerialNumber().equals(number)) {
-                return e;
-            }
-        }
-        return null;
-    }
+//    public MainWheel returnMainWheel(String number) {
+//        for (MainWheel e : SaveData.mainWheelsList) {
+//            if (e.getSerialNumber().equals(number)) {
+//                return e;
+//            }
+//        }
+//        return null;
+//    }
 
     public void changeMainWheel() {
         if (StringUtils.isNotBlank(numberMainWheel.getCharacters())
@@ -92,12 +101,15 @@ public class CreateMainWheelDialogController {
         if (string.equals("Добавить колесо")) {
             createMainWheel.setVisible(true);
             changeMainWheel.setVisible(false);
+            createMainWheelForAircraft.setVisible(false);
         } else if (string.equals("Изменить запись")) {
             changeMainWheel.setVisible(true);
             createMainWheel.setVisible(false);
+            createMainWheelForAircraft.setVisible(false);
         } else if (string.equals("Двойное нажатие")) {
             createMainWheel.setVisible(false);
             changeMainWheel.setVisible(false);
+            createMainWheelForAircraft.setVisible(false);
         }
     }
 }

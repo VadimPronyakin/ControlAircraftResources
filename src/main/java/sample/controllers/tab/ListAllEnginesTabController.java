@@ -8,8 +8,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import lombok.Setter;
 import sample.Main;
 import sample.constants.TextConstants;
+import sample.controllers.dialog.CreateAircraftDialogController;
 import sample.controllers.dialog.CreateEngineDialogController;
 import sample.data.SaveData;
 import sample.data.components.Engine;
@@ -46,8 +48,6 @@ public class ListAllEnginesTabController {
 
     @FXML
     private Button makeWorksEngine;
-
-
 
     @FXML
     void initialize() {
@@ -153,7 +153,6 @@ public class ListAllEnginesTabController {
     public void updateTableEngines() {
         UpdateList.updateList(SaveData.enginesList, tableEngine, Engine.class, TextConstants.ENGINE_TEXT);
     }
-
 }
 
 

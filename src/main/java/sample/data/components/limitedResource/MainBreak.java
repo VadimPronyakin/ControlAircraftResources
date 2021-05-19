@@ -10,8 +10,6 @@ import lombok.*;
 public class MainBreak {
     //Общее кол-во посадок с начала эксплуатации
     private int totalLandings;
-    //Кол-во посадок за летную смену
-    //private int landingsForFlights;
     //Остаток посадок  до назначенного ресурса (750пос)
     private int resource_Reserve_Replacement_Break;
     //Остаток посадок до назначенного ресурса вращающихся дисков (175пос)
@@ -25,10 +23,8 @@ public class MainBreak {
     //Сериынй номер основного тормоза
     private String serialNumber;
     //Номер самолета, на который установлен тормоз
-    private int aircraftNumberInstalled;
+    private String aircraftNumberInstalled;
 
     @Override
-    public String toString() {
-        return serialNumber + aircraftNumberInstalled;
-    }
+    public String toString() { return serialNumber; }
 }

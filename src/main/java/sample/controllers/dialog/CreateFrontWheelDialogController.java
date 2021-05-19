@@ -29,6 +29,9 @@ public class CreateFrontWheelDialogController {
     @FXML
     private Button changeFrontWheel;
 
+    @FXML
+    private Button createFrontWheelForAircraft;
+
     @Setter
     private ListFrontWheelTabController listFrontWheelTabController;
 
@@ -36,8 +39,14 @@ public class CreateFrontWheelDialogController {
 
     @FXML
     void initialize() {
+       createFrontWheelForAircraft.setOnAction(e -> {
+           addFrontWheel();
+           Stage stage = (Stage) createFrontWheelForAircraft.getScene().getWindow();
+           stage.close();
+       });
         createFrontWheel.setOnAction(e -> {
             addFrontWheel();
+            listFrontWheelTabController.updateTableFrontWheels();
             Stage stage = (Stage) createFrontWheel.getScene().getWindow();
             stage.close();
         });
@@ -63,7 +72,7 @@ public class CreateFrontWheelDialogController {
                 .build();
         SaveData.frontWheelsList.add(frontWheel);
         WriteFile.serialization(SaveData.frontWheelsList, FrontWheel.class);
-        listFrontWheelTabController.updateTableFrontWheels();
+
     }
 
 //    public FrontWheel returnFrontWheel(String number) {
@@ -92,12 +101,15 @@ public class CreateFrontWheelDialogController {
         if (string.equals("Добавить колесо")) {
             createFrontWheel.setVisible(true);
             changeFrontWheel.setVisible(false);
+            createFrontWheelForAircraft.setVisible(false);
         } else if (string.equals("Изменить запись")) {
             changeFrontWheel.setVisible(true);
             createFrontWheel.setVisible(false);
+            createFrontWheelForAircraft.setVisible(false);
         } else if (string.equals("Двойное нажатие")) {
             createFrontWheel.setVisible(false);
             changeFrontWheel.setVisible(false);
+            createFrontWheelForAircraft.setVisible(false);
         }
     }
 }

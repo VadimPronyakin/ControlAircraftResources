@@ -1,8 +1,5 @@
 package sample.controllers.dialog;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -22,8 +19,13 @@ import sample.data.components.Engine;
 import sample.data.components.Ksa;
 import sample.data.components.Planer;
 import sample.data.components.limitedResource.*;
-import sample.openNewScene.OpenNewScene;
 import sample.write.WriteFile;
+
+import javax.swing.text.html.ImageView;
+import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
 
 public class CreateAircraftDialogController {
     @FXML
@@ -111,9 +113,6 @@ public class CreateAircraftDialogController {
     private Button createAircraft;
 
     @FXML
-    private Button aircraftInformation;
-
-    @FXML
     private ChoiceBox<CylinderOfRetractionExtension> frontCylinderList;
 
     @FXML
@@ -134,11 +133,72 @@ public class CreateAircraftDialogController {
     @FXML
     private Button createPlaner;
 
+    @FXML
+    private Button updateMainLeftCylinderList;
+
+    @FXML
+    private Button updateFrontLeftBreakList;
+
+    @FXML
+    private Button updateMainRightBreakList;
+
+    @FXML
+    private Button updateFrontLeftWheelList;
+
+    @FXML
+    private Button updateFrontCylinderList;
+
+    @FXML
+    private Button updateMainRightCylinderList;
+
+    @FXML
+    private Button updateFrontRightBreakList;
+
+    @FXML
+    private Button updateMainLeftBreakList;
+
+    @FXML
+    private Button updateFrontRightWheelList;
+
+    @FXML
+    private Button updateMainRightWheelList;
+
+    @FXML
+    private Button updateKsaList;
+
+    @FXML
+    private Button updateRightEngineList;
+
+    @FXML
+    private Button updateLeftEngineList;
+
+    @FXML
+    private Button updateListOfPlaners;
+
+    @FXML
+    private Button updateMainLeftWheelList;
+
+
     @Setter
     private ListOfAircraftController listOfAircraftController;
 
     @FXML
     void initialize() {
+        updateLeftEngineList.setOnAction(e -> updateChoiceBoxes(1));
+        updateRightEngineList.setOnAction(e -> updateChoiceBoxes(2));
+        updateKsaList.setOnAction(e -> updateChoiceBoxes(3));
+        updateMainLeftWheelList.setOnAction(e -> updateChoiceBoxes(4));
+        updateMainRightWheelList.setOnAction(e -> updateChoiceBoxes(5));
+        updateFrontLeftWheelList.setOnAction(e -> updateChoiceBoxes(6));
+        updateFrontRightWheelList.setOnAction(e -> updateChoiceBoxes(7));
+        updateMainLeftBreakList.setOnAction(e -> updateChoiceBoxes(8));
+        updateMainRightBreakList.setOnAction(e -> updateChoiceBoxes(9));
+        updateFrontLeftBreakList.setOnAction(e -> updateChoiceBoxes(10));
+        updateFrontRightBreakList.setOnAction(e -> updateChoiceBoxes(11));
+        updateMainLeftCylinderList.setOnAction(e -> updateChoiceBoxes(12));
+        updateMainRightCylinderList.setOnAction(e -> updateChoiceBoxes(13));
+        updateFrontCylinderList.setOnAction(e -> updateChoiceBoxes(14));
+
         listOfEngineers.getItems().addAll(SaveData.engineersList);
         leftEngineList.getItems().addAll(SaveData.enginesList);
         rightEngineList.getItems().addAll(SaveData.enginesList);
@@ -201,6 +261,7 @@ public class CreateAircraftDialogController {
         WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
         listOfAircraftController.updateTableAircraft();
     }
+
     public void showDialog(String url) {
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource(url));
@@ -212,6 +273,71 @@ public class CreateAircraftDialogController {
             dialogStage.show();
         } catch (IOException exception) {
             exception.printStackTrace();
+        }
+    }
+    public void updateChoiceBoxes(int id) {
+        ChoiceBox box = null;
+        List list = null;
+        switch (id) {
+            case 1:
+               box = leftEngineList;
+               list = SaveData.enginesList;
+                break;
+            case 2:
+                box = rightEngineList;
+                list = SaveData.enginesList;
+                break;
+            case 3:
+                box = ksaList;
+                list = SaveData.ksaList;
+                break;
+            case 4:
+                box = mainLeftWheelList;
+                list = SaveData.mainWheelsList;
+                break;
+            case 5:
+                box = mainRightWheelList;
+                list = SaveData.mainWheelsList;
+                break;
+            case 6:
+                box = frontLeftWheelList;
+                list = SaveData.frontWheelsList;
+                break;
+            case 7:
+                box = frontRightWheelList;
+                list = SaveData.frontWheelsList;
+                break;
+            case 8:
+                box = mainLeftBreakList;
+                list = SaveData.mainBreaksList;
+                break;
+            case 9:
+                box = mainRightBreakList;
+                list = SaveData.mainBreaksList;
+                break;
+            case 10:
+                box = frontLeftBreakList;
+                list = SaveData.frontBreaksList;
+                break;
+            case 11:
+                box = frontRightBreakList;
+                list = SaveData.frontBreaksList;
+                break;
+            case 12:
+                box = mainLeftCylinderList;
+                list = SaveData.cylindersList;
+                break;
+            case 13:
+                box = mainRightCylinderList;
+                list = SaveData.cylindersList;
+                break;
+            case 14:
+                box = frontCylinderList;
+                list = SaveData.cylindersList;
+        }
+        box.getItems().clear();
+        for (int i = 0; i < list.size(); i++) {
+            box.getItems().addAll(list.get(i));
         }
     }
 }

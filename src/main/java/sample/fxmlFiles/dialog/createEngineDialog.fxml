@@ -155,12 +155,17 @@
             <Font name="Times New Roman Bold" size="15.0" />
          </font>
       </Text>
-      <Button fx:id="createEngine" layoutX="51.0" layoutY="373.0" mnemonicParsing="false" text="Добавить двигатель">
+      <Button fx:id="createEngine" layoutX="51.0" layoutY="373.0" mnemonicParsing="false" text="Добавить двигатель" visible="false">
          <font>
             <Font name="Times New Roman Bold" size="17.0" />
          </font>
       </Button>
       <Button fx:id="changeEngine" layoutX="399.0" layoutY="373.0" mnemonicParsing="false" text="Сохранить" visible="false">
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+      </Button>
+      <Button fx:id="createEngineForAircraft" layoutX="600.0" layoutY="373.0" mnemonicParsing="false" text="Добавить двигатель">
          <font>
             <Font name="Times New Roman Bold" size="17.0" />
          </font>

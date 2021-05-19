@@ -41,6 +41,9 @@ public class CreateMainBreakDialogController {
     @FXML
     private Button changeMainBreak;
 
+    @FXML
+    private Button createMainBreakForAircraft;
+
     @Setter
     private ListMainBreaksTabController listMainBreaksTabController;
 
@@ -48,8 +51,14 @@ public class CreateMainBreakDialogController {
 
     @FXML
     void initialize() {
+        createMainBreakForAircraft.setOnAction(e -> {
+            addMainBreak();
+            Stage stage = (Stage) createMainBreakForAircraft.getScene().getWindow();
+            stage.close();
+        });
         createMainBreak.setOnAction(e -> {
             addMainBreak();
+            listMainBreaksTabController.updateTableMainBreaks();
             Stage stage = (Stage) createMainBreak.getScene().getWindow();
             stage.close();
         });
@@ -82,7 +91,7 @@ public class CreateMainBreakDialogController {
                 .build();
         SaveData.mainBreaksList.add(mainBreak);
         WriteFile.serialization(SaveData.mainBreaksList, MainBreak.class);
-        listMainBreaksTabController.updateTableMainBreaks();
+
     }
 
 //    public MainBreak returnMainBreak(String number) {
@@ -118,12 +127,15 @@ public class CreateMainBreakDialogController {
         if(string.equals("Добавить тормоз")){
             createMainBreak.setVisible(true);
             changeMainBreak.setVisible(false);
+            createMainBreakForAircraft.setVisible(false);
         } else if(string.equals("Изменить запись")) {
             changeMainBreak.setVisible(true);
             createMainBreak.setVisible(false);
+            createMainBreakForAircraft.setVisible(false);
         } else if (string.equals("Двойное нажатие")) {
             createMainBreak.setVisible(false);
             changeMainBreak.setVisible(false);
+            createMainBreakForAircraft.setVisible(false);
         }
     }
 }

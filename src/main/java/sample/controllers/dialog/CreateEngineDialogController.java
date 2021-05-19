@@ -78,17 +78,24 @@ public class CreateEngineDialogController {
     @FXML
     private Button changeEngine;
 
+    @FXML
+    private Button createEngineForAircraft;
+
     @Setter
     private ListAllEnginesTabController listAllEnginesTabController;
 
     private Engine engine;
 
-
     @FXML
     void initialize() {
-
+        createEngineForAircraft.setOnAction(e -> {
+           addEngine();
+            Stage stage = (Stage) createEngineForAircraft.getScene().getWindow();
+            stage.close();
+        });
         createEngine.setOnAction(e -> {
             addEngine();
+            listAllEnginesTabController.updateTableEngines();
             Stage stage = (Stage) createEngine.getScene().getWindow();
             stage.close();
         });
@@ -103,12 +110,15 @@ public class CreateEngineDialogController {
         if (string.equals("Добавить двигатель")) {
             createEngine.setVisible(true);
             changeEngine.setVisible(false);
+            createEngineForAircraft.setVisible(false);
         } else if (string.equals("Изменить запись")) {
             changeEngine.setVisible(true);
             createEngine.setVisible(false);
+            createEngineForAircraft.setVisible(false);
         } else if (string.equals("Двойное нажатие")) {
             createEngine.setVisible(false);
             changeEngine.setVisible(false);
+            createEngineForAircraft.setVisible(false);
         }
     }
 
@@ -138,10 +148,10 @@ public class CreateEngineDialogController {
     @FXML
     private void addEngine() {
         Engine engine = Engine.builder()
-                .totalOperatingTime((parseInt(totalOperatingEngineHours.getText()) * 60) +
+                .totalOperatingTime((Integer.parseInt(totalOperatingEngineHours.getText()) * 60) +
                         parseInt(totalOperatingEngineMinutes.getText()))
-                .totalStartingEngineCount(parseInt(totalStartingEngine.getText()))
-                .resourceReserveBefore_10hours((parseInt(before_10hoursEngineHours.getText()) * 60) +
+                .totalStartingEngineCount(Integer.parseInt(totalStartingEngine.getText()))
+                .resourceReserveBefore_10hours((Integer.parseInt(before_10hoursEngineHours.getText()) * 60) +
                         parseInt(before_10hoursEngineMinutes.getText()))
                 .resourceReserveBefore_25hours((parseInt(before_25hoursEngineHours.getText()) * 60) +
                         parseInt(before_25hoursEngineMinutes.getText()))
@@ -159,7 +169,6 @@ public class CreateEngineDialogController {
                 .build();
         SaveData.enginesList.add(engine);
         WriteFile.serialization(SaveData.enginesList, Engine.class);
-        listAllEnginesTabController.updateTableEngines();
     }
 
     public void changeEngine() {
@@ -202,6 +211,7 @@ public class CreateEngineDialogController {
         }
         WriteFile.serialization(SaveData.enginesList, Engine.class);
         listAllEnginesTabController.updateTableEngines();
+
     }
 }
 

@@ -58,6 +58,9 @@ public class CreateKsaDialogController {
     @FXML
     private Button changeKsa;
 
+    @FXML
+    private Button createKsaForAircraft;
+
     @Setter
     private ListAllKsaTabController listAllKsaTabController;
 
@@ -65,8 +68,14 @@ public class CreateKsaDialogController {
 
     @FXML
     void initialize() {
+        createKsaForAircraft.setOnAction(e -> {
+            addKsa();
+            Stage stage = (Stage) createKsaForAircraft.getScene().getWindow();
+            stage.close();
+        });
         createKsa.setOnAction(e -> {
             addKsa();
+            listAllKsaTabController.updateTableKsa();
             Stage stage = (Stage) createKsa.getScene().getWindow();
             stage.close();
         });
@@ -105,7 +114,7 @@ public class CreateKsaDialogController {
                 .build();
         SaveData.ksaList.add(ksa);
         WriteFile.serialization(SaveData.ksaList, Ksa.class);
-        listAllKsaTabController.updateTableKsa();
+
     }
 //    public Ksa returnKsa(String number) {
 //        for (Ksa e : SaveData.ksaList) {
@@ -141,12 +150,16 @@ public class CreateKsaDialogController {
         if(string.equals("Добавить КСА")){
             createKsa.setVisible(true);
             changeKsa.setVisible(false);
+            createKsaForAircraft.setVisible(false);
         }else if(string.equals("Изменить запись")) {
             changeKsa.setVisible(true);
             createKsa.setVisible(false);
+            createKsaForAircraft.setVisible(false);
         } else if (string.equals("Двойное нажатие")){
             createKsa.setVisible(false);
-            changeKsa.setVisible(false);        }
+            changeKsa.setVisible(false);
+            createKsaForAircraft.setVisible(false);
+        }
     }
 }
 

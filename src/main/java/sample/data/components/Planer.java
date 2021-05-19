@@ -16,7 +16,10 @@ public class Planer {
     private int resource_Reserve_Before_100hours;
     //Остаток ресурса до 200-та часовых работ
     private int resource_Reserve_Before_200hours;
+    //Бортовой номер
+    private String sideNumber;
     // !(ДОБАВИТЬ ПОЛЕ) - Остаток дней до работ (30+6 дней стоянки с крайнего полета)
     // !(ДОБАВИТЬ ПОЛЕ) - Остаток дней до работ (6+1 месяцев эксплуатации)
+    // !(ДОБАВИТЬ ПОЛЕ) - Дата крайнего полета;
 
 }

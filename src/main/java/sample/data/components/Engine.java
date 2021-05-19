@@ -10,14 +10,8 @@ import lombok.*;
 public class Engine {
     //Общаая наработка двигателя c начала эксплуатации
     private int totalOperatingTime;
-    //Наработка двигателя за летную смену
-   // private int operatingTime;
     //Общее кол-во запусков двигателя с начала эксплуатации
     private int totalStartingEngineCount;
-    //Кол-во запусков двигателя за летную смену
-   // private int startingEngineCount;
-    //Кол-во запусков до очередного ремонта
-    //private int engineStartsBeforeRepair;
     //Остаток ресурса до 10-ти часовых работ (10+2ч)
     private int resourceReserveBefore_10hours;
     //Остаток ресурса до 25-ти часовых работ (25+5ч)
@@ -35,10 +29,8 @@ public class Engine {
     //Серийный номер двигателя
     private String serialNumberEngine;
     //Номер самолета,на котором установлен двигатель
-    private int aircraftNumberInstalled;
+    private String aircraftNumberInstalled;
 
     @Override
-    public String toString() {
-        return serialNumberEngine + aircraftNumberInstalled;
-    }
+    public String toString() { return serialNumberEngine; }
 }

@@ -10,8 +10,6 @@ import lombok.*;
 public class CylinderOfRetractionExtension {
     //Общее кол-во посадок с начала эксплуатации
     private int totalLandings;
-    //Кол-во посадок за летную смену
-    //private int landings_For_Flights;
     //Остаток посадок до первого ремонта (1500пос)
     private int resource_Reserve_Before_First_Repair;
     //Остаток посадок до 2-го ремонта (800пос)
@@ -21,10 +19,8 @@ public class CylinderOfRetractionExtension {
     //Серийный номер цилиндра подкоса
     private String serialNumber;
     //Номер самолета,на котором установлен цилиндр подкоса
-    private int aircraftNumberInstalled;
+    private String aircraftNumberInstalled;
 
     @Override
-    public String toString() {
-        return serialNumber;
-    }
+    public String toString() { return serialNumber; }
 }

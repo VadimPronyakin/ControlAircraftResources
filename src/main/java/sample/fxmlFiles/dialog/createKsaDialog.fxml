@@ -98,12 +98,17 @@
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <Button fx:id="createKsa" layoutX="51.0" layoutY="373.0" mnemonicParsing="false" text="Добавить КСА">
+      <Button fx:id="createKsa" layoutX="51.0" layoutY="373.0" mnemonicParsing="false" text="Добавить КСА" visible="false">
          <font>
             <Font name="Times New Roman Bold" size="17.0" />
          </font>
       </Button>
-      <Button fx:id="changeKsa" layoutX="492.0" layoutY="373.0" mnemonicParsing="false" text="Сохранить" visible="false">
+      <Button fx:id="changeKsa" layoutX="357.0" layoutY="373.0" mnemonicParsing="false" text="Сохранить" visible="false">
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+      </Button>
+      <Button fx:id="createKsaForAircraft" layoutX="624.0" layoutY="373.0" mnemonicParsing="false" text="Добавить КСА">
          <font>
             <Font name="Times New Roman Bold" size="17.0" />
          </font>
