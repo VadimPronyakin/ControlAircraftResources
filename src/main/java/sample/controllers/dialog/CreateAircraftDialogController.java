@@ -234,6 +234,7 @@ public class CreateAircraftDialogController {
         addFrontRightWheelList.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createFrontWheelDialog.fxml"));
         addMainLeftWheelList.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createMainWheelDialog.fxml"));
         addMainRightWheelList.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createMainWheelDialog.fxml"));
+        createPlaner.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createPlanerDialog.fxml"));
     }
 
     private void addAircraft() {

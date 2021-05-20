@@ -15,6 +15,7 @@ import sample.write.WriteFile;
 
 
 import static java.lang.Integer.parseInt;
+import static sample.utils.Utils.checkInput;
 
 public class CreateEngineDialogController {
 
@@ -171,24 +172,16 @@ public class CreateEngineDialogController {
         WriteFile.serialization(SaveData.enginesList, Engine.class);
     }
 
+
     public void changeEngine() {
-        if (StringUtils.isNotBlank(before_10hoursEngineHours.getCharacters())
-                && StringUtils.isNotBlank(before_10hoursEngineMinutes.getCharacters())
-                && StringUtils.isNotBlank(before_25hoursEngineHours.getCharacters())
-                && StringUtils.isNotBlank(before_25hoursEngineMinutes.getCharacters())
-                && StringUtils.isNotBlank(before_50hoursEngineHours.getCharacters())
-                && StringUtils.isNotBlank(before_50hoursEngineMinutes.getCharacters())
-                && StringUtils.isNotBlank(before_100hoursEngineHours.getCharacters())
-                && StringUtils.isNotBlank(before_100hoursEngineMinutes.getCharacters())
-                && StringUtils.isNotBlank(before_150hoursEngineHours.getCharacters())
-                && StringUtils.isNotBlank(before_150hoursEngineMinutes.getCharacters())
-                && StringUtils.isNotBlank(before_278bulletinEngineHours.getCharacters())
-                && StringUtils.isNotBlank(before_278bulletinEngineMinutes.getCharacters())
-                && StringUtils.isNotBlank(oilChangeEngineHours.getCharacters())
-                && StringUtils.isNotBlank(totalOperatingEngineHours.getCharacters())
-                && StringUtils.isNotBlank(totalOperatingEngineMinutes.getCharacters())
-                && StringUtils.isNotBlank(totalStartingEngine.getCharacters())
-                && StringUtils.isNotBlank(numberEngine.getCharacters())) {
+        if(checkInput(before_10hoursEngineMinutes, before_25hoursEngineHours,
+                before_25hoursEngineMinutes, before_50hoursEngineHours,
+                before_50hoursEngineMinutes, before_100hoursEngineHours,
+                before_100hoursEngineMinutes, before_150hoursEngineHours,
+                before_150hoursEngineMinutes, before_278bulletinEngineHours,
+                before_278bulletinEngineMinutes, oilChangeEngineHours,
+                totalOperatingEngineHours, totalOperatingEngineMinutes,
+                totalStartingEngine, numberEngine)) {
             engine.setResourceReserveBefore_10hours((parseInt(before_10hoursEngineHours.getText()) * 60) +
                     parseInt(before_10hoursEngineMinutes.getText()));
             engine.setResourceReserveBefore_25hours((parseInt(before_25hoursEngineHours.getText()) * 60) +
