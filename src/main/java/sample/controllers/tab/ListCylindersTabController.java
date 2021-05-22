@@ -120,7 +120,6 @@ public class ListCylindersTabController {
     public void updateTableCylinders() {
         UpdateList.updateList(SaveData.cylindersList,
                 tableCylinders,
-                CylinderOfRetractionExtension.class,
                 TextConstants.CYLINDER_TEXT);
     }
 }

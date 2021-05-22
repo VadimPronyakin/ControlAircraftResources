@@ -89,7 +89,6 @@ public class ListFrontWheelTabController {
     public void updateTableFrontWheels() {
         UpdateList.updateList(SaveData.frontWheelsList,
                 tableFrontWheels,
-                FrontWheel.class,
                 TextConstants.FRONT_WHEEL_TEXT);
     }
 }

@@ -45,7 +45,7 @@ public class ListOfEngineersController {
 
     @FXML
     void initialize() {
-        UpdateList.updateList(SaveData.engineersList, tableView, Engineer.class, TextConstants.ENGINEER_TEXT);
+        UpdateList.updateList(SaveData.engineersList, tableView, TextConstants.ENGINEER_TEXT);
 
         columnRank.setCellValueFactory(new PropertyValueFactory<>("rank"));
         columnFullName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
@@ -71,7 +71,7 @@ public class ListOfEngineersController {
         tableView.getSelectionModel().getSelectedItem().setRank(listOfRanks.getSelectionModel().getSelectedItem());
         }
         WriteFile.serialization(SaveData.engineersList, Engineer.class);
-        UpdateList.updateList(SaveData.engineersList, tableView, Engineer.class, TextConstants.ENGINEER_TEXT);
+        UpdateList.updateList(SaveData.engineersList, tableView, TextConstants.ENGINEER_TEXT);
     }
 }
 

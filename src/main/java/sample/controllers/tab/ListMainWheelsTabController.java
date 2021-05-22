@@ -89,7 +89,6 @@ public class ListMainWheelsTabController {
     public void updateTableMainWheels() {
         UpdateList.updateList(SaveData.mainWheelsList,
                 tableMainWheels,
-                MainWheel.class,
                 TextConstants.MAIN_WHEEL_TEXT);
     }
 }

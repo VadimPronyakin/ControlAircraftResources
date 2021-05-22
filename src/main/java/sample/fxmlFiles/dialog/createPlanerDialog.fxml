@@ -49,27 +49,27 @@
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <TextField fx:id="sideNumber" layoutX="436.0" layoutY="33.0" prefWidth="75.0" />
-      <TextField fx:id="total_Landing_Count_Planer" layoutX="436.0" layoutY="65.0" prefWidth="75.0" AnchorPane.topAnchor="65.0" />
-      <TextField fx:id="before_30Days_Parking_Planer" layoutX="436.0" layoutY="131.0" prefWidth="75.0" AnchorPane.topAnchor="131.0" />
-      <TextField fx:id="before_6months_Operating_Planer_Months" layoutX="436.0" layoutY="194.0" prefWidth="75.0" AnchorPane.topAnchor="194.0" />
-      <TextField fx:id="total_Operating_Planer_Hours" layoutX="436.0" layoutY="226.0" prefWidth="75.0" AnchorPane.topAnchor="226.0" />
-      <TextField fx:id="before_100hours_Planer_Hours" layoutX="436.0" layoutY="258.0" prefWidth="75.0" AnchorPane.topAnchor="258.0" />
-      <TextField fx:id="before_200hours_Planer_Hours" layoutX="436.0" layoutY="290.0" prefWidth="75.0" AnchorPane.topAnchor="290.0" />
-      <TextField fx:id="before_100hours_Planer_Minutes" layoutX="550.0" layoutY="258.0" prefWidth="75.0" AnchorPane.topAnchor="258.0" />
-      <TextField fx:id="before_200hours_Planer_Minutes" layoutX="550.0" layoutY="289.0" prefWidth="75.0" AnchorPane.topAnchor="289.0" />
-      <TextField fx:id="total_Operating_Planer_Minutes" layoutX="549.0" layoutY="226.0" prefWidth="75.0" AnchorPane.topAnchor="226.0" />
-      <Text layoutX="520.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ч.">
+      <TextField fx:id="sideNumber" layoutX="436.0" layoutY="33.0" prefHeight="25.0" prefWidth="82.0" />
+      <TextField fx:id="total_Landing_Count_Planer" layoutX="436.0" layoutY="65.0" prefHeight="25.0" prefWidth="82.0" AnchorPane.topAnchor="65.0" />
+      <TextField fx:id="before_30Days_Parking_Planer" layoutX="436.0" layoutY="131.0" prefHeight="25.0" prefWidth="82.0" AnchorPane.topAnchor="131.0" />
+      <TextField fx:id="before_6months_Operating_Planer_Months" layoutX="436.0" layoutY="194.0" prefHeight="25.0" prefWidth="82.0" AnchorPane.topAnchor="194.0" />
+      <TextField fx:id="total_Operating_Planer_Hours" layoutX="436.0" layoutY="226.0" prefHeight="25.0" prefWidth="82.0" AnchorPane.topAnchor="226.0" />
+      <TextField fx:id="before_100hours_Planer_Hours" layoutX="436.0" layoutY="258.0" prefHeight="25.0" prefWidth="82.0" AnchorPane.topAnchor="258.0" />
+      <TextField fx:id="before_200hours_Planer_Hours" layoutX="436.0" layoutY="290.0" prefHeight="25.0" prefWidth="82.0" AnchorPane.topAnchor="290.0" />
+      <TextField fx:id="before_100hours_Planer_Minutes" layoutX="552.0" layoutY="258.0" prefWidth="75.0" AnchorPane.topAnchor="258.0" />
+      <TextField fx:id="before_200hours_Planer_Minutes" layoutX="552.0" layoutY="289.0" prefWidth="75.0" AnchorPane.topAnchor="289.0" />
+      <TextField fx:id="total_Operating_Planer_Minutes" layoutX="551.0" layoutY="226.0" prefWidth="75.0" AnchorPane.topAnchor="226.0" />
+      <Text layoutX="522.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ч.">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <Text layoutX="520.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ч.">
+      <Text layoutX="522.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ч.">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <Text layoutX="520.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ч.">
+      <Text layoutX="522.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ч.">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
@@ -89,8 +89,8 @@
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <TextField fx:id="before_6months_Operating_Planer_Days" layoutX="548.0" layoutY="193.0" prefWidth="75.0" />
-      <Text layoutX="519.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="мес.">
+      <TextField fx:id="before_6months_Operating_Planer_Days" layoutX="550.0" layoutY="193.0" prefWidth="75.0" />
+      <Text layoutX="521.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="мес.">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
@@ -100,7 +100,7 @@
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <Text layoutX="517.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="дней">
+      <Text layoutX="521.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="дней">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
@@ -120,7 +120,7 @@
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <DatePicker fx:id="last_Flight_Date_Planer" layoutX="433.0" layoutY="97.0" prefHeight="25.0" prefWidth="171.0" />
-      <DatePicker fx:id="date_Work_After_6months_Operation_Planer" layoutX="435.0" layoutY="162.0" prefHeight="25.0" prefWidth="171.0" />
+      <DatePicker fx:id="last_Flight_Date_Planer" layoutX="436.0" layoutY="97.0" prefHeight="25.0" prefWidth="107.0" />
+      <DatePicker fx:id="date_Work_After_6months_Operation_Planer" layoutX="435.0" layoutY="162.0" prefHeight="25.0" prefWidth="107.0" />
    </children>
 </AnchorPane>

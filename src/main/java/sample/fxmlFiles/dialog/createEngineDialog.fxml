@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -155,20 +156,66 @@
             <Font name="Times New Roman Bold" size="15.0" />
          </font>
       </Text>
-      <Button fx:id="createEngine" layoutX="51.0" layoutY="373.0" mnemonicParsing="false" text="Добавить двигатель" visible="false">
+      <Button fx:id="createEngine" layoutX="51.0" layoutY="373.0" mnemonicParsing="false" style="-fx-background-color: #3fc707;" text="Добавить двигатель" visible="false">
          <font>
             <Font name="Times New Roman Bold" size="17.0" />
          </font>
       </Button>
-      <Button fx:id="changeEngine" layoutX="399.0" layoutY="373.0" mnemonicParsing="false" text="Сохранить" visible="false">
+      <Button fx:id="changeEngine" layoutX="399.0" layoutY="373.0" mnemonicParsing="false" style="-fx-background-color: #00FFFF;" text="Сохранить" visible="false">
          <font>
             <Font name="Times New Roman Bold" size="17.0" />
          </font>
       </Button>
-      <Button fx:id="createEngineForAircraft" layoutX="600.0" layoutY="373.0" mnemonicParsing="false" text="Добавить двигатель">
+      <Button fx:id="createEngineForAircraft" layoutX="600.0" layoutY="373.0" mnemonicParsing="false" style="-fx-background-color: #3fc707;" text="Добавить двигатель">
          <font>
             <Font name="Times New Roman Bold" size="17.0" />
          </font>
       </Button>
+      <ComboBox fx:id="listOfWorksEngine" layoutX="614.0" layoutY="26.0" prefHeight="25.0" prefWidth="150.0" visible="false" />
+      <Text fx:id="selectionWorks" layoutX="625.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Выберите вид работ" visible="false">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Button fx:id="makeWorksEngine" layoutX="615.0" layoutY="56.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="148.0" style="-fx-background-color: #3fc707;" text="Выполнить работы" visible="false">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Button>
+      <Text fx:id="alarm10Hours" fill="#dd0707" layoutX="597.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ВОЗЬМИ НА КОНТРОЛЬ!!!" visible="false">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text fx:id="alarm25Hours" fill="#dd0707" layoutX="597.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ВОЗЬМИ НА КОНТРОЛЬ!!!" visible="false">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text fx:id="alarm278Bulletin" fill="#dd0707" layoutX="597.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ВОЗЬМИ НА КОНТРОЛЬ!!!" visible="false">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text fx:id="alarm50Hours" fill="#dd0707" layoutX="597.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ВОЗЬМИ НА КОНТРОЛЬ!!!" visible="false">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text fx:id="alarm100Hours" fill="#dd0707" layoutX="597.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ВОЗЬМИ НА КОНТРОЛЬ!!!" visible="false">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text fx:id="alarm150Hours" fill="#dd0707" layoutX="597.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ВОЗЬМИ НА КОНТРОЛЬ!!!" visible="false">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text fx:id="alarmOilChange" fill="#dd0707" layoutX="597.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ВОЗЬМИ НА КОНТРОЛЬ!!!" visible="false">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

@@ -11,7 +11,9 @@ import javafx.stage.Stage;
 import sample.Main;
 import sample.constants.TextConstants;
 import sample.controllers.dialog.CreateKsaDialogController;
+import sample.data.Aircraft;
 import sample.data.SaveData;
+import sample.data.components.Engine;
 import sample.data.components.Ksa;
 import sample.data.enums.TypesOfWorks;
 import sample.delete.DeleteObject;
@@ -75,27 +77,27 @@ public class ListAllKsaTabController {
             return row;
         });
         deleteKsa.setOnAction(e -> DeleteObject.delete(SaveData.ksaList, tableKsa, Ksa.class));
-        makeWorksKsa.setOnAction(e -> doWorkKsa());
+//        makeWorksKsa.setOnAction(e -> doWorkKsa());
     }
 
-    void doWorkKsa() {
-        Ksa ksa = tableKsa.getSelectionModel().getSelectedItem();
-        try {
-            switch (listOfWorksKsa.getSelectionModel().getSelectedItem()) {
-
-                case WORKS_AFTER_25_HOURS:
-                    ksa.setResource_Reserve_Before_25hours(listOfWorksKsa.getSelectionModel().getSelectedItem().getResource());
-                    WriteFile.serialization(SaveData.ksaList, Ksa.class);
-                    break;
-                case OIL_CHANGE_OPERATIONS:
-                    ksa.setOilChange(listOfWorksKsa.getSelectionModel().getSelectedItem().getResource());
-                    WriteFile.serialization(SaveData.ksaList, Ksa.class);
-                    break;
-            }
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
-    }
+//    void doWorkKsa() {
+//        Ksa ksa = tableKsa.getSelectionModel().getSelectedItem();
+//        try {
+//            switch (listOfWorksKsa.getSelectionModel().getSelectedItem()) {
+//
+//                case WORKS_AFTER_25_HOURS:
+//                    ksa.setResource_Reserve_Before_25hours(listOfWorksKsa.getSelectionModel().getSelectedItem().getResource());
+//                    WriteFile.serialization(SaveData.ksaList, Ksa.class);
+//                    break;
+//                case OIL_CHANGE_OPERATIONS:
+//                    ksa.setOilChange(listOfWorksKsa.getSelectionModel().getSelectedItem().getResource());
+//                    WriteFile.serialization(SaveData.ksaList, Ksa.class);
+//                    break;
+//            }
+//        } catch (NullPointerException e) {
+//            e.printStackTrace();
+//        }
+//    }
     public CreateKsaDialogController showKsaDialog() {
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("/sample/fxmlFiles/dialog/createKsaDialog.fxml"));
@@ -114,9 +116,13 @@ public class ListAllKsaTabController {
     return null;
     }
     public void updateTableKsa() {
-        UpdateList.updateList(SaveData.ksaList,
-                tableKsa,
-                Ksa.class,
-                TextConstants.KSA_TEXT);
+        UpdateList.updateList(SaveData.ksaList, tableKsa, TextConstants.KSA_TEXT);
+        for (Ksa ksa : SaveData.ksaList){
+            for (Aircraft aircraft : SaveData.aircraftList){
+                if (ksa.getSerialNumberKsa().equals(aircraft.getKsa().getSerialNumberKsa())) {
+                    ksa.setAircraftNumberInstalled(aircraft.getAircraftNumber());
+                }
+            }
+        }
     }
 }

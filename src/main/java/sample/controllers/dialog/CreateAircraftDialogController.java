@@ -5,11 +5,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lombok.Setter;
+import org.apache.commons.lang3.StringUtils;
 import sample.Main;
 import sample.controllers.ListOfAircraftController;
 import sample.data.Aircraft;
@@ -239,7 +241,7 @@ public class CreateAircraftDialogController {
 
     private void addAircraft() {
         Aircraft aircraft = Aircraft.builder()
-                .aircraftNumber(Integer.parseInt(sideNumber.getText()))
+                .aircraftNumber("б/н " + sideNumber.getText())
                 .iak(listOfEngineers.getSelectionModel().getSelectedItem())
                 .ksa(ksaList.getSelectionModel().getSelectedItem())
                 .leftEngine(leftEngineList.getSelectionModel().getSelectedItem())
@@ -341,4 +343,6 @@ public class CreateAircraftDialogController {
             box.getItems().addAll(list.get(i));
         }
     }
+
+
 }

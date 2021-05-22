@@ -106,7 +106,6 @@ public class ListFrontBreakTabController {
     public void updateTableFrontBreak() {
         UpdateList.updateList(SaveData.frontBreaksList,
                 tableFrontBreaks,
-                FrontBreak.class,
                 TextConstants.FRONT_BREAK_TEXT);
     }
 }

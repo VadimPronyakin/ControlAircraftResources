@@ -131,7 +131,6 @@ public class ListMainBreaksTabController {
     public void updateTableMainBreaks() {
         UpdateList.updateList(SaveData.mainBreaksList,
                 tableMainBreaks,
-                MainBreak.class,
                 TextConstants.MAIN_BREAK_TEXT);
     }
 }

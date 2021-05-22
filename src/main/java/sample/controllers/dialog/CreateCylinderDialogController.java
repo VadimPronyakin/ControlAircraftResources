@@ -8,9 +8,12 @@ import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
 import sample.controllers.tab.ListAllEnginesTabController;
 import sample.controllers.tab.ListCylindersTabController;
+import sample.data.Aircraft;
 import sample.data.SaveData;
 import sample.data.components.limitedResource.CylinderOfRetractionExtension;
 import sample.write.WriteFile;
+
+import static sample.utils.Utils.checkInput;
 
 public class CreateCylinderDialogController {
 
@@ -58,7 +61,8 @@ public class CreateCylinderDialogController {
             stage.close();
         });
         changeCylinder.setOnAction(e -> {
-            changeCylinder();
+            updateAircraftCylinders();
+            changeCylinder(cylinder);
             Stage stage = (Stage) changeCylinder.getScene().getWindow();
             stage.close();
         });
@@ -84,12 +88,12 @@ public class CreateCylinderDialogController {
         WriteFile.serialization(SaveData.cylindersList, CylinderOfRetractionExtension.class);
 
     }
-    public void changeCylinder() {
-        if (StringUtils.isNotBlank(first_Repair_Cylinder.getCharacters())
-                && StringUtils.isNotBlank(second_Repair_Cylinder.getCharacters())
-                && StringUtils.isNotBlank(totalCylinder.getCharacters())
-                && StringUtils.isNotBlank(replacementCylinder.getCharacters())
-                && StringUtils.isNotBlank(numberCylinder.getCharacters())) {
+    public void changeCylinder(CylinderOfRetractionExtension cylinder) {
+        if (checkInput(first_Repair_Cylinder,
+                second_Repair_Cylinder,
+                totalCylinder,
+                replacementCylinder,
+                numberCylinder)) {
             cylinder.setResource_Reserve_Before_First_Repair(Integer.parseInt(first_Repair_Cylinder.getText()));
             cylinder.setResource_Reserve_Before_Second_Repair(Integer.parseInt(second_Repair_Cylinder.getText()));
             cylinder.setTotalLandings(Integer.parseInt(totalCylinder.getText()));
@@ -114,6 +118,20 @@ public class CreateCylinderDialogController {
             createCylinder.setVisible(false);
             changeCylinder.setVisible(false);
             createCylinderForAircraft.setVisible(false);
+        }
+    }
+
+    private void updateAircraftCylinders() {
+        for (Aircraft aircraft : SaveData.aircraftList) {
+            if (aircraft.getLeftMainCylinder().getSerialNumber().equals(cylinder.getSerialNumber())){
+                changeCylinder(aircraft.getLeftMainCylinder());
+                WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
+            } else if (aircraft.getRightMainCylinder().getSerialNumber().equals(cylinder.getSerialNumber())) {
+                changeCylinder(aircraft.getRightMainCylinder());
+                WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
+            } else {
+                System.out.println("Не установлено на самолет");
+            }
         }
     }
 }

@@ -2,13 +2,17 @@ package sample.controllers.dialog;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lombok.Setter;
-import org.apache.commons.lang3.StringUtils;
 import sample.controllers.tab.ListAllEnginesTabController;
+import sample.data.Aircraft;
 import sample.data.SaveData;
 import sample.data.components.Engine;
+import sample.data.enums.TypesOfWorks;
+import sample.works.MakeWorks;
 import sample.write.WriteFile;
 
 
@@ -82,13 +86,62 @@ public class CreateEngineDialogController {
     @FXML
     private Button createEngineForAircraft;
 
+    @FXML
+    private ComboBox<TypesOfWorks> listOfWorksEngine;
+
+    @FXML
+    private Text selectionWorks;
+
+    @FXML
+    private Button makeWorksEngine;
+
+    @FXML
+    private Text alarm10Hours;
+
+    @FXML
+    private Text alarm25Hours;
+
+    @FXML
+    private Text alarm278Bulletin;
+
+    @FXML
+    private Text alarm50Hours;
+
+    @FXML
+    private Text alarm100Hours;
+
+    @FXML
+    private Text alarm150Hours;
+
+    @FXML
+    private Text alarmOilChange;
+
     @Setter
     private ListAllEnginesTabController listAllEnginesTabController;
 
+    @Setter
+    private PersonalAircraftDialogController personalAircraftDialogController;
+
     private Engine engine;
+
+    MakeWorks make = new MakeWorks();
 
     @FXML
     void initialize() {
+        listOfWorksEngine.getItems().addAll(TypesOfWorks.WORKS_AFTER_10_HOURS,
+                TypesOfWorks.WORKS_AFTER_25_HOURS,
+                TypesOfWorks.WORKS_AFTER_50_HOURS,
+                TypesOfWorks.WORKS_AFTER_100_HOURS,
+                TypesOfWorks.WORKS_AFTER_150_HOURS,
+                TypesOfWorks.WORKS_AFTER_278_BULLETIN,
+                TypesOfWorks.OIL_CHANGE_OPERATIONS);
+        makeWorksEngine.setOnAction(e -> {
+            make.doWorksEngine(engine, listOfWorksEngine);
+            WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
+            update_Left_Engine_After_Work();
+            Stage stage = (Stage) makeWorksEngine.getScene().getWindow();
+            stage.close();
+        });
         createEngineForAircraft.setOnAction(e -> {
            addEngine();
             Stage stage = (Stage) createEngineForAircraft.getScene().getWindow();
@@ -101,7 +154,8 @@ public class CreateEngineDialogController {
             stage.close();
         });
         changeEngine.setOnAction(e -> {
-            changeEngine();
+           updateAircraftEngines();
+            changeEngine(engine);
             Stage stage = (Stage) changeEngine.getScene().getWindow();
             stage.close();
         });
@@ -110,16 +164,17 @@ public class CreateEngineDialogController {
     public void setButtonVisible(String string) {
         if (string.equals("Добавить двигатель")) {
             createEngine.setVisible(true);
-            changeEngine.setVisible(false);
             createEngineForAircraft.setVisible(false);
         } else if (string.equals("Изменить запись")) {
             changeEngine.setVisible(true);
-            createEngine.setVisible(false);
             createEngineForAircraft.setVisible(false);
         } else if (string.equals("Двойное нажатие")) {
-            createEngine.setVisible(false);
-            changeEngine.setVisible(false);
             createEngineForAircraft.setVisible(false);
+        } else if (string.equals("Выполнить работы")) {
+            createEngineForAircraft.setVisible(false);
+            selectionWorks.setVisible(true);
+            listOfWorksEngine.setVisible(true);
+            makeWorksEngine.setVisible(true);
         }
     }
 
@@ -173,7 +228,7 @@ public class CreateEngineDialogController {
     }
 
 
-    public void changeEngine() {
+    public void changeEngine(Engine engine) {
         if(checkInput(before_10hoursEngineMinutes, before_25hoursEngineHours,
                 before_25hoursEngineMinutes, before_50hoursEngineHours,
                 before_50hoursEngineMinutes, before_100hoursEngineHours,
@@ -200,11 +255,32 @@ public class CreateEngineDialogController {
             engine.setTotalOperatingTime((parseInt(totalOperatingEngineHours.getText()) * 60) +
                     parseInt(totalOperatingEngineMinutes.getText()));
             engine.setTotalStartingEngineCount(parseInt(totalStartingEngine.getText()));
-
+            engine.setSerialNumberEngine(numberEngine.getText());
         }
         WriteFile.serialization(SaveData.enginesList, Engine.class);
         listAllEnginesTabController.updateTableEngines();
+    }
 
+    private void updateAircraftEngines() {
+        for (Aircraft aircraft : SaveData.aircraftList) {
+            if (aircraft.getLeftEngine().getSerialNumberEngine().equals(engine.getSerialNumberEngine())){
+                changeEngine(aircraft.getLeftEngine());
+                WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
+            } else if (aircraft.getRightEngine().getSerialNumberEngine().equals(engine.getSerialNumberEngine())) {
+                changeEngine(aircraft.getRightEngine());
+                WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
+            } else {
+                System.out.println("Соси бибу");
+            }
+        }
+    }
+    private void update_Left_Engine_After_Work() {
+        for (Engine e : SaveData.enginesList) {
+            if (e.getSerialNumberEngine().equals(engine.getSerialNumberEngine())) {
+                make.doWorksEngine(e, listOfWorksEngine);
+                WriteFile.serialization(SaveData.enginesList, Engine.class);
+            }
+        }
     }
 }
 

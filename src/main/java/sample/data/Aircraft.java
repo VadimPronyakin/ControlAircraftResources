@@ -13,7 +13,7 @@ import sample.data.components.limitedResource.*;
 public class Aircraft {
     //Бортовой номер самолета
     @NonNull
-    private int aircraftNumber;
+    private String aircraftNumber;
     //ИАК закрепленный за самолетом
     @NonNull
     private Engineer iak;

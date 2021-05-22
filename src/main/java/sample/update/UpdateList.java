@@ -6,7 +6,7 @@ import javafx.scene.control.TableView;
 import java.util.List;
 
 public class UpdateList {
-    public static <T> void updateList(List<T> list, TableView<T> tableView, Class<T> clazz, String textConstants) {
+    public static <T> void updateList(List<T> list, TableView<T> tableView, String textConstants) {
         if (list.size() == 0) {
             tableView.setPlaceholder(new Label(textConstants));
         }
