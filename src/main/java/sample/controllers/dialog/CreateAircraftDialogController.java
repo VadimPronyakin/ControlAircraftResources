@@ -5,13 +5,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableRow;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lombok.Setter;
-import org.apache.commons.lang3.StringUtils;
 import sample.Main;
 import sample.controllers.ListOfAircraftController;
 import sample.data.Aircraft;
@@ -23,7 +21,6 @@ import sample.data.components.Planer;
 import sample.data.components.limitedResource.*;
 import sample.write.WriteFile;
 
-import javax.swing.text.html.ImageView;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -200,6 +197,7 @@ public class CreateAircraftDialogController {
         updateMainLeftCylinderList.setOnAction(e -> updateChoiceBoxes(12));
         updateMainRightCylinderList.setOnAction(e -> updateChoiceBoxes(13));
         updateFrontCylinderList.setOnAction(e -> updateChoiceBoxes(14));
+        updateListOfPlaners.setOnAction(e -> updateChoiceBoxes(15));
 
         listOfEngineers.getItems().addAll(SaveData.engineersList);
         leftEngineList.getItems().addAll(SaveData.enginesList);
@@ -249,7 +247,7 @@ public class CreateAircraftDialogController {
                 .frontCylinder(frontCylinderList.getSelectionModel().getSelectedItem())
                 .rightMainCylinder(mainRightCylinderList.getSelectionModel().getSelectedItem())
                 .leftMainCylinder(mainLeftCylinderList.getSelectionModel().getSelectedItem())
-                .leftMainBrake(mainRightBreakList.getSelectionModel().getSelectedItem())
+                .leftMainBrake(mainLeftBreakList.getSelectionModel().getSelectedItem())
                 .rightMainBrake(mainRightBreakList.getSelectionModel().getSelectedItem())
                 .leftFrontBrake(frontLeftBreakList.getSelectionModel().getSelectedItem())
                 .rightFrontBrake(frontRightBreakList.getSelectionModel().getSelectedItem())
@@ -337,6 +335,11 @@ public class CreateAircraftDialogController {
             case 14:
                 box = frontCylinderList;
                 list = SaveData.cylindersList;
+                break;
+            case 15:
+                box = listOfPlaners;
+                list = SaveData.planersList;
+                break;
         }
         box.getItems().clear();
         for (int i = 0; i < list.size(); i++) {

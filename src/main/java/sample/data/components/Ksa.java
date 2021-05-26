@@ -26,5 +26,5 @@ public class Ksa {
     private String aircraftNumberInstalled;
 
     @Override
-    public String toString() { return serialNumberKsa; }
+    public String toString() { return "сер/№ " + serialNumberKsa; }
 }

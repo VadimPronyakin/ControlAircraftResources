@@ -19,7 +19,11 @@ public enum TypesOfWorks {
     REPLACEMENT_REFERENCE_DISKS("Замена опорного дисков", 0),
     FIRST_REPAIR_FRONT_BREAK("Первый ремонт", 0),
     FIRST_REPAIR_CYLINDER("Первый ремонт", 1500),
-    SECOND_REPAIR_CYLINDER("Второй ремонт", 800);
+    SECOND_REPAIR_CYLINDER("Второй ремонт", 800),
+    WORKS_AFTER_6_MONTH_OPERATION("Через 6 месяцев эскплуатации", 1),
+    WORKS_AFTER_30_DAYS_PARKING("Через 30 дней стоянки", 1),
+    WORKS_AFTER_100_HOURS_PLANER("Через 100+20 ч.н.", 7200),
+    WORKS_AFTER_200_HOURS_PLANER("Через 200+40 ч.н.", 14400);
 
     private final String description;
     private final int resource;

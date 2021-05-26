@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import sample.Main;
 import sample.constants.TextConstants;
 import sample.controllers.dialog.CreateCylinderDialogController;
+import sample.data.Aircraft;
 import sample.data.SaveData;
 import sample.data.components.Ksa;
 import sample.data.components.limitedResource.CylinderOfRetractionExtension;
@@ -100,6 +101,7 @@ public class ListCylindersTabController {
             e.printStackTrace();
         }
     }
+
     public CreateCylinderDialogController showCylinderDialog() {
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("/sample/fxmlFiles/dialog/createCylinderDialog.fxml"));
@@ -115,12 +117,22 @@ public class ListCylindersTabController {
         } catch (IOException exception) {
             exception.printStackTrace();
         }
-   return null;
+        return null;
     }
+
     public void updateTableCylinders() {
         UpdateList.updateList(SaveData.cylindersList,
                 tableCylinders,
                 TextConstants.CYLINDER_TEXT);
+        for (CylinderOfRetractionExtension cylinder : SaveData.cylindersList) {
+            for (Aircraft aircraft : SaveData.aircraftList) {
+                if (cylinder.getSerialNumber().equals(aircraft.getLeftMainCylinder().getSerialNumber())
+                        || cylinder.getSerialNumber().equals(aircraft.getRightMainCylinder().getSerialNumber())
+                        || cylinder.getSerialNumber().equals(aircraft.getFrontCylinder().getSerialNumber())) {
+                    cylinder.setAircraftNumberInstalled(aircraft.getAircraftNumber());
+                }
+            }
+        }
     }
 }
 

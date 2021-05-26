@@ -14,8 +14,9 @@ import javafx.stage.Stage;
 import sample.Main;
 import sample.constants.TextConstants;
 import sample.controllers.dialog.CreateMainWheelDialogController;
+import sample.data.Aircraft;
 import sample.data.SaveData;
-import sample.data.components.limitedResource.*;
+import sample.data.components.limitedResource.MainWheel;
 import sample.delete.DeleteObject;
 import sample.update.UpdateList;
 
@@ -48,13 +49,13 @@ public class ListMainWheelsTabController {
         columnMainWheel.setCellValueFactory(new PropertyValueFactory<>("serialNumber"));
         columnInstalledMainWheel.setCellValueFactory(new PropertyValueFactory<>("aircraftNumberInstalled"));
         createMainWheel.setOnAction(e -> {
-           CreateMainWheelDialogController controller = showMainWheelDialog();
-           controller.setButtonVisible(createMainWheel.getText());
+            CreateMainWheelDialogController controller = showMainWheelDialog();
+            controller.setButtonVisible(createMainWheel.getText());
         });
         changeMainWheel.setOnAction(e -> {
-           CreateMainWheelDialogController controller = showMainWheelDialog();
-           controller.setMainWheel(tableMainWheels.getSelectionModel().getSelectedItem());
-           controller.setButtonVisible(changeMainWheel.getText());
+            CreateMainWheelDialogController controller = showMainWheelDialog();
+            controller.setMainWheel(tableMainWheels.getSelectionModel().getSelectedItem());
+            controller.setButtonVisible(changeMainWheel.getText());
         });
         tableMainWheels.setRowFactory(tv -> {
             TableRow<MainWheel> row = new TableRow<>();
@@ -69,6 +70,7 @@ public class ListMainWheelsTabController {
         });
         deleteMainWheel.setOnAction(e -> DeleteObject.delete(SaveData.mainWheelsList, tableMainWheels, MainWheel.class));
     }
+
     public CreateMainWheelDialogController showMainWheelDialog() {
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("/sample/fxmlFiles/dialog/createMainWheelDialog.fxml"));
@@ -84,12 +86,21 @@ public class ListMainWheelsTabController {
         } catch (IOException exception) {
             exception.printStackTrace();
         }
-            return null;
+        return null;
     }
+
     public void updateTableMainWheels() {
         UpdateList.updateList(SaveData.mainWheelsList,
                 tableMainWheels,
                 TextConstants.MAIN_WHEEL_TEXT);
+        for (MainWheel mainWheel : SaveData.mainWheelsList) {
+            for (Aircraft aircraft : SaveData.aircraftList) {
+                if (mainWheel.getSerialNumber().equals(aircraft.getLeftMainWheel().getSerialNumber())
+                        || mainWheel.getSerialNumber().equals(aircraft.getRightMainWheel().getSerialNumber())) {
+                    mainWheel.setAircraftNumberInstalled(aircraft.getAircraftNumber());
+                }
+            }
+        }
     }
 }
 

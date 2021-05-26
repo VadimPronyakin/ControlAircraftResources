@@ -3,16 +3,21 @@ package sample.controllers.dialog;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.shape.Cylinder;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lombok.Setter;
-import org.apache.commons.lang3.StringUtils;
-import sample.controllers.tab.ListAllEnginesTabController;
 import sample.controllers.tab.ListCylindersTabController;
 import sample.data.Aircraft;
 import sample.data.SaveData;
+import sample.data.components.Engine;
 import sample.data.components.limitedResource.CylinderOfRetractionExtension;
 import sample.write.WriteFile;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static sample.notification.NotificationAircraft.notificationCylinder;
 import static sample.utils.Utils.checkInput;
 
 public class CreateCylinderDialogController {
@@ -42,10 +47,21 @@ public class CreateCylinderDialogController {
     @FXML
     private Button createCylinderForAircraft;
 
+    @FXML
+    private Text alarmSecondRepair;
+
+    @FXML
+    private Text alarmReplacement;
+
+    @FXML
+    private Text alarmFirstRepair;
+
     @Setter
     private ListCylindersTabController listCylindersTabController;
 
     private CylinderOfRetractionExtension cylinder;
+
+    List<Text> textOfAlarm = new ArrayList<>();
 
     @FXML
     void initialize() {
@@ -61,8 +77,8 @@ public class CreateCylinderDialogController {
             stage.close();
         });
         changeCylinder.setOnAction(e -> {
-            updateAircraftCylinders();
             changeCylinder(cylinder);
+            updateAircraftCylinders();
             Stage stage = (Stage) changeCylinder.getScene().getWindow();
             stage.close();
         });
@@ -74,6 +90,10 @@ public class CreateCylinderDialogController {
         second_Repair_Cylinder.setText(String.valueOf(cylinder.getResource_Reserve_Before_Second_Repair()));
         replacementCylinder.setText(String.valueOf(cylinder.getResource_Reserve_Before_Replacement()));
         numberCylinder.setText(cylinder.getSerialNumber());
+        textOfAlarm.add(alarmFirstRepair);
+        textOfAlarm.add(alarmSecondRepair);
+        textOfAlarm.add(alarmReplacement);
+        notificationCylinder(cylinder, textOfAlarm);
     }
 
     private void addCylinder() {
@@ -126,11 +146,14 @@ public class CreateCylinderDialogController {
             if (aircraft.getLeftMainCylinder().getSerialNumber().equals(cylinder.getSerialNumber())){
                 changeCylinder(aircraft.getLeftMainCylinder());
                 WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
-            } else if (aircraft.getRightMainCylinder().getSerialNumber().equals(cylinder.getSerialNumber())) {
+            }
+            if (aircraft.getRightMainCylinder().getSerialNumber().equals(cylinder.getSerialNumber())) {
                 changeCylinder(aircraft.getRightMainCylinder());
                 WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
-            } else {
-                System.out.println("Не установлено на самолет");
+            }
+            if (aircraft.getFrontCylinder().getSerialNumber().equals(cylinder.getSerialNumber())) {
+                changeCylinder(aircraft.getFrontCylinder());
+                WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
             }
         }
     }

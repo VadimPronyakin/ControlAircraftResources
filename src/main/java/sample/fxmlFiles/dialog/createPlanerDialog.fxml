@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -9,118 +12,162 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.dialog.CreatePlanerDialogController">
    <children>
-      <Text layoutX="80.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1.Бортовой номер" AnchorPane.leftAnchor="51.0" AnchorPane.topAnchor="38.0">
+      <Text layoutX="5.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1.Бортовой номер" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="36.5244140625">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <Text layoutX="52.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2.Кол-во посадок с начала эксплуатации">
+      <Text layoutX="5.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2.Кол-во посадок с начала эксплуатации">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <Text layoutX="52.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3.Дата крайнего полета" AnchorPane.leftAnchor="51.0">
+      <Text layoutX="5.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3.Дата крайнего полета" AnchorPane.leftAnchor="5.0">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <Text layoutX="52.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4.Остаток дней до работ через 30 + 6 дней стоянки" AnchorPane.leftAnchor="51.0">
+      <Text layoutX="4.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5.Остаток дней до работ через 30 + 6 дней стоянки" AnchorPane.leftAnchor="5.0">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <Text layoutX="51.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6.Остаток до работ через 6+1 месяцев эксплуатации" AnchorPane.leftAnchor="51.0">
+      <Text layoutX="5.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7.Остаток до работ через 6+1 месяцев эксплуатации" AnchorPane.leftAnchor="5.0">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <Text layoutX="55.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7.Наработка с начала эксплуатации" AnchorPane.leftAnchor="51.0">
+      <Text layoutX="4.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8.Наработка с начала эксплуатации" AnchorPane.leftAnchor="5.0">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <Text layoutX="55.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8.Остаток ресурса до 100-ти часовых работ" AnchorPane.leftAnchor="51.0">
+      <Text layoutX="4.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="9.Остаток ресурса до 100-ти часовых работ" AnchorPane.leftAnchor="5.0">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <Text layoutX="51.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="9.Остаток ресурса до 200-та часовых работ" AnchorPane.leftAnchor="51.0">
+      <Text layoutX="5.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10.Остаток ресурса до 200-та часовых работ" AnchorPane.leftAnchor="5.0">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <TextField fx:id="sideNumber" layoutX="436.0" layoutY="33.0" prefHeight="25.0" prefWidth="82.0" />
-      <TextField fx:id="total_Landing_Count_Planer" layoutX="436.0" layoutY="65.0" prefHeight="25.0" prefWidth="82.0" AnchorPane.topAnchor="65.0" />
-      <TextField fx:id="before_30Days_Parking_Planer" layoutX="436.0" layoutY="131.0" prefHeight="25.0" prefWidth="82.0" AnchorPane.topAnchor="131.0" />
-      <TextField fx:id="before_6months_Operating_Planer_Months" layoutX="436.0" layoutY="194.0" prefHeight="25.0" prefWidth="82.0" AnchorPane.topAnchor="194.0" />
-      <TextField fx:id="total_Operating_Planer_Hours" layoutX="436.0" layoutY="226.0" prefHeight="25.0" prefWidth="82.0" AnchorPane.topAnchor="226.0" />
-      <TextField fx:id="before_100hours_Planer_Hours" layoutX="436.0" layoutY="258.0" prefHeight="25.0" prefWidth="82.0" AnchorPane.topAnchor="258.0" />
-      <TextField fx:id="before_200hours_Planer_Hours" layoutX="436.0" layoutY="290.0" prefHeight="25.0" prefWidth="82.0" AnchorPane.topAnchor="290.0" />
-      <TextField fx:id="before_100hours_Planer_Minutes" layoutX="552.0" layoutY="258.0" prefWidth="75.0" AnchorPane.topAnchor="258.0" />
-      <TextField fx:id="before_200hours_Planer_Minutes" layoutX="552.0" layoutY="289.0" prefWidth="75.0" AnchorPane.topAnchor="289.0" />
-      <TextField fx:id="total_Operating_Planer_Minutes" layoutX="551.0" layoutY="226.0" prefWidth="75.0" AnchorPane.topAnchor="226.0" />
-      <Text layoutX="522.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ч.">
+      <TextField fx:id="sideNumber" alignment="CENTER" layoutX="383.0" layoutY="32.0" prefHeight="25.0" prefWidth="82.0" />
+      <TextField fx:id="total_Landing_Count_Planer" alignment="CENTER" layoutX="383.0" layoutY="64.0" prefHeight="25.0" prefWidth="82.0" AnchorPane.topAnchor="64.0" />
+      <TextField fx:id="total_Operating_Planer_Hours" alignment="CENTER" layoutX="383.0" layoutY="226.0" prefHeight="25.0" prefWidth="82.0" AnchorPane.topAnchor="258.0" />
+      <TextField fx:id="before_100hours_Planer_Hours" alignment="CENTER" layoutX="383.0" layoutY="258.0" prefHeight="25.0" prefWidth="82.0" AnchorPane.topAnchor="290.0" />
+      <TextField fx:id="before_200hours_Planer_Hours" alignment="CENTER" layoutX="383.0" layoutY="289.0" prefHeight="25.0" prefWidth="82.0" AnchorPane.topAnchor="322.0" />
+      <TextField fx:id="before_100hours_Planer_Minutes" alignment="CENTER" layoutX="496.0" layoutY="258.0" prefWidth="75.0" AnchorPane.topAnchor="290.0" />
+      <TextField fx:id="before_200hours_Planer_Minutes" alignment="CENTER" layoutX="496.0" layoutY="290.0" prefWidth="75.0" AnchorPane.topAnchor="322.0" />
+      <TextField fx:id="total_Operating_Planer_Minutes" alignment="CENTER" layoutX="496.0" layoutY="226.0" prefWidth="75.0" AnchorPane.topAnchor="258.0" />
+      <Text layoutX="467.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ч.">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <Text layoutX="522.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ч.">
+      <Text layoutX="467.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ч.">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <Text layoutX="522.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ч.">
+      <Text layoutX="467.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ч.">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <Text layoutX="640.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="мин.">
+      <Text layoutX="575.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="мин.">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <Text layoutX="641.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="мин.">
+      <Text layoutX="575.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="мин.">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <Text layoutX="637.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="мин.">
+      <Text layoutX="575.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="мин.">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <TextField fx:id="before_6months_Operating_Planer_Days" layoutX="550.0" layoutY="193.0" prefWidth="75.0" />
-      <Text layoutX="521.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="мес.">
+      <Text layoutX="467.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="дней">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <Text layoutX="637.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="дней">
+      <Text layoutX="467.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="дней">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <Text layoutX="521.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="дней">
-         <font>
-            <Font name="Times New Roman Bold" size="14.0" />
-         </font>
-      </Text>
-      <Button fx:id="createPlaner" layoutX="52.0" layoutY="368.0" mnemonicParsing="false" text="Добавить планер" AnchorPane.topAnchor="373.0">
+      <Button fx:id="createPlaner" layoutX="52.0" layoutY="368.0" mnemonicParsing="false" style="-fx-background-color: #3fc707;" text="Добавить планер" AnchorPane.topAnchor="373.0">
          <font>
             <Font name="Times New Roman Bold" size="17.0" />
          </font>
       </Button>
-      <Button fx:id="changePlaner" layoutX="324.0" layoutY="373.0" mnemonicParsing="false" text="Сохранить">
+      <Button fx:id="changePlaner" layoutX="324.0" layoutY="373.0" mnemonicParsing="false" style="-fx-background-color: #00FFFF;" text="Сохранить изменения" visible="false">
          <font>
             <Font name="Times New Roman Bold" size="17.0" />
          </font>
       </Button>
-      <Text layoutX="55.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5.Дата выполнения работ через 6+1 месяцев эксплуатации" AnchorPane.leftAnchor="51.0">
+      <Text layoutX="5.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6.Дата выполнения работ через 6+1 месяцев эксплуатации" AnchorPane.leftAnchor="5.0">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <DatePicker fx:id="last_Flight_Date_Planer" layoutX="436.0" layoutY="97.0" prefHeight="25.0" prefWidth="107.0" />
-      <DatePicker fx:id="date_Work_After_6months_Operation_Planer" layoutX="435.0" layoutY="162.0" prefHeight="25.0" prefWidth="107.0" />
+      <DatePicker fx:id="last_Flight_Date_Planer" layoutX="383.0" layoutY="96.0" prefHeight="25.0" prefWidth="107.0" />
+      <DatePicker fx:id="date_Work_After_6months_Operation_Planer" layoutX="383.0" layoutY="161.0" prefHeight="25.0" prefWidth="107.0" AnchorPane.topAnchor="192.0" />
+      <Text fx:id="alarm_Resource_6months" fill="#dd0707" layoutX="618.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ВОЗЬМИ НА КОНТРОЛЬ" visible="false" wrappingWidth="183.3603515625">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text fx:id="alarm30Days" fill="#dd0707" layoutX="618.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ВОЗЬМИ НА КОНТРОЛЬ" visible="false" wrappingWidth="183.3603515625">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text fx:id="alarm100Hours" fill="#dd0707" layoutX="618.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ВОЗЬМИ НА КОНТРОЛЬ" visible="false" wrappingWidth="183.3603515625">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text fx:id="alarm200Hours" fill="#dd0707" layoutX="618.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ВОЗЬМИ НА КОНТРОЛЬ" visible="false" wrappingWidth="183.3603515625">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Label fx:id="before_6months_Operating_Planer_Days" alignment="CENTER" layoutX="383.0" layoutY="192.0" prefHeight="25.0" prefWidth="82.0" style="-fx-background-color: white; -fx-border-style: solid; -fx-border-radius: 4;" AnchorPane.topAnchor="226.0" />
+      <Label fx:id="before_30Days_Parking_Planer" alignment="CENTER" layoutX="383.0" layoutY="129.0" prefHeight="25.0" prefWidth="82.0" style="-fx-background-color: white; -fx-border-style: solid; -fx-border-radius: 4;" AnchorPane.topAnchor="161.0" />
+      <Text layoutX="3.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4.Дата выполнения работ через 30 +6 дней стоянки" AnchorPane.leftAnchor="5.0">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <DatePicker fx:id="date_Work_After_30Days_Parking_Planer" layoutX="383.0" layoutY="128.0" prefHeight="25.0" prefWidth="107.0" />
+      <ChoiceBox fx:id="listOfWorksPlaner" layoutX="548.0" layoutY="24.0" prefHeight="25.0" prefWidth="216.0" visible="false" />
+      <Text fx:id="selectionWorks" layoutX="595.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Выберите вид работ" visible="false">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text fx:id="selectionDate" layoutX="551.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Выберите дату выполнения работ" visible="false">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <DatePicker fx:id="date_Make_Work" layoutX="550.0" layoutY="77.0" prefHeight="25.0" prefWidth="216.0" visible="false">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets right="100.0" />
+         </padding>
+      </DatePicker>
+      <Button fx:id="makeWorksPlaner" layoutX="618.0" layoutY="109.0" mnemonicParsing="false" style="-fx-background-color: #3fc707;" text="Выполнить" visible="false">
+         <font>
+            <Font name="Times New Roman" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

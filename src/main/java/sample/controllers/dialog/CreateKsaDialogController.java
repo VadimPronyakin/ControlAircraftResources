@@ -7,85 +7,69 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lombok.Setter;
-import org.apache.commons.lang3.StringUtils;
 import sample.controllers.tab.ListAllKsaTabController;
 import sample.data.Aircraft;
 import sample.data.SaveData;
-import sample.data.components.Engine;
 import sample.data.components.Ksa;
 import sample.data.enums.TypesOfWorks;
 import sample.works.MakeWorks;
 import sample.write.WriteFile;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.ArrayList;
+import java.util.List;
+
+import static sample.notification.NotificationAircraft.notificationKsa;
+import static sample.utils.Utils.checkInput;
+import static sample.works.MakeWorks.doWorkKsa;
 
 public class CreateKsaDialogController {
 
     @FXML
     private TextField numberKsa;
-
     @FXML
     private TextField totalStartKsa;
-
     @FXML
     private TextField totalRightKsa;
-
     @FXML
     private TextField totalLeftKsa;
-
     @FXML
     private TextField totalOperatingKsaHours;
-
     @FXML
     private TextField totalOperatingKsaMinutes;
-
     @FXML
     private TextField before_25hoursKsaHours;
-
     @FXML
     private TextField before_25hoursKsaMinutes;
-
     @FXML
     private TextField oilChangeKsaHours;
-
     @FXML
     private TextField oilChangeKsaMinutes;
-
     @FXML
     private Button createKsa;
-
     @FXML
     private Button changeKsa;
-
     @FXML
     private Button createKsaForAircraft;
-
     @FXML
     private Text alarm25Hours;
-
     @FXML
     private Text alarmOilChange;
-
     @FXML
     private Text selectionWorks;
-
     @FXML
     private ComboBox<TypesOfWorks> listOfWorksKsa;
-
     @FXML
     private Button makeWorksKsa;
-
-
     @Setter
     private ListAllKsaTabController listAllKsaTabController;
 
     @Setter
+
     private PersonalAircraftDialogController personalAircraftDialogController;
 
     private Ksa ksa;
 
-    MakeWorks make = new MakeWorks();
+    List<Text> textOfAlarm = new ArrayList<>();
 
     @FXML
     void initialize() {
@@ -109,13 +93,14 @@ public class CreateKsaDialogController {
             stage.close();
         });
         makeWorksKsa.setOnAction(e -> {
-            make.doWorkKsa(ksa, listOfWorksKsa);
+            doWorkKsa(ksa, listOfWorksKsa);
             WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
             update_Ksa_After_Work();
             Stage stage = (Stage) makeWorksKsa.getScene().getWindow();
             stage.close();
         });
     }
+
     public void setKsa(Ksa ksa) {
         this.ksa = ksa;
         numberKsa.setText(ksa.getSerialNumberKsa());
@@ -128,6 +113,9 @@ public class CreateKsaDialogController {
         before_25hoursKsaMinutes.setText(String.valueOf(ksa.getResource_Reserve_Before_25hours() % 60));
         oilChangeKsaHours.setText(String.valueOf(ksa.getOilChange() / 60));
         oilChangeKsaMinutes.setText(String.valueOf(ksa.getOilChange() % 60));
+        textOfAlarm.add(alarm25Hours);
+        textOfAlarm.add(alarmOilChange);
+        notificationKsa(ksa, textOfAlarm);
     }
 
     private void addKsa() {
@@ -147,23 +135,16 @@ public class CreateKsaDialogController {
         WriteFile.serialization(SaveData.ksaList, Ksa.class);
 
     }
-//    public Ksa returnKsa(String number) {
-//        for (Ksa e : SaveData.ksaList) {
-//            if (e.getSerialNumberKsa().equals(number)) {
-//                return e;
-//            }
-//        }
-//        return null;
-//    }
+
     public void changeKsa(Ksa ksa) {
-        if (StringUtils.isNotBlank(before_25hoursKsaHours.getCharacters())
-                && StringUtils.isNotBlank(before_25hoursKsaMinutes.getCharacters())
-                && StringUtils.isNotBlank(oilChangeKsaHours.getCharacters())
-                && StringUtils.isNotBlank(oilChangeKsaMinutes.getCharacters())
-                && StringUtils.isNotBlank(totalStartKsa.getCharacters())
-                && StringUtils.isNotBlank(totalLeftKsa.getCharacters())
-                && StringUtils.isNotBlank(totalRightKsa.getCharacters())
-                && StringUtils.isNotBlank(numberKsa.getCharacters())) {
+        if (checkInput(before_25hoursKsaHours,
+                before_25hoursKsaMinutes,
+                oilChangeKsaHours,
+                oilChangeKsaMinutes,
+                totalStartKsa,
+                totalLeftKsa,
+                totalRightKsa,
+                numberKsa)) {
             ksa.setSerialNumberKsa(numberKsa.getText());
             ksa.setTotal_Starting_Ksa_Count(Integer.parseInt(totalStartKsa.getText()));
             ksa.setStarting_Left_Count(Integer.parseInt(totalLeftKsa.getText()));
@@ -177,16 +158,17 @@ public class CreateKsaDialogController {
         listAllKsaTabController.updateTableKsa();
 
     }
+
     public void setButtonVisible(String string) {
-        if(string.equals("Добавить КСА")){
+        if (string.equals("Добавить КСА")) {
             createKsa.setVisible(true);
             createKsaForAircraft.setVisible(false);
-        }else if(string.equals("Изменить запись")) {
+        } else if (string.equals("Изменить запись")) {
             changeKsa.setVisible(true);
             createKsaForAircraft.setVisible(false);
         } else if (string.equals("Двойное нажатие")) {
             createKsaForAircraft.setVisible(false);
-        } else if (string.equals("Выполнить работы")) {
+        } else if (string.equals("Выполнить работ")) {
             createKsaForAircraft.setVisible(false);
             selectionWorks.setVisible(true);
             listOfWorksKsa.setVisible(true);
@@ -198,18 +180,19 @@ public class CreateKsaDialogController {
     private void update_Ksa_After_Work() {
         for (Ksa a : SaveData.ksaList) {
             if (a.getSerialNumberKsa().equals(ksa.getSerialNumberKsa())) {
-                make.doWorkKsa(a, listOfWorksKsa);
+                doWorkKsa(a, listOfWorksKsa);
                 WriteFile.serialization(SaveData.ksaList, Ksa.class);
             }
         }
     }
+
     private void updateAircraftKsa() {
         for (Aircraft aircraft : SaveData.aircraftList) {
-            if (aircraft.getKsa().getSerialNumberKsa().equals(ksa.getSerialNumberKsa())){
+            if (aircraft.getKsa() == null) {
+                System.out.println("На самолете отсутствует КСА");
+            } else if (aircraft.getKsa().getSerialNumberKsa().equals(ksa.getSerialNumberKsa())) {
                 changeKsa(aircraft.getKsa());
                 WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
-            } else {
-                System.out.println("Соси бибу");
             }
         }
     }

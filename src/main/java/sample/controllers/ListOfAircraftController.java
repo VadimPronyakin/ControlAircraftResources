@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
@@ -14,11 +13,9 @@ import javafx.stage.Stage;
 import sample.Main;
 import sample.constants.TextConstants;
 import sample.controllers.dialog.CreateAircraftDialogController;
-import sample.controllers.dialog.CreateEngineDialogController;
 import sample.controllers.dialog.PersonalAircraftDialogController;
 import sample.data.Aircraft;
 import sample.data.SaveData;
-import sample.data.components.Engine;
 import sample.delete.DeleteObject;
 import sample.update.UpdateList;
 
@@ -27,6 +24,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import static sample.openNewScene.OpenNewScene.openNewScene;
+import static sample.openNewScene.OpenNewScene.showEditDialog;
 
 
 public class ListOfAircraftController {
@@ -66,15 +64,12 @@ public class ListOfAircraftController {
         returnHomePage.setOnAction(event -> openNewScene("/sample/fxmlFiles/sample.fxml", returnHomePage));
         createNewAircraft.setOnAction(e -> showAircraftDialog());
         deleteAircraft.setOnAction(e -> DeleteObject.delete(SaveData.aircraftList, tableAircraft, Aircraft.class));
-        tableAircraft.setRowFactory(tv -> {
-            TableRow<Aircraft> row = new TableRow<>();
-            row.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2) {
-                    PersonalAircraftDialogController controller = showDialog();
-                    controller.setAircraft(tableAircraft.getSelectionModel().getSelectedItem());
-                }
-            });
-            return row;
+        tableAircraft.setOnMouseClicked(e -> {
+            if (e.getClickCount() == 2) {
+                PersonalAircraftDialogController controller = showEditDialog(e,
+                        "/sample/fxmlFiles/dialog/personalAircraftDialog.fxml");
+                controller.setAircraft(tableAircraft.getSelectionModel().getSelectedItem());
+            }
         });
     }
 
@@ -95,24 +90,6 @@ public class ListOfAircraftController {
     }
     public void updateTableAircraft() {
         UpdateList.updateList(SaveData.aircraftList, tableAircraft, TextConstants.AIRCRAFT_TEXT);
-    }
-
-    public PersonalAircraftDialogController showDialog() {
-        try {
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/sample/fxmlFiles/dialog/personalAircraftDialog.fxml"));
-            Pane page = loader.load();
-            Stage dialogStage = new Stage();
-            dialogStage.initModality(Modality.APPLICATION_MODAL);
-            Scene scene = new Scene(page);
-            dialogStage.setScene(scene);
-            PersonalAircraftDialogController controller = loader.getController();
-            controller.setListOfAircraftController(this);
-            dialogStage.show();
-            return controller;
-        } catch (IOException exception) {
-            exception.printStackTrace();
-        }
-        return null;
     }
 }
 

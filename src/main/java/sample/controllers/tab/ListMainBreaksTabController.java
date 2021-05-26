@@ -11,12 +11,12 @@ import javafx.stage.Stage;
 import sample.Main;
 import sample.constants.TextConstants;
 import sample.controllers.dialog.CreateMainBreakDialogController;
+import sample.data.Aircraft;
 import sample.data.SaveData;
-import sample.data.components.limitedResource.*;
+import sample.data.components.limitedResource.MainBreak;
 import sample.data.enums.TypesOfWorks;
 import sample.delete.DeleteObject;
 import sample.update.UpdateList;
-import sample.write.WriteFile;
 
 import java.io.IOException;
 
@@ -42,29 +42,19 @@ public class ListMainBreaksTabController {
     private Button deleteMainBreak;
 
     @FXML
-    private Button makeWorkMainBreak;
-
-    @FXML
-    private ComboBox<TypesOfWorks> listOfWorksMainBreak;
-
-    @FXML
     void initialize() {
 
         updateTableMainBreaks();
         columnMainBreak.setCellValueFactory(new PropertyValueFactory<>("serialNumber"));
         columnInstalledMainBreak.setCellValueFactory(new PropertyValueFactory<>("aircraftNumberInstalled"));
-        listOfWorksMainBreak.getItems().addAll(TypesOfWorks.REPLACEMENT_ROTATING_DISKS,
-                TypesOfWorks.REPLACEMENT_NON_ROTATING_DISKS,
-                TypesOfWorks.REPLACEMENT_PRESSURE_DISKS,
-                TypesOfWorks.REPLACEMENT_REFERENCE_DISKS);
         createMainBreak.setOnAction(e -> {
-           CreateMainBreakDialogController controller = showMainBreakDialog();
-           controller.setButtonVisible(createMainBreak.getText());
+            CreateMainBreakDialogController controller = showMainBreakDialog();
+            controller.setButtonVisible(createMainBreak.getText());
         });
         changeMainBreak.setOnAction(e -> {
-          CreateMainBreakDialogController controller = showMainBreakDialog();
-          controller.setMainBreak(tableMainBreaks.getSelectionModel().getSelectedItem());
-          controller.setButtonVisible(changeMainBreak.getText());
+            CreateMainBreakDialogController controller = showMainBreakDialog();
+            controller.setMainBreak(tableMainBreaks.getSelectionModel().getSelectedItem());
+            controller.setButtonVisible(changeMainBreak.getText());
         });
         tableMainBreaks.setRowFactory(tv -> {
             TableRow<MainBreak> row = new TableRow<>();
@@ -78,39 +68,8 @@ public class ListMainBreaksTabController {
             return row;
         });
         deleteMainBreak.setOnAction(e -> DeleteObject.delete(SaveData.mainBreaksList, tableMainBreaks, MainBreak.class));
-        makeWorkMainBreak.setOnAction(e -> doWorksMainBreak());
     }
 
-    void doWorksMainBreak() {
-        MainBreak mainBreak = tableMainBreaks.getSelectionModel().getSelectedItem();
-        try {
-            switch (listOfWorksMainBreak.getSelectionModel().getSelectedItem()) {
-
-                case REPLACEMENT_ROTATING_DISKS:
-                    mainBreak.setResource_Reserve_Replacement_RotatingDisks(listOfWorksMainBreak
-                            .getSelectionModel()
-                            .getSelectedItem()
-                            .getResource());
-                    WriteFile.serialization(SaveData.mainBreaksList, MainBreak.class);
-                    break;
-                case REPLACEMENT_NON_ROTATING_DISKS:
-                    mainBreak.setResource_Reserve_Replacement_NonRotatingDisks(listOfWorksMainBreak
-                            .getSelectionModel()
-                            .getSelectedItem()
-                            .getResource());
-                    WriteFile.serialization(SaveData.mainBreaksList, MainBreak.class);
-                    break;
-                case REPLACEMENT_PRESSURE_DISKS:
-                    mainBreak.setResource_Reserve_Replacement_PressureDisk(listOfWorksMainBreak.getSelectionModel().getSelectedItem().getResource());
-                    break;
-                case REPLACEMENT_REFERENCE_DISKS:
-                    mainBreak.setResource_Reserve_Replacement_ReferenceDisk(listOfWorksMainBreak.getSelectionModel().getSelectedItem().getResource());
-                    break;
-            }
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
-    }
     public CreateMainBreakDialogController showMainBreakDialog() {
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("/sample/fxmlFiles/dialog/createMainBreakDialog.fxml"));
@@ -128,10 +87,19 @@ public class ListMainBreaksTabController {
         }
         return null;
     }
+
     public void updateTableMainBreaks() {
         UpdateList.updateList(SaveData.mainBreaksList,
                 tableMainBreaks,
                 TextConstants.MAIN_BREAK_TEXT);
+        for (MainBreak mainBreak : SaveData.mainBreaksList) {
+            for (Aircraft aircraft : SaveData.aircraftList) {
+                if (mainBreak.getSerialNumber().equals(aircraft.getLeftMainBrake().getSerialNumber())
+                        || mainBreak.getSerialNumber().equals(aircraft.getRightMainBrake().getSerialNumber())) {
+                    mainBreak.setAircraftNumberInstalled(aircraft.getAircraftNumber());
+                }
+            }
+        }
     }
 }
 

@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import sample.Main;
 import sample.constants.TextConstants;
 import sample.controllers.dialog.CreateFrontBreakDialogController;
+import sample.data.Aircraft;
 import sample.data.SaveData;
 import sample.data.components.limitedResource.FrontBreak;
 import sample.data.enums.TypesOfWorks;
@@ -58,9 +59,9 @@ public class ListFrontBreakTabController {
             controller.setButtonVisible(createFrontBreak.getText());
         });
         changeFrontBreak.setOnAction(e -> {
-           CreateFrontBreakDialogController controller = showFrontBreakDialog();
-           controller.setFrontBreak(tableFrontBreaks.getSelectionModel().getSelectedItem());
-           controller.setButtonVisible(changeFrontBreak.getText());
+            CreateFrontBreakDialogController controller = showFrontBreakDialog();
+            controller.setFrontBreak(tableFrontBreaks.getSelectionModel().getSelectedItem());
+            controller.setButtonVisible(changeFrontBreak.getText());
         });
         tableFrontBreaks.setRowFactory(tv -> {
             TableRow<FrontBreak> row = new TableRow<>();
@@ -86,6 +87,7 @@ public class ListFrontBreakTabController {
             e.printStackTrace();
         }
     }
+
     public CreateFrontBreakDialogController showFrontBreakDialog() {
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("/sample/fxmlFiles/dialog/createFrontBreakDialog.fxml"));
@@ -103,10 +105,19 @@ public class ListFrontBreakTabController {
         }
         return null;
     }
+
     public void updateTableFrontBreak() {
         UpdateList.updateList(SaveData.frontBreaksList,
                 tableFrontBreaks,
                 TextConstants.FRONT_BREAK_TEXT);
+        for (FrontBreak frontBreak : SaveData.frontBreaksList) {
+            for (Aircraft aircraft : SaveData.aircraftList) {
+                if (frontBreak.getSerialNumber().equals(aircraft.getLeftFrontBrake().getSerialNumber())
+                        || frontBreak.getSerialNumber().equals(aircraft.getRightFrontBrake().getSerialNumber())) {
+                    frontBreak.setAircraftNumberInstalled(aircraft.getAircraftNumber());
+                }
+            }
+        }
     }
 }
 

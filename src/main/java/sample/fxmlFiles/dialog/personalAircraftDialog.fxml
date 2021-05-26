@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
@@ -85,25 +84,6 @@
          </font>
       </Text>
       <Line endX="650.0" layoutX="150.0" layoutY="141.0" startX="-150.0" />
-      <ListView fx:id="leftEngine" fixedCellSize="0.0" layoutX="232.0" layoutY="149.0" prefHeight="20.0" prefWidth="308.0" AnchorPane.topAnchor="149.0">
-         <opaqueInsets>
-            <Insets bottom="9.0" />
-         </opaqueInsets>
-      </ListView>
-      <ListView fx:id="rightEngine" layoutX="232.0" layoutY="174.0" prefHeight="20.0" prefWidth="308.0" AnchorPane.topAnchor="174.0" />
-      <ListView fx:id="KSA" layoutX="232.0" layoutY="199.0" prefHeight="20.0" prefWidth="308.0" AnchorPane.topAnchor="199.0" />
-      <ListView fx:id="planer" layoutX="232.0" layoutY="224.0" prefHeight="20.0" prefWidth="308.0" AnchorPane.topAnchor="224.0" />
-      <ListView fx:id="leftMainWheel" layoutX="232.0" layoutY="249.0" prefHeight="20.0" prefWidth="308.0" AnchorPane.topAnchor="249.0" />
-      <ListView fx:id="rightMainWheel" layoutX="232.0" layoutY="274.0" prefHeight="20.0" prefWidth="308.0" AnchorPane.topAnchor="274.0" />
-      <ListView fx:id="leftFrontWheel" layoutX="232.0" layoutY="299.0" prefHeight="20.0" prefWidth="308.0" AnchorPane.topAnchor="299.0" />
-      <ListView fx:id="rightFrontWheel" layoutX="232.0" layoutY="324.0" prefHeight="20.0" prefWidth="308.0" AnchorPane.topAnchor="324.0" />
-      <ListView fx:id="leftMainBreak" layoutX="232.0" layoutY="349.0" prefHeight="20.0" prefWidth="308.0" AnchorPane.topAnchor="349.0" />
-      <ListView fx:id="rightMainBreak" layoutX="232.0" layoutY="374.0" prefHeight="20.0" prefWidth="308.0" AnchorPane.topAnchor="374.0" />
-      <ListView fx:id="leftFrontBreak" layoutX="232.0" layoutY="399.0" prefHeight="20.0" prefWidth="308.0" AnchorPane.topAnchor="399.0" />
-      <ListView fx:id="rightFrontBreak" layoutX="232.0" layoutY="424.0" prefHeight="20.0" prefWidth="308.0" AnchorPane.topAnchor="424.0" />
-      <ListView fx:id="leftCylinder" layoutX="232.0" layoutY="449.0" prefHeight="20.0" prefWidth="308.0" AnchorPane.topAnchor="449.0" />
-      <ListView fx:id="rightCylinder" layoutX="232.0" layoutY="474.0" prefHeight="20.0" prefWidth="308.0" AnchorPane.topAnchor="474.0" />
-      <ListView fx:id="frontCylinder" layoutX="232.0" layoutY="499.0" prefHeight="20.0" prefWidth="308.0" AnchorPane.topAnchor="499.0" />
       <Text layoutX="13.0" layoutY="414.0" strokeType="OUTSIDE" strokeWidth="0.0" text="11.Левый передний тормоз">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
@@ -279,5 +259,20 @@
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
+      <Label fx:id="leftEngine" layoutX="232.0" layoutY="150.0" prefHeight="20.0" prefWidth="308.0" style="-fx-border-style: solid; -fx-background-color: white;" text="Label" />
+      <Label fx:id="rightEngine" layoutX="232.0" layoutY="176.0" prefHeight="20.0" prefWidth="308.0" style="-fx-background-color: white; -fx-border-style: solid;" text="Label" />
+      <Label fx:id="ksaOnAircraft" layoutX="232.0" layoutY="200.0" prefHeight="19.0" prefWidth="308.0" style="-fx-background-color: white; -fx-border-style: solid;" text="Label" />
+      <Label fx:id="planer" layoutX="232.0" layoutY="225.0" prefHeight="19.0" prefWidth="308.0" style="-fx-background-color: white; -fx-border-style: solid;" text="Label" />
+      <Label fx:id="leftMainWheel" layoutX="232.0" layoutY="250.0" prefHeight="19.0" prefWidth="308.0" style="-fx-background-color: white; -fx-border-style: solid;" text="Label" />
+      <Label fx:id="rightMainWheel" layoutX="232.0" layoutY="275.0" prefHeight="19.0" prefWidth="308.0" style="-fx-background-color: white; -fx-border-style: solid;" text="Label" />
+      <Label fx:id="leftFrontWheel" layoutX="232.0" layoutY="300.0" prefHeight="19.0" prefWidth="308.0" style="-fx-background-color: white; -fx-border-style: solid;" text="Label" />
+      <Label fx:id="rightFrontWheel" layoutX="232.0" layoutY="325.0" prefHeight="19.0" prefWidth="308.0" style="-fx-background-color: white; -fx-border-style: solid;" text="Label" />
+      <Label fx:id="leftMainBreak" layoutX="232.0" layoutY="350.0" prefHeight="19.0" prefWidth="308.0" style="-fx-background-color: white; -fx-border-style: solid;" text="Label" />
+      <Label fx:id="rightMainBreak" layoutX="232.0" layoutY="375.0" prefHeight="19.0" prefWidth="308.0" style="-fx-background-color: white; -fx-border-style: solid;" text="Label" />
+      <Label fx:id="leftFrontBreak" layoutX="232.0" layoutY="400.0" prefHeight="19.0" prefWidth="308.0" style="-fx-background-color: white; -fx-border-style: solid;" text="Label" />
+      <Label fx:id="rightFrontBreak" layoutX="232.0" layoutY="425.0" prefHeight="19.0" prefWidth="308.0" style="-fx-background-color: white; -fx-border-style: solid;" text="Label" />
+      <Label fx:id="leftCylinder" layoutX="232.0" layoutY="450.0" prefHeight="19.0" prefWidth="308.0" style="-fx-background-color: white; -fx-border-style: solid;" text="Label" />
+      <Label fx:id="rightCylinder" layoutX="232.0" layoutY="475.0" prefHeight="19.0" prefWidth="308.0" style="-fx-background-color: white; -fx-border-style: solid;" text="Label" />
+      <Label fx:id="frontCylinder" layoutX="232.0" layoutY="500.0" prefHeight="19.0" prefWidth="308.0" style="-fx-background-color: white; -fx-border-style: solid;" text="Label" />
    </children>
 </AnchorPane>

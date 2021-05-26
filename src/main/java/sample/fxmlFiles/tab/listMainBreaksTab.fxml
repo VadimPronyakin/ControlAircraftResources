@@ -2,13 +2,11 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="384.0" prefWidth="942.0" style="-fx-background-color: #111d69;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.tab.ListMainBreaksTabController">
     <children>
@@ -24,17 +22,12 @@
                         <Font name="Times New Roman Bold" size="14.0" />
                     </font>
                 </Button>
-            <Button fx:id="makeWorkMainBreak" mnemonicParsing="false" prefHeight="23.0" prefWidth="148.0" style="-fx-background-color: #111d69;" text="Выполнить работы" textFill="WHITE">
-               <font>
-                  <Font name="Times New Roman Bold" size="14.0" />
-               </font>
-            </Button>
                 <Button fx:id="deleteMainBreak" mnemonicParsing="false" prefHeight="23.0" prefWidth="148.0" style="-fx-background-color: #111d69;" text="Удалить тормоз" textFill="#f5f3f3">
                     <font>
                         <Font name="Times New Roman Bold" size="14.0" />
                     </font>
                     <HBox.margin>
-                        <Insets left="200.0" />
+                        <Insets left="350.0" />
                     </HBox.margin>
                 </Button>
             </children>
@@ -42,17 +35,11 @@
                 <Insets left="30.0" top="15.0" />
             </padding>
         </HBox>
-        <TableView fx:id="tableMainBreaks" layoutX="-1.0" layoutY="1.0" prefHeight="280.0" prefWidth="944.0" AnchorPane.bottomAnchor="103.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+        <TableView fx:id="tableMainBreaks" layoutX="-1.0" layoutY="1.0" prefHeight="331.0" prefWidth="944.0" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
             <columns>
                 <TableColumn fx:id="columnMainBreak" prefWidth="472.0" text="НОМЕР ТОРМОЗА" />
                 <TableColumn fx:id="columnInstalledMainBreak" minWidth="0.0" prefWidth="471.0" text="УСТАНОВЛЕННО НА САМОЛЕТЕ №" />
             </columns>
         </TableView>
-      <ComboBox fx:id="listOfWorksMainBreak" layoutX="511.0" layoutY="292.0" prefHeight="25.0" prefWidth="211.0" AnchorPane.bottomAnchor="67.0" AnchorPane.leftAnchor="511.0" />
-      <Text fill="#f5f2f2" layoutX="727.0" layoutY="309.37451171875" strokeType="OUTSIDE" strokeWidth="0.0" text="Выберите вид работ" AnchorPane.bottomAnchor="71.380859375" AnchorPane.leftAnchor="727.0">
-         <font>
-            <Font name="Times New Roman Bold" size="15.0" />
-         </font>
-      </Text>
     </children>
 </AnchorPane>

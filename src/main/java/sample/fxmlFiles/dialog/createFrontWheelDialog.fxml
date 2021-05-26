@@ -23,9 +23,9 @@
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <TextField fx:id="numberFrontWheel" layoutX="326.0" layoutY="33.0" />
-      <TextField fx:id="totalFrontWheel" layoutX="326.0" layoutY="112.0" AnchorPane.topAnchor="112.0" />
-      <TextField fx:id="replacementFrontWheel" layoutX="326.0" layoutY="191.0" AnchorPane.topAnchor="191.0" />
+      <TextField fx:id="numberFrontWheel" alignment="CENTER" layoutX="326.0" layoutY="33.0" />
+      <TextField fx:id="totalFrontWheel" alignment="CENTER" layoutX="326.0" layoutY="112.0" AnchorPane.topAnchor="112.0" />
+      <TextField fx:id="replacementFrontWheel" alignment="CENTER" layoutX="326.0" layoutY="191.0" AnchorPane.topAnchor="191.0" />
       <Text layoutX="481.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1.">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
@@ -41,20 +41,25 @@
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <Button fx:id="createFrontWheel" layoutX="51.0" layoutY="373.0" mnemonicParsing="false" text="Добавить колесо" visible="false">
+      <Button fx:id="createFrontWheel" layoutX="51.0" layoutY="373.0" mnemonicParsing="false" style="-fx-background-color: #3fc707;" text="Добавить колесо" visible="false">
          <font>
             <Font name="Times New Roman Bold" size="17.0" />
          </font>
       </Button>
-      <Button fx:id="changeFrontWheel" layoutX="375.0" layoutY="373.0" mnemonicParsing="false" text="Сохранить" visible="false">
+      <Button fx:id="changeFrontWheel" layoutX="375.0" layoutY="373.0" mnemonicParsing="false" style="-fx-background-color: #00FFFF;" text="Сохранить" visible="false">
          <font>
             <Font name="Times New Roman Bold" size="17.0" />
          </font>
       </Button>
-      <Button fx:id="createFrontWheelForAircraft" layoutX="599.0" layoutY="373.0" mnemonicParsing="false" text="Добавить колесо">
+      <Button fx:id="createFrontWheelForAircraft" layoutX="599.0" layoutY="373.0" mnemonicParsing="false" style="-fx-background-color: #3fc707;" text="Добавить колесо">
          <font>
             <Font name="Times New Roman Bold" size="17.0" />
          </font>
       </Button>
+      <Text fx:id="alarmReplacement" fill="#dd0707" layoutX="522.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ВОЗЬМИ НА КОНТРОЛЬ!!!" visible="false">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

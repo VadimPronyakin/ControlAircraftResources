@@ -26,5 +26,5 @@ public class MainBreak {
     private String aircraftNumberInstalled;
 
     @Override
-    public String toString() { return serialNumber; }
+    public String toString() { return "сер/№ " + serialNumber; }
 }

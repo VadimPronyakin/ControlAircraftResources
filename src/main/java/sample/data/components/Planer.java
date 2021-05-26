@@ -1,11 +1,7 @@
 package sample.data.components;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -25,27 +21,26 @@ public class Planer {
     //Бортовой номер
     private String sideNumber;
     //Остаток дней до работ (30+6 дней стоянки с крайнего полета)
-    private int days_Reserve_Before_30DaysParking;
+    private long days_Reserve_Before_30DaysParking;
     //Остаток дней до работ (6+1 месяцев эксплуатации)
-    private int days_Reserve_Before_6months_Operating;
+    private long days_Reserve_Before_6months_Operating;
     //Дата выполнения работ через 6+1 месяцев эксплуатации
-    private Date  date_Work_After_6months_Operation;
+    private Date date_Work_After_6months_Operation;
     //Дата крайнего полета
     private Date last_Flight_Date;
+    //Дата выполнения работ через 30+6 дней стоянки
+    private Date date_Work_After_30days_Parking;
 
     @Override
-    public String toString() { return sideNumber; }
+    public String toString() {
+        return "б/н " + sideNumber;
+    }
 }
 
 
 
-//    long milliseconds = date2.getTime() - date1.getTime();
-    // 24 часа = 1 440 минут = 1 день
-//    int days = (int) (milliseconds / (24 * 60 * 60 * 1000));
 
 
-    // !(ДОБАВИТЬ ПОЛЕ) - Остаток дней до работ (30+6 дней стоянки с крайнего полета)
-    // !(ДОБАВИТЬ ПОЛЕ) - Остаток дней до работ (6+1 месяцев эксплуатации)
-    // !(ДОБАВИТЬ ПОЛЕ) - Дата крайнего полета;
+
 
 

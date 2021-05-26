@@ -14,8 +14,9 @@ import javafx.stage.Stage;
 import sample.Main;
 import sample.constants.TextConstants;
 import sample.controllers.dialog.CreateFrontWheelDialogController;
+import sample.data.Aircraft;
 import sample.data.SaveData;
-import sample.data.components.limitedResource.*;
+import sample.data.components.limitedResource.FrontWheel;
 import sample.delete.DeleteObject;
 import sample.update.UpdateList;
 
@@ -48,13 +49,13 @@ public class ListFrontWheelTabController {
         columnFrontWheel.setCellValueFactory(new PropertyValueFactory<>("serialNumber"));
         columnInstalledFrontWheel.setCellValueFactory(new PropertyValueFactory<>("aircraftNumberInstalled"));
         createFrontWheel.setOnAction(e -> {
-           CreateFrontWheelDialogController controller = showFrontWheelDialog();
-           controller.setButtonVisible(createFrontWheel.getText());
+            CreateFrontWheelDialogController controller = showFrontWheelDialog();
+            controller.setButtonVisible(createFrontWheel.getText());
         });
         changeFrontWheel.setOnAction(e -> {
-           CreateFrontWheelDialogController controller = showFrontWheelDialog();
-           controller.setFrontWheel(tableFrontWheels.getSelectionModel().getSelectedItem());
-           controller.setButtonVisible(changeFrontWheel.getText());
+            CreateFrontWheelDialogController controller = showFrontWheelDialog();
+            controller.setFrontWheel(tableFrontWheels.getSelectionModel().getSelectedItem());
+            controller.setButtonVisible(changeFrontWheel.getText());
         });
         tableFrontWheels.setRowFactory(tv -> {
             TableRow<FrontWheel> row = new TableRow<>();
@@ -69,6 +70,7 @@ public class ListFrontWheelTabController {
         });
         deleteFrontWheel.setOnAction(e -> DeleteObject.delete(SaveData.frontWheelsList, tableFrontWheels, FrontWheel.class));
     }
+
     public CreateFrontWheelDialogController showFrontWheelDialog() {
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("/sample/fxmlFiles/dialog/createFrontWheelDialog.fxml"));
@@ -86,10 +88,19 @@ public class ListFrontWheelTabController {
         }
         return null;
     }
+
     public void updateTableFrontWheels() {
         UpdateList.updateList(SaveData.frontWheelsList,
                 tableFrontWheels,
                 TextConstants.FRONT_WHEEL_TEXT);
+        for (FrontWheel frontWheel : SaveData.frontWheelsList) {
+            for (Aircraft aircraft : SaveData.aircraftList) {
+                if (frontWheel.getSerialNumber().equals(aircraft.getLeftFrontWheel().getSerialNumber())
+                        || frontWheel.getSerialNumber().equals(aircraft.getRightFrontWheel().getSerialNumber())) {
+                    frontWheel.setAircraftNumberInstalled(aircraft.getAircraftNumber());
+                }
+            }
+        }
     }
 }
 

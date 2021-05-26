@@ -3,13 +3,20 @@ package sample.controllers.dialog;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lombok.Setter;
-import org.apache.commons.lang3.StringUtils;
 import sample.controllers.tab.ListFrontBreakTabController;
+import sample.data.Aircraft;
 import sample.data.SaveData;
 import sample.data.components.limitedResource.FrontBreak;
 import sample.write.WriteFile;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static sample.notification.NotificationAircraft.notificationFrontBreak;
+import static sample.utils.Utils.checkInput;
 
 public class CreateFrontBreakDialogController {
 
@@ -34,10 +41,18 @@ public class CreateFrontBreakDialogController {
     @FXML
     private Button createFrontBreakForAircraft;
 
+    @FXML
+    private Text alarmFirstRepair;
+
+    @FXML
+    private Text alarmReplacement;
+
     @Setter
     private ListFrontBreakTabController listFrontBreakTabController;
 
     private FrontBreak frontBreak;
+
+    List<Text> textOfAlarm = new ArrayList<>();
 
     @FXML
     void initialize() {
@@ -53,7 +68,8 @@ public class CreateFrontBreakDialogController {
             stage.close();
         });
         changeFrontBreak.setOnAction(e -> {
-            changeFrontBreak();
+            updateAircraftFrontBreaks();
+            changeFrontBreak(frontBreak);
             Stage stage = (Stage) changeFrontBreak.getScene().getWindow();
             stage.close();
         });
@@ -65,6 +81,9 @@ public class CreateFrontBreakDialogController {
         first_Repair_FrontBreak.setText(String.valueOf(frontBreak.getResource_Reserve_Before_First_Repair()));
         totalFrontBreak.setText(String.valueOf(frontBreak.getTotalLandings()));
         replacementFrontBreak.setText(String.valueOf(frontBreak.getResource_Reserve_Before_Replacement()));
+        textOfAlarm.add(alarmFirstRepair);
+        textOfAlarm.add(alarmReplacement);
+       notificationFrontBreak(frontBreak, textOfAlarm);
     }
 
     private void addFrontBreak() {
@@ -79,20 +98,11 @@ public class CreateFrontBreakDialogController {
 
     }
 
-//    public FrontBreak returnFrontBreak(String number) {
-//        for (FrontBreak e : SaveData.frontBreaksList) {
-//            if (e.getSerialNumber().equals(number)) {
-//                return e;
-//            }
-//        }
-//        return null;
-//    }
-
-    public void changeFrontBreak() {
-        if (StringUtils.isNotBlank(numberFrontBreak.getCharacters())
-                && StringUtils.isNotBlank(first_Repair_FrontBreak.getCharacters())
-                && StringUtils.isNotBlank(totalFrontBreak.getCharacters())
-                && StringUtils.isNotBlank(replacementFrontBreak.getCharacters())) {
+    public void changeFrontBreak(FrontBreak frontBreak) {
+        if (checkInput(numberFrontBreak,
+                              first_Repair_FrontBreak,
+                              totalFrontBreak,
+                              replacementFrontBreak)) {
             frontBreak.setResource_Reserve_Before_First_Repair(Integer.parseInt(first_Repair_FrontBreak.getText()));
             frontBreak.setResource_Reserve_Before_Replacement(Integer.parseInt(replacementFrontBreak.getText()));
             frontBreak.setSerialNumber(numberFrontBreak.getText());
@@ -118,6 +128,22 @@ public class CreateFrontBreakDialogController {
             createFrontBreakForAircraft.setVisible(false);
        }
 
+    }
+    private void updateAircraftFrontBreaks() {
+        for (Aircraft aircraft : SaveData.aircraftList) {
+            if ( aircraft.getLeftFrontBrake() == null) {
+                System.out.println("Нет левого переднего тормоза на самолете");
+            } else if (aircraft.getLeftFrontBrake().getSerialNumber().equals(frontBreak.getSerialNumber())){
+                changeFrontBreak(aircraft.getLeftFrontBrake());
+                WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
+            }
+            if (aircraft.getRightFrontBrake() == null) {
+                System.out.println("Нет правого переднего тормоза на самолете");
+            } else if (aircraft.getRightFrontBrake().getSerialNumber().equals(frontBreak.getSerialNumber())) {
+                changeFrontBreak(aircraft.getRightFrontBrake());
+                WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
+            }
+        }
     }
 }
 

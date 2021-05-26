@@ -21,6 +21,6 @@ public class FrontBreak {
 
     @Override
     public String toString() {
-        return serialNumber;
+        return "сер/№ " + serialNumber;
     }
 }

@@ -53,24 +53,24 @@
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font></Text>
-      <TextField fx:id="numberEngine" layoutX="364.0" layoutY="26.0" prefHeight="25.0" prefWidth="159.0" AnchorPane.topAnchor="26.0" />
-      <TextField fx:id="totalStartingEngine" layoutX="365.0" layoutY="60.0" prefWidth="70.0" AnchorPane.topAnchor="60.0" />
-      <TextField fx:id="totalOperatingEngineHours" layoutX="365.0" layoutY="91.0" prefWidth="70.0" AnchorPane.topAnchor="91.0" />
-      <TextField fx:id="before_278bulletinEngineMinutes" layoutX="454.0" layoutY="187.0" prefWidth="70.0" />
-      <TextField fx:id="before_10hoursEngineHours" layoutX="365.0" layoutY="122.0" prefWidth="70.0" AnchorPane.topAnchor="122.0" />
-      <TextField fx:id="totalOperatingEngineMinutes" layoutX="454.0" layoutY="90.0" prefWidth="70.0" />
-      <TextField fx:id="before_25hoursEngineHours" layoutX="365.0" layoutY="155.0" prefWidth="70.0" AnchorPane.topAnchor="155.0" />
-      <TextField fx:id="before_10hoursEngineMinutes" layoutX="454.0" layoutY="123.0" prefWidth="70.0" />
-      <TextField fx:id="before_278bulletinEngineHours" layoutX="365.0" layoutY="187.0" prefWidth="70.0" AnchorPane.topAnchor="187.0" />
-      <TextField fx:id="before_25hoursEngineMinutes" layoutX="454.0" layoutY="155.0" prefWidth="70.0" />
-      <TextField fx:id="before_50hoursEngineHours" layoutX="365.0" layoutY="219.0" prefWidth="70.0" AnchorPane.topAnchor="219.0" />
-      <TextField fx:id="before_50hoursEngineMinutes" layoutX="454.0" layoutY="219.0" prefWidth="70.0" />
-      <TextField fx:id="before_100hoursEngineHours" layoutX="365.0" layoutY="251.0" prefWidth="70.0" AnchorPane.topAnchor="251.0" />
-      <TextField fx:id="before_100hoursEngineMinutes" layoutX="454.0" layoutY="251.0" prefWidth="70.0" />
-      <TextField fx:id="before_150hoursEngineHours" layoutX="365.0" layoutY="285.0" prefWidth="70.0" AnchorPane.topAnchor="285.0" />
-      <TextField fx:id="before_150hoursEngineMinutes" layoutX="454.0" layoutY="282.0" prefWidth="70.0" />
-      <TextField fx:id="oilChangeEngineHours" layoutX="365.0" layoutY="315.0" prefWidth="70.0" AnchorPane.topAnchor="315.0" />
-      <TextField fx:id="oilChangeEngineMinutes" layoutX="454.0" layoutY="315.0" prefWidth="70.0" />
+      <TextField fx:id="numberEngine" alignment="CENTER" layoutX="364.0" layoutY="26.0" prefHeight="25.0" prefWidth="159.0" AnchorPane.topAnchor="26.0" />
+      <TextField fx:id="totalStartingEngine" alignment="CENTER" layoutX="365.0" layoutY="60.0" prefWidth="70.0" AnchorPane.topAnchor="60.0" />
+      <TextField fx:id="totalOperatingEngineHours" alignment="CENTER" layoutX="365.0" layoutY="91.0" prefWidth="70.0" AnchorPane.topAnchor="91.0" />
+      <TextField fx:id="before_278bulletinEngineMinutes" alignment="CENTER" layoutX="454.0" layoutY="187.0" prefWidth="70.0" />
+      <TextField fx:id="before_10hoursEngineHours" alignment="CENTER" layoutX="365.0" layoutY="122.0" prefWidth="70.0" AnchorPane.topAnchor="122.0" />
+      <TextField fx:id="totalOperatingEngineMinutes" alignment="CENTER" layoutX="454.0" layoutY="90.0" prefWidth="70.0" />
+      <TextField fx:id="before_25hoursEngineHours" alignment="CENTER" layoutX="365.0" layoutY="155.0" prefWidth="70.0" AnchorPane.topAnchor="155.0" />
+      <TextField fx:id="before_10hoursEngineMinutes" alignment="CENTER" layoutX="454.0" layoutY="123.0" prefWidth="70.0" />
+      <TextField fx:id="before_278bulletinEngineHours" alignment="CENTER" layoutX="365.0" layoutY="187.0" prefWidth="70.0" AnchorPane.topAnchor="187.0" />
+      <TextField fx:id="before_25hoursEngineMinutes" alignment="CENTER" layoutX="454.0" layoutY="155.0" prefWidth="70.0" />
+      <TextField fx:id="before_50hoursEngineHours" alignment="CENTER" layoutX="365.0" layoutY="219.0" prefWidth="70.0" AnchorPane.topAnchor="219.0" />
+      <TextField fx:id="before_50hoursEngineMinutes" alignment="CENTER" layoutX="454.0" layoutY="219.0" prefWidth="70.0" />
+      <TextField fx:id="before_100hoursEngineHours" alignment="CENTER" layoutX="365.0" layoutY="251.0" prefWidth="70.0" AnchorPane.topAnchor="251.0" />
+      <TextField fx:id="before_100hoursEngineMinutes" alignment="CENTER" layoutX="454.0" layoutY="251.0" prefWidth="70.0" />
+      <TextField fx:id="before_150hoursEngineHours" alignment="CENTER" layoutX="365.0" layoutY="285.0" prefWidth="70.0" AnchorPane.topAnchor="285.0" />
+      <TextField fx:id="before_150hoursEngineMinutes" alignment="CENTER" layoutX="454.0" layoutY="282.0" prefWidth="70.0" />
+      <TextField fx:id="oilChangeEngineHours" alignment="CENTER" layoutX="365.0" layoutY="315.0" prefWidth="70.0" AnchorPane.topAnchor="315.0" />
+      <TextField fx:id="oilChangeEngineMinutes" alignment="CENTER" layoutX="454.0" layoutY="315.0" prefWidth="70.0" />
       <Text layoutX="438.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ч">
          <font>
             <Font name="Times New Roman Bold" size="15.0" />

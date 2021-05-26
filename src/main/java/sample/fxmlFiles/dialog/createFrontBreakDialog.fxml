@@ -28,10 +28,10 @@
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <TextField fx:id="numberFrontBreak" layoutX="342.0" layoutY="33.0" AnchorPane.topAnchor="33.0" />
-      <TextField fx:id="totalFrontBreak" layoutX="342.0" layoutY="111.0" AnchorPane.topAnchor="93.0" />
-      <TextField fx:id="first_Repair_FrontBreak" layoutX="342.0" layoutY="187.0" AnchorPane.topAnchor="153.0" />
-      <TextField fx:id="replacementFrontBreak" layoutX="342.0" layoutY="195.0" AnchorPane.topAnchor="213.0" />
+      <TextField fx:id="numberFrontBreak" alignment="CENTER" layoutX="342.0" layoutY="33.0" AnchorPane.topAnchor="33.0" />
+      <TextField fx:id="totalFrontBreak" alignment="CENTER" layoutX="342.0" layoutY="111.0" AnchorPane.topAnchor="93.0" />
+      <TextField fx:id="first_Repair_FrontBreak" alignment="CENTER" layoutX="342.0" layoutY="187.0" AnchorPane.topAnchor="153.0" />
+      <TextField fx:id="replacementFrontBreak" alignment="CENTER" layoutX="342.0" layoutY="195.0" AnchorPane.topAnchor="213.0" />
       <Text layoutX="494.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1.">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
@@ -52,20 +52,30 @@
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <Button fx:id="createFrontBreak" layoutX="51.0" layoutY="373.0" mnemonicParsing="false" text="Добавить тормоз" visible="false">
+      <Button fx:id="createFrontBreak" layoutX="51.0" layoutY="373.0" mnemonicParsing="false" style="-fx-background-color: #3fc707;" text="Добавить тормоз" visible="false">
          <font>
             <Font name="Times New Roman Bold" size="17.0" />
          </font>
       </Button>
-      <Button fx:id="changeFrontBreak" layoutX="400.0" layoutY="373.0" mnemonicParsing="false" text="Сохранить" visible="false">
+      <Button fx:id="changeFrontBreak" layoutX="400.0" layoutY="373.0" mnemonicParsing="false" style="-fx-background-color: #00FFFF;" text="Сохранить" visible="false">
          <font>
             <Font name="Times New Roman Bold" size="17.0" />
          </font>
       </Button>
-      <Button fx:id="createFrontBreakForAircraft" layoutX="597.0" layoutY="373.0" mnemonicParsing="false" text="Добавить тормоз">
+      <Button fx:id="createFrontBreakForAircraft" layoutX="597.0" layoutY="373.0" mnemonicParsing="false" style="-fx-background-color: #3fc707;" text="Добавить тормоз">
          <font>
             <Font name="Times New Roman Bold" size="17.0" />
          </font>
       </Button>
+      <Text fx:id="alarmFirstRepair" fill="#dd0707" layoutX="532.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ВОЗЬМИ НА КОНТРОЛЬ!!!" visible="false">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text fx:id="alarmReplacement" fill="#dd0707" layoutX="532.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ВОЗЬМИ НА КОНТРОЛЬ!!!" visible="false">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

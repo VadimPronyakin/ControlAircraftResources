@@ -32,5 +32,5 @@ public class Engine {
     private String aircraftNumberInstalled;
 
     @Override
-    public String toString() { return serialNumberEngine; }
+    public String toString() { return "сер/№ " + serialNumberEngine; }
 }
