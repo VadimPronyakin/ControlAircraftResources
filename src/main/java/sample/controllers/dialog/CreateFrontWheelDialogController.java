@@ -12,6 +12,7 @@ import sample.data.SaveData;
 import sample.data.components.limitedResource.FrontWheel;
 import sample.write.WriteFile;
 
+import static sample.builder.Builder.createFrontWheel;
 import static sample.notification.NotificationAircraft.notificationFrontWheel;
 import static sample.utils.Utils.checkInput;
 
@@ -69,20 +70,11 @@ public class CreateFrontWheelDialogController {
     }
 
     private void addFrontWheel() {
-        FrontWheel frontWheel = FrontWheel.builder()
-                .totalLandings(Integer.parseInt(totalFrontWheel.getText()))
-                .resource_Reserve_Replacement_Wheel(Integer.parseInt(replacementFrontWheel.getText()))
-                .serialNumber(numberFrontWheel.getText())
-                .build();
-        SaveData.frontWheelsList.add(frontWheel);
-        WriteFile.serialization(SaveData.frontWheelsList, FrontWheel.class);
-
+        createFrontWheel(totalFrontWheel, replacementFrontWheel, numberFrontWheel);
     }
 
     public void changeFrontWheel(FrontWheel frontWheel) {
-        if (checkInput(numberFrontWheel,
-                totalFrontWheel,
-                replacementFrontWheel)) {
+        if (checkInput(numberFrontWheel, totalFrontWheel, replacementFrontWheel)) {
             frontWheel.setSerialNumber(numberFrontWheel.getText());
             frontWheel.setTotalLandings(Integer.parseInt(totalFrontWheel.getText()));
             frontWheel.setResource_Reserve_Replacement_Wheel(Integer.parseInt(replacementFrontWheel.getText()));
@@ -107,20 +99,19 @@ public class CreateFrontWheelDialogController {
             createFrontWheelForAircraft.setVisible(false);
         }
     }
+
     private void updateAircraftFrontWheels() {
         for (Aircraft aircraft : SaveData.aircraftList) {
-            if ( aircraft.getLeftFrontWheel() == null) {
-                System.out.println("Нет левого переднего колеса на самолете");
-            } else if (aircraft.getLeftFrontWheel().getSerialNumber().equals(frontWheel.getSerialNumber())){
+            if (aircraft.getLeftFrontWheel().getSerialNumber().equals(frontWheel.getSerialNumber())) {
                 changeFrontWheel(aircraft.getLeftFrontWheel());
                 WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
-            }
-            if (aircraft.getRightFrontWheel() == null) {
-                System.out.println("Нет правого переднего колеса на самолете");
             } else if (aircraft.getRightFrontWheel().getSerialNumber().equals(frontWheel.getSerialNumber())) {
                 changeFrontWheel(aircraft.getRightFrontWheel());
                 WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
             }
+
         }
     }
 }
+
+

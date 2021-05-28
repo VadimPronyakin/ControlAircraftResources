@@ -15,6 +15,7 @@ import sample.write.WriteFile;
 import java.util.ArrayList;
 import java.util.List;
 
+import static sample.builder.Builder.createFrontBreak;
 import static sample.notification.NotificationAircraft.notificationFrontBreak;
 import static sample.utils.Utils.checkInput;
 
@@ -52,8 +53,6 @@ public class CreateFrontBreakDialogController {
 
     private FrontBreak frontBreak;
 
-    List<Text> textOfAlarm = new ArrayList<>();
-
     @FXML
     void initialize() {
        createFrontBreakForAircraft.setOnAction(e -> {
@@ -81,21 +80,15 @@ public class CreateFrontBreakDialogController {
         first_Repair_FrontBreak.setText(String.valueOf(frontBreak.getResource_Reserve_Before_First_Repair()));
         totalFrontBreak.setText(String.valueOf(frontBreak.getTotalLandings()));
         replacementFrontBreak.setText(String.valueOf(frontBreak.getResource_Reserve_Before_Replacement()));
-        textOfAlarm.add(alarmFirstRepair);
-        textOfAlarm.add(alarmReplacement);
-       notificationFrontBreak(frontBreak, textOfAlarm);
+       notificationFrontBreak(frontBreak, alarmFirstRepair, alarmReplacement);
     }
 
     private void addFrontBreak() {
-        FrontBreak frontBreak = FrontBreak.builder()
-                .totalLandings(Integer.parseInt(totalFrontBreak.getText()))
-                .resource_Reserve_Before_First_Repair(Integer.parseInt(first_Repair_FrontBreak.getText()))
-                .resource_Reserve_Before_Replacement(Integer.parseInt(replacementFrontBreak.getText()))
-                .serialNumber(numberFrontBreak.getText())
-                .build();
-        SaveData.frontBreaksList.add(frontBreak);
-        WriteFile.serialization(SaveData.frontBreaksList, FrontBreak.class);
-
+        TextField[] fields = new TextField[] {totalFrontBreak,
+                first_Repair_FrontBreak,
+                replacementFrontBreak,
+                numberFrontBreak};
+        createFrontBreak(fields);
     }
 
     public void changeFrontBreak(FrontBreak frontBreak) {

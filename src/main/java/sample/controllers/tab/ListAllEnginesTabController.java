@@ -3,6 +3,7 @@ package sample.controllers.tab;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -87,9 +88,14 @@ public class ListAllEnginesTabController {
         UpdateList.updateList(SaveData.enginesList, tableEngine, TextConstants.ENGINE_TEXT);
         for (Engine engine : SaveData.enginesList) {
             for (Aircraft aircraft : SaveData.aircraftList) {
-                if (engine.getSerialNumberEngine().equals(aircraft.getLeftEngine().getSerialNumberEngine())
+                if (aircraft.getLeftEngine() == null
+                    || aircraft.getRightEngine() == null) {
+                    System.out.println("На самолете нет двигателя");
+                } else if (engine.getSerialNumberEngine().equals(aircraft.getLeftEngine().getSerialNumberEngine())
                         || engine.getSerialNumberEngine().equals(aircraft.getRightEngine().getSerialNumberEngine())) {
                     engine.setAircraftNumberInstalled(aircraft.getAircraftNumber());
+                } else {
+                    engine.setAircraftNumberInstalled("Не установлен на самолет");
                 }
             }
         }

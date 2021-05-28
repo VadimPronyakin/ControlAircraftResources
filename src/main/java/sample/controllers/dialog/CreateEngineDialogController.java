@@ -12,14 +12,13 @@ import sample.data.Aircraft;
 import sample.data.SaveData;
 import sample.data.components.Engine;
 import sample.data.enums.TypesOfWorks;
-import sample.works.MakeWorks;
 import sample.write.WriteFile;
-
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Integer.parseInt;
+import static sample.builder.Builder.createEngine;
 import static sample.notification.NotificationAircraft.notificationEngine;
 import static sample.utils.Utils.checkInput;
 import static sample.works.MakeWorks.doWorksEngine;
@@ -28,106 +27,71 @@ public class CreateEngineDialogController {
 
     @FXML
     private TextField numberEngine;
-
     @FXML
     private TextField totalStartingEngine;
-
     @FXML
     private TextField totalOperatingEngineHours;
-
     @FXML
     private TextField before_278bulletinEngineMinutes;
-
     @FXML
     private TextField before_10hoursEngineHours;
-
     @FXML
     private TextField totalOperatingEngineMinutes;
-
     @FXML
     private TextField before_25hoursEngineHours;
-
     @FXML
     private TextField before_10hoursEngineMinutes;
-
     @FXML
     private TextField before_278bulletinEngineHours;
-
     @FXML
     private TextField before_25hoursEngineMinutes;
-
     @FXML
     private TextField before_50hoursEngineHours;
-
     @FXML
     private TextField before_50hoursEngineMinutes;
-
     @FXML
     private TextField before_100hoursEngineHours;
-
     @FXML
     private TextField before_100hoursEngineMinutes;
-
     @FXML
     private TextField before_150hoursEngineHours;
-
     @FXML
     private TextField before_150hoursEngineMinutes;
-
     @FXML
     private TextField oilChangeEngineHours;
-
     @FXML
     private TextField oilChangeEngineMinutes;
-
     @FXML
     private Button createEngine;
-
     @FXML
     private Button changeEngine;
-
     @FXML
     private Button createEngineForAircraft;
-
     @FXML
     private ComboBox<TypesOfWorks> listOfWorksEngine;
-
     @FXML
     private Text selectionWorks;
-
     @FXML
     private Button makeWorksEngine;
-
     @FXML
     private Text alarm10Hours;
-
     @FXML
     private Text alarm25Hours;
-
     @FXML
     private Text alarm278Bulletin;
-
     @FXML
     private Text alarm50Hours;
-
     @FXML
     private Text alarm100Hours;
-
     @FXML
     private Text alarm150Hours;
-
     @FXML
     private Text alarmOilChange;
-
     @Setter
     private ListAllEnginesTabController listAllEnginesTabController;
-
     @Setter
     private PersonalAircraftDialogController personalAircraftDialogController;
-
     private Engine engine;
-
-    List<Text> textOfAlarm = new ArrayList<>();
 
     @FXML
     void initialize() {
@@ -140,13 +104,13 @@ public class CreateEngineDialogController {
                 TypesOfWorks.OIL_CHANGE_OPERATIONS);
         makeWorksEngine.setOnAction(e -> {
             doWorksEngine(engine, listOfWorksEngine);
-            WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
             update_Engine_After_Work();
+            WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
             Stage stage = (Stage) makeWorksEngine.getScene().getWindow();
             stage.close();
         });
         createEngineForAircraft.setOnAction(e -> {
-           addEngine();
+            addEngine();
             Stage stage = (Stage) createEngineForAircraft.getScene().getWindow();
             stage.close();
         });
@@ -157,7 +121,7 @@ public class CreateEngineDialogController {
             stage.close();
         });
         changeEngine.setOnAction(e -> {
-           updateAircraftEngines();
+            updateAircraftEngines();
             changeEngine(engine);
             Stage stage = (Stage) changeEngine.getScene().getWindow();
             stage.close();
@@ -201,6 +165,7 @@ public class CreateEngineDialogController {
         before_278bulletinEngineMinutes.setText(String.valueOf(engine.getResourceReserveBefore_278bulletin() % 60));
         totalOperatingEngineHours.setText(String.valueOf(engine.getTotalOperatingTime() / 60));
         totalOperatingEngineMinutes.setText(String.valueOf(engine.getTotalOperatingTime() % 60));
+        List<Text> textOfAlarm = new ArrayList<>();
         textOfAlarm.add(alarm10Hours);
         textOfAlarm.add(alarm25Hours);
         textOfAlarm.add(alarm50Hours);
@@ -213,33 +178,20 @@ public class CreateEngineDialogController {
 
     @FXML
     private void addEngine() {
-        Engine engine = Engine.builder()
-                .totalOperatingTime((Integer.parseInt(totalOperatingEngineHours.getText()) * 60) +
-                        parseInt(totalOperatingEngineMinutes.getText()))
-                .totalStartingEngineCount(Integer.parseInt(totalStartingEngine.getText()))
-                .resourceReserveBefore_10hours((Integer.parseInt(before_10hoursEngineHours.getText()) * 60) +
-                        parseInt(before_10hoursEngineMinutes.getText()))
-                .resourceReserveBefore_25hours((parseInt(before_25hoursEngineHours.getText()) * 60) +
-                        parseInt(before_25hoursEngineMinutes.getText()))
-                .resourceReserveBefore_50hours((parseInt(before_50hoursEngineHours.getText()) * 60) +
-                        parseInt(before_50hoursEngineMinutes.getText()))
-                .resourceReserveBefore_100hours((parseInt(before_100hoursEngineHours.getText()) * 60) +
-                        parseInt(before_100hoursEngineMinutes.getText()))
-                .resourceReserveBefore_150hours((parseInt(before_150hoursEngineHours.getText()) * 60) +
-                        parseInt(before_150hoursEngineMinutes.getText()))
-                .resourceReserveBefore_278bulletin((parseInt(before_278bulletinEngineHours.getText()) * 60) +
-                        parseInt(before_278bulletinEngineMinutes.getText()))
-                .oilChange((parseInt(oilChangeEngineHours.getText()) * 60) +
-                        parseInt(oilChangeEngineMinutes.getText()))
-                .serialNumberEngine(numberEngine.getText())
-                .build();
-        SaveData.enginesList.add(engine);
-        WriteFile.serialization(SaveData.enginesList, Engine.class);
+        TextField[] fields = new TextField[]{totalOperatingEngineHours, totalOperatingEngineMinutes,
+                totalStartingEngine, before_10hoursEngineHours,
+                before_10hoursEngineMinutes, before_25hoursEngineHours,
+                before_25hoursEngineMinutes, before_50hoursEngineHours,
+                before_50hoursEngineMinutes, before_100hoursEngineHours,
+                before_100hoursEngineMinutes, before_150hoursEngineHours,
+                before_150hoursEngineMinutes, before_278bulletinEngineHours,
+                before_278bulletinEngineMinutes, oilChangeEngineHours,
+                oilChangeEngineMinutes, numberEngine};
+        createEngine(fields);
     }
 
-
     public void changeEngine(Engine engine) {
-        if(checkInput(before_10hoursEngineMinutes, before_25hoursEngineHours,
+        if (checkInput(before_10hoursEngineMinutes, before_25hoursEngineHours,
                 before_25hoursEngineMinutes, before_50hoursEngineHours,
                 before_50hoursEngineMinutes, before_100hoursEngineHours,
                 before_100hoursEngineMinutes, before_150hoursEngineHours,
@@ -273,9 +225,9 @@ public class CreateEngineDialogController {
 
     private void updateAircraftEngines() {
         for (Aircraft aircraft : SaveData.aircraftList) {
-            if ( aircraft.getLeftEngine() == null) {
+            if (aircraft.getLeftEngine() == null) {
                 System.out.println("Нет левого двигателя на самолете");
-            } else if (aircraft.getLeftEngine().getSerialNumberEngine().equals(engine.getSerialNumberEngine())){
+            } else if (aircraft.getLeftEngine().getSerialNumberEngine().equals(engine.getSerialNumberEngine())) {
                 changeEngine(aircraft.getLeftEngine());
                 WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
             }
@@ -287,6 +239,7 @@ public class CreateEngineDialogController {
             }
         }
     }
+
     private void update_Engine_After_Work() {
         for (Engine e : SaveData.enginesList) {
             if (e.getSerialNumberEngine().equals(engine.getSerialNumberEngine())) {

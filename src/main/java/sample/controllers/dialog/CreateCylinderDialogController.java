@@ -3,19 +3,15 @@ package sample.controllers.dialog;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.shape.Cylinder;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lombok.Setter;
+import sample.builder.Builder;
 import sample.controllers.tab.ListCylindersTabController;
 import sample.data.Aircraft;
 import sample.data.SaveData;
-import sample.data.components.Engine;
 import sample.data.components.limitedResource.CylinderOfRetractionExtension;
 import sample.write.WriteFile;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static sample.notification.NotificationAircraft.notificationCylinder;
 import static sample.utils.Utils.checkInput;
@@ -61,8 +57,6 @@ public class CreateCylinderDialogController {
 
     private CylinderOfRetractionExtension cylinder;
 
-    List<Text> textOfAlarm = new ArrayList<>();
-
     @FXML
     void initialize() {
         createCylinderForAircraft.setOnAction(e -> {
@@ -90,23 +84,16 @@ public class CreateCylinderDialogController {
         second_Repair_Cylinder.setText(String.valueOf(cylinder.getResource_Reserve_Before_Second_Repair()));
         replacementCylinder.setText(String.valueOf(cylinder.getResource_Reserve_Before_Replacement()));
         numberCylinder.setText(cylinder.getSerialNumber());
-        textOfAlarm.add(alarmFirstRepair);
-        textOfAlarm.add(alarmSecondRepair);
-        textOfAlarm.add(alarmReplacement);
-        notificationCylinder(cylinder, textOfAlarm);
+        notificationCylinder(cylinder, alarmFirstRepair, alarmSecondRepair, alarmReplacement);
     }
 
     private void addCylinder() {
-        CylinderOfRetractionExtension cylinder = CylinderOfRetractionExtension.builder()
-                .totalLandings(Integer.parseInt(totalCylinder.getText()))
-                .resource_Reserve_Before_First_Repair(Integer.parseInt(first_Repair_Cylinder.getText()))
-                .resource_Reserve_Before_Second_Repair(Integer.parseInt(second_Repair_Cylinder.getText()))
-                .resource_Reserve_Before_Replacement(Integer.parseInt(replacementCylinder.getText()))
-                .serialNumber(numberCylinder.getText())
-                .build();
-        SaveData.cylindersList.add(cylinder);
-        WriteFile.serialization(SaveData.cylindersList, CylinderOfRetractionExtension.class);
-
+        TextField[] fields = new TextField[]{totalCylinder,
+                first_Repair_Cylinder,
+                second_Repair_Cylinder,
+                replacementCylinder,
+                numberCylinder};
+        Builder.createCylinder(fields);
     }
     public void changeCylinder(CylinderOfRetractionExtension cylinder) {
         if (checkInput(first_Repair_Cylinder,

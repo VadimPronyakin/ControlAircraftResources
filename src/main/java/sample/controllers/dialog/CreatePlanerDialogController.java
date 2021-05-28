@@ -6,6 +6,7 @@ import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lombok.Setter;
+import sample.builder.Builder;
 import sample.calculating.CalculatingDateResources;
 import sample.data.Aircraft;
 import sample.data.SaveData;
@@ -29,7 +30,6 @@ import static sample.utils.Utils.checkInputPlaner;
 
 public class CreatePlanerDialogController {
 
-    List<Text> textOfAlarms = new ArrayList<>();
     @FXML
     private TextField sideNumber;
     @FXML
@@ -126,6 +126,7 @@ public class CreatePlanerDialogController {
         before_200hours_Planer_Minutes.setText(String.valueOf(planer1.getResource_Reserve_Before_200hours() % 60));
         last_Flight_Date_Planer.setValue(planer1.getLast_Flight_Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
         date_Work_After_30Days_Parking_Planer.setValue(planer1.getDate_Work_After_30days_Parking().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        List<Text> textOfAlarms = new ArrayList<>();
         textOfAlarms.add(alarm30Days);
         textOfAlarms.add(alarm_Resource_6months);
         textOfAlarms.add(alarm100Hours);
@@ -137,21 +138,14 @@ public class CreatePlanerDialogController {
     }
 
     private void createPlaner() {
-        Planer planer = Planer.builder()
-                .sideNumber(sideNumber.getText())
-                .total_Landing_Count(Integer.parseInt(total_Landing_Count_Planer.getText()))
-                .last_Flight_Date(Date.from(last_Flight_Date_Planer.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()))
-                .date_Work_After_6months_Operation(Date.from(date_Work_After_6months_Operation_Planer.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()))
-                .date_Work_After_30days_Parking(Date.from(date_Work_After_30Days_Parking_Planer.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()))
-                .total_Operating_Time((Integer.parseInt(total_Operating_Planer_Hours.getText()) * 60) +
-                        Integer.parseInt(total_Operating_Planer_Minutes.getText()))
-                .resource_Reserve_Before_100hours((Integer.parseInt(before_100hours_Planer_Hours.getText()) * 60) +
-                        Integer.parseInt(before_100hours_Planer_Minutes.getText()))
-                .resource_Reserve_Before_200hours((Integer.parseInt(before_200hours_Planer_Hours.getText()) * 60) +
-                        Integer.parseInt(before_200hours_Planer_Minutes.getText()))
-                .build();
-        SaveData.planersList.add(planer);
-        WriteFile.serialization(SaveData.planersList, Planer.class);
+        TextField[] fields = new TextField[] {sideNumber, total_Landing_Count_Planer,
+                total_Operating_Planer_Hours, total_Operating_Planer_Minutes,
+                before_100hours_Planer_Hours, before_100hours_Planer_Minutes,
+                before_200hours_Planer_Hours, before_100hours_Planer_Minutes};
+        Builder.createPlaner(fields,
+                last_Flight_Date_Planer,
+                date_Work_After_6months_Operation_Planer,
+                date_Work_After_30Days_Parking_Planer);
     }
 
     public void setButtonVisible(String string) {
@@ -175,10 +169,7 @@ public class CreatePlanerDialogController {
             planer.setSideNumber(sideNumber.getText());
             planer.setTotal_Landing_Count(parseInt(total_Landing_Count_Planer.getText()));
             planer.setLast_Flight_Date(Date.from(last_Flight_Date_Planer.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
-           //если не сработает вынести за тело if
-//            planer.setDays_Reserve_Before_30DaysParking(CalculatingDateResources.calculateDateInDays(planer.getDays_Reserve_Before_30DaysParking()));
             planer.setDate_Work_After_6months_Operation(Date.from(date_Work_After_6months_Operation_Planer.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
-//            planer.setDays_Reserve_Before_6months_Operating(CalculatingDateResources.calculateDateInMonth(planer.getDays_Reserve_Before_6months_Operating()));
             planer.setDate_Work_After_30days_Parking(Date.from(date_Work_After_30Days_Parking_Planer.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
             planer.setResource_Reserve_Before_100hours((parseInt(before_100hours_Planer_Hours.getText()) * 60) +
                     parseInt(before_100hours_Planer_Minutes.getText()));

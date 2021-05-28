@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lombok.Setter;
+import sample.builder.Builder;
 import sample.controllers.tab.ListMainBreaksTabController;
 import sample.data.Aircraft;
 import sample.data.SaveData;
@@ -17,6 +18,7 @@ import sample.write.WriteFile;
 import java.util.ArrayList;
 import java.util.List;
 
+import static sample.builder.Builder.createMainBreak;
 import static sample.notification.NotificationAircraft.notificationMainBreak;
 import static sample.utils.Utils.checkInput;
 import static sample.works.MakeWorks.doWorksMainBreak;
@@ -121,18 +123,11 @@ public class CreateMainBreakDialogController {
     }
 
     private void addMainBreak() {
-        MainBreak mainBreak = MainBreak.builder()
-                .totalLandings(Integer.parseInt(totalMainBreak.getText()))
-                .resource_Reserve_Replacement_Break(Integer.parseInt(replacementMainBreak.getText()))
-                .resource_Reserve_Replacement_RotatingDisks(Integer.parseInt(replacement_RotatingDisks.getText()))
-                .resource_Reserve_Replacement_NonRotatingDisks(Integer.parseInt(replacement_NonRotatingDisks.getText()))
-                .resource_Reserve_Replacement_PressureDisk(Integer.parseInt(replacement_PressureDisk.getText()))
-                .resource_Reserve_Replacement_ReferenceDisk(Integer.parseInt(replacement_ReferenceDisk.getText()))
-                .serialNumber(numberMainBreak.getText())
-                .build();
-        SaveData.mainBreaksList.add(mainBreak);
-        WriteFile.serialization(SaveData.mainBreaksList, MainBreak.class);
-
+        TextField[] fields = new TextField[] {totalMainBreak, replacementMainBreak,
+                replacement_RotatingDisks, replacement_NonRotatingDisks,
+                replacement_PressureDisk, replacement_ReferenceDisk,
+                numberMainBreak};
+        createMainBreak(fields);
     }
 
     public void changeMainBreak(MainBreak mainBreak) {

@@ -6,6 +6,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lombok.Setter;
+import sample.builder.Builder;
 import sample.controllers.tab.ListMainWheelsTabController;
 import sample.data.Aircraft;
 import sample.data.SaveData;
@@ -68,20 +69,11 @@ public class CreateMainWheelDialogController {
     }
 
     private void addMainWheel() {
-        MainWheel mainWheel = MainWheel.builder()
-                .totalLandings(Integer.parseInt(totalMainWheel.getText()))
-                .resource_Reserve_Replacement_Wheel(Integer.parseInt(replacementMainWheel.getText()))
-                .serialNumber(numberMainWheel.getText())
-                .build();
-        SaveData.mainWheelsList.add(mainWheel);
-        WriteFile.serialization(SaveData.mainWheelsList, MainWheel.class);
-
+        Builder.createMainWheel(totalMainWheel, replacementMainWheel, numberMainWheel);
     }
 
     public void changeMainWheel(MainWheel mainWheel) {
-        if (checkInput(numberMainWheel,
-                totalMainWheel,
-                replacementMainWheel)) {
+        if (checkInput(numberMainWheel, totalMainWheel, replacementMainWheel)) {
             mainWheel.setSerialNumber(numberMainWheel.getText());
             mainWheel.setTotalLandings(Integer.parseInt(totalMainWheel.getText()));
             mainWheel.setResource_Reserve_Replacement_Wheel(Integer.parseInt(replacementMainWheel.getText()));

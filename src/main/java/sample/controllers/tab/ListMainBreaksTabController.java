@@ -97,6 +97,8 @@ public class ListMainBreaksTabController {
                 if (mainBreak.getSerialNumber().equals(aircraft.getLeftMainBrake().getSerialNumber())
                         || mainBreak.getSerialNumber().equals(aircraft.getRightMainBrake().getSerialNumber())) {
                     mainBreak.setAircraftNumberInstalled(aircraft.getAircraftNumber());
+                } else {
+                    mainBreak.setAircraftNumberInstalled("Не установлен на самолет");
                 }
             }
         }

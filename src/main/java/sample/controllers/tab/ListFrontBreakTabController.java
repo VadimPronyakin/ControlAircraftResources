@@ -115,6 +115,8 @@ public class ListFrontBreakTabController {
                 if (frontBreak.getSerialNumber().equals(aircraft.getLeftFrontBrake().getSerialNumber())
                         || frontBreak.getSerialNumber().equals(aircraft.getRightFrontBrake().getSerialNumber())) {
                     frontBreak.setAircraftNumberInstalled(aircraft.getAircraftNumber());
+                } else {
+                    frontBreak.setAircraftNumberInstalled("Не установлен на самолет");
                 }
             }
         }

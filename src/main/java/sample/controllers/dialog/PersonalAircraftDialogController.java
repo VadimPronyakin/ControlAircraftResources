@@ -2,17 +2,9 @@ package sample.controllers.dialog;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import sample.data.Aircraft;
-import sample.data.components.Engine;
-import sample.data.components.Ksa;
-import sample.data.components.Planer;
-import sample.data.components.limitedResource.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static sample.notification.NotificationAircraft.notifiesAircraft;
 import static sample.openNewScene.OpenNewScene.showEditDialog;
@@ -23,36 +15,6 @@ public class PersonalAircraftDialogController {
     private TextField sideNumber;
     @FXML
     private TextField engineerForAircraft;
-//    @FXML
-//    private ListView<Engine> leftEngine;
-//    @FXML
-//    private ListView<Engine> rightEngine;
-//    @FXML
-//    private ListView<Ksa> KSA;
-//    @FXML
-//    private ListView<Planer> planer;
-//    @FXML
-//    private ListView<MainWheel> leftMainWheel;
-//    @FXML
-//    private ListView<MainWheel> rightMainWheel;
-//    @FXML
-//    private ListView<FrontWheel> leftFrontWheel;
-//    @FXML
-//    private ListView<FrontWheel> rightFrontWheel;
-//    @FXML
-//    private ListView<MainBreak> leftMainBreak;
-//    @FXML
-//    private ListView<MainBreak> rightMainBreak;
-//    @FXML
-//    private ListView<FrontBreak> leftFrontBreak;
-//    @FXML
-//    private ListView<FrontBreak> rightFrontBreak;
-//    @FXML
-//    private ListView<CylinderOfRetractionExtension> leftCylinder;
-//    @FXML
-//    private ListView<CylinderOfRetractionExtension> rightCylinder;
-//    @FXML
-//    private ListView<CylinderOfRetractionExtension> frontCylinder;
     @FXML
     private Text alarmLeftEngine;
     @FXML
@@ -83,80 +45,69 @@ public class PersonalAircraftDialogController {
     private Text alarmRightCylinder;
     @FXML
     private Text alarmFrontCylinder;
-
     @FXML
     private Label leftEngine;
-
     @FXML
     private Label rightEngine;
-
     @FXML
     private Label ksaOnAircraft;
-
     @FXML
     private Label planer;
-
     @FXML
     private Label leftMainWheel;
-
     @FXML
     private Label rightMainWheel;
-
     @FXML
     private Label leftFrontWheel;
-
     @FXML
     private Label rightFrontWheel;
-
     @FXML
     private Label leftMainBreak;
-
     @FXML
     private Label rightMainBreak;
-
     @FXML
     private Label leftFrontBreak;
-
     @FXML
     private Label rightFrontBreak;
-
     @FXML
     private Label leftCylinder;
-
     @FXML
     private Label rightCylinder;
-
     @FXML
     private Label frontCylinder;
-
-    List<Text> textOfAlarm = new ArrayList<>();
-
     private Aircraft aircraft;
 
     @FXML
     void initialize() {
         leftEngine.setOnMouseClicked(e -> {
-            if (e.getClickCount() == 2) {
-                CreateEngineDialogController controller = showEditDialog(e,
-                        "/sample/fxmlFiles/dialog/createEngineDialog.fxml");
-                controller.setButtonVisible("Выполнить работ");
-                controller.setEngine(aircraft.getLeftEngine());
+            if (aircraft.getLeftEngine() != null) {
+                if (e.getClickCount() == 2) {
+                    CreateEngineDialogController controller = showEditDialog(e,
+                            "/sample/fxmlFiles/dialog/createEngineDialog.fxml");
+                    controller.setButtonVisible("Выполнить работ");
+                    controller.setEngine(aircraft.getLeftEngine());
+                    controller.setPersonalAircraftDialogController(this);
+                }
             }
         });
         rightEngine.setOnMouseClicked(e -> {
-            if (e.getClickCount() == 2) {
-                CreateEngineDialogController controller = showEditDialog(e,
-                        "/sample/fxmlFiles/dialog/createEngineDialog.fxml");
-                controller.setButtonVisible("Выполнить работ");
-                controller.setEngine(aircraft.getRightEngine());
+            if (aircraft.getRightEngine() != null) {
+                if (e.getClickCount() == 2) {
+                    CreateEngineDialogController controller = showEditDialog(e,
+                            "/sample/fxmlFiles/dialog/createEngineDialog.fxml");
+                    controller.setButtonVisible("Выполнить работ");
+                    controller.setEngine(aircraft.getRightEngine());
+                }
             }
         });
         ksaOnAircraft.setOnMouseClicked(e -> {
-            if (e.getClickCount() == 2) {
-                CreateKsaDialogController controller = showEditDialog(e,
-                        "/sample/fxmlFiles/dialog/createKsaDialog.fxml");
-                controller.setButtonVisible("Выполнить работ");
-                controller.setKsa(aircraft.getKsa());
+            if (aircraft.getKsa() != null) {
+                if (e.getClickCount() == 2) {
+                    CreateKsaDialogController controller = showEditDialog(e,
+                            "/sample/fxmlFiles/dialog/createKsaDialog.fxml");
+                    controller.setButtonVisible("Выполнить работ");
+                    controller.setKsa(aircraft.getKsa());
+                }
             }
         });
         rightMainWheel.setOnMouseClicked(e -> {
@@ -261,9 +212,21 @@ public class PersonalAircraftDialogController {
         this.aircraft = aircraft;
         sideNumber.setText(aircraft.getAircraftNumber());
         engineerForAircraft.setText(aircraft.getFullNameEngineer());
-        leftEngine.textProperty().setValue(String.valueOf(aircraft.getLeftEngine()));
-        rightEngine.textProperty().setValue(String.valueOf(aircraft.getRightEngine()));
-        ksaOnAircraft.textProperty().setValue(String.valueOf(aircraft.getKsa()));
+        if (aircraft.getLeftEngine() != null) {
+            leftEngine.textProperty().setValue(String.valueOf(aircraft.getLeftEngine()));
+        } else {
+            leftEngine.setText("Двигатель не установлен на самолет");
+        }
+        if (aircraft.getRightEngine() != null) {
+            rightEngine.textProperty().setValue(String.valueOf(aircraft.getRightEngine()));
+        } else {
+            rightEngine.setText("Двигатель не установлен на самолет");
+        }
+        if (aircraft.getKsa() != null) {
+            ksaOnAircraft.textProperty().setValue(String.valueOf(aircraft.getKsa()));
+        } else {
+            ksaOnAircraft.setText("КСА не установлена на самолете");
+        }
         planer.textProperty().setValue(String.valueOf(aircraft.getPlaner()));
         leftMainWheel.textProperty().setValue(String.valueOf(aircraft.getLeftMainWheel()));
         rightMainWheel.textProperty().setValue(String.valueOf(aircraft.getRightMainWheel()));
@@ -276,21 +239,14 @@ public class PersonalAircraftDialogController {
         leftCylinder.textProperty().setValue(String.valueOf(aircraft.getLeftMainCylinder()));
         rightCylinder.textProperty().setValue(String.valueOf(aircraft.getRightMainCylinder()));
         frontCylinder.textProperty().setValue(String.valueOf(aircraft.getFrontCylinder()));
-        textOfAlarm.add(alarmLeftEngine);
-        textOfAlarm.add(alarmRightEngine);
-        textOfAlarm.add(alarmKsa);
-        textOfAlarm.add(alarmPlaner);
-        textOfAlarm.add(alarm_Left_Main_Wheel);
-        textOfAlarm.add(alarm_Right_Main_Wheel);
-        textOfAlarm.add(alarm_Left_Front_Wheel);
-        textOfAlarm.add(alarm_Right_Front_Wheel);
-        textOfAlarm.add(alarm_Left_Main_Break);
-        textOfAlarm.add(alarm_Right_Main_Break);
-        textOfAlarm.add(alarm_Left_Front_Break);
-        textOfAlarm.add(alarm_Right_Front_Break);
-        textOfAlarm.add(alarmLeftCylinder);
-        textOfAlarm.add(alarmRightCylinder);
-        textOfAlarm.add(alarmFrontCylinder);
+        Text[] textOfAlarm = new Text[]{alarmLeftEngine, alarmRightEngine,
+                alarmKsa, alarmPlaner,
+                alarm_Left_Main_Wheel, alarm_Right_Main_Wheel,
+                alarm_Left_Front_Wheel, alarm_Right_Front_Wheel,
+                alarm_Left_Main_Break, alarm_Right_Main_Break,
+                alarm_Left_Front_Break, alarm_Right_Front_Break,
+                alarmLeftCylinder, alarmRightCylinder,
+                alarmFrontCylinder};
         notifiesAircraft(aircraft, textOfAlarm);
     }
 }

@@ -18,11 +18,9 @@ import sample.data.Aircraft;
 import sample.data.SaveData;
 import sample.delete.DeleteObject;
 import sample.update.UpdateList;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import static sample.openNewScene.OpenNewScene.openNewScene;
 import static sample.openNewScene.OpenNewScene.showEditDialog;
 
@@ -59,6 +57,7 @@ public class ListOfAircraftController {
     @FXML
     void initialize() {
         updateTableAircraft();
+//        tableAircraft.setStyle("-fx-selection-bar: red; -fx-selection-bar-non-focused: salmon;");
         columnNumberAircraft.setCellValueFactory(new PropertyValueFactory<>("aircraftNumber"));
         columnEngineerAk.setCellValueFactory(new PropertyValueFactory<>("fullNameEngineer"));
         returnHomePage.setOnAction(event -> openNewScene("/sample/fxmlFiles/sample.fxml", returnHomePage));

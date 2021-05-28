@@ -98,6 +98,8 @@ public class ListMainWheelsTabController {
                 if (mainWheel.getSerialNumber().equals(aircraft.getLeftMainWheel().getSerialNumber())
                         || mainWheel.getSerialNumber().equals(aircraft.getRightMainWheel().getSerialNumber())) {
                     mainWheel.setAircraftNumberInstalled(aircraft.getAircraftNumber());
+                } else {
+                    mainWheel.setAircraftNumberInstalled("Не установлено на самолет");
                 }
             }
         }

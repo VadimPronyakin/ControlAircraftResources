@@ -3,14 +3,11 @@ package sample.works;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
-import sample.data.Aircraft;
-import sample.data.SaveData;
 import sample.data.components.Engine;
 import sample.data.components.Ksa;
 import sample.data.components.Planer;
 import sample.data.components.limitedResource.MainBreak;
 import sample.data.enums.TypesOfWorks;
-import sample.write.WriteFile;
 
 import java.time.ZoneId;
 import java.util.Date;

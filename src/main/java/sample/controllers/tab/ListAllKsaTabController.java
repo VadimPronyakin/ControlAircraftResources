@@ -91,6 +91,8 @@ public class ListAllKsaTabController {
                     System.out.println("Добавь КСА на самолет");
                 } else if (ksa.getSerialNumberKsa().equals(aircraft.getKsa().getSerialNumberKsa())) {
                     ksa.setAircraftNumberInstalled(aircraft.getAircraftNumber());
+                } else {
+                    ksa.setAircraftNumberInstalled("Не установлена на самолет");
                 }
             }
         }

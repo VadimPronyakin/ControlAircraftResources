@@ -3,6 +3,7 @@ package sample.controllers.dialog;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
@@ -12,19 +13,19 @@ import javafx.stage.Stage;
 import lombok.Setter;
 import sample.Main;
 import sample.controllers.ListOfAircraftController;
-import sample.data.Aircraft;
 import sample.data.Engineer;
 import sample.data.SaveData;
 import sample.data.components.Engine;
 import sample.data.components.Ksa;
 import sample.data.components.Planer;
 import sample.data.components.limitedResource.*;
-import sample.write.WriteFile;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import static sample.builder.Builder.createAircraft;
 
 public class CreateAircraftDialogController {
     @FXML
@@ -177,7 +178,6 @@ public class CreateAircraftDialogController {
     @FXML
     private Button updateMainLeftWheelList;
 
-
     @Setter
     private ListOfAircraftController listOfAircraftController;
 
@@ -238,29 +238,26 @@ public class CreateAircraftDialogController {
     }
 
     private void addAircraft() {
-        Aircraft aircraft = Aircraft.builder()
-                .aircraftNumber("б/н " + sideNumber.getText())
-                .iak(listOfEngineers.getSelectionModel().getSelectedItem())
-                .ksa(ksaList.getSelectionModel().getSelectedItem())
-                .leftEngine(leftEngineList.getSelectionModel().getSelectedItem())
-                .rightEngine(rightEngineList.getSelectionModel().getSelectedItem())
-                .frontCylinder(frontCylinderList.getSelectionModel().getSelectedItem())
-                .rightMainCylinder(mainRightCylinderList.getSelectionModel().getSelectedItem())
-                .leftMainCylinder(mainLeftCylinderList.getSelectionModel().getSelectedItem())
-                .leftMainBrake(mainLeftBreakList.getSelectionModel().getSelectedItem())
-                .rightMainBrake(mainRightBreakList.getSelectionModel().getSelectedItem())
-                .leftFrontBrake(frontLeftBreakList.getSelectionModel().getSelectedItem())
-                .rightFrontBrake(frontRightBreakList.getSelectionModel().getSelectedItem())
-                .leftMainWheel(mainLeftWheelList.getSelectionModel().getSelectedItem())
-                .rightMainWheel(mainRightWheelList.getSelectionModel().getSelectedItem())
-                .leftFrontWheel(frontLeftWheelList.getSelectionModel().getSelectedItem())
-                .rightFrontWheel(frontRightWheelList.getSelectionModel().getSelectedItem())
-                .planer(listOfPlaners.getSelectionModel().getSelectedItem())
-                .fullNameEngineer(listOfEngineers.getSelectionModel().getSelectedItem().getFullName())
-                .build();
-        SaveData.aircraftList.add(aircraft);
-        WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
-        listOfAircraftController.updateTableAircraft();
+        ChoiceBox[] boxes = new ChoiceBox[]{listOfEngineers, leftEngineList,
+                rightEngineList, ksaList,
+                listOfPlaners, mainLeftBreakList,
+                mainRightBreakList, mainLeftWheelList,
+                mainRightWheelList, frontLeftBreakList,
+                frontRightBreakList, frontLeftWheelList,
+                frontRightWheelList, mainLeftCylinderList,
+                mainRightCylinderList, frontCylinderList};
+        try {
+            createAircraft(sideNumber, boxes);
+            listOfAircraftController.updateTableAircraft();
+        } catch (NullPointerException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("ВНИМАНИЕ!!!");
+            alert.setHeaderText(null);
+            alert.setContentText("Поля, помеченные звездочкой, обязательны для заполнения");
+            alert.show();
+            createAircraft(sideNumber, boxes);
+            listOfAircraftController.updateTableAircraft();
+        }
     }
 
     public void showDialog(String url) {
@@ -276,13 +273,14 @@ public class CreateAircraftDialogController {
             exception.printStackTrace();
         }
     }
+
     public void updateChoiceBoxes(int id) {
         ChoiceBox box = null;
         List list = null;
         switch (id) {
             case 1:
-               box = leftEngineList;
-               list = SaveData.enginesList;
+                box = leftEngineList;
+                list = SaveData.enginesList;
                 break;
             case 2:
                 box = rightEngineList;

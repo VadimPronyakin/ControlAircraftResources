@@ -130,6 +130,8 @@ public class ListCylindersTabController {
                         || cylinder.getSerialNumber().equals(aircraft.getRightMainCylinder().getSerialNumber())
                         || cylinder.getSerialNumber().equals(aircraft.getFrontCylinder().getSerialNumber())) {
                     cylinder.setAircraftNumberInstalled(aircraft.getAircraftNumber());
+                } else {
+                    cylinder.setAircraftNumberInstalled("Не установлен на самолет");
                 }
             }
         }

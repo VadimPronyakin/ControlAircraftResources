@@ -12,12 +12,9 @@ import sample.data.Aircraft;
 import sample.data.SaveData;
 import sample.data.components.Ksa;
 import sample.data.enums.TypesOfWorks;
-import sample.works.MakeWorks;
 import sample.write.WriteFile;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import static sample.builder.Builder.createKsa;
 import static sample.notification.NotificationAircraft.notificationKsa;
 import static sample.utils.Utils.checkInput;
 import static sample.works.MakeWorks.doWorkKsa;
@@ -69,8 +66,6 @@ public class CreateKsaDialogController {
 
     private Ksa ksa;
 
-    List<Text> textOfAlarm = new ArrayList<>();
-
     @FXML
     void initialize() {
         listOfWorksKsa.getItems().addAll(TypesOfWorks.WORKS_AFTER_25_HOURS, TypesOfWorks.OIL_CHANGE_OPERATIONS);
@@ -113,27 +108,16 @@ public class CreateKsaDialogController {
         before_25hoursKsaMinutes.setText(String.valueOf(ksa.getResource_Reserve_Before_25hours() % 60));
         oilChangeKsaHours.setText(String.valueOf(ksa.getOilChange() / 60));
         oilChangeKsaMinutes.setText(String.valueOf(ksa.getOilChange() % 60));
-        textOfAlarm.add(alarm25Hours);
-        textOfAlarm.add(alarmOilChange);
-        notificationKsa(ksa, textOfAlarm);
+        notificationKsa(ksa, alarm25Hours, alarmOilChange);
     }
 
     private void addKsa() {
-        Ksa ksa = Ksa.builder()
-                .total_Operating_Time((Integer.parseInt(totalOperatingKsaHours.getText()) * 60) +
-                        Integer.parseInt(totalOperatingKsaMinutes.getText()))
-                .starting_Left_Count(Integer.parseInt(totalLeftKsa.getText()))
-                .starting_Right_Count(Integer.parseInt(totalRightKsa.getText()))
-                .total_Starting_Ksa_Count(Integer.parseInt(totalStartKsa.getText()))
-                .resource_Reserve_Before_25hours((Integer.parseInt(before_25hoursKsaHours.getText()) * 60) +
-                        Integer.parseInt(before_25hoursKsaMinutes.getText()))
-                .oilChange((Integer.parseInt(oilChangeKsaHours.getText()) * 60) +
-                        Integer.parseInt(oilChangeKsaMinutes.getText()))
-                .serialNumberKsa(numberKsa.getText())
-                .build();
-        SaveData.ksaList.add(ksa);
-        WriteFile.serialization(SaveData.ksaList, Ksa.class);
-
+        TextField[] fields = new TextField[] {totalOperatingKsaHours, totalOperatingKsaMinutes,
+                totalLeftKsa, totalRightKsa,
+                totalStartKsa, before_25hoursKsaHours,
+                before_25hoursKsaMinutes, oilChangeKsaHours,
+                oilChangeKsaMinutes, numberKsa};
+        createKsa(fields);
     }
 
     public void changeKsa(Ksa ksa) {

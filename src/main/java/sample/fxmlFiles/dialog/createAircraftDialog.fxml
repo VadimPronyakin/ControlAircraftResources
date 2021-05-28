@@ -13,8 +13,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="850.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.dialog.CreateAircraftDialogController">
    <children>
-      <Label layoutX="20.0" layoutY="14.0" text="Бортовой номер" AnchorPane.topAnchor="14.0" />
-      <Label layoutX="20.0" layoutY="59.0" text="Инженер АК" AnchorPane.topAnchor="59.0" />
+      <Label layoutX="9.0" layoutY="14.0" text="Бортовой номер" AnchorPane.topAnchor="14.0" />
+      <Label layoutX="9.0" layoutY="59.0" text="Инженер АК" AnchorPane.topAnchor="59.0" />
       <Label layoutX="408.0" layoutY="14.0" text="Левый двигатель" AnchorPane.rightAnchor="348.0" AnchorPane.topAnchor="14.0" />
       <Label layoutX="404.0" layoutY="59.0" text="Правый двигатель" AnchorPane.rightAnchor="344.0" AnchorPane.topAnchor="59.0" />
       <Label layoutX="444.0" layoutY="100.0" text="КСА" AnchorPane.rightAnchor="383.0" AnchorPane.topAnchor="100.0" />
@@ -64,13 +64,13 @@
       <Button fx:id="addLeftEngine" layoutX="673.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Добавить двигатель" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="10.0" />
       <Button fx:id="addRightEngine" layoutX="673.0" layoutY="54.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Добавить двигатель" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="54.0" />
       <Button fx:id="addKsa" layoutX="670.0" layoutY="96.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Добавить КСА" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="96.0" />
-      <Text layoutX="360.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" AnchorPane.topAnchor="11.177734375">
+      <Text layoutX="111.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" AnchorPane.topAnchor="11.177734375">
          <font>
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Text>
-      <Label layoutX="20.0" layoutY="101.0" text="Планер" AnchorPane.topAnchor="101.0" />
-      <Text layoutX="360.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" AnchorPane.topAnchor="55.177734375">
+      <Label layoutX="9.0" layoutY="101.0" text="Планер" AnchorPane.topAnchor="101.0" />
+      <Text layoutX="111.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" AnchorPane.topAnchor="56.177734375">
          <font>
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
@@ -213,5 +213,65 @@
          </graphic>
       </Button>
       <Line endX="446.0" layoutX="404.0" layoutY="132.0" startX="-404.0" />
+      <Text layoutX="111.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*">
+         <font>
+            <Font name="Times New Roman Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="439.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*">
+         <font>
+            <Font name="Times New Roman Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="439.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*">
+         <font>
+            <Font name="Times New Roman Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="439.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*">
+         <font>
+            <Font name="Times New Roman Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="439.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*">
+         <font>
+            <Font name="Times New Roman Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="439.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*">
+         <font>
+            <Font name="Times New Roman Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="439.0" layoutY="429.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*">
+         <font>
+            <Font name="Times New Roman Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="9.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*">
+         <font>
+            <Font name="Times New Roman Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="9.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*">
+         <font>
+            <Font name="Times New Roman Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="9.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*">
+         <font>
+            <Font name="Times New Roman Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="9.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*">
+         <font>
+            <Font name="Times New Roman Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="9.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*">
+         <font>
+            <Font name="Times New Roman Bold" size="20.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

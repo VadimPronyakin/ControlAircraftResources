@@ -13,6 +13,8 @@ import java.util.Objects;
 public class Engineer {
     private String fullName;
     private Rank rank;
+    private String link;
+    private String ntzFullName;
 
     @Override
     public String toString() {
