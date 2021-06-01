@@ -13,6 +13,7 @@ import sample.data.Aircraft;
 import sample.data.SaveData;
 import sample.data.components.limitedResource.MainBreak;
 import sample.data.enums.TypesOfWorks;
+import sample.setBoolean.SetBooleanValue;
 import sample.write.WriteFile;
 
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ import java.util.List;
 
 import static sample.builder.Builder.createMainBreak;
 import static sample.notification.NotificationAircraft.notificationMainBreak;
+import static sample.setBoolean.SetBooleanValue.setBooleanValueMainBreak;
 import static sample.utils.Utils.checkInput;
 import static sample.works.MakeWorks.doWorksMainBreak;
 
@@ -98,6 +100,7 @@ public class CreateMainBreakDialogController {
         });
         makeWork.setOnAction(e -> {
             doWorksMainBreak(mainBreak, listOfWorks);
+            personalAircraftDialogController.updateNotificationMainBreak(mainBreak);
             WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
             update_MainBreak_After_Work();
             Stage stage = (Stage) makeWork.getScene().getWindow();
@@ -146,6 +149,7 @@ public class CreateMainBreakDialogController {
             mainBreak.setResource_Reserve_Replacement_ReferenceDisk(Integer.parseInt(replacement_ReferenceDisk.getText()));
             mainBreak.setSerialNumber(numberMainBreak.getText());
         }
+        mainBreak.setIsNeedAttention(setBooleanValueMainBreak(mainBreak));
         WriteFile.serialization(SaveData.mainBreaksList, MainBreak.class);
         listMainBreaksTabController.updateTableMainBreaks();
 

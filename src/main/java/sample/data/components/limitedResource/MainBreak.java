@@ -24,6 +24,7 @@ public class MainBreak {
     private String serialNumber;
     //Номер самолета, на который установлен тормоз
     private String aircraftNumberInstalled;
+    private Boolean isNeedAttention;
 
     @Override
     public String toString() { return "сер/№ " + serialNumber; }

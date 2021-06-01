@@ -12,10 +12,12 @@ import sample.data.Aircraft;
 import sample.data.SaveData;
 import sample.data.components.Ksa;
 import sample.data.enums.TypesOfWorks;
+import sample.setBoolean.SetBooleanValue;
 import sample.write.WriteFile;
 
 import static sample.builder.Builder.createKsa;
 import static sample.notification.NotificationAircraft.notificationKsa;
+import static sample.setBoolean.SetBooleanValue.setBooleanValueKsa;
 import static sample.utils.Utils.checkInput;
 import static sample.works.MakeWorks.doWorkKsa;
 
@@ -89,8 +91,9 @@ public class CreateKsaDialogController {
         });
         makeWorksKsa.setOnAction(e -> {
             doWorkKsa(ksa, listOfWorksKsa);
-            WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
             update_Ksa_After_Work();
+            personalAircraftDialogController.updateNotificationKsa(ksa);
+            WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
             Stage stage = (Stage) makeWorksKsa.getScene().getWindow();
             stage.close();
         });
@@ -138,6 +141,7 @@ public class CreateKsaDialogController {
             ksa.setOilChange((Integer.parseInt(oilChangeKsaHours.getText()) * 60) +
                     Integer.parseInt(oilChangeKsaMinutes.getText()));
         }
+        ksa.setIsNeedAttention(setBooleanValueKsa(ksa));
         WriteFile.serialization(SaveData.ksaList, Ksa.class);
         listAllKsaTabController.updateTableKsa();
 

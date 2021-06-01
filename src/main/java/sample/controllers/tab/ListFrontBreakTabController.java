@@ -90,7 +90,7 @@ public class ListFrontBreakTabController {
 
     public CreateFrontBreakDialogController showFrontBreakDialog() {
         try {
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/sample/fxmlFiles/dialog/createFrontBreakDialog.fxml"));
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/fxmlFiles/dialog/createFrontBreakDialog.fxml"));
             Pane page = loader.load();
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.APPLICATION_MODAL);

@@ -33,7 +33,7 @@
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <Label fx:id="listAircraft" layoutX="11.0" layoutY="193.0" prefHeight="22.0" prefWidth="579.0" style="-fx-border-style: solid; -fx-border-radius: 4;" text="Label" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+      <Label fx:id="listAircraft" layoutX="11.0" layoutY="193.0" prefHeight="50.0" prefWidth="579.0" style="-fx-border-style: solid; -fx-border-radius: 4;" text="Label" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>

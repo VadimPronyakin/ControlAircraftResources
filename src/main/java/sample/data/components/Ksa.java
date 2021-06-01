@@ -24,6 +24,7 @@ public class Ksa {
     private String serialNumberKsa;
     //Номер самолета,на котором установлена КСА
     private String aircraftNumberInstalled;
+    private Boolean isNeedAttention;
 
     @Override
     public String toString() { return "сер/№ " + serialNumberKsa; }

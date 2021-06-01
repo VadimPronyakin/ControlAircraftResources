@@ -3,7 +3,6 @@ package sample.controllers.tab;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -59,7 +58,7 @@ public class ListAllEnginesTabController {
         tableEngine.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2) {
                 CreateEngineDialogController controller = showEditDialog(e,
-                        "/sample/fxmlFiles/dialog/createEngineDialog.fxml");
+                        "/fxmlFiles/dialog/createEngineDialog.fxml");
                 controller.setButtonVisible("Двойное нажатие");
                 controller.setEngine(tableEngine.getSelectionModel().getSelectedItem());
             }
@@ -68,7 +67,7 @@ public class ListAllEnginesTabController {
 
     public CreateEngineDialogController showEngineDialog() {
         try {
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/sample/fxmlFiles/dialog/createEngineDialog.fxml"));
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/fxmlFiles/dialog/createEngineDialog.fxml"));
             Pane page = loader.load();
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.APPLICATION_MODAL);

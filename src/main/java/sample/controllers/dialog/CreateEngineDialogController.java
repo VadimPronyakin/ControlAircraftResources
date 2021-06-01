@@ -20,6 +20,7 @@ import java.util.List;
 import static java.lang.Integer.parseInt;
 import static sample.builder.Builder.createEngine;
 import static sample.notification.NotificationAircraft.notificationEngine;
+import static sample.setBoolean.SetBooleanValue.setBooleanValueEngine;
 import static sample.utils.Utils.checkInput;
 import static sample.works.MakeWorks.doWorksEngine;
 
@@ -105,6 +106,7 @@ public class CreateEngineDialogController {
         makeWorksEngine.setOnAction(e -> {
             doWorksEngine(engine, listOfWorksEngine);
             update_Engine_After_Work();
+            personalAircraftDialogController.updateNotificationEngine(engine);
             WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
             Stage stage = (Stage) makeWorksEngine.getScene().getWindow();
             stage.close();
@@ -219,6 +221,7 @@ public class CreateEngineDialogController {
             engine.setTotalStartingEngineCount(parseInt(totalStartingEngine.getText()));
             engine.setSerialNumberEngine(numberEngine.getText());
         }
+        engine.setIsNeedAttention(setBooleanValueEngine(engine));
         WriteFile.serialization(SaveData.enginesList, Engine.class);
         listAllEnginesTabController.updateTableEngines();
     }

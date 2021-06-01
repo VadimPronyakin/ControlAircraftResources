@@ -57,7 +57,7 @@ public class ListAllKsaTabController {
         tableKsa.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2) {
                 CreateKsaDialogController controller = showEditDialog(e,
-                        "/sample/fxmlFiles/dialog/createKsaDialog.fxml");
+                        "/fxmlFiles/dialog/createKsaDialog.fxml");
                 controller.setButtonVisible("Двойное нажатие");
                 controller.setKsa(tableKsa.getSelectionModel().getSelectedItem());
             }
@@ -67,7 +67,7 @@ public class ListAllKsaTabController {
 
     public CreateKsaDialogController showKsaDialog() {
         try {
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/sample/fxmlFiles/dialog/createKsaDialog.fxml"));
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/fxmlFiles/dialog/createKsaDialog.fxml"));
             Pane page = loader.load();
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.APPLICATION_MODAL);

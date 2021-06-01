@@ -30,6 +30,7 @@ public class Engine {
     private String serialNumberEngine;
     //Номер самолета,на котором установлен двигатель
     private String aircraftNumberInstalled;
+    private Boolean isNeedAttention;
 
     @Override
     public String toString() { return "сер/№ " + serialNumberEngine; }

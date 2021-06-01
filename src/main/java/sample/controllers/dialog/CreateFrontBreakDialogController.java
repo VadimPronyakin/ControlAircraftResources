@@ -10,6 +10,7 @@ import sample.controllers.tab.ListFrontBreakTabController;
 import sample.data.Aircraft;
 import sample.data.SaveData;
 import sample.data.components.limitedResource.FrontBreak;
+import sample.setBoolean.SetBooleanValue;
 import sample.write.WriteFile;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ import java.util.List;
 
 import static sample.builder.Builder.createFrontBreak;
 import static sample.notification.NotificationAircraft.notificationFrontBreak;
+import static sample.setBoolean.SetBooleanValue.setBooleanValueFrontBreak;
 import static sample.utils.Utils.checkInput;
 
 public class CreateFrontBreakDialogController {
@@ -50,6 +52,9 @@ public class CreateFrontBreakDialogController {
 
     @Setter
     private ListFrontBreakTabController listFrontBreakTabController;
+
+    @Setter
+    private PersonalAircraftDialogController personalAircraftDialogController;
 
     private FrontBreak frontBreak;
 
@@ -101,6 +106,7 @@ public class CreateFrontBreakDialogController {
             frontBreak.setSerialNumber(numberFrontBreak.getText());
             frontBreak.setTotalLandings(Integer.parseInt(totalFrontBreak.getText()));
         }
+        frontBreak.setIsNeedAttention(setBooleanValueFrontBreak(frontBreak));
         WriteFile.serialization(SaveData.frontBreaksList, FrontBreak.class);
         listFrontBreakTabController.updateTableFrontBreak();
 

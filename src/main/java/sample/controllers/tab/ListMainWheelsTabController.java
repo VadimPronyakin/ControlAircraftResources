@@ -73,7 +73,7 @@ public class ListMainWheelsTabController {
 
     public CreateMainWheelDialogController showMainWheelDialog() {
         try {
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/sample/fxmlFiles/dialog/createMainWheelDialog.fxml"));
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/fxmlFiles/dialog/createMainWheelDialog.fxml"));
             Pane page = loader.load();
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.APPLICATION_MODAL);

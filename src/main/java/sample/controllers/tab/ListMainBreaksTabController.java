@@ -14,7 +14,6 @@ import sample.controllers.dialog.CreateMainBreakDialogController;
 import sample.data.Aircraft;
 import sample.data.SaveData;
 import sample.data.components.limitedResource.MainBreak;
-import sample.data.enums.TypesOfWorks;
 import sample.delete.DeleteObject;
 import sample.update.UpdateList;
 
@@ -72,7 +71,7 @@ public class ListMainBreaksTabController {
 
     public CreateMainBreakDialogController showMainBreakDialog() {
         try {
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/sample/fxmlFiles/dialog/createMainBreakDialog.fxml"));
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/fxmlFiles/dialog/createMainBreakDialog.fxml"));
             Pane page = loader.load();
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.APPLICATION_MODAL);

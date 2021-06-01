@@ -54,7 +54,7 @@
       <Button fx:id="addMainLeftBreakList" layoutX="664.0" layoutY="260.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Добавить тормоз" />
       <Button fx:id="addFrontRightBreakList" layoutX="664.0" layoutY="310.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Добавить тормоз" />
       <Button fx:id="addMainRightCylinderList" layoutX="664.0" layoutY="360.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Добавить цилиндр" />
-      <Button fx:id="createAircraft" layoutX="111.0" layoutY="423.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #3fc707;" text="Добавить самолет">
+      <Button fx:id="createAircraft" layoutX="24.0" layoutY="422.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #3fc707;" text="Добавить самолет" visible="false">
          <font>
             <Font name="Times New Roman Bold" size="17.0" />
          </font></Button>
@@ -81,7 +81,7 @@
          <graphic>
             <ImageView fitHeight="33.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/iconfinder_Refresh_49254.png" />
+                  <Image url="@../../images/iconfinder_Refresh_49254.png" />
                </image>
             </ImageView>
          </graphic>
@@ -90,7 +90,7 @@
          <graphic>
             <ImageView fitHeight="33.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/iconfinder_Refresh_49254.png" />
+                  <Image url="@../../images/iconfinder_Refresh_49254.png" />
                </image>
             </ImageView>
          </graphic>
@@ -99,7 +99,7 @@
          <graphic>
             <ImageView fitHeight="33.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/iconfinder_Refresh_49254.png" />
+                  <Image url="@../../images/iconfinder_Refresh_49254.png" />
                </image>
             </ImageView>
          </graphic>
@@ -108,7 +108,7 @@
          <graphic>
             <ImageView fitHeight="33.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/iconfinder_Refresh_49254.png" />
+                  <Image url="@../../images/iconfinder_Refresh_49254.png" />
                </image>
             </ImageView>
          </graphic>
@@ -117,7 +117,7 @@
          <graphic>
             <ImageView fitHeight="33.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/iconfinder_Refresh_49254.png" />
+                  <Image url="@../../images/iconfinder_Refresh_49254.png" />
                </image>
             </ImageView>
          </graphic>
@@ -126,7 +126,7 @@
          <graphic>
             <ImageView fitHeight="33.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/iconfinder_Refresh_49254.png" />
+                  <Image url="@../../images/iconfinder_Refresh_49254.png" />
                </image>
             </ImageView>
          </graphic>
@@ -135,7 +135,7 @@
          <graphic>
             <ImageView fitHeight="33.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/iconfinder_Refresh_49254.png" />
+                  <Image url="@../../images/iconfinder_Refresh_49254.png" />
                </image>
             </ImageView>
          </graphic>
@@ -144,7 +144,7 @@
          <graphic>
             <ImageView fitHeight="33.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/iconfinder_Refresh_49254.png" />
+                  <Image url="@../../images/iconfinder_Refresh_49254.png" />
                </image>
             </ImageView>
          </graphic>
@@ -153,7 +153,7 @@
          <graphic>
             <ImageView fitHeight="33.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/iconfinder_Refresh_49254.png" />
+                  <Image url="@../../images/iconfinder_Refresh_49254.png" />
                </image>
             </ImageView>
          </graphic>
@@ -162,7 +162,7 @@
          <graphic>
             <ImageView fitHeight="33.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/iconfinder_Refresh_49254.png" />
+                  <Image url="@../../images/iconfinder_Refresh_49254.png" />
                </image>
             </ImageView>
          </graphic>
@@ -171,7 +171,7 @@
          <graphic>
             <ImageView fitHeight="33.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/iconfinder_Refresh_49254.png" />
+                  <Image url="@../../images/iconfinder_Refresh_49254.png" />
                </image>
             </ImageView>
          </graphic>
@@ -180,7 +180,7 @@
          <graphic>
             <ImageView fitHeight="33.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/iconfinder_Refresh_49254.png" />
+                  <Image url="@../../images/iconfinder_Refresh_49254.png" />
                </image>
             </ImageView>
          </graphic>
@@ -189,7 +189,7 @@
          <graphic>
             <ImageView fitHeight="33.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/iconfinder_Refresh_49254.png" />
+                  <Image url="@../../images/iconfinder_Refresh_49254.png" />
                </image>
             </ImageView>
          </graphic>
@@ -198,7 +198,7 @@
          <graphic>
             <ImageView fitHeight="33.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/iconfinder_Refresh_49254.png" />
+                  <Image url="@../../images/iconfinder_Refresh_49254.png" />
                </image>
             </ImageView>
          </graphic>
@@ -207,7 +207,7 @@
          <graphic>
             <ImageView fitHeight="33.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/iconfinder_Refresh_49254.png" />
+                  <Image url="@../../images/iconfinder_Refresh_49254.png" />
                </image>
             </ImageView>
          </graphic>
@@ -273,5 +273,10 @@
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Text>
+      <Button fx:id="changeAircraft" layoutX="220.0" layoutY="422.0" mnemonicParsing="false" style="-fx-background-color: #00FFFF;" text="Сохранить изменения" visible="false">
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

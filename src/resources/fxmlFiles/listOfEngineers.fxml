@@ -44,12 +44,12 @@
                 </HBox>
                 <ImageView fitHeight="128.0" fitWidth="104.0" layoutX="559.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="6.0">
                     <image>
-                        <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/Great_emblem_of_the_Ashuluk_proving_ground.png" />
+                        <Image url="@../images/Great_emblem_of_the_Ashuluk_proving_ground.png" />
                     </image>
                 </ImageView>
                 <ImageView fitHeight="128.0" fitWidth="131.0" layoutX="38.0" layoutY="17.0" preserveRatio="true" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="8.0">
                     <image>
-                        <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/mig.png" />
+                        <Image url="@../images/mig.png" />
                     </image>
                 </ImageView>
             </children>

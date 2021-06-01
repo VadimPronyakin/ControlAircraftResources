@@ -7,12 +7,11 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lombok.Setter;
 import sample.builder.Builder;
-import sample.calculating.CalculatingDateResources;
 import sample.data.Aircraft;
 import sample.data.SaveData;
-import sample.data.components.Engine;
 import sample.data.components.Planer;
 import sample.data.enums.TypesOfWorks;
+import sample.update.UpdateNotification;
 import sample.works.MakeWorks;
 import sample.write.WriteFile;
 
@@ -22,10 +21,12 @@ import java.util.Date;
 import java.util.List;
 
 import static java.lang.Integer.parseInt;
+import static sample.calculating.CalculatingDateResources.calculateDateInDays;
 import static sample.calculating.CalculatingDateResources.calculateDateInMonth;
 import static sample.notification.NotificationAircraft.notificationPlaner;
-import static sample.utils.Utils.checkInput;
+import static sample.setBoolean.SetBooleanValue.setBooleanValuePlaner;
 import static sample.utils.Utils.checkInputPlaner;
+import static sample.works.MakeWorks.doWorksPlaner;
 
 
 public class CreatePlanerDialogController {
@@ -98,11 +99,13 @@ public class CreatePlanerDialogController {
         changePlaner.setOnAction(e -> {
             updateAircraftPlaner();
             changePlaner(planer);
+            personalAircraftDialogController.updateNotificationPlaner(planer);
             Stage stage = (Stage) changePlaner.getScene().getWindow();
             stage.close();
         });
         makeWorksPlaner.setOnAction(e -> {
-            MakeWorks.doWorksPlaner(planer, listOfWorksPlaner, date_Make_Work);
+            doWorksPlaner(planer, listOfWorksPlaner, date_Make_Work);
+            personalAircraftDialogController.updateNotificationPlaner(planer);
             WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
             update_Planer_After_Work();
             Stage stage = (Stage) makeWorksPlaner.getScene().getWindow();
@@ -115,9 +118,8 @@ public class CreatePlanerDialogController {
         sideNumber.setText(planer1.getSideNumber());
         date_Work_After_6months_Operation_Planer.setValue(planer1.getDate_Work_After_6months_Operation().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
         total_Landing_Count_Planer.setText(String.valueOf(planer1.getTotal_Landing_Count()));
-        before_30Days_Parking_Planer.setText(String.valueOf(CalculatingDateResources.calculateDateInDays(planer1.getLast_Flight_Date().getTime(),
-                planer1.getDate_Work_After_30days_Parking().getTime()) / 86_400_000));
-        before_6months_Operating_Planer_Days.setText(String.valueOf(calculateDateInMonth(planer1.getDate_Work_After_6months_Operation().getTime()) / 86_400_000));
+        before_30Days_Parking_Planer.setText(String.valueOf(planer1.getDays_Reserve_Before_30DaysParking() / 86_400_000));
+        before_6months_Operating_Planer_Days.setText(String.valueOf(planer1.getDays_Reserve_Before_6months_Operating() / 86_400_000));
         total_Operating_Planer_Hours.setText(String.valueOf(planer1.getTotal_Operating_Time() / 60));
         total_Operating_Planer_Minutes.setText(String.valueOf(planer1.getTotal_Operating_Time() % 60));
         before_100hours_Planer_Hours.setText(String.valueOf(planer1.getResource_Reserve_Before_100hours() / 60));
@@ -178,6 +180,10 @@ public class CreatePlanerDialogController {
             planer.setTotal_Operating_Time((parseInt(total_Operating_Planer_Hours.getText()) * 60) +
                     parseInt(total_Operating_Planer_Minutes.getText()));
         }
+        planer.setDays_Reserve_Before_30DaysParking(calculateDateInDays(Date.from(last_Flight_Date_Planer.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()),
+                Date.from(date_Work_After_30Days_Parking_Planer.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant())));
+        planer.setDays_Reserve_Before_6months_Operating(calculateDateInMonth(Date.from(date_Work_After_6months_Operation_Planer.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant())));
+        planer.setIsNeedAttention(setBooleanValuePlaner(planer));
         WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
     }
     private void updateAircraftPlaner() {
@@ -191,7 +197,7 @@ public class CreatePlanerDialogController {
     private void update_Planer_After_Work() {
         for (Planer e : SaveData.planersList) {
             if (e.getSideNumber().equals(planer.getSideNumber())) {
-               MakeWorks.doWorksPlaner(e, listOfWorksPlaner, date_Make_Work);
+               doWorksPlaner(e, listOfWorksPlaner, date_Make_Work);
                 WriteFile.serialization(SaveData.planersList, Planer.class);
             }
         }

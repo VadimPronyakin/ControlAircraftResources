@@ -45,12 +45,12 @@
                 </HBox>
                 <ImageView fitHeight="128.0" fitWidth="131.0" layoutX="33.0" preserveRatio="true" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="792.918815612793" AnchorPane.topAnchor="8.0">
                     <image>
-                        <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/mig.png" />
+                        <Image url="@../images/mig.png" />
                     </image>
                 </ImageView>
                 <ImageView fitHeight="148.0" fitWidth="257.0" layoutX="518.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true" rotate="3.2" AnchorPane.topAnchor="-7.0">
                     <image>
-                        <Image url="file:/C:/Users/Vadim/My%20projects/controlResourcesMiG/src/main/java/sample/images/arthondar-longing-for-learning-1-155d8787-r503.png" />
+                        <Image url="@../images/arthondar-longing-for-learning-1-155d8787-r503.png" />
                     </image>
                 </ImageView>
             </children>

@@ -6,6 +6,7 @@ import sample.data.components.Planer;
 import sample.data.components.limitedResource.*;
 import sample.reader.ReadFile;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public  class SaveData {
@@ -19,4 +20,6 @@ public  class SaveData {
     public static List<MainWheel> mainWheelsList = ReadFile.readInfo(MainWheel.class);
     public static List<FrontWheel> frontWheelsList = ReadFile.readInfo(FrontWheel.class);
     public static List<CylinderOfRetractionExtension> cylindersList = ReadFile.readInfo(CylinderOfRetractionExtension.class);
+
 }
+

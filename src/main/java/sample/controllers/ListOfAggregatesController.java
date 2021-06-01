@@ -24,6 +24,6 @@ public class ListOfAggregatesController {
     @FXML
     void initialize() {
 
-        returnHomePage.setOnAction(e -> OpenNewScene.openNewScene("/sample/fxmlFiles/sample.fxml", returnHomePage));
+        returnHomePage.setOnAction(e -> OpenNewScene.openNewScene("/fxmlFiles/sample.fxml", returnHomePage));
     }
 }

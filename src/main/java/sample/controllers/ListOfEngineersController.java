@@ -59,14 +59,14 @@ public class ListOfEngineersController {
         columnRank.setCellValueFactory(new PropertyValueFactory<>("rank"));
         columnFullName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         deleteEngineer.setOnAction(e -> DeleteObject.delete(SaveData.engineersList, tableView, Engineer.class));
-        returnHomePage.setOnAction(e -> OpenNewScene.openNewScene("/sample/fxmlFiles/sample.fxml", returnHomePage));
+        returnHomePage.setOnAction(e -> OpenNewScene.openNewScene("/fxmlFiles/sample.fxml", returnHomePage));
         listOfRanks.getItems().addAll(Rank.LIEUTENANT, Rank.ST_LIEUTENANT, Rank.CAPTAIN, Rank.MAJOR);
         createNewEngineer.setOnAction(e -> addEngineer());
         changeEngineer.setOnAction(e -> changeEngineer());
         tableView.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2) {
                 PersonalEngineerDialogController controller = showEditDialog(e,
-                        "/sample/fxmlFiles/dialog/personalEngineerDialog.fxml");
+                        "/fxmlFiles/dialog/personalEngineerDialog.fxml");
                 controller.setEngineer(tableView.getSelectionModel().getSelectedItem());
                 controller.updateListAircraft();
             }

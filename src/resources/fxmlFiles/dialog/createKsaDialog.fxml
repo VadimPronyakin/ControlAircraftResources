@@ -44,16 +44,46 @@
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Text>
-      <TextField fx:id="numberKsa" alignment="CENTER" layoutX="407.0" layoutY="28.0" />
-      <TextField fx:id="totalStartKsa" alignment="CENTER" layoutX="408.0" layoutY="62.0" prefWidth="70.0" AnchorPane.topAnchor="62.0" />
-      <TextField fx:id="totalRightKsa" alignment="CENTER" layoutX="408.0" layoutY="97.0" prefWidth="70.0" AnchorPane.topAnchor="97.0" />
-      <TextField fx:id="totalLeftKsa" alignment="CENTER" layoutX="408.0" layoutY="132.0" prefWidth="70.0" AnchorPane.topAnchor="132.0" />
-      <TextField fx:id="totalOperatingKsaHours" alignment="CENTER" layoutX="408.0" layoutY="165.0" prefWidth="70.0" AnchorPane.topAnchor="165.0" />
-      <TextField fx:id="totalOperatingKsaMinutes" alignment="CENTER" layoutX="509.0" layoutY="166.0" prefWidth="70.0" AnchorPane.topAnchor="166.0" />
-      <TextField fx:id="before_25hoursKsaHours" alignment="CENTER" layoutX="408.0" layoutY="202.0" prefWidth="70.0" AnchorPane.topAnchor="202.0" />
-      <TextField fx:id="before_25hoursKsaMinutes" alignment="CENTER" layoutX="509.0" layoutY="202.0" prefWidth="70.0" AnchorPane.topAnchor="202.0" />
-      <TextField fx:id="oilChangeKsaHours" alignment="CENTER" layoutX="408.0" layoutY="238.0" prefWidth="70.0" AnchorPane.topAnchor="238.0" />
-      <TextField fx:id="oilChangeKsaMinutes" alignment="CENTER" layoutX="509.0" layoutY="237.0" prefWidth="70.0" AnchorPane.topAnchor="237.0" />
+      <TextField fx:id="numberKsa" alignment="CENTER" layoutX="407.0" layoutY="28.0">
+         <font>
+            <Font name="Times New Roman" size="12.0" />
+         </font></TextField>
+      <TextField fx:id="totalStartKsa" alignment="CENTER" layoutX="408.0" layoutY="62.0" prefWidth="70.0" AnchorPane.topAnchor="62.0">
+         <font>
+            <Font name="Times New Roman" size="12.0" />
+         </font></TextField>
+      <TextField fx:id="totalRightKsa" alignment="CENTER" layoutX="408.0" layoutY="97.0" prefWidth="70.0" AnchorPane.topAnchor="97.0">
+         <font>
+            <Font name="Times New Roman" size="12.0" />
+         </font></TextField>
+      <TextField fx:id="totalLeftKsa" alignment="CENTER" layoutX="408.0" layoutY="132.0" prefWidth="70.0" AnchorPane.topAnchor="132.0">
+         <font>
+            <Font name="Times New Roman" size="12.0" />
+         </font></TextField>
+      <TextField fx:id="totalOperatingKsaHours" alignment="CENTER" layoutX="408.0" layoutY="165.0" prefWidth="70.0" AnchorPane.topAnchor="165.0">
+         <font>
+            <Font name="Times New Roman" size="12.0" />
+         </font></TextField>
+      <TextField fx:id="totalOperatingKsaMinutes" alignment="CENTER" layoutX="509.0" layoutY="166.0" prefWidth="70.0" AnchorPane.topAnchor="166.0">
+         <font>
+            <Font name="Times New Roman" size="12.0" />
+         </font></TextField>
+      <TextField fx:id="before_25hoursKsaHours" alignment="CENTER" layoutX="408.0" layoutY="202.0" prefWidth="70.0" AnchorPane.topAnchor="202.0">
+         <font>
+            <Font name="Times New Roman" size="12.0" />
+         </font></TextField>
+      <TextField fx:id="before_25hoursKsaMinutes" alignment="CENTER" layoutX="509.0" layoutY="202.0" prefWidth="70.0" AnchorPane.topAnchor="202.0">
+         <font>
+            <Font name="Times New Roman" size="12.0" />
+         </font></TextField>
+      <TextField fx:id="oilChangeKsaHours" alignment="CENTER" layoutX="408.0" layoutY="238.0" prefWidth="70.0" AnchorPane.topAnchor="238.0">
+         <font>
+            <Font name="Times New Roman" size="12.0" />
+         </font></TextField>
+      <TextField fx:id="oilChangeKsaMinutes" alignment="CENTER" layoutX="509.0" layoutY="237.0" prefWidth="70.0" AnchorPane.topAnchor="237.0">
+         <font>
+            <Font name="Times New Roman" size="12.0" />
+         </font></TextField>
       <Text layoutX="485.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="зап.">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />

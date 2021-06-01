@@ -11,6 +11,7 @@ import sample.controllers.tab.ListMainWheelsTabController;
 import sample.data.Aircraft;
 import sample.data.SaveData;
 import sample.data.components.limitedResource.MainWheel;
+import sample.setBoolean.SetBooleanValue;
 import sample.write.WriteFile;
 
 import static sample.notification.NotificationAircraft.notificationMainWheel;
@@ -77,6 +78,9 @@ public class CreateMainWheelDialogController {
             mainWheel.setSerialNumber(numberMainWheel.getText());
             mainWheel.setTotalLandings(Integer.parseInt(totalMainWheel.getText()));
             mainWheel.setResource_Reserve_Replacement_Wheel(Integer.parseInt(replacementMainWheel.getText()));
+            mainWheel.setIsNeedAttention(SetBooleanValue.setBooleanValueMainWheel(mainWheel));
+        } else {
+            mainWheel.setIsNeedAttention(SetBooleanValue.setBooleanValueMainWheel(mainWheel));
         }
         WriteFile.serialization(SaveData.mainWheelsList, MainWheel.class);
         listMainWheelsTabController.updateTableMainWheels();

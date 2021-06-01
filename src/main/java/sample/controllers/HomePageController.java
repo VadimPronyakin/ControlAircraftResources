@@ -30,10 +30,10 @@ public class HomePageController {
     @FXML
     void initialize() {
 
-        tableOfAggregates.setOnAction(event -> openNewScene("/sample/fxmlFiles/listOfAggregates.fxml", tableOfAggregates));
-        tableOfEngineers.setOnAction(e -> openNewScene("/sample/fxmlFiles/listOfEngineers.fxml", tableOfEngineers));
-        tableOfAircraft.setOnAction(e -> openNewScene("/sample/fxmlFiles/listOfAircraft.fxml", tableOfAircraft));
-        limitedResource.setOnAction(e -> openNewScene("/sample/fxmlFiles/limitedResource.fxml", limitedResource));
+        tableOfAggregates.setOnAction(event -> openNewScene("/fxmlFiles/listOfAggregates.fxml", tableOfAggregates));
+        tableOfEngineers.setOnAction(e -> openNewScene("/fxmlFiles/listOfEngineers.fxml", tableOfEngineers));
+        tableOfAircraft.setOnAction(e -> openNewScene("/fxmlFiles/listOfAircraft.fxml", tableOfAircraft));
+        limitedResource.setOnAction(e -> openNewScene("/fxmlFiles/limitedResource.fxml", limitedResource));
     }
 }
 

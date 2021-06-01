@@ -3,22 +3,20 @@ package sample.controllers.dialog;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lombok.Setter;
-import sample.Main;
-import sample.controllers.ListOfAircraftController;
+import sample.Main;import sample.controllers.ListOfAircraftController;
+import sample.data.Aircraft;
 import sample.data.Engineer;
 import sample.data.SaveData;
 import sample.data.components.Engine;
 import sample.data.components.Ksa;
 import sample.data.components.Planer;
 import sample.data.components.limitedResource.*;
+import sample.write.WriteFile;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,6 +24,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import static sample.builder.Builder.createAircraft;
+import static sample.setBoolean.SetBooleanValue.setBooleanValueAircraft;
+import static sample.utils.Utils.*;
 
 public class CreateAircraftDialogController {
     @FXML
@@ -178,8 +178,13 @@ public class CreateAircraftDialogController {
     @FXML
     private Button updateMainLeftWheelList;
 
+    @FXML
+    private Button changeAircraft;
+
     @Setter
     private ListOfAircraftController listOfAircraftController;
+
+    private Aircraft aircraft;
 
     @FXML
     void initialize() {
@@ -220,21 +225,47 @@ public class CreateAircraftDialogController {
             Stage stage = (Stage) createAircraft.getScene().getWindow();
             stage.close();
         });
-        addKsa.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createKsaDialog.fxml"));
-        addLeftEngine.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createEngineDialog.fxml"));
-        addRightEngine.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createEngineDialog.fxml"));
-        addFrontCylinderList.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createCylinderDialog.fxml"));
-        addMainLeftCylinderList.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createCylinderDialog.fxml"));
-        addMainRightCylinderList.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createCylinderDialog.fxml"));
-        addFrontLeftBreakList.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createFrontBreakDialog.fxml"));
-        addFrontRightBreakList.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createFrontBreakDialog.fxml"));
-        addMainLeftBreakList.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createMainBreakDialog.fxml"));
-        addMainRightBreakList.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createMainBreakDialog.fxml"));
-        addFrontLeftWheelList.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createFrontWheelDialog.fxml"));
-        addFrontRightWheelList.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createFrontWheelDialog.fxml"));
-        addMainLeftWheelList.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createMainWheelDialog.fxml"));
-        addMainRightWheelList.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createMainWheelDialog.fxml"));
-        createPlaner.setOnAction(e -> showDialog("/sample/fxmlFiles/dialog/createPlanerDialog.fxml"));
+        changeAircraft.setOnAction(e -> {
+            changeAircraft(aircraft);
+            Stage stage = (Stage) changeAircraft.getScene().getWindow();
+            stage.close();
+        });
+        addKsa.setOnAction(e -> showDialog("/fxmlFiles/dialog/createKsaDialog.fxml"));
+        addLeftEngine.setOnAction(e -> showDialog("/fxmlFiles/dialog/createEngineDialog.fxml"));
+        addRightEngine.setOnAction(e -> showDialog("/fxmlFiles/dialog/createEngineDialog.fxml"));
+        addFrontCylinderList.setOnAction(e -> showDialog("/fxmlFiles/dialog/createCylinderDialog.fxml"));
+        addMainLeftCylinderList.setOnAction(e -> showDialog("/fxmlFiles/dialog/createCylinderDialog.fxml"));
+        addMainRightCylinderList.setOnAction(e -> showDialog("/fxmlFiles/dialog/createCylinderDialog.fxml"));
+        addFrontLeftBreakList.setOnAction(e -> showDialog("/fxmlFiles/dialog/createFrontBreakDialog.fxml"));
+        addFrontRightBreakList.setOnAction(e -> showDialog("/fxmlFiles/dialog/createFrontBreakDialog.fxml"));
+        addMainLeftBreakList.setOnAction(e -> showDialog("/fxmlFiles/dialog/createMainBreakDialog.fxml"));
+        addMainRightBreakList.setOnAction(e -> showDialog("/fxmlFiles/dialog/createMainBreakDialog.fxml"));
+        addFrontLeftWheelList.setOnAction(e -> showDialog("/fxmlFiles/dialog/createFrontWheelDialog.fxml"));
+        addFrontRightWheelList.setOnAction(e -> showDialog("/fxmlFiles/dialog/createFrontWheelDialog.fxml"));
+        addMainLeftWheelList.setOnAction(e -> showDialog("/fxmlFiles/dialog/createMainWheelDialog.fxml"));
+        addMainRightWheelList.setOnAction(e -> showDialog("/fxmlFiles/dialog/createMainWheelDialog.fxml"));
+        createPlaner.setOnAction(e -> showDialog("/fxmlFiles/dialog/createPlanerDialog.fxml"));
+    }
+
+    public void setAircraft(Aircraft aircraft1) {
+        this.aircraft = aircraft1;
+        sideNumber.setText(String.valueOf(aircraft1.getAircraftNumber()));
+        leftEngineList.getSelectionModel().select(setEngineIndex(aircraft1.getLeftEngine()));
+        rightEngineList.getSelectionModel().select(setEngineIndex(aircraft1.getRightEngine()));
+        ksaList.getSelectionModel().select(setKsaIndex(aircraft1.getKsa()));
+        listOfPlaners.getSelectionModel().select(setPlanerIndex(aircraft1.getPlaner()));
+        mainLeftBreakList.getSelectionModel().select(setMainBreakIndex(aircraft1.getLeftMainBrake()));
+        mainRightBreakList.getSelectionModel().select(setMainBreakIndex(aircraft1.getRightMainBrake()));
+        mainLeftWheelList.getSelectionModel().select(setMainWheelIndex(aircraft1.getLeftMainWheel()));
+        mainRightWheelList.getSelectionModel().select(setMainWheelIndex(aircraft1.getRightMainWheel()));
+        frontLeftBreakList.getSelectionModel().select(setFrontBreakIndex(aircraft1.getLeftFrontBrake()));
+        frontRightBreakList.getSelectionModel().select(setFrontBreakIndex(aircraft1.getRightFrontBrake()));
+        frontLeftWheelList.getSelectionModel().select(setFrontWheelIndex(aircraft1.getLeftFrontWheel()));
+        frontRightWheelList.getSelectionModel().select(setFrontWheelIndex(aircraft1.getRightFrontWheel()));
+        mainLeftCylinderList.getSelectionModel().select(setCylinderIndex(aircraft1.getLeftMainCylinder()));
+        mainRightCylinderList.getSelectionModel().select(setCylinderIndex(aircraft1.getRightMainCylinder()));
+        frontCylinderList.getSelectionModel().select(setCylinderIndex(aircraft1.getFrontCylinder()));
+        listOfEngineers.getSelectionModel().select(setEngineerIndex(aircraft1.getIak()));
     }
 
     private void addAircraft() {
@@ -258,6 +289,54 @@ public class CreateAircraftDialogController {
             createAircraft(sideNumber, boxes);
             listOfAircraftController.updateTableAircraft();
         }
+    }
+
+    public void changeAircraft(Aircraft aircraft) {
+        try {
+            aircraft.setLeftEngine(leftEngineList.getSelectionModel().getSelectedItem());
+            aircraft.setRightEngine(rightEngineList.getSelectionModel().getSelectedItem());
+            aircraft.setKsa(ksaList.getSelectionModel().getSelectedItem());
+            aircraft.setPlaner(listOfPlaners.getSelectionModel().getSelectedItem());
+            aircraft.setLeftMainBrake(mainLeftBreakList.getSelectionModel().getSelectedItem());
+            aircraft.setRightMainBrake(mainRightBreakList.getSelectionModel().getSelectedItem());
+            aircraft.setLeftFrontBrake(frontLeftBreakList.getSelectionModel().getSelectedItem());
+            aircraft.setRightFrontBrake(frontRightBreakList.getSelectionModel().getSelectedItem());
+            aircraft.setLeftMainWheel(mainLeftWheelList.getSelectionModel().getSelectedItem());
+            aircraft.setRightMainWheel(mainRightWheelList.getSelectionModel().getSelectedItem());
+            aircraft.setLeftFrontWheel(frontLeftWheelList.getSelectionModel().getSelectedItem());
+            aircraft.setRightFrontWheel(frontRightWheelList.getSelectionModel().getSelectedItem());
+            aircraft.setAircraftNumber(sideNumber.getText());
+            aircraft.setIak(listOfEngineers.getSelectionModel().getSelectedItem());
+            aircraft.setRightMainCylinder(mainRightCylinderList.getSelectionModel().getSelectedItem());
+            aircraft.setLeftMainCylinder(mainLeftCylinderList.getSelectionModel().getSelectedItem());
+            aircraft.setFrontCylinder(frontCylinderList.getSelectionModel().getSelectedItem());
+        } catch (NullPointerException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("ВНИМАНИЕ!!!");
+            alert.setHeaderText(null);
+            alert.setContentText("Поля, помеченные звездочкой, обязательны для заполнения");
+            alert.show();
+            aircraft.setLeftEngine(leftEngineList.getSelectionModel().getSelectedItem());
+            aircraft.setRightEngine(rightEngineList.getSelectionModel().getSelectedItem());
+            aircraft.setKsa(ksaList.getSelectionModel().getSelectedItem());
+            aircraft.setPlaner(listOfPlaners.getSelectionModel().getSelectedItem());
+            aircraft.setLeftMainBrake(mainLeftBreakList.getSelectionModel().getSelectedItem());
+            aircraft.setRightMainBrake(mainRightBreakList.getSelectionModel().getSelectedItem());
+            aircraft.setLeftFrontBrake(frontLeftBreakList.getSelectionModel().getSelectedItem());
+            aircraft.setRightFrontBrake(frontRightBreakList.getSelectionModel().getSelectedItem());
+            aircraft.setLeftMainWheel(mainLeftWheelList.getSelectionModel().getSelectedItem());
+            aircraft.setRightMainWheel(mainRightWheelList.getSelectionModel().getSelectedItem());
+            aircraft.setLeftFrontWheel(frontLeftWheelList.getSelectionModel().getSelectedItem());
+            aircraft.setRightFrontWheel(frontRightWheelList.getSelectionModel().getSelectedItem());
+            aircraft.setAircraftNumber(sideNumber.getText());
+            aircraft.setIak(listOfEngineers.getSelectionModel().getSelectedItem());
+            aircraft.setRightMainCylinder(mainRightCylinderList.getSelectionModel().getSelectedItem());
+            aircraft.setLeftMainCylinder(mainLeftCylinderList.getSelectionModel().getSelectedItem());
+            aircraft.setFrontCylinder(frontCylinderList.getSelectionModel().getSelectedItem());
+        }
+        aircraft.setIsNeedAttention(setBooleanValueAircraft(aircraft));
+        WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
+        listOfAircraftController.updateTableAircraft();
     }
 
     public void showDialog(String url) {
@@ -345,5 +424,12 @@ public class CreateAircraftDialogController {
         }
     }
 
+    public void setButtonVisible(String string) {
+        if (string.equals("Добавить самолет")) {
+            createAircraft.setVisible(true);
+        } else if (string.equals("Изменить запись")) {
+            changeAircraft.setVisible(true);
 
+        }
+    }
 }

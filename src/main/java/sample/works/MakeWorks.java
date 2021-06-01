@@ -3,14 +3,18 @@ package sample.works;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import sample.calculating.CalculatingDateResources;
 import sample.data.components.Engine;
 import sample.data.components.Ksa;
 import sample.data.components.Planer;
 import sample.data.components.limitedResource.MainBreak;
 import sample.data.enums.TypesOfWorks;
+import sample.setBoolean.SetBooleanValue;
 
 import java.time.ZoneId;
 import java.util.Date;
+
+import static sample.setBoolean.SetBooleanValue.*;
 
 public class MakeWorks {
     public static void doWorksEngine(Engine engine, ComboBox<TypesOfWorks> list) {
@@ -53,6 +57,7 @@ public class MakeWorks {
 //                WriteFile.serialization(SaveData.enginesList, Engine.class);
                 break;
         }
+        engine.setIsNeedAttention(setBooleanValueEngine(engine));
     }
 
    public static void doWorkKsa(Ksa ksa, ComboBox<TypesOfWorks> list) {
@@ -68,6 +73,7 @@ public class MakeWorks {
 //                    WriteFile.serialization(SaveData.ksaList, Ksa.class);
                     break;
             }
+            ksa.setIsNeedAttention(setBooleanValueKsa(ksa));
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
@@ -102,6 +108,7 @@ public class MakeWorks {
                             .getResource());
                     break;
             }
+            mainBreak.setIsNeedAttention(setBooleanValueMainBreak(mainBreak));
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
@@ -120,12 +127,16 @@ public class MakeWorks {
                 break;
             case WORKS_AFTER_30_DAYS_PARKING:
                 planer.setDate_Work_After_30days_Parking (Date.from(date.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+                planer.setDays_Reserve_Before_30DaysParking(CalculatingDateResources.calculateDateInDays(planer.getLast_Flight_Date(),
+                        Date.from(date.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant())));
 //                WriteFile.serialization(SaveData.planersList, Planer.class);
                 break;
             case WORKS_AFTER_6_MONTH_OPERATION:
                 planer.setDate_Work_After_6months_Operation(Date.from(date.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+                planer.setDays_Reserve_Before_6months_Operating(CalculatingDateResources.calculateDateInMonth(Date.from(date.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant())));
 //                WriteFile.serialization(SaveData.planersList, Planer.class);
                 break;
         }
+        planer.setIsNeedAttention(SetBooleanValue.setBooleanValuePlaner(planer));
     }
 }

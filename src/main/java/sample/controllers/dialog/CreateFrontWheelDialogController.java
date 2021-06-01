@@ -10,10 +10,12 @@ import sample.controllers.tab.ListFrontWheelTabController;
 import sample.data.Aircraft;
 import sample.data.SaveData;
 import sample.data.components.limitedResource.FrontWheel;
+import sample.setBoolean.SetBooleanValue;
 import sample.write.WriteFile;
 
 import static sample.builder.Builder.createFrontWheel;
 import static sample.notification.NotificationAircraft.notificationFrontWheel;
+import static sample.setBoolean.SetBooleanValue.setBooleanValueFrontWheel;
 import static sample.utils.Utils.checkInput;
 
 
@@ -79,6 +81,7 @@ public class CreateFrontWheelDialogController {
             frontWheel.setTotalLandings(Integer.parseInt(totalFrontWheel.getText()));
             frontWheel.setResource_Reserve_Replacement_Wheel(Integer.parseInt(replacementFrontWheel.getText()));
         }
+        frontWheel.setIsNeedAttention(setBooleanValueFrontWheel(frontWheel));
         WriteFile.serialization(SaveData.frontWheelsList, FrontWheel.class);
         listFrontWheelTabController.updateTableFrontWheels();
 

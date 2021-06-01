@@ -1,10 +1,21 @@
 package sample.controllers.dialog;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import lombok.Setter;
+import sample.calculating.CalculatingOperation;
+import sample.controllers.ListOfAircraftController;
 import sample.data.Aircraft;
+import sample.data.components.Engine;
+import sample.data.components.Ksa;
+import sample.data.components.Planer;
+import sample.data.components.limitedResource.MainBreak;
+import sample.update.UpdateAircraftComponents;
+import sample.update.UpdateNotification;
 
 import static sample.notification.NotificationAircraft.notifiesAircraft;
 import static sample.openNewScene.OpenNewScene.showEditDialog;
@@ -75,15 +86,41 @@ public class PersonalAircraftDialogController {
     private Label rightCylinder;
     @FXML
     private Label frontCylinder;
+    @FXML
+    private TextField flightHours;
+    @FXML
+    private TextField flightAndEarthHours;
+    @FXML
+    private TextField totalLandings;
+    @FXML
+    private Button addFlightDay;
+    @FXML
+    private TextField flightMinutes;
+    @FXML
+    private TextField flightAndEarthMinutes;
     private Aircraft aircraft;
+
+    @Setter
+    private ListOfAircraftController listOfAircraftController;
 
     @FXML
     void initialize() {
+        addFlightDay.setOnAction(e -> {
+            CalculatingOperation.calculatingResourcesAfterFlight(aircraft, flightHours,
+                    flightMinutes, flightAndEarthHours,
+                    flightAndEarthMinutes, totalLandings);
+            UpdateAircraftComponents.updatingComponents(aircraft, flightHours,
+                    flightMinutes, flightAndEarthHours,
+                    flightAndEarthMinutes, totalLandings);
+            listOfAircraftController.updateTableAircraft();
+            Stage stage = (Stage) addFlightDay.getScene().getWindow();
+            stage.close();
+        });
         leftEngine.setOnMouseClicked(e -> {
             if (aircraft.getLeftEngine() != null) {
                 if (e.getClickCount() == 2) {
                     CreateEngineDialogController controller = showEditDialog(e,
-                            "/sample/fxmlFiles/dialog/createEngineDialog.fxml");
+                            "/fxmlFiles/dialog/createEngineDialog.fxml");
                     controller.setButtonVisible("Выполнить работ");
                     controller.setEngine(aircraft.getLeftEngine());
                     controller.setPersonalAircraftDialogController(this);
@@ -94,9 +131,10 @@ public class PersonalAircraftDialogController {
             if (aircraft.getRightEngine() != null) {
                 if (e.getClickCount() == 2) {
                     CreateEngineDialogController controller = showEditDialog(e,
-                            "/sample/fxmlFiles/dialog/createEngineDialog.fxml");
+                            "/fxmlFiles/dialog/createEngineDialog.fxml");
                     controller.setButtonVisible("Выполнить работ");
                     controller.setEngine(aircraft.getRightEngine());
+                    controller.setPersonalAircraftDialogController(this);
                 }
             }
         });
@@ -104,106 +142,119 @@ public class PersonalAircraftDialogController {
             if (aircraft.getKsa() != null) {
                 if (e.getClickCount() == 2) {
                     CreateKsaDialogController controller = showEditDialog(e,
-                            "/sample/fxmlFiles/dialog/createKsaDialog.fxml");
+                            "/fxmlFiles/dialog/createKsaDialog.fxml");
                     controller.setButtonVisible("Выполнить работ");
                     controller.setKsa(aircraft.getKsa());
+                    controller.setPersonalAircraftDialogController(this);
                 }
             }
         });
         rightMainWheel.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2) {
                 CreateMainWheelDialogController controller = showEditDialog(e,
-                        "/sample/fxmlFiles/dialog/createMainWheelDialog.fxml");
+                        "/fxmlFiles/dialog/createMainWheelDialog.fxml");
                 controller.setButtonVisible("Двойное нажатие");
                 controller.setMainWheel(aircraft.getRightMainWheel());
+                controller.setPersonalAircraftDialogController(this);
             }
         });
         leftMainWheel.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2) {
                 CreateMainWheelDialogController controller = showEditDialog(e,
-                        "/sample/fxmlFiles/dialog/createMainWheelDialog.fxml");
+                        "/fxmlFiles/dialog/createMainWheelDialog.fxml");
                 controller.setButtonVisible("Двойное нажатие");
                 controller.setMainWheel(aircraft.getLeftMainWheel());
+                controller.setPersonalAircraftDialogController(this);
             }
         });
         leftFrontWheel.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2) {
                 CreateFrontWheelDialogController controller = showEditDialog(e,
-                        "/sample/fxmlFiles/dialog/createFrontWheelDialog.fxml");
+                        "/fxmlFiles/dialog/createFrontWheelDialog.fxml");
                 controller.setButtonVisible("Двойное нажатие");
                 controller.setFrontWheel(aircraft.getLeftFrontWheel());
+                controller.setPersonalAircraftDialogController(this);
             }
         });
         rightFrontWheel.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2) {
                 CreateFrontWheelDialogController controller = showEditDialog(e,
-                        "/sample/fxmlFiles/dialog/createFrontWheelDialog.fxml");
+                        "/fxmlFiles/dialog/createFrontWheelDialog.fxml");
                 controller.setButtonVisible("Двойное нажатие");
                 controller.setFrontWheel(aircraft.getRightFrontWheel());
+                controller.setPersonalAircraftDialogController(this);
             }
         });
         rightMainBreak.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2) {
                 CreateMainBreakDialogController controller = showEditDialog(e,
-                        "/sample/fxmlFiles/dialog/createMainBreakDialog.fxml");
+                        "/fxmlFiles/dialog/createMainBreakDialog.fxml");
                 controller.setButtonVisible("Выполнить работ");
                 controller.setMainBreak(aircraft.getRightMainBrake());
+                controller.setPersonalAircraftDialogController(this);
             }
         });
         leftMainBreak.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2) {
                 CreateMainBreakDialogController controller = showEditDialog(e,
-                        "/sample/fxmlFiles/dialog/createMainBreakDialog.fxml");
+                        "/fxmlFiles/dialog/createMainBreakDialog.fxml");
                 controller.setButtonVisible("Выполнить работ");
                 controller.setMainBreak(aircraft.getLeftMainBrake());
+                controller.setPersonalAircraftDialogController(this);
             }
         });
         leftFrontBreak.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2) {
                 CreateFrontBreakDialogController controller = showEditDialog(e,
-                        "/sample/fxmlFiles/dialog/createFrontBreakDialog.fxml");
+                        "/fxmlFiles/dialog/createFrontBreakDialog.fxml");
                 controller.setButtonVisible("Двойное нажатие");
                 controller.setFrontBreak(aircraft.getLeftFrontBrake());
+                controller.setPersonalAircraftDialogController(this);
             }
         });
         rightFrontBreak.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2) {
                 CreateFrontBreakDialogController controller = showEditDialog(e,
-                        "/sample/fxmlFiles/dialog/createFrontBreakDialog.fxml");
+                        "/fxmlFiles/dialog/createFrontBreakDialog.fxml");
                 controller.setButtonVisible("Двойное нажатие");
                 controller.setFrontBreak(aircraft.getRightFrontBrake());
+                controller.setPersonalAircraftDialogController(this);
             }
         });
         leftCylinder.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2) {
                 CreateCylinderDialogController controller = showEditDialog(e,
-                        "/sample/fxmlFiles/dialog/createCylinderDialog.fxml");
+                        "/fxmlFiles/dialog/createCylinderDialog.fxml");
                 controller.setButtonVisible("Двойное нажатие");
                 controller.setCylinder(aircraft.getLeftMainCylinder());
+                controller.setPersonalAircraftDialogController(this);
             }
         });
         rightCylinder.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2) {
                 CreateCylinderDialogController controller = showEditDialog(e,
-                        "/sample/fxmlFiles/dialog/createCylinderDialog.fxml");
+                        "/fxmlFiles/dialog/createCylinderDialog.fxml");
                 controller.setButtonVisible("Двойное нажатие");
                 controller.setCylinder(aircraft.getRightMainCylinder());
+                controller.setPersonalAircraftDialogController(this);
             }
         });
         frontCylinder.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2) {
                 CreateCylinderDialogController controller = showEditDialog(e,
-                        "/sample/fxmlFiles/dialog/createCylinderDialog.fxml");
+                        "/fxmlFiles/dialog/createCylinderDialog.fxml");
                 controller.setButtonVisible("Двойное нажатие");
                 controller.setCylinder(aircraft.getFrontCylinder());
+                controller.setPersonalAircraftDialogController(this);
             }
         });
         planer.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2) {
                 CreatePlanerDialogController controller = showEditDialog(e,
-                        "/sample/fxmlFiles/dialog/createPlanerDialog.fxml");
+                        "/fxmlFiles/dialog/createPlanerDialog.fxml");
                 controller.setButtonVisible("Двойное нажатие");
                 controller.setPlaner(aircraft.getPlaner());
+                controller.setPersonalAircraftDialogController(this);
             }
         });
     }
@@ -249,5 +300,23 @@ public class PersonalAircraftDialogController {
                 alarmFrontCylinder};
         notifiesAircraft(aircraft, textOfAlarm);
     }
+
+    public void updateNotificationEngine(Engine engine) {
+        UpdateNotification.updateNotificationEngine(engine, aircraft,
+                alarmLeftEngine, alarmRightEngine);
+    }
+
+    public void updateNotificationKsa(Ksa ksa) {
+        UpdateNotification.updateNotificationKsa(ksa, aircraft, alarmKsa);
+    }
+
+    public void updateNotificationPlaner(Planer planer) {
+        UpdateNotification.updateNotificationPlaner(planer, aircraft, alarmPlaner);
+    }
+
+    public void updateNotificationMainBreak(MainBreak mainBreak) {
+        UpdateNotification.updateNotificationMainBreak(mainBreak, aircraft, alarm_Left_Main_Break, alarm_Right_Main_Break);
+    }
 }
+
 //        labelTest.textProperty().setValue(String.valueOf(aircraft.getLeftEngine()));

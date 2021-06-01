@@ -18,6 +18,7 @@ public class FrontBreak {
     private String serialNumber;
     //Номер самолета,на котором установлен передний тормоз
     private String aircraftNumberInstalled;
+    private Boolean isNeedAttention;
 
     @Override
     public String toString() {

@@ -11,9 +11,11 @@ import sample.controllers.tab.ListCylindersTabController;
 import sample.data.Aircraft;
 import sample.data.SaveData;
 import sample.data.components.limitedResource.CylinderOfRetractionExtension;
+import sample.setBoolean.SetBooleanValue;
 import sample.write.WriteFile;
 
 import static sample.notification.NotificationAircraft.notificationCylinder;
+import static sample.setBoolean.SetBooleanValue.setBooleanValueCylinder;
 import static sample.utils.Utils.checkInput;
 
 public class CreateCylinderDialogController {
@@ -54,6 +56,9 @@ public class CreateCylinderDialogController {
 
     @Setter
     private ListCylindersTabController listCylindersTabController;
+
+    @Setter
+    private PersonalAircraftDialogController personalAircraftDialogController;
 
     private CylinderOfRetractionExtension cylinder;
 
@@ -107,6 +112,7 @@ public class CreateCylinderDialogController {
             cylinder.setSerialNumber(numberCylinder.getText());
             cylinder.setResource_Reserve_Before_Replacement(Integer.parseInt(replacementCylinder.getText()));
         }
+        cylinder.setIsNeedAttention(setBooleanValueCylinder(cylinder));
         WriteFile.serialization(SaveData.cylindersList, CylinderOfRetractionExtension.class);
         listCylindersTabController.updateTableCylinders();
 

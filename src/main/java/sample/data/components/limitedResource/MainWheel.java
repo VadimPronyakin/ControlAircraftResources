@@ -16,6 +16,7 @@ public class MainWheel {
     private String serialNumber;
     //Номер самолета,на котором установлено колесо
     private String aircraftNumberInstalled;
+    private Boolean isNeedAttention;
 
     @Override
     public String toString() { return "сер/№ " + serialNumber; }

@@ -2,6 +2,7 @@ package sample.controllers.dialog;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 import sample.data.Aircraft;
 import sample.data.Engineer;
 import sample.data.SaveData;
@@ -26,6 +27,7 @@ public class PersonalEngineerDialogController {
     private Engineer engineer;
     @FXML
     void initialize() {
+
     }
     public void setEngineer(Engineer engineer1) {
         this.engineer = engineer1;

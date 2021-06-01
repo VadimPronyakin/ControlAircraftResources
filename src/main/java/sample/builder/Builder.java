@@ -10,12 +10,16 @@ import sample.data.components.Engine;
 import sample.data.components.Ksa;
 import sample.data.components.Planer;
 import sample.data.components.limitedResource.*;
+import sample.setBoolean.SetBooleanValue;
 import sample.write.WriteFile;
 
 import java.time.ZoneId;
 import java.util.Date;
 
 import static java.lang.Integer.parseInt;
+import static sample.calculating.CalculatingDateResources.calculateDateInDays;
+import static sample.calculating.CalculatingDateResources.calculateDateInMonth;
+import static sample.setBoolean.SetBooleanValue.*;
 
 public class Builder {
     public static void createAircraft(TextField text, ChoiceBox[] box) {
@@ -38,6 +42,7 @@ public class Builder {
                 .rightMainCylinder((CylinderOfRetractionExtension) box[14].getSelectionModel().getSelectedItem())
                 .frontCylinder((CylinderOfRetractionExtension) box[15].getSelectionModel().getSelectedItem())
                 .build();
+        aircraft.setIsNeedAttention(setBooleanValueAircraft(aircraft));
         aircraft.setFullNameEngineer(aircraft.getIak().getFullName());
         SaveData.aircraftList.add(aircraft);
         WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
@@ -64,6 +69,7 @@ public class Builder {
                         parseInt(fields[16].getText()))
                 .serialNumberEngine(fields[17].getText())
                 .build();
+       engine.setIsNeedAttention(setBooleanValueEngine(engine));
         SaveData.enginesList.add(engine);
         WriteFile.serialization(SaveData.enginesList, Engine.class);
     }
@@ -75,6 +81,7 @@ public class Builder {
                 .resource_Reserve_Before_Replacement(parseInt(fields[2].getText()))
                 .serialNumber(fields[3].getText())
                 .build();
+        frontBreak.setIsNeedAttention(setBooleanValueFrontBreak(frontBreak));
         SaveData.frontBreaksList.add(frontBreak);
         WriteFile.serialization(SaveData.frontBreaksList, FrontBreak.class);
     }
@@ -85,6 +92,7 @@ public class Builder {
                 .resource_Reserve_Replacement_Wheel(parseInt(field2.getText()))
                 .serialNumber(field3.getText())
                 .build();
+        frontWheel.setIsNeedAttention(setBooleanValueFrontWheel(frontWheel));
         SaveData.frontWheelsList.add(frontWheel);
         WriteFile.serialization(SaveData.frontWheelsList, FrontWheel.class);
     }
@@ -102,6 +110,7 @@ public class Builder {
                         parseInt(fields[8].getText()))
                 .serialNumberKsa(fields[9].getText())
                 .build();
+       ksa.setIsNeedAttention(SetBooleanValue.setBooleanValueKsa(ksa));
         SaveData.ksaList.add(ksa);
         WriteFile.serialization(SaveData.ksaList, Ksa.class);
     }
@@ -116,6 +125,7 @@ public class Builder {
                 .resource_Reserve_Replacement_ReferenceDisk(parseInt(fields[5].getText()))
                 .serialNumber(fields[6].getText())
                 .build();
+        mainBreak.setIsNeedAttention(setBooleanValueMainBreak(mainBreak));
         SaveData.mainBreaksList.add(mainBreak);
         WriteFile.serialization(SaveData.mainBreaksList, MainBreak.class);
     }
@@ -126,11 +136,15 @@ public class Builder {
                 .resource_Reserve_Replacement_Wheel(parseInt(field2.getText()))
                 .serialNumber(field3.getText())
                 .build();
+        mainWheel.setIsNeedAttention(setBooleanValueMainWheel(mainWheel));
         SaveData.mainWheelsList.add(mainWheel);
         WriteFile.serialization(SaveData.mainWheelsList, MainWheel.class);
     }
 
-    public static void createPlaner(TextField[] fields, DatePicker date1, DatePicker date2, DatePicker date3) {
+    public static void createPlaner(TextField[] fields,
+                                    DatePicker date1,
+                                    DatePicker date2,
+                                    DatePicker date3) {
         Planer planer = Planer.builder()
                 .sideNumber(fields[0].getText())
                 .total_Landing_Count(parseInt(fields[1].getText()))
@@ -144,6 +158,10 @@ public class Builder {
                 .resource_Reserve_Before_200hours((parseInt(fields[6].getText()) * 60) +
                         parseInt(fields[7].getText()))
                 .build();
+        planer.setDays_Reserve_Before_30DaysParking(calculateDateInDays(Date.from(date1.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()),
+                Date.from(date3.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant())));
+        planer.setDays_Reserve_Before_6months_Operating(calculateDateInMonth(Date.from(date2.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant())));
+        planer.setIsNeedAttention(setBooleanValuePlaner(planer));
         SaveData.planersList.add(planer);
         WriteFile.serialization(SaveData.planersList, Planer.class);
     }
@@ -156,6 +174,7 @@ public class Builder {
                 .resource_Reserve_Before_Replacement(parseInt(fields[3].getText()))
                 .serialNumber(fields[4].getText())
                 .build();
+       cylinder.setIsNeedAttention(SetBooleanValue.setBooleanValueCylinder(cylinder));
         SaveData.cylindersList.add(cylinder);
         WriteFile.serialization(SaveData.cylindersList, CylinderOfRetractionExtension.class);
     }
