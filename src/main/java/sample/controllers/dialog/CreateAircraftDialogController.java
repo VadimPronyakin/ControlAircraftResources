@@ -1,14 +1,13 @@
 package sample.controllers.dialog;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import lombok.Setter;
-import sample.Main;import sample.controllers.ListOfAircraftController;
+import sample.controllers.ListOfAircraftController;
 import sample.data.Aircraft;
 import sample.data.Engineer;
 import sample.data.SaveData;
@@ -18,12 +17,12 @@ import sample.data.components.Planer;
 import sample.data.components.limitedResource.*;
 import sample.write.WriteFile;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import static sample.builder.Builder.createAircraft;
+import static sample.openNewScene.OpenNewScene.showEditDialog;
 import static sample.setBoolean.SetBooleanValue.setBooleanValueAircraft;
 import static sample.utils.Utils.*;
 
@@ -230,21 +229,21 @@ public class CreateAircraftDialogController {
             Stage stage = (Stage) changeAircraft.getScene().getWindow();
             stage.close();
         });
-        addKsa.setOnAction(e -> showDialog("/fxmlFiles/dialog/createKsaDialog.fxml"));
-        addLeftEngine.setOnAction(e -> showDialog("/fxmlFiles/dialog/createEngineDialog.fxml"));
-        addRightEngine.setOnAction(e -> showDialog("/fxmlFiles/dialog/createEngineDialog.fxml"));
-        addFrontCylinderList.setOnAction(e -> showDialog("/fxmlFiles/dialog/createCylinderDialog.fxml"));
-        addMainLeftCylinderList.setOnAction(e -> showDialog("/fxmlFiles/dialog/createCylinderDialog.fxml"));
-        addMainRightCylinderList.setOnAction(e -> showDialog("/fxmlFiles/dialog/createCylinderDialog.fxml"));
-        addFrontLeftBreakList.setOnAction(e -> showDialog("/fxmlFiles/dialog/createFrontBreakDialog.fxml"));
-        addFrontRightBreakList.setOnAction(e -> showDialog("/fxmlFiles/dialog/createFrontBreakDialog.fxml"));
-        addMainLeftBreakList.setOnAction(e -> showDialog("/fxmlFiles/dialog/createMainBreakDialog.fxml"));
-        addMainRightBreakList.setOnAction(e -> showDialog("/fxmlFiles/dialog/createMainBreakDialog.fxml"));
-        addFrontLeftWheelList.setOnAction(e -> showDialog("/fxmlFiles/dialog/createFrontWheelDialog.fxml"));
-        addFrontRightWheelList.setOnAction(e -> showDialog("/fxmlFiles/dialog/createFrontWheelDialog.fxml"));
-        addMainLeftWheelList.setOnAction(e -> showDialog("/fxmlFiles/dialog/createMainWheelDialog.fxml"));
-        addMainRightWheelList.setOnAction(e -> showDialog("/fxmlFiles/dialog/createMainWheelDialog.fxml"));
-        createPlaner.setOnAction(e -> showDialog("/fxmlFiles/dialog/createPlanerDialog.fxml"));
+        addKsa.setOnAction(e -> showEditDialog("/fxmlFiles/dialog/createKsaDialog.fxml"));
+        addLeftEngine.setOnAction(e -> showEditDialog("/fxmlFiles/dialog/createEngineDialog.fxml"));
+        addRightEngine.setOnAction(e -> showEditDialog("/fxmlFiles/dialog/createEngineDialog.fxml"));
+        addFrontCylinderList.setOnAction(e -> showEditDialog("/fxmlFiles/dialog/createCylinderDialog.fxml"));
+        addMainLeftCylinderList.setOnAction(e -> showEditDialog("/fxmlFiles/dialog/createCylinderDialog.fxml"));
+        addMainRightCylinderList.setOnAction(e -> showEditDialog("/fxmlFiles/dialog/createCylinderDialog.fxml"));
+        addFrontLeftBreakList.setOnAction(e -> showEditDialog("/fxmlFiles/dialog/createFrontBreakDialog.fxml"));
+        addFrontRightBreakList.setOnAction(e -> showEditDialog("/fxmlFiles/dialog/createFrontBreakDialog.fxml"));
+        addMainLeftBreakList.setOnAction(e -> showEditDialog("/fxmlFiles/dialog/createMainBreakDialog.fxml"));
+        addMainRightBreakList.setOnAction(e -> showEditDialog("/fxmlFiles/dialog/createMainBreakDialog.fxml"));
+        addFrontLeftWheelList.setOnAction(e -> showEditDialog("/fxmlFiles/dialog/createFrontWheelDialog.fxml"));
+        addFrontRightWheelList.setOnAction(e -> showEditDialog("/fxmlFiles/dialog/createFrontWheelDialog.fxml"));
+        addMainLeftWheelList.setOnAction(e -> showEditDialog("/fxmlFiles/dialog/createMainWheelDialog.fxml"));
+        addMainRightWheelList.setOnAction(e -> showEditDialog("/fxmlFiles/dialog/createMainWheelDialog.fxml"));
+        createPlaner.setOnAction(e -> showEditDialog("/fxmlFiles/dialog/createPlanerDialog.fxml"));
     }
 
     public void setAircraft(Aircraft aircraft1) {
@@ -334,23 +333,10 @@ public class CreateAircraftDialogController {
             aircraft.setLeftMainCylinder(mainLeftCylinderList.getSelectionModel().getSelectedItem());
             aircraft.setFrontCylinder(frontCylinderList.getSelectionModel().getSelectedItem());
         }
+        aircraft.setFullNameEngineer(aircraft.getIak().getFullName());
         aircraft.setIsNeedAttention(setBooleanValueAircraft(aircraft));
         WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
         listOfAircraftController.updateTableAircraft();
-    }
-
-    public void showDialog(String url) {
-        try {
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource(url));
-            Pane page = loader.load();
-            Stage dialogStage = new Stage();
-            dialogStage.initModality(Modality.APPLICATION_MODAL);
-            Scene scene = new Scene(page);
-            dialogStage.setScene(scene);
-            dialogStage.show();
-        } catch (IOException exception) {
-            exception.printStackTrace();
-        }
     }
 
     public void updateChoiceBoxes(int id) {
@@ -423,7 +409,7 @@ public class CreateAircraftDialogController {
             box.getItems().addAll(list.get(i));
         }
     }
-
+    /** Делает видимыми нужные кнопки в диалоговом окне,в зависимости от того,для каких целей мы его открываем */
     public void setButtonVisible(String string) {
         if (string.equals("Добавить самолет")) {
             createAircraft.setVisible(true);

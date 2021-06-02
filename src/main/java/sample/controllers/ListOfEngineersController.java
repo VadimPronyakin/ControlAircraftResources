@@ -14,7 +14,7 @@ import sample.openNewScene.OpenNewScene;
 import sample.update.UpdateList;
 import sample.write.WriteFile;
 
-import static sample.openNewScene.OpenNewScene.showEditDialog;
+import static sample.openNewScene.OpenNewScene.showEditDialogDoubleClick;
 
 
 public class ListOfEngineersController {
@@ -65,7 +65,7 @@ public class ListOfEngineersController {
         changeEngineer.setOnAction(e -> changeEngineer());
         tableView.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2) {
-                PersonalEngineerDialogController controller = showEditDialog(e,
+                PersonalEngineerDialogController controller = showEditDialogDoubleClick(e,
                         "/fxmlFiles/dialog/personalEngineerDialog.fxml");
                 controller.setEngineer(tableView.getSelectionModel().getSelectedItem());
                 controller.updateListAircraft();
@@ -99,9 +99,3 @@ public class ListOfEngineersController {
         UpdateList.updateList(SaveData.engineersList, tableView, TextConstants.ENGINEER_TEXT);
     }
 }
-
-
-//EnumSet.allOf(Rank.class)
-//                .stream()
-//                .map(e -> e.getDescription())
-//                .collect(Collectors.toList()));

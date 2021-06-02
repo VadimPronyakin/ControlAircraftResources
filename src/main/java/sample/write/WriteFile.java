@@ -9,7 +9,10 @@ import java.io.IOException;
 import java.util.List;
 
 public class WriteFile {
-    public static  <T> void serialization(List<T> list, Class<T> clazz) {
+    /**
+     * Метод сериализации данных в текстовые файлы
+     */
+    public static <T> void serialization(List<T> list, Class<T> clazz) {
         try (FileWriter writer = new FileWriter(new File(clazz.getSimpleName() + ".fly"))) {
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.registerModule(new JSR310Module());

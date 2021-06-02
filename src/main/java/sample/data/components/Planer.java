@@ -30,6 +30,7 @@ public class Planer {
     private Date last_Flight_Date;
     //Дата выполнения работ через 30+6 дней стоянки
     private Date date_Work_After_30days_Parking;
+    //Индикатор критического остатка
     private Boolean isNeedAttention;
 
     @Override

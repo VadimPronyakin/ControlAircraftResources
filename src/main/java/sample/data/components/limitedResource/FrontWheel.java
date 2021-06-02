@@ -16,6 +16,7 @@ public class FrontWheel {
     private String serialNumber;
     //Номер самолета,на котором установлено колесо
     private String aircraftNumberInstalled;
+    //Индикатор критического остатка
     private Boolean isNeedAttention;
 
     @Override

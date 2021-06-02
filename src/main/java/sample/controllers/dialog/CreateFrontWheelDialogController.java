@@ -10,11 +10,10 @@ import sample.controllers.tab.ListFrontWheelTabController;
 import sample.data.Aircraft;
 import sample.data.SaveData;
 import sample.data.components.limitedResource.FrontWheel;
-import sample.setBoolean.SetBooleanValue;
 import sample.write.WriteFile;
 
 import static sample.builder.Builder.createFrontWheel;
-import static sample.notification.NotificationAircraft.notificationFrontWheel;
+import static sample.notification.Notification.notificationFrontWheel;
 import static sample.setBoolean.SetBooleanValue.setBooleanValueFrontWheel;
 import static sample.utils.Utils.checkInput;
 
@@ -37,8 +36,6 @@ public class CreateFrontWheelDialogController {
     private Text alarmReplacement;
     @Setter
     private ListFrontWheelTabController listFrontWheelTabController;
-    @Setter
-    private PersonalAircraftDialogController personalAircraftDialogController;
 
     private FrontWheel frontWheel;
 
@@ -86,7 +83,7 @@ public class CreateFrontWheelDialogController {
         listFrontWheelTabController.updateTableFrontWheels();
 
     }
-
+    /** Делает видимыми нужные кнопки в диалоговом окне,в зависимости от того,для каких целей мы его открываем */
     public void setButtonVisible(String string) {
         if (string.equals("Добавить колесо")) {
             createFrontWheel.setVisible(true);
@@ -102,7 +99,9 @@ public class CreateFrontWheelDialogController {
             createFrontWheelForAircraft.setVisible(false);
         }
     }
-
+    /** Метод синхронизирует передние колеса, из списка ограниченного ресура и передние колеса, установленные на самолете
+     * если мы вносим изменения в колесо в списке ограниченного ресурса,которые установлено на какой либо самолет,
+     * то изменения будут автоматически внесеныв это колесо на самолете */
     private void updateAircraftFrontWheels() {
         for (Aircraft aircraft : SaveData.aircraftList) {
             if (aircraft.getLeftFrontWheel().getSerialNumber().equals(frontWheel.getSerialNumber())) {

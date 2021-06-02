@@ -61,6 +61,7 @@ public class Aircraft {
     private CylinderOfRetractionExtension frontCylinder;
     //ФИО и звание инженера Ак закрепленного за самолетом
     private String fullNameEngineer;
+    //Индикатор критического остатка
     private Boolean isNeedAttention;
 }
 

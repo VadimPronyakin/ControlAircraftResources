@@ -16,6 +16,9 @@ import java.util.Date;
 
 import static sample.setBoolean.SetBooleanValue.*;
 
+/**
+ * Класс содержит в себе методы, которые пересчитывают остатки при выполнении работ на агрегатах в зависимости от выбранных работ
+ */
 public class MakeWorks {
     public static void doWorksEngine(Engine engine, ComboBox<TypesOfWorks> list) {
 
@@ -60,7 +63,7 @@ public class MakeWorks {
         engine.setIsNeedAttention(setBooleanValueEngine(engine));
     }
 
-   public static void doWorkKsa(Ksa ksa, ComboBox<TypesOfWorks> list) {
+    public static void doWorkKsa(Ksa ksa, ComboBox<TypesOfWorks> list) {
         try {
             switch (list.getSelectionModel().getSelectedItem()) {
 
@@ -78,7 +81,8 @@ public class MakeWorks {
             e.printStackTrace();
         }
     }
-   public static void doWorksMainBreak(MainBreak mainBreak, ComboBox<TypesOfWorks> list) {
+
+    public static void doWorksMainBreak(MainBreak mainBreak, ComboBox<TypesOfWorks> list) {
         try {
             switch (list.getSelectionModel().getSelectedItem()) {
 
@@ -113,6 +117,7 @@ public class MakeWorks {
             e.printStackTrace();
         }
     }
+
     public static void doWorksPlaner(Planer planer, ChoiceBox<TypesOfWorks> list, DatePicker date) {
 
         switch (list.getSelectionModel().getSelectedItem()) {
@@ -126,7 +131,7 @@ public class MakeWorks {
 //                WriteFile.serialization(SaveData.planersList, Planer.class);
                 break;
             case WORKS_AFTER_30_DAYS_PARKING:
-                planer.setDate_Work_After_30days_Parking (Date.from(date.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+                planer.setDate_Work_After_30days_Parking(Date.from(date.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
                 planer.setDays_Reserve_Before_30DaysParking(CalculatingDateResources.calculateDateInDays(planer.getLast_Flight_Date(),
                         Date.from(date.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant())));
 //                WriteFile.serialization(SaveData.planersList, Planer.class);

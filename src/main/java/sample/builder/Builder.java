@@ -21,6 +21,10 @@ import static sample.calculating.CalculatingDateResources.calculateDateInDays;
 import static sample.calculating.CalculatingDateResources.calculateDateInMonth;
 import static sample.setBoolean.SetBooleanValue.*;
 
+/**
+ * Класс содерижт в себе методы по созданию самолета в целом и каждого агрегата в отдельности
+ */
+
 public class Builder {
     public static void createAircraft(TextField text, ChoiceBox[] box) {
         Aircraft aircraft = Aircraft.builder()
@@ -69,7 +73,7 @@ public class Builder {
                         parseInt(fields[16].getText()))
                 .serialNumberEngine(fields[17].getText())
                 .build();
-       engine.setIsNeedAttention(setBooleanValueEngine(engine));
+        engine.setIsNeedAttention(setBooleanValueEngine(engine));
         SaveData.enginesList.add(engine);
         WriteFile.serialization(SaveData.enginesList, Engine.class);
     }
@@ -110,7 +114,7 @@ public class Builder {
                         parseInt(fields[8].getText()))
                 .serialNumberKsa(fields[9].getText())
                 .build();
-       ksa.setIsNeedAttention(SetBooleanValue.setBooleanValueKsa(ksa));
+        ksa.setIsNeedAttention(SetBooleanValue.setBooleanValueKsa(ksa));
         SaveData.ksaList.add(ksa);
         WriteFile.serialization(SaveData.ksaList, Ksa.class);
     }
@@ -174,7 +178,7 @@ public class Builder {
                 .resource_Reserve_Before_Replacement(parseInt(fields[3].getText()))
                 .serialNumber(fields[4].getText())
                 .build();
-       cylinder.setIsNeedAttention(SetBooleanValue.setBooleanValueCylinder(cylinder));
+        cylinder.setIsNeedAttention(SetBooleanValue.setBooleanValueCylinder(cylinder));
         SaveData.cylindersList.add(cylinder);
         WriteFile.serialization(SaveData.cylindersList, CylinderOfRetractionExtension.class);
     }

@@ -21,7 +21,7 @@ import sample.update.UpdateList;
 
 import java.io.IOException;
 
-import static sample.openNewScene.OpenNewScene.showEditDialog;
+import static sample.openNewScene.OpenNewScene.showEditDialogDoubleClick;
 
 
 public class ListAllKsaTabController {
@@ -56,7 +56,7 @@ public class ListAllKsaTabController {
         });
         tableKsa.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2) {
-                CreateKsaDialogController controller = showEditDialog(e,
+                CreateKsaDialogController controller = showEditDialogDoubleClick(e,
                         "/fxmlFiles/dialog/createKsaDialog.fxml");
                 controller.setButtonVisible("Двойное нажатие");
                 controller.setKsa(tableKsa.getSelectionModel().getSelectedItem());

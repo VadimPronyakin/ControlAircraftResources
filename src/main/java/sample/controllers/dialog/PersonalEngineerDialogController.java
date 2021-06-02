@@ -36,6 +36,8 @@ public class PersonalEngineerDialogController {
         linkNumber.textProperty().setValue(engineer1.getLink());
         ntzFullName.textProperty().setValue(String.valueOf(engineer1.getNtzFullName()));
     }
+    /** Метод сэтит бортовые номера самолетов, за которыми закреплен техник в графу, кторая находится в карточке инженера */
+    //МЕТОД РАБОТАЕТ НЕКОРРЕКТНО, СЭТИТ ТОЛЬКО 1 САМОЛЕТ. ТРЕБУЕТ ДОРАБОТКИ!!!!
     public void updateListAircraft() {
         String aircraftList = null;
         for (Aircraft aircraft : SaveData.aircraftList) {

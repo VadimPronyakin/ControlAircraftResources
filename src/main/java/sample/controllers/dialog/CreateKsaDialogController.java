@@ -12,11 +12,10 @@ import sample.data.Aircraft;
 import sample.data.SaveData;
 import sample.data.components.Ksa;
 import sample.data.enums.TypesOfWorks;
-import sample.setBoolean.SetBooleanValue;
 import sample.write.WriteFile;
 
 import static sample.builder.Builder.createKsa;
-import static sample.notification.NotificationAircraft.notificationKsa;
+import static sample.notification.Notification.notificationKsa;
 import static sample.setBoolean.SetBooleanValue.setBooleanValueKsa;
 import static sample.utils.Utils.checkInput;
 import static sample.works.MakeWorks.doWorkKsa;
@@ -146,7 +145,7 @@ public class CreateKsaDialogController {
         listAllKsaTabController.updateTableKsa();
 
     }
-
+    /** Делает видимыми нужные кнопки в диалоговом окне,в зависимости от того,для каких целей мы его открываем */
     public void setButtonVisible(String string) {
         if (string.equals("Добавить КСА")) {
             createKsa.setVisible(true);
@@ -164,7 +163,9 @@ public class CreateKsaDialogController {
 
         }
     }
-
+    /** Метод синхронизирует КСА, из списка агрегатов и КСА, установленные на самолете
+     * если мы выполняем работы в КСА на самолете,
+     * то изменения будут автоматически внесеныв эту КСА в списке агрегатов */
     private void update_Ksa_After_Work() {
         for (Ksa a : SaveData.ksaList) {
             if (a.getSerialNumberKsa().equals(ksa.getSerialNumberKsa())) {
@@ -173,7 +174,9 @@ public class CreateKsaDialogController {
             }
         }
     }
-
+    /** Метод синхронизирует КСА, из списка агрегатов и КСА, установленные на самолете
+     * если мы вносим изменения в КСА в списке агрегатов,которые установлено на какой либо самолет,
+     * то изменения будут автоматически внесеныв эту КСА на самолете */
     private void updateAircraftKsa() {
         for (Aircraft aircraft : SaveData.aircraftList) {
             if (aircraft.getKsa() == null) {

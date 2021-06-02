@@ -21,19 +21,18 @@ import javafx.stage.Stage;
 import sample.Main;
 import sample.constants.TextConstants;
 import sample.controllers.dialog.CreateAircraftDialogController;
-import sample.controllers.dialog.CreateEngineDialogController;
 import sample.controllers.dialog.PersonalAircraftDialogController;
 import sample.data.Aircraft;
 import sample.data.SaveData;
 import sample.delete.DeleteObject;
-import sample.update.UpdateList;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import static sample.openNewScene.OpenNewScene.openNewScene;
-import static sample.openNewScene.OpenNewScene.showEditDialog;
-import static sample.update.UpdateList.updateList;
+import static sample.openNewScene.OpenNewScene.showEditDialogDoubleClick;
+import static sample.update.UpdateList.*;
 
 
 public class ListOfAircraftController {
@@ -70,6 +69,7 @@ public class ListOfAircraftController {
 
     @FXML
     void initialize() {
+        updateReserveDays();
         updateTableAircraft();
         columnNumberAircraft.setCellValueFactory(new PropertyValueFactory<>("aircraftNumber"));
         columnEngineerAk.setCellValueFactory(new PropertyValueFactory<>("fullNameEngineer"));
@@ -87,13 +87,13 @@ public class ListOfAircraftController {
         });
         returnHomePage.setOnAction(event -> openNewScene("/fxmlFiles/sample.fxml", returnHomePage));
         createNewAircraft.setOnAction(e -> {
-           CreateAircraftDialogController controller = showAircraftDialog();
-           controller.setButtonVisible("Добавить самолет");
+            CreateAircraftDialogController controller = showAircraftDialog();
+            controller.setButtonVisible("Добавить самолет");
         });
         deleteAircraft.setOnAction(e -> DeleteObject.delete(SaveData.aircraftList, tableAircraft, Aircraft.class));
         tableAircraft.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2) {
-                PersonalAircraftDialogController controller = showEditDialog(e,
+                PersonalAircraftDialogController controller = showEditDialogDoubleClick(e,
                         "/fxmlFiles/dialog/personalAircraftDialog.fxml");
                 controller.setAircraft(tableAircraft.getSelectionModel().getSelectedItem());
                 controller.setListOfAircraftController(this);
@@ -107,10 +107,14 @@ public class ListOfAircraftController {
         });
 
     }
-    private Node createPriorityGraphic(Boolean isPriority){
+
+    /**
+     * Метод добавляет изображение в столбец
+     */
+    private Node createPriorityGraphic(Boolean isPriority) {
         HBox graphicContainer = new HBox();
         graphicContainer.setAlignment(Pos.CENTER);
-        if(isPriority){
+        if (isPriority) {
             ImageView imageView = new ImageView(new Image(Main.class.getResourceAsStream("/images/1.png")));
             imageView.setFitHeight(25);
             imageView.setPreserveRatio(true);
@@ -134,10 +138,14 @@ public class ListOfAircraftController {
         } catch (IOException exception) {
             exception.printStackTrace();
         }
-    return null;
+        return null;
     }
+
+    /**
+     * Метод обновялет список самолетов в TableView
+     */
     public void updateTableAircraft() {
-        UpdateList.updateNotificationOnAircraft();
+        updateNotificationOnAircraft();
         updateList(SaveData.aircraftList, tableAircraft, TextConstants.AIRCRAFT_TEXT);
     }
 }

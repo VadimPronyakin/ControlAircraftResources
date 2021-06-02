@@ -7,6 +7,11 @@ import sample.data.components.Ksa;
 import sample.data.components.Planer;
 import sample.data.components.limitedResource.MainBreak;
 
+/**
+ * Класс содержит в себе методы, которые обновляют видимость надписей - сигнализаторов,
+ * которые находятся в карточке самолета напротив каждого агрегата в зависимости от того,как изменяется значение boolean isNeedAttention
+ * после выполнения работ на агрегате
+ */
 public class UpdateNotification {
     public static void updateNotificationEngine(Engine engine, Aircraft aircraft,
                                                 Text text1, Text text2) {
@@ -20,6 +25,7 @@ public class UpdateNotification {
             }
         }
     }
+
     public static void updateNotificationKsa(Ksa ksa, Aircraft aircraft, Text text) {
         if (ksa.getSerialNumberKsa().equals(aircraft.getKsa().getSerialNumberKsa())) {
             if (ksa.getIsNeedAttention() == false) {
@@ -27,15 +33,13 @@ public class UpdateNotification {
             }
         }
     }
+
     public static void updateNotificationPlaner(Planer planer, Aircraft aircraft, Text text) {
         if (planer.getSideNumber().equals(aircraft.getPlaner().getSideNumber())) {
-            if (planer.getIsNeedAttention() == false) {
-                text.setVisible(false);
-            } else {
-                text.setVisible(true);
-            }
+            text.setVisible(planer.getIsNeedAttention() != false);
         }
     }
+
     public static void updateNotificationMainBreak(MainBreak mainbreak, Aircraft aircraft, Text text1, Text text2) {
         if (mainbreak.getSerialNumber().equals(aircraft.getLeftMainBrake().getSerialNumber())) {
             if (mainbreak.getIsNeedAttention() == false) {

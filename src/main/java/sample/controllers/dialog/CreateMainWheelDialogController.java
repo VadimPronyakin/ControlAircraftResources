@@ -14,7 +14,7 @@ import sample.data.components.limitedResource.MainWheel;
 import sample.setBoolean.SetBooleanValue;
 import sample.write.WriteFile;
 
-import static sample.notification.NotificationAircraft.notificationMainWheel;
+import static sample.notification.Notification.notificationMainWheel;
 import static sample.utils.Utils.checkInput;
 
 public class CreateMainWheelDialogController {
@@ -35,8 +35,6 @@ public class CreateMainWheelDialogController {
     private Text alarmReplacement;
     @Setter
     private ListMainWheelsTabController listMainWheelsTabController;
-    @Setter
-    private PersonalAircraftDialogController personalAircraftDialogController;
 
     private MainWheel mainWheel;
 
@@ -86,7 +84,7 @@ public class CreateMainWheelDialogController {
         listMainWheelsTabController.updateTableMainWheels();
 
     }
-
+    /** Делает видимыми нужные кнопки в диалоговом окне,в зависимости от того,для каких целей мы его открываем */
     public void setButtonVisible(String string) {
         if (string.equals("Добавить колесо")) {
             createMainWheel.setVisible(true);
@@ -102,6 +100,9 @@ public class CreateMainWheelDialogController {
             createMainWheelForAircraft.setVisible(false);
         }
     }
+    /** Метод синхронизирует основные колеса, из списка огранич. ресурса и основные колеса, установленные на самолете
+     * если мы вносим изменения в основное колесо в списке огранич.ресурса,которое установлено на какой либо самолет,
+     * то изменения будут автоматически внесены в это колесо на самолете */
     private void updateAircraftMainWheels() {
         for (Aircraft aircraft : SaveData.aircraftList) {
             if ( aircraft.getLeftMainWheel() == null) {

@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReadFile {
+    /**
+     * Метод десериализации данных из текстовых файлов
+     */
     public static <T> List<T> readInfo(Class<T> clazz) {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JSR310Module());

@@ -11,10 +11,9 @@ import sample.controllers.tab.ListCylindersTabController;
 import sample.data.Aircraft;
 import sample.data.SaveData;
 import sample.data.components.limitedResource.CylinderOfRetractionExtension;
-import sample.setBoolean.SetBooleanValue;
 import sample.write.WriteFile;
 
-import static sample.notification.NotificationAircraft.notificationCylinder;
+import static sample.notification.Notification.notificationCylinder;
 import static sample.setBoolean.SetBooleanValue.setBooleanValueCylinder;
 import static sample.utils.Utils.checkInput;
 
@@ -82,6 +81,7 @@ public class CreateCylinderDialogController {
             stage.close();
         });
     }
+
     public void setCylinder(CylinderOfRetractionExtension cylinder) {
         this.cylinder = cylinder;
         first_Repair_Cylinder.setText(String.valueOf(cylinder.getResource_Reserve_Before_First_Repair()));
@@ -100,6 +100,7 @@ public class CreateCylinderDialogController {
                 numberCylinder};
         Builder.createCylinder(fields);
     }
+
     public void changeCylinder(CylinderOfRetractionExtension cylinder) {
         if (checkInput(first_Repair_Cylinder,
                 second_Repair_Cylinder,
@@ -117,13 +118,13 @@ public class CreateCylinderDialogController {
         listCylindersTabController.updateTableCylinders();
 
     }
-
+    /** Делает видимыми нужные кнопки в диалоговом окне,в зависимости от того,для каких целей мы его открываем */
     public void setButtonVisible(String string) {
-        if(string.equals("Добавить цилиндр")){
+        if (string.equals("Добавить цилиндр")) {
             createCylinder.setVisible(true);
             changeCylinder.setVisible(false);
             createCylinderForAircraft.setVisible(false);
-        } else if(string.equals("Изменить запись")) {
+        } else if (string.equals("Изменить запись")) {
             changeCylinder.setVisible(true);
             createCylinder.setVisible(false);
             createCylinderForAircraft.setVisible(false);
@@ -133,10 +134,12 @@ public class CreateCylinderDialogController {
             createCylinderForAircraft.setVisible(false);
         }
     }
-
+    /** Метод синхронизирует цилиндры подкоса, из списка ограниченного ресурса и цилиндры подкоса, установленные на самолете
+     * если мы вносим изменения в цилиндр подкоса в списке ограниченного ресурса,который установлен на какой либо самолет,
+     * то изменения будут автоматически внесеныв этот цилиндр подкоса на самолете */
     private void updateAircraftCylinders() {
         for (Aircraft aircraft : SaveData.aircraftList) {
-            if (aircraft.getLeftMainCylinder().getSerialNumber().equals(cylinder.getSerialNumber())){
+            if (aircraft.getLeftMainCylinder().getSerialNumber().equals(cylinder.getSerialNumber())) {
                 changeCylinder(aircraft.getLeftMainCylinder());
                 WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
             }

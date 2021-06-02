@@ -13,12 +13,16 @@ import static java.lang.Integer.parseInt;
 import static sample.setBoolean.SetBooleanValue.*;
 
 public class UpdateAircraftComponents {
+    /**
+     * Метод обновляет наработку и остатки ресурсов после добавления летной смены в их личных текстовых фалах тем самым
+     * синхронизируя изменения как в агрегатах установленных на самолете,так и в списке агрегатов и ограниченного ресурса
+     */
     public static void updatingComponents(Aircraft aircraft, TextField flightHours,
-                                      TextField flightMinutes, TextField flightAndEarthHours,
-                                      TextField flightAndEarthMinutes, TextField totalLandings) {
+                                          TextField flightMinutes, TextField flightAndEarthHours,
+                                          TextField flightAndEarthMinutes, TextField totalLandings) {
         for (Engine engine : SaveData.enginesList) {
             if (engine.getSerialNumberEngine().equals(aircraft.getLeftEngine().getSerialNumberEngine())
-                || engine.getSerialNumberEngine().equals(aircraft.getRightEngine().getSerialNumberEngine())) {
+                    || engine.getSerialNumberEngine().equals(aircraft.getRightEngine().getSerialNumberEngine())) {
                 engine.setTotalOperatingTime(engine.getTotalOperatingTime() +
                         (parseInt(flightAndEarthHours.getText()) * 60 + parseInt(flightAndEarthMinutes.getText())));
                 //ПОПРАВИТЬ ПОСЛЕ УТОЧНЕНИЯ
@@ -76,7 +80,7 @@ public class UpdateAircraftComponents {
 
         for (MainBreak mainBreak : SaveData.mainBreaksList) {
             if (mainBreak.getSerialNumber().equals(aircraft.getLeftMainBrake().getSerialNumber())
-                || mainBreak.getSerialNumber().equals(aircraft.getRightMainBrake().getSerialNumber())) {
+                    || mainBreak.getSerialNumber().equals(aircraft.getRightMainBrake().getSerialNumber())) {
                 mainBreak.setTotalLandings(mainBreak.getTotalLandings() +
                         parseInt(totalLandings.getText()));
                 mainBreak.setResource_Reserve_Replacement_Break(mainBreak.getResource_Reserve_Replacement_Break() -
@@ -96,7 +100,7 @@ public class UpdateAircraftComponents {
 
         for (MainWheel mainWheel : SaveData.mainWheelsList) {
             if (mainWheel.getSerialNumber().equals(aircraft.getLeftMainWheel().getSerialNumber())
-                || mainWheel.getSerialNumber().equals(aircraft.getRightMainWheel().getSerialNumber())) {
+                    || mainWheel.getSerialNumber().equals(aircraft.getRightMainWheel().getSerialNumber())) {
                 mainWheel.setTotalLandings(mainWheel.getTotalLandings() + parseInt(totalLandings.getText()));
                 mainWheel.setResource_Reserve_Replacement_Wheel(mainWheel.getResource_Reserve_Replacement_Wheel() -
                         parseInt(totalLandings.getText()));
@@ -107,7 +111,7 @@ public class UpdateAircraftComponents {
 
         for (FrontBreak frontBreak : SaveData.frontBreaksList) {
             if (frontBreak.getSerialNumber().equals(aircraft.getLeftFrontBrake().getSerialNumber())
-                || frontBreak.getSerialNumber().equals(aircraft.getRightFrontBrake().getSerialNumber())) {
+                    || frontBreak.getSerialNumber().equals(aircraft.getRightFrontBrake().getSerialNumber())) {
                 frontBreak.setTotalLandings(frontBreak.getTotalLandings() + parseInt(totalLandings.getText()));
                 frontBreak.setResource_Reserve_Before_First_Repair(frontBreak.getResource_Reserve_Before_First_Repair() -
                         parseInt(totalLandings.getText()));
@@ -120,7 +124,7 @@ public class UpdateAircraftComponents {
 
         for (FrontWheel frontWheel : SaveData.frontWheelsList) {
             if (frontWheel.getSerialNumber().equals(aircraft.getLeftFrontWheel().getSerialNumber())
-                || frontWheel.getSerialNumber().equals(aircraft.getRightFrontWheel().getSerialNumber())) {
+                    || frontWheel.getSerialNumber().equals(aircraft.getRightFrontWheel().getSerialNumber())) {
                 frontWheel.setTotalLandings(frontWheel.getTotalLandings() + parseInt(totalLandings.getText()));
                 frontWheel.setResource_Reserve_Replacement_Wheel(frontWheel.getResource_Reserve_Replacement_Wheel() -
                         parseInt(totalLandings.getText()));
@@ -131,8 +135,8 @@ public class UpdateAircraftComponents {
 
         for (CylinderOfRetractionExtension cylinder : SaveData.cylindersList) {
             if (cylinder.getSerialNumber().equals(aircraft.getLeftMainCylinder().getSerialNumber())
-                || cylinder.getSerialNumber().equals(aircraft.getRightMainCylinder().getSerialNumber())
-                || cylinder.getSerialNumber().equals(aircraft.getFrontCylinder().getSerialNumber())) {
+                    || cylinder.getSerialNumber().equals(aircraft.getRightMainCylinder().getSerialNumber())
+                    || cylinder.getSerialNumber().equals(aircraft.getFrontCylinder().getSerialNumber())) {
                 cylinder.setTotalLandings(cylinder.getTotalLandings() + parseInt(totalLandings.getText()));
                 cylinder.setResource_Reserve_Before_First_Repair(cylinder.getResource_Reserve_Before_First_Repair() -
                         parseInt(totalLandings.getText()));

@@ -24,6 +24,7 @@ public class MainBreak {
     private String serialNumber;
     //Номер самолета, на который установлен тормоз
     private String aircraftNumberInstalled;
+    //Индикатор критического остатка
     private Boolean isNeedAttention;
 
     @Override

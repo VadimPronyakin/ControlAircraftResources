@@ -21,7 +21,7 @@ import sample.update.UpdateList;
 
 import java.io.IOException;
 
-import static sample.openNewScene.OpenNewScene.showEditDialog;
+import static sample.openNewScene.OpenNewScene.showEditDialogDoubleClick;
 
 
 public class ListAllEnginesTabController {
@@ -57,7 +57,7 @@ public class ListAllEnginesTabController {
         });
         tableEngine.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2) {
-                CreateEngineDialogController controller = showEditDialog(e,
+                CreateEngineDialogController controller = showEditDialogDoubleClick(e,
                         "/fxmlFiles/dialog/createEngineDialog.fxml");
                 controller.setButtonVisible("Двойное нажатие");
                 controller.setEngine(tableEngine.getSelectionModel().getSelectedItem());

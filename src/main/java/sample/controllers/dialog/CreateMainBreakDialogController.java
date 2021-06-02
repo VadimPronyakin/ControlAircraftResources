@@ -7,20 +7,18 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lombok.Setter;
-import sample.builder.Builder;
 import sample.controllers.tab.ListMainBreaksTabController;
 import sample.data.Aircraft;
 import sample.data.SaveData;
 import sample.data.components.limitedResource.MainBreak;
 import sample.data.enums.TypesOfWorks;
-import sample.setBoolean.SetBooleanValue;
 import sample.write.WriteFile;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static sample.builder.Builder.createMainBreak;
-import static sample.notification.NotificationAircraft.notificationMainBreak;
+import static sample.notification.Notification.notificationMainBreak;
 import static sample.setBoolean.SetBooleanValue.setBooleanValueMainBreak;
 import static sample.utils.Utils.checkInput;
 import static sample.works.MakeWorks.doWorksMainBreak;
@@ -154,7 +152,7 @@ public class CreateMainBreakDialogController {
         listMainBreaksTabController.updateTableMainBreaks();
 
     }
-
+    /** Делает видимыми нужные кнопки в диалоговом окне,в зависимости от того,для каких целей мы его открываем */
     public void setButtonVisible(String string) {
         if (string.equals("Добавить тормоз")) {
             createMainBreak.setVisible(true);
@@ -175,24 +173,24 @@ public class CreateMainBreakDialogController {
             makeWork.setVisible(true);
         }
     }
-
+    /** Метод синхронизирует основные тормоза, из списка огранич. ресурса и основные тормоза, установленные на самолете
+     * если мы вносим изменения в основной тормоз в списке огранич.ресурса,который установлен на какой либо самолет,
+     * то изменения будут автоматически внесены в этот основной тормоз на самолете */
     private void updateAircraftMainBreaks() {
         for (Aircraft aircraft : SaveData.aircraftList) {
-            if (aircraft.getLeftMainBrake() == null) {
-                System.out.println("Нет левого основного на самолете");
-            } else if (aircraft.getLeftMainBrake().getSerialNumber().equals(mainBreak.getSerialNumber())) {
+             if (aircraft.getLeftMainBrake().getSerialNumber().equals(mainBreak.getSerialNumber())) {
                 changeMainBreak(aircraft.getLeftMainBrake());
                 WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
             }
-            if (aircraft.getRightEngine() == null) {
-                System.out.println("Нет правого основного тормоза на самолете");
-            } else if (aircraft.getRightEngine().getSerialNumberEngine().equals(mainBreak.getSerialNumber())) {
+            if (aircraft.getRightEngine().getSerialNumberEngine().equals(mainBreak.getSerialNumber())) {
                 changeMainBreak(aircraft.getRightMainBrake());
                 WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
             }
         }
     }
-
+    /** Метод синхронизирует осноные тормоза, из списка агрегатов и основные тормоза, установленные на самолете
+     * если мы выполняем работы в основном тормозе на самолете,
+     * то изменения будут автоматически внесеныв этот тормоз в списке агрегатов */
     private void update_MainBreak_After_Work() {
         for (MainBreak e : SaveData.mainBreaksList) {
             if (e.getSerialNumber().equals(mainBreak.getSerialNumber())) {

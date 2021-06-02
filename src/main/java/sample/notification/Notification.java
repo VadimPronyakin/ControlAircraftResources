@@ -10,7 +10,11 @@ import sample.data.components.limitedResource.*;
 
 import java.util.List;
 
-public class NotificationAircraft {
+/**
+ * Класс содержит методы, которые в зависимости от значение boolean объектов и самолета делают видимыми текстовые уведомления
+ * указывающие на неоьбходимость проверки остатков агрегатов самолета и указывающие на конкретные работы в карточке агрегата.
+ */
+public class Notification {
     public static void notifiesAircraft(Aircraft aircraft, Text[] texts) {
         if (aircraft.getLeftEngine() == null) {
             System.out.println("Нет левого двигателя на самолете");

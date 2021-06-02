@@ -9,6 +9,10 @@ import static java.lang.Integer.parseInt;
 import static sample.setBoolean.SetBooleanValue.*;
 
 public class CalculatingOperation {
+/** Данный метод пересчитывает наработку и остаток ресурса у всего самолета целиком после добавления данных за летную смену.
+ * На основании пересчитанной наработки и остатков в самолет сэтится новое значение boolean отвечающее за индикацию самолета
+ * (isNeedAttention), после происходит сериализация обновленных данных */
+
     public static void calculatingResourcesAfterFlight(Aircraft aircraft, TextField flightHours,
                                             TextField flightMinutes, TextField flightAndEarthHours,
                                             TextField flightAndEarthMinutes, TextField totalLandings) {

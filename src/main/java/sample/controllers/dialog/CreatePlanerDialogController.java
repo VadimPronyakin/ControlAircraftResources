@@ -11,8 +11,6 @@ import sample.data.Aircraft;
 import sample.data.SaveData;
 import sample.data.components.Planer;
 import sample.data.enums.TypesOfWorks;
-import sample.update.UpdateNotification;
-import sample.works.MakeWorks;
 import sample.write.WriteFile;
 
 import java.time.ZoneId;
@@ -23,7 +21,7 @@ import java.util.List;
 import static java.lang.Integer.parseInt;
 import static sample.calculating.CalculatingDateResources.calculateDateInDays;
 import static sample.calculating.CalculatingDateResources.calculateDateInMonth;
-import static sample.notification.NotificationAircraft.notificationPlaner;
+import static sample.notification.Notification.notificationPlaner;
 import static sample.setBoolean.SetBooleanValue.setBooleanValuePlaner;
 import static sample.utils.Utils.checkInputPlaner;
 import static sample.works.MakeWorks.doWorksPlaner;
@@ -149,6 +147,7 @@ public class CreatePlanerDialogController {
                 date_Work_After_6months_Operation_Planer,
                 date_Work_After_30Days_Parking_Planer);
     }
+    /** Делает видимыми нужные кнопки в диалоговом окне,в зависимости от того,для каких целей мы его открываем */
 
     public void setButtonVisible(String string) {
         if (string.equals("Двойное нажатие")) {
@@ -186,6 +185,7 @@ public class CreatePlanerDialogController {
         planer.setIsNeedAttention(setBooleanValuePlaner(planer));
         WriteFile.serialization(SaveData.aircraftList, Aircraft.class);
     }
+    /** Метод сериализует все изменения планера совершаемы в карточке самолета в файл где хранятся все планеры */
     private void updateAircraftPlaner() {
         for (Planer planer : SaveData.planersList) {
              if (planer.getSideNumber().equals(this.planer.getSideNumber())){
@@ -194,6 +194,7 @@ public class CreatePlanerDialogController {
             }
         }
     }
+    /** Метод сериализует изменения после выполнения работ по планеру в карточке самолета, в файл, где хранятся все планеры */
     private void update_Planer_After_Work() {
         for (Planer e : SaveData.planersList) {
             if (e.getSideNumber().equals(planer.getSideNumber())) {

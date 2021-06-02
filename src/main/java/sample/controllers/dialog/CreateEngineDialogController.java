@@ -19,7 +19,7 @@ import java.util.List;
 
 import static java.lang.Integer.parseInt;
 import static sample.builder.Builder.createEngine;
-import static sample.notification.NotificationAircraft.notificationEngine;
+import static sample.notification.Notification.notificationEngine;
 import static sample.setBoolean.SetBooleanValue.setBooleanValueEngine;
 import static sample.utils.Utils.checkInput;
 import static sample.works.MakeWorks.doWorksEngine;
@@ -129,7 +129,7 @@ public class CreateEngineDialogController {
             stage.close();
         });
     }
-
+    /** Делает видимыми нужные кнопки в диалоговом окне,в зависимости от того,для каких целей мы его открываем */
     public void setButtonVisible(String string) {
         if (string.equals("Добавить двигатель")) {
             createEngine.setVisible(true);
@@ -225,7 +225,9 @@ public class CreateEngineDialogController {
         WriteFile.serialization(SaveData.enginesList, Engine.class);
         listAllEnginesTabController.updateTableEngines();
     }
-
+    /** Метод синхронизирует двигатели, из списка агрегатов и двигатели, установленные на самолете
+     * если мы вносим изменения в двигатель в списке агрегатов,который установлен на какой либо самолет,
+     * то изменения будут автоматически внесены в этот двигатель на самолете */
     private void updateAircraftEngines() {
         for (Aircraft aircraft : SaveData.aircraftList) {
             if (aircraft.getLeftEngine() == null) {
@@ -242,7 +244,9 @@ public class CreateEngineDialogController {
             }
         }
     }
-
+    /** Метод синхронизирует двигатели, из списка агрегатов и двигатели, установленные на самолете
+     * если мы выполняем работы в двигателе на самолете,
+     * то изменения будут автоматически внесеныв этот двигатель в списке агрегатов */
     private void update_Engine_After_Work() {
         for (Engine e : SaveData.enginesList) {
             if (e.getSerialNumberEngine().equals(engine.getSerialNumberEngine())) {

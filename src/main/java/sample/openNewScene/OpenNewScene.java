@@ -13,7 +13,10 @@ import sample.Main;
 import java.io.IOException;
 
 public class OpenNewScene {
-    public static  <T> T openNewScene(String window, Button button) {
+    /**
+     * Метод перехода между окнами
+     */
+    public static <T> T openNewScene(String window, Button button) {
         button.getScene().getWindow().hide();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Main.class.getResource(window));
@@ -29,21 +32,11 @@ public class OpenNewScene {
         stage.show();
         return loader.getController();
     }
-    public static  <T> T showEditDialog(MouseEvent e, String window) {
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource(window));
-               try {
-                   Pane page = loader.load();
-                   Stage dialogStage = new Stage();
-                   dialogStage.initModality(Modality.APPLICATION_MODAL);
-                   Scene scene = new Scene(page);
-                   dialogStage.setScene(scene);
-                   dialogStage.show();
-               } catch (IOException ex) {
-                   ex.printStackTrace();
-               }
-        return loader.getController();
-    }
-    public static  <T> T showEditDialogTouchButton(String window) {
+
+    /**
+     * Метод открывает диалоговое окно по двойному нажатию левой кнопки мыши
+     */
+    public static <T> T showEditDialogDoubleClick(MouseEvent e, String window) {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource(window));
         try {
             Pane page = loader.load();
@@ -56,6 +49,23 @@ public class OpenNewScene {
             ex.printStackTrace();
         }
         return loader.getController();
+    }
+
+    /**
+     * Метод открывает диалоговое окно
+     */
+    public static void showEditDialog(String window) {
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource(window));
+        try {
+            Pane page = loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.initModality(Modality.APPLICATION_MODAL);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+            dialogStage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 }
 

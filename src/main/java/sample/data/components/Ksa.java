@@ -24,6 +24,7 @@ public class Ksa {
     private String serialNumberKsa;
     //Номер самолета,на котором установлена КСА
     private String aircraftNumberInstalled;
+    //Индикатор критического остатка
     private Boolean isNeedAttention;
 
     @Override

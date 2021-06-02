@@ -20,6 +20,7 @@ public class CylinderOfRetractionExtension {
     private String serialNumber;
     //Номер самолета,на котором установлен цилиндр подкоса
     private String aircraftNumberInstalled;
+    //Индикатор критического остатка
     private Boolean isNeedAttention;
 
     @Override

@@ -1,9 +1,7 @@
 package sample.utils;
 
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.scene.control.skin.ChoiceBoxSkin;
 import org.apache.commons.lang3.StringUtils;
 import sample.data.Engineer;
 import sample.data.SaveData;
@@ -33,6 +31,10 @@ public class Utils {
         }
         return true;
     }
+
+    /**
+     * Группа методов, которые при редактировании самолета заполняют ChoiceBox агрегатами,которые уставлены на этот самолет
+     */
     public static int setEngineIndex(Engine engine) {
         int index = -1;
         try {
@@ -46,6 +48,7 @@ public class Utils {
         }
         return index;
     }
+
     public static int setKsaIndex(Ksa ksa) {
         int index = -1;
         try {
@@ -59,15 +62,17 @@ public class Utils {
         }
         return index;
     }
+
     public static int setPlanerIndex(Planer planer) {
         int index = -1;
-            for (int i = 0; i < SaveData.planersList.size(); i++) {
-                if (planer.getSideNumber().equals(SaveData.planersList.get(i).getSideNumber())) {
-                    index = i;
-                }
+        for (int i = 0; i < SaveData.planersList.size(); i++) {
+            if (planer.getSideNumber().equals(SaveData.planersList.get(i).getSideNumber())) {
+                index = i;
             }
+        }
         return index;
     }
+
     public static int setMainBreakIndex(MainBreak mainBreak) {
         int index = -1;
         for (int i = 0; i < SaveData.mainBreaksList.size(); i++) {
@@ -77,6 +82,7 @@ public class Utils {
         }
         return index;
     }
+
     public static int setMainWheelIndex(MainWheel mainWheel) {
         int index = -1;
         for (int i = 0; i < SaveData.mainWheelsList.size(); i++) {
@@ -86,6 +92,7 @@ public class Utils {
         }
         return index;
     }
+
     public static int setFrontBreakIndex(FrontBreak frontBreak) {
         int index = -1;
         for (int i = 0; i < SaveData.frontBreaksList.size(); i++) {
@@ -95,6 +102,7 @@ public class Utils {
         }
         return index;
     }
+
     public static int setFrontWheelIndex(FrontWheel frontWheel) {
         int index = -1;
         for (int i = 0; i < SaveData.frontWheelsList.size(); i++) {
@@ -104,6 +112,7 @@ public class Utils {
         }
         return index;
     }
+
     public static int setCylinderIndex(CylinderOfRetractionExtension cylinder) {
         int index = -1;
         for (int i = 0; i < SaveData.cylindersList.size(); i++) {
@@ -113,6 +122,7 @@ public class Utils {
         }
         return index;
     }
+
     public static int setEngineerIndex(Engineer engineer) {
         int index = -1;
         for (int i = 0; i < SaveData.engineersList.size(); i++) {
