@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="430.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.dialog.CreateKsaDialogController">
+   <children>
+      <Text layoutX="9.0" layoutY="52.4755859375" strokeType="OUTSIDE" strokeWidth="0.0" text="1.Серийный номер КСА" AnchorPane.leftAnchor="9.0" AnchorPane.topAnchor="40.0">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="9.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2.Кол-во последовательных запусков с начала эксплуатации">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="9.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3.Кол-во запусков правого АД с начала эксплуатации">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="9.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4.Кол-во запусков левого АД с начала эксплуатации">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="9.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5.Наработка с начала эксплуатации">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="9.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6.Остаток ресурса до 25-ти часовых работ">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="11.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7.Остаток ресурса до замены масла">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <TextField fx:id="numberKsa" alignment="CENTER" layoutX="407.0" layoutY="28.0">
+         <font>
+            <Font name="Times New Roman" size="12.0" />
+         </font></TextField>
+      <TextField fx:id="totalStartKsa" alignment="CENTER" layoutX="408.0" layoutY="62.0" prefWidth="70.0" AnchorPane.topAnchor="62.0">
+         <font>
+            <Font name="Times New Roman" size="12.0" />
+         </font></TextField>
+      <TextField fx:id="totalRightKsa" alignment="CENTER" layoutX="408.0" layoutY="97.0" prefWidth="70.0" AnchorPane.topAnchor="97.0">
+         <font>
+            <Font name="Times New Roman" size="12.0" />
+         </font></TextField>
+      <TextField fx:id="totalLeftKsa" alignment="CENTER" layoutX="408.0" layoutY="132.0" prefWidth="70.0" AnchorPane.topAnchor="132.0">
+         <font>
+            <Font name="Times New Roman" size="12.0" />
+         </font></TextField>
+      <TextField fx:id="totalOperatingKsaHours" alignment="CENTER" layoutX="408.0" layoutY="165.0" prefWidth="70.0" AnchorPane.topAnchor="165.0">
+         <font>
+            <Font name="Times New Roman" size="12.0" />
+         </font></TextField>
+      <TextField fx:id="totalOperatingKsaMinutes" alignment="CENTER" layoutX="509.0" layoutY="166.0" prefWidth="70.0" AnchorPane.topAnchor="166.0">
+         <font>
+            <Font name="Times New Roman" size="12.0" />
+         </font></TextField>
+      <TextField fx:id="before_25hoursKsaHours" alignment="CENTER" layoutX="408.0" layoutY="202.0" prefWidth="70.0" AnchorPane.topAnchor="202.0">
+         <font>
+            <Font name="Times New Roman" size="12.0" />
+         </font></TextField>
+      <TextField fx:id="before_25hoursKsaMinutes" alignment="CENTER" layoutX="509.0" layoutY="202.0" prefWidth="70.0" AnchorPane.topAnchor="202.0">
+         <font>
+            <Font name="Times New Roman" size="12.0" />
+         </font></TextField>
+      <TextField fx:id="oilChangeKsaHours" alignment="CENTER" layoutX="408.0" layoutY="238.0" prefWidth="70.0" AnchorPane.topAnchor="238.0">
+         <font>
+            <Font name="Times New Roman" size="12.0" />
+         </font></TextField>
+      <TextField fx:id="oilChangeKsaMinutes" alignment="CENTER" layoutX="509.0" layoutY="237.0" prefWidth="70.0" AnchorPane.topAnchor="237.0">
+         <font>
+            <Font name="Times New Roman" size="12.0" />
+         </font></TextField>
+      <Text layoutX="485.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="зап.">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="485.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="зап.">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="485.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="зап.">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="486.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ч.">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="486.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ч.">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="486.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ч.">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="585.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="мин.">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="585.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="мин.">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="585.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="мин.">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Button fx:id="createKsa" layoutX="51.0" layoutY="373.0" mnemonicParsing="false" style="-fx-background-color: #3fc707;" text="Добавить КСА" visible="false">
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+      </Button>
+      <Button fx:id="changeKsa" layoutX="357.0" layoutY="373.0" mnemonicParsing="false" style="-fx-background-color: #00FFFF;" text="Сохранить" visible="false">
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+      </Button>
+      <Button fx:id="createKsaForAircraft" layoutX="624.0" layoutY="373.0" mnemonicParsing="false" style="-fx-background-color: #3fc707;" text="Добавить КСА">
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+      </Button>
+      <Text fx:id="alarm25Hours" fill="#dd0707" layoutX="624.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ВОЗЬМИ НА КОНТРОЛЬ!!!" visible="false">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text fx:id="alarmOilChange" fill="#dd0707" layoutX="624.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ВОЗЬМИ НА КОНТРОЛЬ!!!" visible="false">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text fx:id="selectionWorks" layoutX="635.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Выберите вид работ" visible="false">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <ComboBox fx:id="listOfWorksKsa" layoutX="624.0" layoutY="28.0" prefHeight="25.0" prefWidth="150.0" visible="false" />
+      <Button fx:id="makeWorksKsa" layoutX="625.0" layoutY="62.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="148.0" style="-fx-background-color: #3fc707;" text="Выполнить работы" visible="false">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

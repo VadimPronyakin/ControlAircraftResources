@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.dialog.PersonalEngineerDialogController">
+   <children>
+      <Label fx:id="rank" alignment="CENTER" layoutX="195.0" layoutY="11.0" prefHeight="22.0" prefWidth="371.0" style="-fx-border-style: solid; -fx-border-radius: 4;" text="Label">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="fullName" alignment="CENTER" layoutX="195.0" layoutY="44.0" prefHeight="22.0" prefWidth="371.0" style="-fx-border-style: solid; -fx-border-radius: 4;" text="Label">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Label>
+      <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Звание">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="8.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ФИО">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="195.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Список закрепленных самолетов">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Label fx:id="listAircraft" layoutX="11.0" layoutY="193.0" prefHeight="50.0" prefWidth="579.0" style="-fx-border-style: solid; -fx-border-radius: 4;" text="Label" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="linkNumber" alignment="CENTER" layoutX="195.0" layoutY="79.0" prefHeight="22.0" prefWidth="64.0" style="-fx-border-style: solid; -fx-border-radius: 4;" text="Label">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="ntzFullName" alignment="CENTER" layoutX="300.0" layoutY="79.0" prefHeight="22.0" prefWidth="264.0" style="-fx-border-style: solid; -fx-border-radius: 4;" text="Label">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Label>
+      <Text layoutX="8.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Номер авиационного звена">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="267.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="НТЗ">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
