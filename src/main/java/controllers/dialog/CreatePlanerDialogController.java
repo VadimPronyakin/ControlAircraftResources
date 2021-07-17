@@ -95,9 +95,9 @@ public class CreatePlanerDialogController {
         createPlaner.setOnAction(e -> {
             try {
                 if (minutesChecker(returnFullArray()) && planerProtection(sideNumber)) {
-                        addPlaner();
-                        Stage stage = (Stage) createPlaner.getScene().getWindow();
-                        stage.close();
+                    addPlaner();
+                    Stage stage = (Stage) createPlaner.getScene().getWindow();
+                    stage.close();
                 }
             } catch (NumberFormatException exception) {
                 openInformationWindow(TextConstants.ONLY_INT_PLANER);
@@ -236,7 +236,7 @@ public class CreatePlanerDialogController {
     }
 
     /**
-     * Метод сериализует все изменения планера совершаемы в карточке самолета в файл где хранятся все планеры
+     * Метод сериализует все изменения планера, совершаемые в карточке самолета в файл, где хранятся все планеры.
      */
     private void updateAircraftPlaner() {
         for (Planer planer : SaveData.planersList) {
@@ -248,7 +248,7 @@ public class CreatePlanerDialogController {
     }
 
     /**
-     * Метод сериализует изменения после выполнения работ по планеру в карточке самолета, в файл, где хранятся все планеры
+     * Метод сериализует изменения, после выполнения работ по планеру в карточке самолета, в файл, где хранятся все планеры.
      */
     private void update_Planer_After_Work() {
         for (Planer planerFromList : SaveData.planersList) {

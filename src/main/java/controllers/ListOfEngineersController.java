@@ -10,7 +10,6 @@ import io.writer.FilesWriter;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseButton;
 import org.apache.commons.lang3.StringUtils;
 
 import static builder.Builder.createEngineer;

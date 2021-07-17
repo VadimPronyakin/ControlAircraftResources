@@ -83,7 +83,6 @@ public class TextConstants {
     public static final String RIGHT_OPERATING = " правый 20% земли = ";
     public static final String QUANTITY_STARTING_LEFT = " запусков левого = ";
     public static final String QUANTITY_STARTING_RIGHT = " запусков правого = ";
-    public static final String ADD_OPERATING = "Добавь наработку";
     public static final String REPAIR_COMPLETED = "РЕМОНТ ВЫПОЛНЕН";
     public static final String DISK_REPLACED = "ДИСК ЗАМЕНЕН";
     public static final String NON_OPERATING_IN_HISTORY = "Добавьте наработку,чтобы она отображалась в истории";

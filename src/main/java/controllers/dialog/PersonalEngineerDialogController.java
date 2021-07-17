@@ -40,7 +40,7 @@ public class PersonalEngineerDialogController {
         String aircraftList = "";
         for (Aircraft aircraft : SaveData.aircraftList) {
             if (engineer.getFullName().equals(aircraft.getFullNameEngineer())) {
-                aircraftList = aircraftList + aircraft.getAircraftNumber() + "; ";
+                aircraftList = aircraftList.concat(aircraft.getAircraftNumber() + "; ");
             }
         }
         if (StringUtils.isBlank(aircraftList)) {

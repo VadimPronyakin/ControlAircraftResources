@@ -82,7 +82,6 @@ public class ListCylindersTabController {
             }
         });
         deleteCylinder.setOnAction(e -> checkingMatches());
-        //todo: запретить выполнять второй рмеонт,пока не выполнен первый
         makeWorkCylinder.setOnAction(e -> {
             try {
                 doWorksCylinder(tableCylinders.getSelectionModel().getSelectedItem(),

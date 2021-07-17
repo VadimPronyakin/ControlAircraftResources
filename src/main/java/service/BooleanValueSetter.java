@@ -18,84 +18,29 @@ public class BooleanValueSetter {
             if (aircraft.getRightEngine().getIsNeedAttention()
                     || aircraft.getLeftEngine().getIsNeedAttention()
                     || aircraft.getKsa().getIsNeedAttention()
-                    || aircraft.getPlaner().getIsNeedAttention()
-                    || aircraft.getLeftMainWheel().getIsNeedAttention()
-                    || aircraft.getRightMainWheel().getIsNeedAttention()
-                    || aircraft.getLeftFrontWheel().getIsNeedAttention()
-                    || aircraft.getRightFrontWheel().getIsNeedAttention()
-                    || aircraft.getLeftMainBrake().getIsNeedAttention()
-                    || aircraft.getRightMainBrake().getIsNeedAttention()
-                    || aircraft.getLeftFrontBrake().getIsNeedAttention()
-                    || aircraft.getRightFrontBrake().getIsNeedAttention()
-                    || aircraft.getLeftMainCylinder().getIsNeedAttention()
-                    || aircraft.getRightMainCylinder().getIsNeedAttention()
-                    || aircraft.getFrontCylinder().getIsNeedAttention()) {
+                    || checkIsNeedAttention(aircraft)) {
                 attention = true;
             }
         } else {
-            if (aircraft.getPlaner().getIsNeedAttention()
-                    || aircraft.getLeftMainWheel().getIsNeedAttention()
-                    || aircraft.getRightMainWheel().getIsNeedAttention()
-                    || aircraft.getLeftFrontWheel().getIsNeedAttention()
-                    || aircraft.getRightFrontWheel().getIsNeedAttention()
-                    || aircraft.getLeftMainBrake().getIsNeedAttention()
-                    || aircraft.getRightMainBrake().getIsNeedAttention()
-                    || aircraft.getLeftFrontBrake().getIsNeedAttention()
-                    || aircraft.getRightFrontBrake().getIsNeedAttention()
-                    || aircraft.getLeftMainCylinder().getIsNeedAttention()
-                    || aircraft.getRightMainCylinder().getIsNeedAttention()
-                    || aircraft.getFrontCylinder().getIsNeedAttention()) {
+            if (checkIsNeedAttention(aircraft)) {
                 attention = true;
             }
         }
         if (aircraft.getLeftEngine() == null && aircraft.getRightEngine() == null && aircraft.getKsa() != null) {
             if (aircraft.getKsa().getIsNeedAttention()
-                    || aircraft.getPlaner().getIsNeedAttention()
-                    || aircraft.getLeftMainWheel().getIsNeedAttention()
-                    || aircraft.getRightMainWheel().getIsNeedAttention()
-                    || aircraft.getLeftFrontWheel().getIsNeedAttention()
-                    || aircraft.getRightFrontWheel().getIsNeedAttention()
-                    || aircraft.getLeftMainBrake().getIsNeedAttention()
-                    || aircraft.getRightMainBrake().getIsNeedAttention()
-                    || aircraft.getLeftFrontBrake().getIsNeedAttention()
-                    || aircraft.getRightFrontBrake().getIsNeedAttention()
-                    || aircraft.getLeftMainCylinder().getIsNeedAttention()
-                    || aircraft.getRightMainCylinder().getIsNeedAttention()
-                    || aircraft.getFrontCylinder().getIsNeedAttention()) {
+                    || checkIsNeedAttention(aircraft)) {
                 attention = true;
             }
         }
         if (aircraft.getLeftEngine() == null && aircraft.getRightEngine() != null && aircraft.getKsa() == null) {
             if (aircraft.getRightEngine().getIsNeedAttention()
-                    || aircraft.getPlaner().getIsNeedAttention()
-                    || aircraft.getLeftMainWheel().getIsNeedAttention()
-                    || aircraft.getRightMainWheel().getIsNeedAttention()
-                    || aircraft.getLeftFrontWheel().getIsNeedAttention()
-                    || aircraft.getRightFrontWheel().getIsNeedAttention()
-                    || aircraft.getLeftMainBrake().getIsNeedAttention()
-                    || aircraft.getRightMainBrake().getIsNeedAttention()
-                    || aircraft.getLeftFrontBrake().getIsNeedAttention()
-                    || aircraft.getRightFrontBrake().getIsNeedAttention()
-                    || aircraft.getLeftMainCylinder().getIsNeedAttention()
-                    || aircraft.getRightMainCylinder().getIsNeedAttention()
-                    || aircraft.getFrontCylinder().getIsNeedAttention()) {
+                    || checkIsNeedAttention(aircraft)) {
                 attention = true;
             }
         }
         if (aircraft.getLeftEngine() != null && aircraft.getRightEngine() == null && aircraft.getKsa() == null) {
             if (aircraft.getLeftEngine().getIsNeedAttention()
-                    || aircraft.getPlaner().getIsNeedAttention()
-                    || aircraft.getLeftMainWheel().getIsNeedAttention()
-                    || aircraft.getRightMainWheel().getIsNeedAttention()
-                    || aircraft.getLeftFrontWheel().getIsNeedAttention()
-                    || aircraft.getRightFrontWheel().getIsNeedAttention()
-                    || aircraft.getLeftMainBrake().getIsNeedAttention()
-                    || aircraft.getRightMainBrake().getIsNeedAttention()
-                    || aircraft.getLeftFrontBrake().getIsNeedAttention()
-                    || aircraft.getRightFrontBrake().getIsNeedAttention()
-                    || aircraft.getLeftMainCylinder().getIsNeedAttention()
-                    || aircraft.getRightMainCylinder().getIsNeedAttention()
-                    || aircraft.getFrontCylinder().getIsNeedAttention()) {
+                    || checkIsNeedAttention(aircraft)) {
                 attention = true;
             }
         }
@@ -103,54 +48,21 @@ public class BooleanValueSetter {
 
             if (aircraft.getRightEngine().getIsNeedAttention()
                     || aircraft.getKsa().getIsNeedAttention()
-                    || aircraft.getPlaner().getIsNeedAttention()
-                    || aircraft.getLeftMainWheel().getIsNeedAttention()
-                    || aircraft.getRightMainWheel().getIsNeedAttention()
-                    || aircraft.getLeftFrontWheel().getIsNeedAttention()
-                    || aircraft.getRightFrontWheel().getIsNeedAttention()
-                    || aircraft.getLeftMainBrake().getIsNeedAttention()
-                    || aircraft.getRightMainBrake().getIsNeedAttention()
-                    || aircraft.getLeftFrontBrake().getIsNeedAttention()
-                    || aircraft.getRightFrontBrake().getIsNeedAttention()
-                    || aircraft.getLeftMainCylinder().getIsNeedAttention()
-                    || aircraft.getRightMainCylinder().getIsNeedAttention()
-                    || aircraft.getFrontCylinder().getIsNeedAttention()) {
+                    || checkIsNeedAttention(aircraft)) {
                 attention = true;
             }
         }
         if (aircraft.getRightEngine() == null && aircraft.getLeftEngine() != null && aircraft.getKsa() != null) {
             if (aircraft.getLeftEngine().getIsNeedAttention()
                     || aircraft.getKsa().getIsNeedAttention()
-                    || aircraft.getPlaner().getIsNeedAttention()
-                    || aircraft.getLeftMainWheel().getIsNeedAttention()
-                    || aircraft.getRightMainWheel().getIsNeedAttention()
-                    || aircraft.getLeftFrontWheel().getIsNeedAttention()
-                    || aircraft.getRightFrontWheel().getIsNeedAttention()
-                    || aircraft.getLeftMainBrake().getIsNeedAttention()
-                    || aircraft.getRightMainBrake().getIsNeedAttention()
-                    || aircraft.getLeftFrontBrake().getIsNeedAttention()
-                    || aircraft.getRightFrontBrake().getIsNeedAttention()
-                    || aircraft.getLeftMainCylinder().getIsNeedAttention()
-                    || aircraft.getRightMainCylinder().getIsNeedAttention()
-                    || aircraft.getFrontCylinder().getIsNeedAttention()) {
+                    || checkIsNeedAttention(aircraft)) {
                 attention = true;
             }
         }
         if (aircraft.getKsa() == null && aircraft.getLeftEngine() != null && aircraft.getRightEngine() != null) {
             if (aircraft.getRightEngine().getIsNeedAttention()
                     || aircraft.getLeftEngine().getIsNeedAttention()
-                    || aircraft.getPlaner().getIsNeedAttention()
-                    || aircraft.getLeftMainWheel().getIsNeedAttention()
-                    || aircraft.getRightMainWheel().getIsNeedAttention()
-                    || aircraft.getLeftFrontWheel().getIsNeedAttention()
-                    || aircraft.getRightFrontWheel().getIsNeedAttention()
-                    || aircraft.getLeftMainBrake().getIsNeedAttention()
-                    || aircraft.getRightMainBrake().getIsNeedAttention()
-                    || aircraft.getLeftFrontBrake().getIsNeedAttention()
-                    || aircraft.getRightFrontBrake().getIsNeedAttention()
-                    || aircraft.getLeftMainCylinder().getIsNeedAttention()
-                    || aircraft.getRightMainCylinder().getIsNeedAttention()
-                    || aircraft.getFrontCylinder().getIsNeedAttention()) {
+                    || checkIsNeedAttention(aircraft)) {
                 attention = true;
             }
         }
@@ -192,9 +104,9 @@ public class BooleanValueSetter {
     public static boolean setBooleanValueCylinder(CylinderOfRetractionExtension cylinder) {
         boolean attention = false;
         if ((cylinder.getResource_Reserve_Before_First_Repair() <= 15
-            && cylinder.getResource_Reserve_Before_First_Repair() != 0)
+                && cylinder.getResource_Reserve_Before_First_Repair() != 0)
                 || (cylinder.getResource_Reserve_Before_Second_Repair() <= 15
-                    && cylinder.getResource_Reserve_Before_First_Repair() != 0)
+                && cylinder.getResource_Reserve_Before_First_Repair() != 0)
                 || cylinder.getResource_Reserve_Before_Replacement() <= 15) {
             attention = true;
         }
@@ -207,7 +119,7 @@ public class BooleanValueSetter {
     public static boolean setBooleanValueFrontBreak(FrontBreak frontBreak) {
         boolean attention = false;
         if ((frontBreak.getResource_Reserve_Before_First_Repair() <= 15
-            && frontBreak.getResource_Reserve_Before_First_Repair() != 0)
+                && frontBreak.getResource_Reserve_Before_First_Repair() != 0)
                 || frontBreak.getResource_Reserve_Before_Replacement() <= 15) {
             attention = true;
         }
@@ -265,6 +177,24 @@ public class BooleanValueSetter {
             attention = true;
         }
         return attention;
+    }
+
+    /**
+     * Метод проверки уведомлений, общий для всех конфигураций самолета.
+     */
+    private static boolean checkIsNeedAttention(Aircraft aircraft) {
+        return aircraft.getPlaner().getIsNeedAttention()
+                || aircraft.getLeftMainWheel().getIsNeedAttention()
+                || aircraft.getRightMainWheel().getIsNeedAttention()
+                || aircraft.getLeftFrontWheel().getIsNeedAttention()
+                || aircraft.getRightFrontWheel().getIsNeedAttention()
+                || aircraft.getLeftMainBrake().getIsNeedAttention()
+                || aircraft.getRightMainBrake().getIsNeedAttention()
+                || aircraft.getLeftFrontBrake().getIsNeedAttention()
+                || aircraft.getRightFrontBrake().getIsNeedAttention()
+                || aircraft.getLeftMainCylinder().getIsNeedAttention()
+                || aircraft.getRightMainCylinder().getIsNeedAttention()
+                || aircraft.getFrontCylinder().getIsNeedAttention();
     }
 }
 

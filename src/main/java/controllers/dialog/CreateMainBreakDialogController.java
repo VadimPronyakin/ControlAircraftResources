@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static builder.Builder.createMainBreak;
+import static java.lang.Integer.parseInt;
 import static service.AircraftWorks.doWorksMainBreak;
 import static service.BooleanValueSetter.setBooleanValueMainBreak;
 import static service.DuplicateProtection.mainBreakProtection;
@@ -180,12 +181,12 @@ public class CreateMainBreakDialogController {
                 replacement_PressureDisk,
                 replacement_ReferenceDisk,
                 numberMainBreak)) {
-            mainBreak.setResource_Reserve_Replacement_Break(Integer.parseInt(replacementMainBreak.getText()));
-            mainBreak.setTotalLandings(Integer.parseInt(totalMainBreak.getText()));
-            mainBreak.setResource_Reserve_Replacement_NonRotatingDisks(Integer.parseInt(replacement_NonRotatingDisks.getText()));
-            mainBreak.setResource_Reserve_Replacement_RotatingDisks(Integer.parseInt(replacement_RotatingDisks.getText()));
-            mainBreak.setResource_Reserve_Replacement_PressureDisk(Integer.parseInt(replacement_PressureDisk.getText()));
-            mainBreak.setResource_Reserve_Replacement_ReferenceDisk(Integer.parseInt(replacement_ReferenceDisk.getText()));
+            mainBreak.setResource_Reserve_Replacement_Break(parseInt(replacementMainBreak.getText()));
+            mainBreak.setTotalLandings(parseInt(totalMainBreak.getText()));
+            mainBreak.setResource_Reserve_Replacement_NonRotatingDisks(parseInt(replacement_NonRotatingDisks.getText()));
+            mainBreak.setResource_Reserve_Replacement_RotatingDisks(parseInt(replacement_RotatingDisks.getText()));
+            mainBreak.setResource_Reserve_Replacement_PressureDisk(parseInt(replacement_PressureDisk.getText()));
+            mainBreak.setResource_Reserve_Replacement_ReferenceDisk(parseInt(replacement_ReferenceDisk.getText()));
             mainBreak.setSerialNumber(numberMainBreak.getText());
         }
         mainBreak.setIsNeedAttention(setBooleanValueMainBreak(mainBreak));

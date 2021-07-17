@@ -67,7 +67,6 @@ public class CreateKsaDialogController {
     private ListAllKsaTabController listAllKsaTabController;
 
     @Setter
-
     private PersonalAircraftDialogController personalAircraftDialogController;
 
     private Ksa ksa;

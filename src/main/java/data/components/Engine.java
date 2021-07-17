@@ -1,7 +1,6 @@
 package data.components;
 
 import data.AbstractAggregate;
-import data.Aggregates;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 

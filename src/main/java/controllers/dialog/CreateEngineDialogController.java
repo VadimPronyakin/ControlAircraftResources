@@ -96,6 +96,7 @@ public class CreateEngineDialogController {
     private ListAllEnginesTabController listAllEnginesTabController;
     @Setter
     private PersonalAircraftDialogController personalAircraftDialogController;
+
     private Engine engine;
 
     @FXML

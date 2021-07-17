@@ -5,7 +5,6 @@ import controllers.dialog.CreateEngineDialogController;
 import data.Aircraft;
 import data.SaveData;
 import data.components.Engine;
-import io.writer.FilesWriter;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;

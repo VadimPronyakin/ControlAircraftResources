@@ -173,7 +173,7 @@ public class Utils {
     /**
      *
      */
-    public static Map<Stage, PersonalAircraftDialogController> showEditDialogDoubleClickWithStage(MouseEvent e, String window) {
+    public static Map<Stage, PersonalAircraftDialogController> showEditDialogDoubleClickWithStage(String window) {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource(window));
         try {
             Pane page = loader.load();
@@ -198,14 +198,13 @@ public class Utils {
      * заполненый двигателями, которые не установлены на самолеты.
      */
     public static List<Engine> filterInstalledEngine() {
-        List<Engine> list = new ArrayList<>();
-        for (Engine engines : SaveData.enginesList) {
-            list.add(engines);
-        }
+        List<Engine> list = new ArrayList<>(SaveData.enginesList);
         for (Aircraft aircraft : SaveData.aircraftList) {
             for (Engine engine : SaveData.enginesList) {
-                if (aircraft.getLeftEngine() != null && aircraft.getLeftEngine().getSerialNumber().equals(engine.getSerialNumber())
-                        || aircraft.getRightEngine() != null && aircraft.getRightEngine().getSerialNumber().equals(engine.getSerialNumber())) {
+                if (aircraft.getLeftEngine() != null
+                        && aircraft.getLeftEngine().getSerialNumber().equals(engine.getSerialNumber())
+                        || aircraft.getRightEngine() != null
+                        && aircraft.getRightEngine().getSerialNumber().equals(engine.getSerialNumber())) {
                     list.remove(engine);
                 }
             }
@@ -218,10 +217,7 @@ public class Utils {
      * заполненый КСА, которые не установлены на самолеты.
      */
     public static List<Ksa> filterInstalledKsa() {
-        List<Ksa> list = new ArrayList<>();
-        for (Ksa ksaForList : SaveData.ksaList) {
-            list.add(ksaForList);
-        }
+        List<Ksa> list = new ArrayList<>(SaveData.ksaList);
         for (Aircraft aircraft : SaveData.aircraftList) {
             for (Ksa ksa : SaveData.ksaList) {
                 if (aircraft.getKsa() != null && aircraft.getKsa().getSerialNumber().equals(ksa.getSerialNumber())) {
@@ -237,10 +233,7 @@ public class Utils {
      * заполненый планерами, которые не установлены на самолеты.
      */
     public static List<Planer> filterInstalledPlaner() {
-        List<Planer> list = new ArrayList<>();
-        for (Planer planerForList : SaveData.planersList) {
-            list.add(planerForList);
-        }
+        List<Planer> list = new ArrayList<>(SaveData.planersList);
         for (Aircraft aircraft : SaveData.aircraftList) {
             for (Planer planer : SaveData.planersList) {
                 if (aircraft.getPlaner().getSerialNumber().equals(planer.getSerialNumber())) {
@@ -256,10 +249,7 @@ public class Utils {
      * заполненый основными тормозами, которые не установлены на самолеты.
      */
     public static List<MainBreak> filterInstalledMainBreak() {
-        List<MainBreak> list = new ArrayList<>();
-        for (MainBreak breakForList : SaveData.mainBreaksList) {
-            list.add(breakForList);
-        }
+        List<MainBreak> list = new ArrayList<>(SaveData.mainBreaksList);
         for (Aircraft aircraft : SaveData.aircraftList) {
             for (MainBreak mainBreak : SaveData.mainBreaksList) {
                 if (aircraft.getLeftMainBrake().getSerialNumber().equals(mainBreak.getSerialNumber())
@@ -276,10 +266,7 @@ public class Utils {
      * заполненый основными колесами, которые не установлены на самолеты.
      */
     public static List<MainWheel> filterInstalledMainWheel() {
-        List<MainWheel> list = new ArrayList<>();
-        for (MainWheel wheelForList : SaveData.mainWheelsList) {
-            list.add(wheelForList);
-        }
+        List<MainWheel> list = new ArrayList<>(SaveData.mainWheelsList);
         for (Aircraft aircraft : SaveData.aircraftList) {
             for (MainWheel mainWheel : SaveData.mainWheelsList) {
                 if (aircraft.getLeftMainWheel().getSerialNumber().equals(mainWheel.getSerialNumber())
@@ -296,10 +283,7 @@ public class Utils {
      * заполненый передними тормозами, которые не установлены на самолеты.
      */
     public static List<FrontBreak> filterInstalledFrontBreak() {
-        List<FrontBreak> list = new ArrayList<>();
-        for (FrontBreak breakForList : SaveData.frontBreaksList) {
-            list.add(breakForList);
-        }
+        List<FrontBreak> list = new ArrayList<>(SaveData.frontBreaksList);
         for (Aircraft aircraft : SaveData.aircraftList) {
             for (FrontBreak frontBreak : SaveData.frontBreaksList) {
                 if (aircraft.getLeftFrontBrake().getSerialNumber().equals(frontBreak.getSerialNumber())
@@ -316,10 +300,7 @@ public class Utils {
      * заполненый передними колесами, которые не установлены на самолеты.
      */
     public static List<FrontWheel> filterInstalledFrontWheel() {
-        List<FrontWheel> list = new ArrayList<>();
-        for (FrontWheel wheelForList : SaveData.frontWheelsList) {
-            list.add(wheelForList);
-        }
+        List<FrontWheel> list = new ArrayList<>(SaveData.frontWheelsList);
         for (Aircraft aircraft : SaveData.aircraftList) {
             for (FrontWheel frontWheel : SaveData.frontWheelsList) {
                 if (aircraft.getLeftFrontWheel().getSerialNumber().equals(frontWheel.getSerialNumber())
@@ -336,10 +317,7 @@ public class Utils {
      * заполненый цилиндрами подкоса, которые не установлены на самолеты.
      */
     public static List<CylinderOfRetractionExtension> filterInstalledCylinder() {
-        List<CylinderOfRetractionExtension> list = new ArrayList<>();
-        for (CylinderOfRetractionExtension cylinderForList : SaveData.cylindersList) {
-            list.add(cylinderForList);
-        }
+        List<CylinderOfRetractionExtension> list = new ArrayList<>(SaveData.cylindersList);
         for (Aircraft aircraft : SaveData.aircraftList) {
             for (CylinderOfRetractionExtension cylinder : SaveData.cylindersList) {
                 if (aircraft.getLeftMainCylinder().getSerialNumber().equals(cylinder.getSerialNumber())

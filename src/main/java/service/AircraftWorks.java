@@ -44,14 +44,14 @@ public class AircraftWorks {
                 break;
             case WORKS_AFTER_100_HOURS:
                 engine.setResourceReserveBefore_100hours(listOfWorks.getSelectionModel().getSelectedItem().getResource());
-                engine.setResourceReserveBefore_50hours(listOfWorks.getSelectionModel().getSelectedItem().getResource());
+                engine.setResourceReserveBefore_50hours(TypesOfWorks.WORKS_AFTER_50_HOURS.getResource());
                 engine.setResourceReserveBefore_25hours(TypesOfWorks.WORKS_AFTER_25_HOURS.getResource());
                 engine.setResourceReserveBefore_10hours(TypesOfWorks.WORKS_AFTER_10_HOURS.getResource());
                 log.info("Пользователь выполнил 100-та часовые работы на двигателе");
                 break;
             case WORKS_AFTER_150_HOURS:
                 engine.setResourceReserveBefore_150hours(listOfWorks.getSelectionModel().getSelectedItem().getResource());
-                engine.setResourceReserveBefore_50hours(listOfWorks.getSelectionModel().getSelectedItem().getResource());
+                engine.setResourceReserveBefore_50hours(TypesOfWorks.WORKS_AFTER_50_HOURS.getResource());
                 engine.setResourceReserveBefore_25hours(TypesOfWorks.WORKS_AFTER_25_HOURS.getResource());
                 engine.setResourceReserveBefore_10hours(TypesOfWorks.WORKS_AFTER_10_HOURS.getResource());
                 log.info("Пользователь выполнил 150-ти часовые работы на двигателе");

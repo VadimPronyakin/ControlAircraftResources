@@ -156,9 +156,11 @@ public class UpdateAircraftComponents {
      */
     public static void updateReserveDays() {
         for (Aircraft aircraft : SaveData.aircraftList) {
-            aircraft.getPlaner().setDays_Reserve_Before_30DaysParking(calculateDateInDays(aircraft.getPlaner().getLast_Flight_Date(),
+            aircraft.getPlaner().setDays_Reserve_Before_30DaysParking(
+                    calculateDateInDays(aircraft.getPlaner().getLast_Flight_Date(),
                     aircraft.getPlaner().getDate_Work_After_30days_Parking()));
-            aircraft.getPlaner().setDays_Reserve_Before_6months_Operating(calculateDateInMonth(aircraft.getPlaner().getDate_Work_After_6months_Operation()));
+            aircraft.getPlaner().setDays_Reserve_Before_6months_Operating(
+                    calculateDateInMonth(aircraft.getPlaner().getDate_Work_After_6months_Operation()));
         }
         FilesWriter.serialization(SaveData.aircraftList, Aircraft.class);
     }

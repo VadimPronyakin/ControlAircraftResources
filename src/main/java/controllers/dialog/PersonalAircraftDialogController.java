@@ -136,6 +136,7 @@ public class PersonalAircraftDialogController {
     private Stage currentStage;
     @Setter
     private ListOfAircraftController listOfAircraftController;
+
     private Aircraft aircraft;
 
     @FXML
@@ -359,11 +360,10 @@ public class PersonalAircraftDialogController {
         });
     }
 
+    /** Метод обновляет индикацию в таблице самолетов, после закрытия окна "Карточка ВС" */
     @FXML
     private void updateAfterClose() {
-        currentStage.setOnCloseRequest(event -> {
-            listOfAircraftController.updateTableAircraft();
-        });
+        currentStage.setOnCloseRequest(event -> listOfAircraftController.updateTableAircraft());
     }
 
     public void setAircraft(Aircraft aircraft) {
@@ -399,7 +399,7 @@ public class PersonalAircraftDialogController {
         rightCylinder.textProperty().setValue(String.valueOf(aircraft.getRightMainCylinder()));
         frontCylinder.textProperty().setValue(String.valueOf(aircraft.getFrontCylinder()));
         orderDate.textProperty().setValue(dateFormat.format(aircraft.getOrderDate()));
-        fillsOperating();
+        fillsOperatingHistory();
         Text[] textOfAlarm = new Text[]{alarmLeftEngine, alarmRightEngine,
                 alarmKsa, alarmPlaner,
                 alarm_Left_Main_Wheel, alarm_Right_Main_Wheel,
@@ -444,7 +444,8 @@ public class PersonalAircraftDialogController {
         UpdateNotification.updateNotificationMainBreak(mainBreak, aircraft, alarm_Left_Main_Break, alarm_Right_Main_Break);
     }
 
-    private void fillsOperating() {
+    /** Метод заполняет историю газовок и летных смен */
+    private void fillsOperatingHistory() {
         if (aircraft.getOperationHistory().size() != 0) {
             String history = aircraft.getOperationHistory().stream().map(h -> dateFormat.format(h.getDateOperating())
                     + h.getInformation()).collect(Collectors.joining("\n"));

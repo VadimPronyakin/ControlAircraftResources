@@ -15,8 +15,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import java.util.Map;
 
 import java.net.URL;
+import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static utils.UpdateAircraftComponents.*;
@@ -28,31 +31,22 @@ public class ListOfAircraftController {
 
     @FXML
     private ResourceBundle resources;
-
     @FXML
     private URL location;
-
     @FXML
     private Button returnHomePage;
-
     @FXML
     private Button createNewAircraft;
-
     @FXML
     private Button changeAircraft;
-
     @FXML
     private Button deleteAircraft;
-
     @FXML
     private TableView<Aircraft> tableAircraft;
-
     @FXML
     private TableColumn<Aircraft, Boolean> columnNotification;
-
     @FXML
     private TableColumn<Aircraft, Aircraft> columnNumberAircraft;
-
     @FXML
     private TableColumn<String, String> columnEngineerAk;
 
@@ -88,15 +82,15 @@ public class ListOfAircraftController {
                 });
         tableAircraft.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2) {
-                java.util.Map<Stage, PersonalAircraftDialogController> map = showEditDialogDoubleClickWithStage(e,
+                Map<Stage, PersonalAircraftDialogController> map = showEditDialogDoubleClickWithStage(
                         "/fxmlFiles/dialog/personalAircraftDialog.fxml");
                 PersonalAircraftDialogController controller = null;
                 Stage stage = null;
-                for (java.util.Map.Entry entry : map.entrySet()) {
+                for (Entry entry : map.entrySet()) {
                     controller = (PersonalAircraftDialogController) entry.getValue();
                     stage = (Stage) entry.getKey();
                 }
-                controller.setAircraft(tableAircraft.getSelectionModel().getSelectedItem());
+                Objects.requireNonNull(controller).setAircraft(tableAircraft.getSelectionModel().getSelectedItem());
                 controller.setListOfAircraftController(this);
                 controller.setCurrentStage(stage);
 

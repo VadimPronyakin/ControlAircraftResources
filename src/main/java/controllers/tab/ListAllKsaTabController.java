@@ -36,7 +36,6 @@ public class ListAllKsaTabController {
     @FXML
     private TableColumn<Ksa, Boolean> columnNotification;
 
-
     @FXML
     void initialize() {
         updateTableKsa();

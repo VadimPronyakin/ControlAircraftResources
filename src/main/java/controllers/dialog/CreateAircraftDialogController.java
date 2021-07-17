@@ -2,6 +2,7 @@ package controllers.dialog;
 
 import constants.TextConstants;
 import controllers.ListOfAircraftController;
+import data.AbstractAggregate;
 import data.Aircraft;
 import data.Engineer;
 import data.SaveData;
@@ -22,6 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.net.URL;
 import java.time.ZoneId;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static builder.Builder.completionAircraft;
@@ -33,10 +35,6 @@ import static utils.Utils.*;
 @Slf4j
 public class CreateAircraftDialogController {
 
-    @FXML
-    private ResourceBundle resources;
-    @FXML
-    private URL location;
     @FXML
     private TextField sideNumber;
     @FXML
@@ -145,9 +143,6 @@ public class CreateAircraftDialogController {
 
     private Aircraft aircraft;
 
-    public static void completionBoxes(Aircraft aircraft) {
-    }
-
     @FXML
     void initialize() {
         handleUpdateButtons();
@@ -169,7 +164,7 @@ public class CreateAircraftDialogController {
         changeAircraft.setOnAction(e -> {
             try {
                 if (changesEngineerProtection(aircraft, listOfEngineers, orderNumber, orderDate)
-                && checkingOnDuplications(returnFullArray())) {
+                        && checkingOnDuplications(returnFullArray())) {
                     changeAircraft(aircraft);
                     Stage stage = (Stage) changeAircraft.getScene().getWindow();
                     stage.close();
@@ -404,7 +399,7 @@ public class CreateAircraftDialogController {
      */
     public void updateComboBoxes(int id) {
         ComboBox box = null;
-        List list = null;
+        List<? extends AbstractAggregate> list = null;
         switch (id) {
             case 1:
                 box = leftEngineList;
@@ -467,10 +462,10 @@ public class CreateAircraftDialogController {
                 list = filterInstalledPlaner();
                 break;
         }
-        box.getItems().clear();
+        Objects.requireNonNull(box).getItems().clear();
         box.setValue(null);
-        for (int i = 0; i < list.size(); i++) {
-            box.getItems().addAll(list.get(i));
+        for (Object o : list) {
+            box.getItems().addAll(o);
         }
     }
 
