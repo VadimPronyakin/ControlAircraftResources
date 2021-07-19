@@ -17,3 +17,7 @@
 * Jackson
 * Slf4j
 * Lombok
+## Запуск приложения
+* требуется Java 9+
+* JavaFX (используется JavaFX SDK 11.0.2)
+* В конфигурации запуска добавить к параметрам VM следующую строку: --module-path "path/to/javaFX/lib" --add-modules=javafx.controls,javafx.fxml,javafx.base
