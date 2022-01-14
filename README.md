@@ -18,6 +18,18 @@
 * Slf4j
 * Lombok
 ## Запуск приложения
-* требуется Java 9+
+* требуется Java 8+
 * JavaFX (используется JavaFX SDK 11.0.2)
 * В конфигурации запуска добавить к параметрам VM следующую строку: --module-path "path/to/javaFX/lib" --add-modules=javafx.controls,javafx.fxml,javafx.base
+ ## Изображения
+ ![3](https://user-images.githubusercontent.com/83708449/149574055-ab34f3d4-db14-400f-a429-9cc4c6cb0aeb.png)
+ ![1](https://user-images.githubusercontent.com/83708449/149574043-462fcabd-517d-413e-be0e-3576d2b64036.png)
+![2](https://user-images.githubusercontent.com/83708449/149574051-9513e6f8-25c5-4b82-ba29-51a9ba3b091f.png)
+![4](https://user-images.githubusercontent.com/83708449/149574057-6ecbb86b-4782-4f49-982f-6ea3a507d21a.png)
+![5](https://user-images.githubusercontent.com/83708449/149574061-4486215d-1d08-4a42-a9a2-b6fa8d8adbf8.png)
+![6](https://user-images.githubusercontent.com/83708449/149574064-edf02a77-8b6a-4774-b3f3-3d031ada3219.png)
+![7](https://user-images.githubusercontent.com/83708449/149574069-4b97e7e5-4eff-46d3-aa09-00338a38fe84.png)
+![8](https://user-images.githubusercontent.com/83708449/149574072-577d4618-89c6-45ad-ac11-0c9e324fa0ff.png)
+![9](https://user-images.githubusercontent.com/83708449/149574075-5a3e3b24-673d-46fe-a1fa-d246748cfa2a.png)
+![10](https://user-images.githubusercontent.com/83708449/149574077-b572449d-bbf3-466a-81f7-52f2555b091a.png)
+
